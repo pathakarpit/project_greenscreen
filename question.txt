@@ -1,0 +1,97 @@
+DSA PROBLEM 2: Longest Stable Event Window
+
+PROBLEM STATEMENT
+You are analyzing user activity logs for an event-based platform.
+Each log entry represents the number of photos uploaded at a particular second.
+
+You want to find the longest continuous time window where the upload activity is considered stable.
+
+A window is called STABLE if the difference between the maximum and minimum values in that window is less than or equal to K.
+
+OBJECTIVE
+Given an integer array uploads[] and an integer K, find the length of the longest contiguous subarray such that:
+
+max(upload window) - min(upload window) ≤ K
+
+INPUT FORMAT
+
+Integer array uploads[] of size N
+uploads[i] represents the number of photos uploaded at second i
+
+Integer K representing the allowed fluctuation
+
+OUTPUT FORMAT
+
+A single integer representing the maximum length of a stable window
+
+CONSTRAINTS
+
+1 ≤ N ≤ 100000
+
+0 ≤ uploads[i] ≤ 10^9
+
+0 ≤ K ≤ 10^9
+
+EXAMPLE 1
+Input
+uploads = [8, 2, 4, 7]
+K = 4
+
+Output
+2
+
+Explanation
+Subarrays:
+[8,2] → max-min = 6 (invalid)
+[2,4] → max-min = 2 (valid)
+[4,7] → max-min = 3 (valid)
+Longest valid length = 2
+
+EXAMPLE 2
+Input
+uploads = [10, 1, 2, 4, 7, 2]
+K = 5
+
+Output
+4
+
+Explanation
+Longest valid subarray is [2,4,7,2]
+
+EXAMPLE 3
+Input
+uploads = [4, 4, 4, 4]
+K = 0
+
+Output
+4
+
+EXPECTED TIME COMPLEXITY
+O(N)
+
+EXPECTED SPACE COMPLEXITY
+O(N)
+
+HINT
+Use a sliding window approach with two monotonic data structures:
+
+One to track maximum values
+
+One to track minimum values
+
+FOLLOW-UP QUESTIONS
+
+Why does a brute force approach fail here?
+
+How would you optimize space usage?
+
+Can this be solved without using extra data structures?
+
+How would this change if the array was circular?
+
+TOPICS COVERED
+Sliding Window
+Deque
+Two Pointers
+Monotonic Queue
+Optimization Techniques

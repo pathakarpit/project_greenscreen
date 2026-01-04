@@ -1,5 +1,14 @@
-.env
-__pycache__/
+# Local data folders
+questions/
+solutions/
+
+# Local scripts and keys
 api.py
+.env
+log.txt
+
+# Python cache
+__pycache__/
 *.pyc
+
 daily_updates.sh
