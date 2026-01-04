@@ -1,39 +1,39 @@
-from collections import deque
+def can_finish(tasks, k, max_time):
+    workers = 1
+    current_time = 0
 
-def longest_stable_window(uploads, k):
-    max_dq = deque()  # stores indices, values in decreasing order
-    min_dq = deque()  # stores indices, values in increasing order
+    for task in tasks:
+        if current_time + task <= max_time:
+            current_time += task
+        else:
+            workers += 1
+            current_time = task
+            if workers > k:
+                return False
 
-    left = 0
-    max_length = 0
+    return True
 
-    for right in range(len(uploads)):
-        # Maintain decreasing deque for max
-        while max_dq and uploads[max_dq[-1]] < uploads[right]:
-            max_dq.pop()
-        max_dq.append(right)
 
-        # Maintain increasing deque for min
-        while min_dq and uploads[min_dq[-1]] > uploads[right]:
-            min_dq.pop()
-        min_dq.append(right)
+def minimum_time(tasks, k):
+    left = max(tasks)
+    right = sum(tasks)
+    answer = right
 
-        # Shrink window if condition is violated
-        while uploads[max_dq[0]] - uploads[min_dq[0]] > k:
-            left += 1
-            if max_dq[0] < left:
-                max_dq.popleft()
-            if min_dq[0] < left:
-                min_dq.popleft()
+    while left <= right:
+        mid = (left + right) // 2
 
-        max_length = max(max_length, right - left + 1)
+        if can_finish(tasks, k, mid):
+            answer = mid
+            right = mid - 1
+        else:
+            left = mid + 1
 
-    return max_length
+    return answer
 
 
 # Example usage
-uploads = [10, 1, 2, 4, 7, 2]
-k = 5
+tasks = [1, 2, 4, 7, 8]
+k = 2
 
-result = longest_stable_window(uploads, k)
+result = minimum_time(tasks, k)
 print(result)
