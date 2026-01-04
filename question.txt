@@ -1,84 +1,70 @@
-DSA PROBLEM: Event Photo Timeline Compression
+DSA PROBLEM 2: Longest Stable Event Window
 
 PROBLEM STATEMENT
-You are building backend logic for an event-based photo-sharing platform.
-Each event contains multiple photos, and each photo has a timestamp in seconds.
+You are analyzing user activity logs for an event-based platform.
+Each log entry represents the number of photos uploaded at a particular second.
 
-To optimize storage and timeline viewing, photos taken close together should be grouped into clusters.
+You want to find the longest continuous time window where the upload activity is considered stable.
+
+A window is called STABLE if the difference between the maximum and minimum values in that window is less than or equal to K.
 
 OBJECTIVE
-Given a sorted list of photo timestamps, group them into clusters such that:
+Given an integer array uploads[] and an integer K, find the length of the longest contiguous subarray such that:
 
-The difference between consecutive timestamps in a cluster is less than or equal to K seconds
-
-Each photo belongs to exactly one cluster
-
-The original chronological order is preserved
+max(upload window) - min(upload window) ≤ K
 
 INPUT FORMAT
 
-An integer array timestamps[] of size N
-timestamps[i] represents the time (in seconds) when the i-th photo was taken
-The array is sorted in ascending order
+Integer array uploads[] of size N
+uploads[i] represents the number of photos uploaded at second i
 
-An integer K representing the maximum allowed gap (in seconds)
+Integer K representing the allowed fluctuation
 
 OUTPUT FORMAT
 
-A list of clusters, where each cluster is a list of timestamps
+A single integer representing the maximum length of a stable window
 
 CONSTRAINTS
 
 1 ≤ N ≤ 100000
 
-0 ≤ timestamps[i] ≤ 10^9
+0 ≤ uploads[i] ≤ 10^9
 
 0 ≤ K ≤ 10^9
 
-timestamps[] is sorted
-
 EXAMPLE 1
 Input
-timestamps = [10, 15, 18, 40, 42, 90]
-K = 5
+uploads = [8, 2, 4, 7]
+K = 4
 
 Output
-[
-[10, 15, 18],
-[40, 42],
-[90]
-]
+2
 
 Explanation
-15 - 10 = 5 (same cluster)
-18 - 15 = 3 (same cluster)
-40 - 18 = 22 (new cluster)
-42 - 40 = 2 (same cluster)
-90 - 42 = 48 (new cluster)
+Subarrays:
+[8,2] → max-min = 6 (invalid)
+[2,4] → max-min = 2 (valid)
+[4,7] → max-min = 3 (valid)
+Longest valid length = 2
 
 EXAMPLE 2
 Input
-timestamps = [1, 2, 3, 4, 5]
-K = 0
+uploads = [10, 1, 2, 4, 7, 2]
+K = 5
 
 Output
-[
-[1],
-[2],
-[3],
-[4],
-[5]
-]
+4
+
+Explanation
+Longest valid subarray is [2,4,7,2]
 
 EXAMPLE 3
 Input
-timestamps = [100, 105, 110, 115]
-K = 10
+uploads = [4, 4, 4, 4]
+K = 0
 
 Output
-[
-[100, 105, 110, 115]
-]
+4
 
 EXPECTED TIME COMPLEXITY
 O(N)
@@ -86,18 +72,26 @@ O(N)
 EXPECTED SPACE COMPLEXITY
 O(N)
 
+HINT
+Use a sliding window approach with two monotonic data structures:
+
+One to track maximum values
+
+One to track minimum values
+
 FOLLOW-UP QUESTIONS
 
-How would you handle the problem if timestamps were not sorted?
+Why does a brute force approach fail here?
 
-Can this be solved using a two-pointer approach?
+How would you optimize space usage?
 
-How would you enforce a minimum cluster size M?
+Can this be solved without using extra data structures?
 
-How would you design this if timestamps arrive as a stream?
+How would this change if the array was circular?
 
 TOPICS COVERED
-Arrays
-Greedy Strategy
-Sliding Window / Two Pointers
-Backend System Modeling
+Sliding Window
+Deque
+Two Pointers
+Monotonic Queue
+Optimization Techniques
