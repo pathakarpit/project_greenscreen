@@ -12,3 +12,5 @@ __pycache__/
 *.pyc
 
 daily_updates.sh
+cron_log.txt
+.gitignore
