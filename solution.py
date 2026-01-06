@@ -1,24 +1,39 @@
-def cluster_timestamps(timestamps, k):
-    if not timestamps:
-        return []
+def can_finish(tasks, k, max_time):
+    workers = 1
+    current_time = 0
 
-    clusters = []
-    current_cluster = [timestamps[0]]
-
-    for i in range(1, len(timestamps)):
-        if timestamps[i] - timestamps[i - 1] <= k:
-            current_cluster.append(timestamps[i])
+    for task in tasks:
+        if current_time + task <= max_time:
+            current_time += task
         else:
-            clusters.append(current_cluster)
-            current_cluster = [timestamps[i]]
+            workers += 1
+            current_time = task
+            if workers > k:
+                return False
 
-    clusters.append(current_cluster)
-    return clusters
+    return True
+
+
+def minimum_time(tasks, k):
+    left = max(tasks)
+    right = sum(tasks)
+    answer = right
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if can_finish(tasks, k, mid):
+            answer = mid
+            right = mid - 1
+        else:
+            left = mid + 1
+
+    return answer
 
 
 # Example usage
-timestamps = [10, 15, 18, 40, 42, 90]
-k = 5
+tasks = [1, 2, 4, 7, 8]
+k = 2
 
-result = cluster_timestamps(timestamps, k)
+result = minimum_time(tasks, k)
 print(result)
