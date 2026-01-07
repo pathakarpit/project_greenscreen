@@ -1,97 +1,97 @@
-DSA PROBLEM 3: Minimum Time to Complete All Tasks
+DSA PROBLEM 2: Longest Stable Event Window
 
 PROBLEM STATEMENT
-You are given a list of tasks, where each task takes a certain amount of time to complete.
-You also have K workers who can work in parallel.
+You are analyzing user activity logs for an event-based platform.
+Each log entry represents the number of photos uploaded at a particular second.
 
-Each worker can only work on one task at a time, and tasks cannot be split between workers.
+You want to find the longest continuous time window where the upload activity is considered stable.
 
-Your goal is to determine the minimum time required to complete all tasks if tasks are assigned optimally.
+A window is called STABLE if the difference between the maximum and minimum values in that window is less than or equal to K.
 
 OBJECTIVE
-Given an integer array tasks[] and an integer K, find the minimum possible time needed to finish all tasks.
+Given an integer array uploads[] and an integer K, find the length of the longest contiguous subarray such that:
+
+max(upload window) - min(upload window) ≤ K
 
 INPUT FORMAT
 
-Integer array tasks[] of size N
-tasks[i] represents the time required for the i-th task
+Integer array uploads[] of size N
+uploads[i] represents the number of photos uploaded at second i
 
-Integer K representing the number of workers
+Integer K representing the allowed fluctuation
 
 OUTPUT FORMAT
 
-A single integer representing the minimum total time required
+A single integer representing the maximum length of a stable window
 
 CONSTRAINTS
 
 1 ≤ N ≤ 100000
 
-1 ≤ tasks[i] ≤ 10^9
+0 ≤ uploads[i] ≤ 10^9
 
-1 ≤ K ≤ N
+0 ≤ K ≤ 10^9
 
 EXAMPLE 1
 Input
-tasks = [3, 2, 3]
-K = 3
+uploads = [8, 2, 4, 7]
+K = 4
 
 Output
-3
+2
 
 Explanation
-Each worker takes one task.
-Maximum time taken by any worker = 3.
+Subarrays:
+[8,2] → max-min = 6 (invalid)
+[2,4] → max-min = 2 (valid)
+[4,7] → max-min = 3 (valid)
+Longest valid length = 2
 
 EXAMPLE 2
 Input
-tasks = [1, 2, 4, 7, 8]
-K = 2
+uploads = [10, 1, 2, 4, 7, 2]
+K = 5
 
 Output
-11
+4
 
 Explanation
-Optimal assignment:
-Worker 1 → [1, 2, 8] = 11
-Worker 2 → [4, 7] = 11
-
-Total time = 11.
+Longest valid subarray is [2,4,7,2]
 
 EXAMPLE 3
 Input
-tasks = [5, 5, 5, 5]
-K = 1
+uploads = [4, 4, 4, 4]
+K = 0
 
 Output
-20
+4
 
 EXPECTED TIME COMPLEXITY
-O(N log S)
-(where S is the sum of all task durations)
+O(N)
 
 EXPECTED SPACE COMPLEXITY
-O(1)
+O(N)
 
 HINT
+Use a sliding window approach with two monotonic data structures:
 
-The answer lies between max(tasks) and sum(tasks)
+One to track maximum values
 
-Use binary search on the answer
-
-Check feasibility using a greedy approach
+One to track minimum values
 
 FOLLOW-UP QUESTIONS
 
-What changes if tasks can be split?
+Why does a brute force approach fail here?
 
-How would you assign tasks if worker speeds differ?
+How would you optimize space usage?
 
-Can this be solved using dynamic programming?
+Can this be solved without using extra data structures?
 
-What if tasks must be done in the given order?
+How would this change if the array was circular?
 
 TOPICS COVERED
-Binary Search on Answer
-Greedy
-Scheduling
-Optimization Problems
+Sliding Window
+Deque
+Two Pointers
+Monotonic Queue
+Optimization Techniques
