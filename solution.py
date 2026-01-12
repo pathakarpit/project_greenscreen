@@ -1,39 +1,24 @@
-from collections import deque
+def cluster_timestamps(timestamps, k):
+    if not timestamps:
+        return []
 
-def longest_stable_window(uploads, k):
-    max_dq = deque()  # stores indices, values in decreasing order
-    min_dq = deque()  # stores indices, values in increasing order
+    clusters = []
+    current_cluster = [timestamps[0]]
 
-    left = 0
-    max_length = 0
+    for i in range(1, len(timestamps)):
+        if timestamps[i] - timestamps[i - 1] <= k:
+            current_cluster.append(timestamps[i])
+        else:
+            clusters.append(current_cluster)
+            current_cluster = [timestamps[i]]
 
-    for right in range(len(uploads)):
-        # Maintain decreasing deque for max
-        while max_dq and uploads[max_dq[-1]] < uploads[right]:
-            max_dq.pop()
-        max_dq.append(right)
-
-        # Maintain increasing deque for min
-        while min_dq and uploads[min_dq[-1]] > uploads[right]:
-            min_dq.pop()
-        min_dq.append(right)
-
-        # Shrink window if condition is violated
-        while uploads[max_dq[0]] - uploads[min_dq[0]] > k:
-            left += 1
-            if max_dq[0] < left:
-                max_dq.popleft()
-            if min_dq[0] < left:
-                min_dq.popleft()
-
-        max_length = max(max_length, right - left + 1)
-
-    return max_length
+    clusters.append(current_cluster)
+    return clusters
 
 
 # Example usage
-uploads = [10, 1, 2, 4, 7, 2]
+timestamps = [10, 15, 18, 40, 42, 90]
 k = 5
 
-result = longest_stable_window(uploads, k)
+result = cluster_timestamps(timestamps, k)
 print(result)
