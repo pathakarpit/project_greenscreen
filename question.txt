@@ -1,103 +1,97 @@
-DSA PROBLEM: Event Photo Timeline Compression
+DSA PROBLEM 3: Minimum Time to Complete All Tasks
 
 PROBLEM STATEMENT
-You are building backend logic for an event-based photo-sharing platform.
-Each event contains multiple photos, and each photo has a timestamp in seconds.
+You are given a list of tasks, where each task takes a certain amount of time to complete.
+You also have K workers who can work in parallel.
 
-To optimize storage and timeline viewing, photos taken close together should be grouped into clusters.
+Each worker can only work on one task at a time, and tasks cannot be split between workers.
+
+Your goal is to determine the minimum time required to complete all tasks if tasks are assigned optimally.
 
 OBJECTIVE
-Given a sorted list of photo timestamps, group them into clusters such that:
-
-The difference between consecutive timestamps in a cluster is less than or equal to K seconds
-
-Each photo belongs to exactly one cluster
-
-The original chronological order is preserved
+Given an integer array tasks[] and an integer K, find the minimum possible time needed to finish all tasks.
 
 INPUT FORMAT
 
-An integer array timestamps[] of size N
-timestamps[i] represents the time (in seconds) when the i-th photo was taken
-The array is sorted in ascending order
+Integer array tasks[] of size N
+tasks[i] represents the time required for the i-th task
 
-An integer K representing the maximum allowed gap (in seconds)
+Integer K representing the number of workers
 
 OUTPUT FORMAT
 
-A list of clusters, where each cluster is a list of timestamps
+A single integer representing the minimum total time required
 
 CONSTRAINTS
 
 1 ≤ N ≤ 100000
 
-0 ≤ timestamps[i] ≤ 10^9
+1 ≤ tasks[i] ≤ 10^9
 
-0 ≤ K ≤ 10^9
-
-timestamps[] is sorted
+1 ≤ K ≤ N
 
 EXAMPLE 1
 Input
-timestamps = [10, 15, 18, 40, 42, 90]
-K = 5
+tasks = [3, 2, 3]
+K = 3
 
 Output
-[
-[10, 15, 18],
-[40, 42],
-[90]
-]
+3
 
 Explanation
-15 - 10 = 5 (same cluster)
-18 - 15 = 3 (same cluster)
-40 - 18 = 22 (new cluster)
-42 - 40 = 2 (same cluster)
-90 - 42 = 48 (new cluster)
+Each worker takes one task.
+Maximum time taken by any worker = 3.
 
 EXAMPLE 2
 Input
-timestamps = [1, 2, 3, 4, 5]
-K = 0
+tasks = [1, 2, 4, 7, 8]
+K = 2
 
 Output
-[
-[1],
-[2],
-[3],
-[4],
-[5]
-]
+11
+
+Explanation
+Optimal assignment:
+Worker 1 → [1, 2, 8] = 11
+Worker 2 → [4, 7] = 11
+
+Total time = 11.
 
 EXAMPLE 3
 Input
-timestamps = [100, 105, 110, 115]
-K = 10
+tasks = [5, 5, 5, 5]
+K = 1
 
 Output
-[
-[100, 105, 110, 115]
-]
+20
 
 EXPECTED TIME COMPLEXITY
-O(N)
+O(N log S)
+(where S is the sum of all task durations)
 
 EXPECTED SPACE COMPLEXITY
-O(N)
+O(1)
+
+HINT
+
+The answer lies between max(tasks) and sum(tasks)
+
+Use binary search on the answer
+
+Check feasibility using a greedy approach
 
 FOLLOW-UP QUESTIONS
 
-How would you handle the problem if timestamps were not sorted?
+What changes if tasks can be split?
 
-Can this be solved using a two-pointer approach?
+How would you assign tasks if worker speeds differ?
 
-How would you enforce a minimum cluster size M?
+Can this be solved using dynamic programming?
 
-How would you design this if timestamps arrive as a stream?
+What if tasks must be done in the given order?
 
 TOPICS COVERED
-Arrays
-Greedy Strategy
-Sliding Window / Two Pointers
-Backend System Modeling
+Binary Search on Answer
+Greedy
+Scheduling
+Optimization Problems
