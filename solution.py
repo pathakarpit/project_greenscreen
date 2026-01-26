@@ -1,22 +1,10 @@
-# Problem: Maximum and Minimum Element in an Array
+# Problem: Reverse the Array
 # Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
+# Link: https://www.geeksforgeeks.org/write-a-program-to-reverse-an-array-or-string/
 
 class Solution:
-    def solve(self, arr):
-        if not arr:
-            return None, None  # Return None for both min and max if array is empty
-        
-        minimum = float('inf')
-        maximum = float('-inf')
-        
-        for num in arr:
-            if num < minimum:
-                minimum = num
-            if num > maximum:
-                maximum = num
-        
-        return minimum, maximum
+    def solve(self, nums):
+        return nums[::-1]
 
 ########################################
 # if __name__ == '__main__':
