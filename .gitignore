@@ -12,6 +12,7 @@ tests/logs.txt
 __pycache__/
 *.pyc
 
+run_daily.sh
 daily_updates.sh
 cron_log.txt
 .gitignore
