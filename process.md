@@ -10,3 +10,5 @@ pip install crewai crewai-tools langchain_postgres psycopg2-binary pandas openpy
 3) create a test file that will check all the moving parts individually
 
 4) create a db manager and its testing file
+
+5) create the dsa loader and its testing file
