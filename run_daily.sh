@@ -23,15 +23,16 @@ log_message "========================================================"
 log_message "Using Python: $PYTHON_EXEC"
 
 # 3. Run the Main Orchestrator
-# '2>&1' captures errors. 'tee -a' appends to logs.txt and shows on screen.
 log_message "🚀 Running main.py..."
+# Capture errors and output to log file
 $PYTHON_EXEC main.py 2>&1 | tee -a "$LOG_FILE"
 
 # 4. Git Operations
 log_message "📦 Pushing changes to GitHub..."
 
-# Add only the relevant generated files
-git add solution.py question.txt questions.db
+# Add only the output files and logs. 
+# We REMOVED questions.db/history.json because data is now in PostgreSQL.
+git add solution.py question.txt logs.txt
 
 # Commit
 git commit -m "Daily DSA: $(date +'%Y-%m-%d %H:%M')" 2>&1 | tee -a "$LOG_FILE"
