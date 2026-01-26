@@ -7,6 +7,8 @@ api.py
 .env
 log.txt
 test.py
+logs.txt
+tests/logs.txt
 
 # Python cache
 __pycache__/
