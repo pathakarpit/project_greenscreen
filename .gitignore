@@ -6,6 +6,7 @@ solutions/
 api.py
 .env
 log.txt
+test.py
 
 # Python cache
 __pycache__/
