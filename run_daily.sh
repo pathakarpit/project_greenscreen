@@ -2,11 +2,10 @@
 
 # 1. Define paths
 PROJECT_DIR="/home/arpit/workspace/project_greenscreen"
-# Direct path to the python executable in your 'project_gs' environment
 PYTHON_EXEC="/home/arpit/anaconda3/envs/project_gs/bin/python3"
 LOG_FILE="$PROJECT_DIR/logs.txt"
 
-# Function to log messages to both console and file
+# Function to log messages
 log_message() {
     echo "$1" | tee -a "$LOG_FILE"
 }
@@ -19,20 +18,26 @@ log_message "========================================================"
 log_message "--- Starting Daily DSA Task: $(date) ---"
 log_message "========================================================"
 
-# 2. Check Environment
 log_message "Using Python: $PYTHON_EXEC"
 
-# 3. Run the Main Orchestrator
+# Run the Main Orchestrator
 log_message "🚀 Running main.py..."
-# Capture errors and output to log file
 $PYTHON_EXEC main.py 2>&1 | tee -a "$LOG_FILE"
 
-# 4. Git Operations
+# Git Operations
 log_message "📦 Pushing changes to GitHub..."
 
-# Add only the output files and logs. 
-# We REMOVED questions.db/history.json because data is now in PostgreSQL.
-git add solution.py question.txt logs.txt
+# Add the new file structure: solution, question.md, explanation.md
+git add solution.py question.md explanation.md
+
+# Force-add logs (since they are in .gitignore)
+git add -f logs.txt
+
+# Remove the old text file if it exists (cleanup)
+if [ -f "question.txt" ]; then
+    git rm --cached question.txt 2>/dev/null || true
+    rm question.txt 2>/dev/null || true
+fi
 
 # Commit
 git commit -m "Daily DSA: $(date +'%Y-%m-%d %H:%M')" 2>&1 | tee -a "$LOG_FILE"

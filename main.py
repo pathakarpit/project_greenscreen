@@ -1,4 +1,5 @@
 import os
+import re
 from crewai import Crew, Process
 from dotenv import load_dotenv
 
@@ -15,10 +16,18 @@ load_dotenv()
 # --- CONFIGURATION ---
 EXCEL_PATH = os.getenv("INPUT_EXCEL_PATH", "data/input/questions.xlsx")
 SHEET_NAME = os.getenv("SHEET_NAME", "main_questions")
-QUESTION_FILE = "question.txt"
+
+# Updated File Names
+QUESTION_FILE = "question.md"
 SOLUTION_FILE = "solution.py"
+EXPLANATION_FILE = "explanation.md"
 
 def save_to_files(target, problem_text, solution_code, explanation):
+    """
+    Saves the agent outputs to 3 separate files for the Git commit.
+    """
+    
+    # --- 1. CLEAN THE PYTHON CODE ---
     raw_code = str(solution_code)
     clean_code = raw_code.replace("```python", "").replace("```", "").strip()
     
@@ -28,25 +37,30 @@ def save_to_files(target, problem_text, solution_code, explanation):
     else:
         clean_code = f"# WARNING: Valid Class Definition Not Found\n# Raw Output:\n{clean_code}"
 
+    # --- 2. WRITE SOLUTION.PY ---
     with open(SOLUTION_FILE, "w", encoding="utf-8") as f:
         f.write(f"# Problem: {target['title']}\n")
         f.write(f"# Difficulty: {target['difficulty']}\n")
         f.write(f"# Link: {target['link']}\n\n")
         f.write(clean_code)
-        f.write("\n\n" + "#" * 40 + "\n# if __name__ == '__main__':\n#     s = Solution()")
+        f.write("\n\n" + "#" * 40)
+        f.write("\n# if __name__ == '__main__':\n#     s = Solution()\n#     # print(s.solve(inputs...))")
     
+    # --- 3. WRITE QUESTION.MD ---
     with open(QUESTION_FILE, "w", encoding="utf-8") as f:
-        f.write(f"TITLE: {target['title']}\n")
-        f.write(f"DIFFICULTY: {target['difficulty']}\n")
-        f.write(f"LINK: {target['link']}\n")
-        f.write("-" * 40 + "\n\n")
-        f.write("--- PROBLEM STATEMENT ---\n")
-        f.write(str(problem_text).strip() + "\n\n")
-        f.write("-" * 40 + "\n\n")
-        f.write("--- PROFESSOR'S EXPLANATION ---\n")
+        f.write(f"# {target['title']}\n\n")
+        f.write(f"**Difficulty:** {target['difficulty']}  \n")
+        f.write(f"**Link:** [{target['link']}]({target['link']})\n\n")
+        f.write("---\n\n")
+        f.write("## Problem Statement\n\n")
+        f.write(str(problem_text).strip() + "\n")
+        
+    # --- 4. WRITE EXPLANATION.MD ---
+    with open(EXPLANATION_FILE, "w", encoding="utf-8") as f:
+        f.write(f"# Professor's Explanation for {target['title']}\n\n")
         f.write(str(explanation).strip() + "\n")
 
-    print(f"\n✅ Files Generated Successfully: {QUESTION_FILE}, {SOLUTION_FILE}")
+    print(f"\n✅ Files Generated Successfully:\n   - {QUESTION_FILE}\n   - {SOLUTION_FILE}\n   - {EXPLANATION_FILE}")
 
 def main():
     print("\n🟢 PROJECT GREENSCREEN: DAILY WORKFLOW STARTED")
@@ -61,14 +75,9 @@ def main():
         return
 
     # 2. INTELLIGENT SELECTION LOOP
-    # We load all potential questions and check them one by one against the DB
-    # instead of picking random ones blindly.
-    
-    # Refresh cache
     loader.load_all_questions()
     all_questions = loader.questions_cache
     
-    # Filter out exact title matches first (optimization)
     completed_titles = set(db.get_completed_titles())
     candidates = [q for q in all_questions if q['title'] not in completed_titles]
     
@@ -77,19 +86,16 @@ def main():
     print(f"🔍 Checking {len(candidates)} candidates for semantic uniqueness...")
     
     for candidate in candidates:
-        # Check Vector DB for semantic duplicates (e.g. "Two Sum" vs "2 Sum")
         is_dup, reason = db.is_duplicate(candidate['title'])
-        
         if is_dup:
             print(f"⏭️  {reason}")
-            continue # Skip and try next
+            continue 
         else:
-            # Found a fresh question!
             target = candidate
             break
             
     if not target:
-        print("🎉 No new, unique questions found (checked all candidates against 30-day history).")
+        print("🎉 No new, unique questions found.")
         return
 
     print(f"\n🎯 TARGET LOCKED: {target['title']} ({target['difficulty']})")
@@ -128,7 +134,7 @@ def main():
     # Save files for Git
     save_to_files(target, final_prob, final_code, final_expl)
 
-    # Save to Postgres (History + Vector)
+    # Save to Postgres
     payload = {
         "title": target['title'],
         "topic": target.get('topic', 'Algorithms'),
