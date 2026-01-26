@@ -8,3 +8,5 @@ SELECT * FROM pg_available_extensions WHERE name = 'vector';
 pip install crewai crewai-tools langchain_postgres psycopg2-binary pandas openpyxl duckduckgo-search
 
 3) create a test file that will check all the moving parts individually
+
+4) create a db manager and its testing file
