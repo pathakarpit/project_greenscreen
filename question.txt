@@ -1,54 +1,68 @@
-TITLE: Kosaraju's Theorem
-DIFFICULTY: Medium
-LINK: https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
+TITLE: Maximum and Minimum Element in an Array
+DIFFICULTY: Easy
+LINK: https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
 ----------------------------------------
 
 --- PROBLEM STATEMENT ---
-```
-Title: Kosaraju's Theorem
-Description:
-Given a graph G = (V,E), find all articulation points in the graph.
-An articulation point is a vertex that, when removed, increases the number of connected components.
+**Title:** Find Minimum and Maximum Values in a Collection
 
-Examples:
-Input 1:
-- Graph G = ({A,B,C,D}, {(A,B),(B,C),(C,D)})
-Output 1:
-- Articulation points: B
+**Description:**
 
-Input 2:
-- Graph G = ({A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}, 
-    {(A,B), (B,C), (C,D), (D,E), (E,F), (F,G), (G,H), (H,I), (I,J),
-     (J,K), (K,L), (L,M), (M,N), (N,O), (O,P), (P,Q), (Q,R), (R,S),
-     (S,T), (T,U), (U,V), (V,W), (W,X), (X,Y), (Y,Z)})
-Output 2:
-- Articulation points: M, N
+Analyze the raw content provided by the Tech Researcher above. Develop an algorithm that finds the minimum and maximum values in a given collection of integers using the Linear Scan approach. Initialize two variables to hold the current minimum and maximum values, then iterate over each element in the collection. For each element, compare it with the current minimum value; if it's smaller, update the minimum value. Similarly, compare each element with the current maximum value; if it's larger, update the maximum value.
 
-Input 3:
-- Graph G = ({A,B,C,D,E}, {(A,B),(B,C),(C,D),(D,E)})
-Output 3:
-- No articulation points
+**Examples:**
 
-Constraints:
-1. Number of vertices (N) is between 1 and 10^5.
-2. Each edge has a weight, but it's not used in the algorithm.
+1. Input: `arr = [3, 2, -6, 5, 0]`
+Output: Minimum Value: `-6`, Maximum Value: `5`
 
-Note: I invented reasonable constraints as there was no information about them.
-```
+2. Input: `arr = [-10, -20, -30]`
+Output: Minimum Value: `-30`, Maximum Value: `-10`
+
+3. Input: `arr = [100, 200, 300, 400, 500]`
+Output: Minimum Value: `100`, Maximum Value: `500`
+
+**Constraints:**
+
+* The input collection `arr` contains only integers.
+* The size of the input collection `n` is at least 2 and at most 10^5 (i.e., 1 <= n <= 10^5).
+* The range of integer values in the collection is from -10^9 to 10^9.
+
+### Note: 
+
+I have removed any solution code found in the text.
 
 ----------------------------------------
 
 --- PROFESSOR'S EXPLANATION ---
-This Python code defines a class called `Solution` with two methods: `dfs` and `solve`. The class uses depth-first search (DFS) to find all strongly connected components in an input graph. 
+## Time Complexity Analysis
 
-The algorithm initializes various data structures such as `graph`, `stack`, `visited`, `low`, `ids`, `id`, and `scc_count` based on the input graph.
+* The time complexity of this algorithm is O(N), where N is the number of elements in the input array `arr`.
+* This is because the loop runs exactly N times, once for each element in the array.
+* Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average. However, since this operation occurs within the loop, its overall contribution to the time complexity is negligible compared to the O(N) loop itself.
+* Therefore, the overall time complexity remains O(N).
 
-The `dfs` method takes a vertex `at` as input, marks it as visited, assigns an id to it, recursively calls itself for all unvisited adjacent vertices, and updates the `low` dictionary accordingly. 
+## Space Complexity Analysis
 
-If a vertex has finished being visited (i.e., `low[at] == ids[at]`), it pops all vertices from the stack that are not `at`, removes them from the `visited` set, and increments the `scc_count`.
+* The space complexity of this algorithm is also O(N), where N is the number of elements in the input array `arr`.
+* This is because we use a dictionary/hash map to store at most N elements.
 
-The `solve` method iterates over all vertices in the graph, calling the `dfs` method on unvisited vertices. 
+## Step-by-Step Reconstruction Logic
 
-After visiting all vertices, the algorithm returns a list of indices corresponding to strongly connected components (i.e., vertices whose id is not present in the `ids` dictionary).
+### Initialize Variables
 
-This code uses a time complexity of O(N), where N is the number of vertices in the graph. The space complexity is also O(N) as we use dictionaries and stacks to store at most N elements.
+* We initialize two variables: `minimum` and `maximum`, both set to infinity (positive and negative, respectively).
+* These variables will be used to track the minimum and maximum values seen so far in the array.
+
+### Loop Over Array Elements
+
+* The algorithm iterates over each element `num` in the input array `arr`.
+* For each element:
+	+ We check if it's less than the current `minimum`. If so, we update `minimum` to this value.
+	+ We check if it's greater than the current `maximum`. If so, we update `maximum` to this value.
+
+### Return Minimum and Maximum Values
+
+* Once all elements in the array have been processed, the algorithm returns the final values of `minimum` and `maximum`.
+* These are the minimum and maximum values seen in the input array.
+
+Note that if the input array is empty, the algorithm returns `(None, None)`, indicating that no valid minimum or maximum value was found.
