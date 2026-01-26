@@ -1,97 +1,54 @@
-DSA PROBLEM 3: Minimum Time to Complete All Tasks
+TITLE: Kosaraju's Theorem
+DIFFICULTY: Medium
+LINK: https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
+----------------------------------------
 
-PROBLEM STATEMENT
-You are given a list of tasks, where each task takes a certain amount of time to complete.
-You also have K workers who can work in parallel.
+--- PROBLEM STATEMENT ---
+```
+Title: Kosaraju's Theorem
+Description:
+Given a graph G = (V,E), find all articulation points in the graph.
+An articulation point is a vertex that, when removed, increases the number of connected components.
 
-Each worker can only work on one task at a time, and tasks cannot be split between workers.
+Examples:
+Input 1:
+- Graph G = ({A,B,C,D}, {(A,B),(B,C),(C,D)})
+Output 1:
+- Articulation points: B
 
-Your goal is to determine the minimum time required to complete all tasks if tasks are assigned optimally.
+Input 2:
+- Graph G = ({A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z}, 
+    {(A,B), (B,C), (C,D), (D,E), (E,F), (F,G), (G,H), (H,I), (I,J),
+     (J,K), (K,L), (L,M), (M,N), (N,O), (O,P), (P,Q), (Q,R), (R,S),
+     (S,T), (T,U), (U,V), (V,W), (W,X), (X,Y), (Y,Z)})
+Output 2:
+- Articulation points: M, N
 
-OBJECTIVE
-Given an integer array tasks[] and an integer K, find the minimum possible time needed to finish all tasks.
+Input 3:
+- Graph G = ({A,B,C,D,E}, {(A,B),(B,C),(C,D),(D,E)})
+Output 3:
+- No articulation points
 
-INPUT FORMAT
+Constraints:
+1. Number of vertices (N) is between 1 and 10^5.
+2. Each edge has a weight, but it's not used in the algorithm.
 
-Integer array tasks[] of size N
-tasks[i] represents the time required for the i-th task
+Note: I invented reasonable constraints as there was no information about them.
+```
 
-Integer K representing the number of workers
+----------------------------------------
 
-OUTPUT FORMAT
+--- PROFESSOR'S EXPLANATION ---
+This Python code defines a class called `Solution` with two methods: `dfs` and `solve`. The class uses depth-first search (DFS) to find all strongly connected components in an input graph. 
 
-A single integer representing the minimum total time required
+The algorithm initializes various data structures such as `graph`, `stack`, `visited`, `low`, `ids`, `id`, and `scc_count` based on the input graph.
 
-CONSTRAINTS
+The `dfs` method takes a vertex `at` as input, marks it as visited, assigns an id to it, recursively calls itself for all unvisited adjacent vertices, and updates the `low` dictionary accordingly. 
 
-1 ≤ N ≤ 100000
+If a vertex has finished being visited (i.e., `low[at] == ids[at]`), it pops all vertices from the stack that are not `at`, removes them from the `visited` set, and increments the `scc_count`.
 
-1 ≤ tasks[i] ≤ 10^9
+The `solve` method iterates over all vertices in the graph, calling the `dfs` method on unvisited vertices. 
 
-1 ≤ K ≤ N
+After visiting all vertices, the algorithm returns a list of indices corresponding to strongly connected components (i.e., vertices whose id is not present in the `ids` dictionary).
 
-EXAMPLE 1
-Input
-tasks = [3, 2, 3]
-K = 3
-
-Output
-3
-
-Explanation
-Each worker takes one task.
-Maximum time taken by any worker = 3.
-
-EXAMPLE 2
-Input
-tasks = [1, 2, 4, 7, 8]
-K = 2
-
-Output
-11
-
-Explanation
-Optimal assignment:
-Worker 1 → [1, 2, 8] = 11
-Worker 2 → [4, 7] = 11
-
-Total time = 11.
-
-EXAMPLE 3
-Input
-tasks = [5, 5, 5, 5]
-K = 1
-
-Output
-20
-
-EXPECTED TIME COMPLEXITY
-O(N log S)
-(where S is the sum of all task durations)
-
-EXPECTED SPACE COMPLEXITY
-O(1)
-
-HINT
-
-The answer lies between max(tasks) and sum(tasks)
-
-Use binary search on the answer
-
-Check feasibility using a greedy approach
-
-FOLLOW-UP QUESTIONS
-
-What changes if tasks can be split?
-
-How would you assign tasks if worker speeds differ?
-
-Can this be solved using dynamic programming?
-
-What if tasks must be done in the given order?
-
-TOPICS COVERED
-Binary Search on Answer
-Greedy
-Scheduling
-Optimization Problems
+This code uses a time complexity of O(N), where N is the number of vertices in the graph. The space complexity is also O(N) as we use dictionaries and stacks to store at most N elements.

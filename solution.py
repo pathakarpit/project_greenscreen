@@ -1,39 +1,44 @@
-def can_finish(tasks, k, max_time):
-    workers = 1
-    current_time = 0
+# Problem: Kosaraju's Theorem
+# Difficulty: Medium
+# Link: https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
 
-    for task in tasks:
-        if current_time + task <= max_time:
-            current_time += task
-        else:
-            workers += 1
-            current_time = task
-            if workers > k:
-                return False
+class Solution:
+    def __init__(self, graph):
+        self.graph = graph
+        self.stack = []
+        self.visited = set()
+        self.low = {}
+        self.ids = {}
+        self.id = 0
+        self.scc_count = 0
 
-    return True
+    def dfs(self, at):
+        self.visited.add(at)
+        self.stack.append(at)
+        self.ids[at] = self.low[at] = self.id
+        self.id += 1
 
+        for to in self.graph[at]:
+            if to not in self.visited:
+                self.dfs(to)
+                self.low[at] = min(self.low[at], self.low[to])
+            elif to in self.stack:
+                self.low[at] = min(self.low[at], self.ids[to])
 
-def minimum_time(tasks, k):
-    left = max(tasks)
-    right = sum(tasks)
-    answer = right
+        if self.low[at] == self.ids[at]:
+            while self.stack and self.stack[-1] != at:
+                node = self.stack.pop()
+                self.visited.remove(node)
+            self.stack.pop()
+            self.scc_count += 1
 
-    while left <= right:
-        mid = (left + right) // 2
+    def solve(self):
+        for i in range(len(self.graph)):
+            if i not in self.visited:
+                self.dfs(i)
+        return list(set(range(len(self.graph))) - set(self.ids.keys()))
 
-        if can_finish(tasks, k, mid):
-            answer = mid
-            right = mid - 1
-        else:
-            left = mid + 1
-
-    return answer
-
-
-# Example usage
-tasks = [1, 2, 4, 7, 8]
-k = 2
-
-result = minimum_time(tasks, k)
-print(result)
+########################################
+# if __name__ == '__main__':
+#     s = Solution()
+#     # print(s.solve(inputs...))

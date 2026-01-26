@@ -75,8 +75,10 @@ def get_research_task(agent, target):
         1. Try to access the Official URL: {target['link']}
         2. If that fails (403/404), use 'Internet Search' to find: "{target['title']} geeksforgeeks problem".
         3. CRITICAL: The search results will contain 'link' fields. COPY one of those links exactly. DO NOT GUESS A URL.
-        4. Use 'Website Scraper' on that new link.
-        5. Extract:
+        4. CRITICAL: When searching, ignore pages like "Complete Guide", "Syllabus", "GATE Notes", or "file list".
+        5. Look for specific tutorial pages, e.g., containing "algorithm", "problem", or "tutorial" in the title.
+        6. Use 'Website Scraper' on that new link.
+        7. Extract:
            - Problem Statement.
            - At least 3 Input/Output Examples.
            - Constraints.
