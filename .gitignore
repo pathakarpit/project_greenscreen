@@ -5,9 +5,7 @@ solutions/
 # Local scripts and keys
 api.py
 .env
-log.txt
 test.py
-logs.txt
 tests/logs.txt
 
 # Python cache
