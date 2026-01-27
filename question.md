@@ -1,34 +1,34 @@
-# Contains Duplicate
+# Chocolate Distribution Problem
 
 **Difficulty:** Easy  
-**Link:** [https://leetcode.com/problems/contains-duplicate/](https://leetcode.com/problems/contains-duplicate/)
+**Link:** [https://www.geeksforgeeks.org/chocolate-distribution-problem/](https://www.geeksforgeeks.org/chocolate-distribution-problem/)
 
 ---
 
 ## Problem Statement
 
-**
+**Title:** The Chocolate Distribution Problem
 
-**Title:** Check if Array Contains Duplicates
-
-**Description:** Given an integer array arr[], check if the array contains any duplicate value.
+**Description:** Given an array arr[] of n integers where arr[i] represents the number of chocolates in ith packet. Each packet can have a variable number of chocolates. There are m students, the task is to distribute chocolate packets such that: Each student gets exactly one packet.The difference between the maximum and minimum number of chocolates in the packets given to the students is minimized.
 
 **Examples:**
 
-* Input: arr[] = {4, 5, 6, 4}
-Output: true
-Explanation: 4 is the duplicate value.
+1. Input: arr[] = {7, 3, 2, 4, 9, 12, 56}, m = 3
+   Output: 2
 
-* Input: arr[] = {1, 2, 3, 4}
-Output: false
-Explanation: All values are distinct.
+Explanation:
+If we distribute chocolate packets {3, 2, 4}, we will get the minimum difference, that is 2.
 
-* Input: arr[] = {10, 20, 30, 40, 50}
-Output: false
-Explanation: No duplicates in the array.
+2. Input: arr[] = {7, 3, 2, 4, 9, 12, 56}, m = 5
+   Output: 7
 
-**Constraints:** 
-- The size of the input array is within the range 1 <= N <= 10^5.
-- Each element in the array is an integer with a value between -10^9 and 10^9.
+Explanation:
+If we distribute chocolate packets {3, 2, 4, 9, 7 }, we will get the minimum difference, that is 9 - 2 = 7.
 
-Note: All solution code (C++, Python implementations) has been removed from this structured string, leaving only the problem statement, examples, and constraints.
+**Constraints:**
+
+* The array arr[] contains n integers where each value represents the number of chocolates in a packet.
+* Each packet can have a variable number of chocolates.
+* There are m students, and the task is to distribute chocolate packets among m students such that:
+    * Each student gets exactly one packet.
+    * The difference between the maximum and minimum number of chocolates in the packets given to the students is minimized.
