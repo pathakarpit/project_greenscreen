@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import json
+import graphviz
 
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
@@ -60,33 +61,64 @@ with tab1:
         * **Deduplication:** Queries a **PostgreSQL (pgvector)** database using embedding models to skip semantically similar questions solved in the last 30 days.
 
         #### **3. Multi-Agent Orchestration (CrewAI)**
-        * 🕵️ **Researcher:** Scrapes web content (handling 403 blocks).
-        * 🏗️ **Architect:** Formats messy HTML into exam-standard questions.
-        * 👨‍💻 **Engineer:** Writes optimized O(n) Python code.
-        * 🎓 **Professor:** Analyzes time/space complexity.
+        * 🕵️ **Agent 1 (Researcher):** Scrapes LeetCode/GeeksForGeeks for new problems.
+        * 👨‍💻 **Agent 2 (Solver):** Writes optimized Python code (O(n) complexity).
+        * 📦 **Agent 3 (Reviewer):** Formats documentation and handles Git operations.
 
         #### **4. Persistence (Git)**
         * Commits code and logs to GitHub daily to maintain the contribution graph.
         """)
 
     with col_dia:
-        st.subheader("Data Flow Pipeline")
-        st.graphviz_chart("""
-            digraph {
-                rankdir=TB;
-                node [shape=box, style="filled,rounded", fontname="Arial", margin=0.2];
-                Cron [label="⏰ Cron Job", fillcolor="#ffe0b2"];
-                Orchestrator [label="⚙️ Orchestrator", fillcolor="#bbdefb"];
-                Postgres [label="🗄️ Vector DB", fillcolor="#c8e6c9", shape=cylinder];
-                Agents [label="🤖 AI Crew", fillcolor="#e1bee7"];
-                GitHub [label="☁️ GitHub", fillcolor="#cfd8dc"];
+        st.caption("Real-time visualization of the execution pipeline.")
+        
+        # --- Graphviz Visualization ---
+        pipeline = graphviz.Digraph()
+        
+        # SETTINGS: 
+        # rankdir='TB' = Top to Bottom
+        # newrank='true' helps align nodes better in some versions
+        pipeline.attr(rankdir='TB', size='8,8', bgcolor='white', newrank='true')
+        
+        # GLOBAL NODE STYLES: 
+        # width='2.5' forces all boxes to be the same width, creating a clean column.
+        pipeline.attr('node', shape='box', style='filled, rounded', 
+                     fontname='Sans-Serif', fontsize='10', height='0.5', width='2.5', fixedsize='true')
+        
+        # 1. Define Nodes
+        pipeline.node('cron', '⏰ Cron Job', fillcolor='#E3F2FD', color='#1E88E5')
+        pipeline.node('scanner', '🔍 Scan Questions\n(main.py)', fillcolor='#FFF9C4', color='#FBC02D')
+        
+        # Decision Node - Diamonds are naturally wider, so we adjust width/height for visual balance
+        pipeline.node('db_check', 'Already in DB?', shape='diamond', style='filled', 
+                      height='0.8', width='3.0', fixedsize='true', fillcolor='#E1BEE7', color='#8E24AA')
+        
+        # Action Agents
+        pipeline.node('creator', '📝 Create Question', fillcolor='#FFF9C4', color='#FBC02D')
+        pipeline.node('solver', '👨‍💻 Generate Solution', fillcolor='#FFF9C4', color='#FBC02D')
+        pipeline.node('update_db', '💾 Update Vector DB', shape='cylinder', fillcolor='#E3F2FD', color='#1E88E5')
+        pipeline.node('explainer', '🎓 Generate Docs', fillcolor='#FFF9C4', color='#FBC02D')
+        pipeline.node('git', '🚀 Push to Git', shape='folder', fillcolor='#E8F5E9', color='#2E7D32')
 
-                Cron -> Orchestrator;
-                Orchestrator -> Postgres [label="Semantic Check"];
-                Orchestrator -> Agents [label="Execute Task"];
-                Agents -> GitHub [label="Push Code"];
-            }
-        """)
+        # 2. Define Edges (The Flow)
+        # Using weight=100 forces these edges to be short and straight (the main backbone)
+        pipeline.edge('cron', 'scanner', weight='100')
+        pipeline.edge('scanner', 'db_check', weight='100')
+        
+        # --- THE FIX FOR ALIGNMENT ---
+        # constraint='false': Tells graphviz NOT to use this edge for ranking/layout.
+        # This prevents the 'Retry' loop from pushing the column sideways.
+        pipeline.edge('db_check', 'scanner', label='Yes (Retry)', color='#ef5350', style='dashed', constraint='false')
+        
+        # Continue backbone
+        pipeline.edge('db_check', 'creator', label='No', color='#66bb6a', weight='100')
+        pipeline.edge('creator', 'solver', weight='100')
+        pipeline.edge('solver', 'update_db', weight='100')
+        pipeline.edge('update_db', 'explainer', weight='100')
+        pipeline.edge('explainer', 'git', weight='100')
+
+        # Render
+        st.graphviz_chart(pipeline, use_container_width=False)
 
     st.markdown("---")
     
@@ -114,16 +146,15 @@ with tab1:
                 logs = json.load(f)
                 for entry in logs:
                     # Create an expander for each agent's action
-                    with st.expander(f"**{entry['agent']}** - {entry['task_name']}"):
+                    with st.expander(f"**{entry.get('agent', 'Unknown Agent')}** - {entry.get('task_name', 'Task')}"):
                         
                         st.caption("**Input Task:**")
-                        st.text(entry['full_prompt'])
+                        st.text(entry.get('full_prompt', 'No prompt recorded'))
                         
                         st.markdown("---")
                         
                         st.caption("**Agent Response:**")
-                        # Markdown rendering ensures code blocks and headers look good
-                        st.markdown(entry['response']) 
+                        st.markdown(entry.get('response', 'No response recorded')) 
             except json.JSONDecodeError:
                 st.error("Error reading JSON logs. The file might be corrupted.")
     else:
