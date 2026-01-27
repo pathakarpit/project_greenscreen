@@ -27,13 +27,13 @@ $PYTHON_EXEC main.py 2>&1 | tee -a "$LOG_FILE"
 # Git Operations
 log_message "📦 Pushing changes to GitHub..."
 
-# Add the new file structure: solution, question.md, explanation.md
-git add solution.py question.md explanation.md
+# Add Code, Markdown files, AND the JSON logs for the dashboard
+git add solution.py question.md explanation.md agent_logs.json
 
-# Force-add logs (since they are in .gitignore)
+# Force-add raw text logs if needed
 git add -f logs.txt
 
-# Remove the old text file if it exists (cleanup)
+# Remove legacy file if present
 if [ -f "question.txt" ]; then
     git rm --cached question.txt 2>/dev/null || true
     rm question.txt 2>/dev/null || true

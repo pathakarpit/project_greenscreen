@@ -21,3 +21,16 @@ pip install crewai crewai-tools langchain_postgres psycopg2-binary pandas openpy
  -> integration tester for above three : test_integration_rae.py
  -> professor.py
  
+8) Create the main file
+
+9) create a shell script that can be scheduled via cron
+
+10) create a streamlit app that will showcase the project
+
+11) create a startup shell script
+
+12) setup the site in nginx and cloudfare
+-> check all live sites: ls -l /etc/nginx/sites-enabled/
+-> update using sudo nano or sudo vi or add new
+-> check for syntax errors: sudo nginx -t
+-> reload nginx sing : sudo systemctl reload nginx

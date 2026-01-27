@@ -1,5 +1,5 @@
 import os
-import re
+import json
 from crewai import Crew, Process
 from dotenv import load_dotenv
 
@@ -21,12 +21,27 @@ SHEET_NAME = os.getenv("SHEET_NAME", "main_questions")
 QUESTION_FILE = "question.md"
 SOLUTION_FILE = "solution.py"
 EXPLANATION_FILE = "explanation.md"
+AGENT_LOGS_FILE = "agent_logs.json"
+
+def save_agent_logs(tasks):
+    """
+    Saves a clean, structured JSON log of what each agent did.
+    """
+    logs = []
+    for task in tasks:
+        # CrewAI Task objects store their output in task.output.raw
+        logs.append({
+            "agent": task.agent.role,
+            "task_name": task.description.strip().split('\n')[0], # Grab first line as title
+            "full_prompt": task.description,
+            "response": task.output.raw
+        })
+    
+    with open(AGENT_LOGS_FILE, "w", encoding="utf-8") as f:
+        json.dump(logs, f, indent=2)
+    print(f"✅ Agent Logs Saved: {AGENT_LOGS_FILE}")
 
 def save_to_files(target, problem_text, solution_code, explanation):
-    """
-    Saves the agent outputs to 3 separate files for the Git commit.
-    """
-    
     # --- 1. CLEAN THE PYTHON CODE ---
     raw_code = str(solution_code)
     clean_code = raw_code.replace("```python", "").replace("```", "").strip()
@@ -56,8 +71,9 @@ def save_to_files(target, problem_text, solution_code, explanation):
         f.write(str(problem_text).strip() + "\n")
         
     # --- 4. WRITE EXPLANATION.MD ---
+    # Added extra newlines to ensure Markdown renders cleanly in Streamlit
     with open(EXPLANATION_FILE, "w", encoding="utf-8") as f:
-        f.write(f"# Professor's Explanation for {target['title']}\n\n")
+        f.write(f"# Professor's Analysis: {target['title']}\n\n")
         f.write(str(explanation).strip() + "\n")
 
     print(f"\n✅ Files Generated Successfully:\n   - {QUESTION_FILE}\n   - {SOLUTION_FILE}\n   - {EXPLANATION_FILE}")
@@ -74,7 +90,7 @@ def main():
         print(f"❌ Critical Init Failed: {e}")
         return
 
-    # 2. INTELLIGENT SELECTION LOOP
+    # 2. SELECTION LOOP
     loader.load_all_questions()
     all_questions = loader.questions_cache
     
@@ -82,7 +98,6 @@ def main():
     candidates = [q for q in all_questions if q['title'] not in completed_titles]
     
     target = None
-    
     print(f"🔍 Checking {len(candidates)} candidates for semantic uniqueness...")
     
     for candidate in candidates:
@@ -127,12 +142,11 @@ def main():
     # 5. SAVE RESULTS
     print("\n💾 Saving Data...")
     
-    final_prob = t2.output.raw
-    final_code = t3.output.raw
-    final_expl = t4.output.raw
-
-    # Save files for Git
-    save_to_files(target, final_prob, final_code, final_expl)
+    # Save standard files
+    save_to_files(target, t2.output.raw, t3.output.raw, t4.output.raw)
+    
+    # Save Agent Structured Logs
+    save_agent_logs([t1, t2, t3, t4])
 
     # Save to Postgres
     payload = {
@@ -141,9 +155,9 @@ def main():
         "difficulty": target['difficulty'],
         "link": target['link'],
         "json_content": {
-            "problem_statement": final_prob,
-            "solution_code": final_code,
-            "explanation": final_expl
+            "problem_statement": t2.output.raw,
+            "solution_code": t3.output.raw,
+            "explanation": t4.output.raw
         }
     }
     db.save_question(payload)
