@@ -1,20 +1,15 @@
-# Problem: Maximum-Subarray
+# Problem: Contains Duplicate
 # Difficulty: Easy
-# Link: https://leetcode.com/problems/maximum-subarray/
+# Link: https://leetcode.com/problems/contains-duplicate/
 
 class Solution:
-    def solve(self, nums):
-        max_sum = float('-inf')
-        current_sum = 0
-        
-        for num in nums:
-            current_sum += num
-            if current_sum > max_sum:
-                max_sum = current_sum
-            if current_sum < 0:
-                current_sum = 0
-        
-        return max_sum
+    def solve(self, arr):
+        seen = set()
+        for num in arr:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
 
 ########################################
 # if __name__ == '__main__':

@@ -1,25 +1,34 @@
-# Maximum-Subarray
+# Contains Duplicate
 
 **Difficulty:** Easy  
-**Link:** [https://leetcode.com/problems/maximum-subarray/](https://leetcode.com/problems/maximum-subarray/)
+**Link:** [https://leetcode.com/problems/contains-duplicate/](https://leetcode.com/problems/contains-duplicate/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Maximum Subarray Sum
+**
 
-**Description:** Given an array of integers, find the maximum sum of all subarrays within it.
+**Title:** Check if Array Contains Duplicates
+
+**Description:** Given an integer array arr[], check if the array contains any duplicate value.
 
 **Examples:**
 
-1. Input: `[2, 3, -8, 7, -1, 2, 3]`
-Output: `10` (the maximum sum is achieved by taking the subarray `[7, -1, 2, 3]`)
-2. Input: `[5, 6, -4, 3, -1]`
-Output: `11` (the maximum sum is achieved by taking the subarray `[5, 6, 3]`)
-3. Input: `[-10, 20, -15, 30, -25]`
-Output: `35` (the maximum sum is achieved by taking the subarray `[30]`)
+* Input: arr[] = {4, 5, 6, 4}
+Output: true
+Explanation: 4 is the duplicate value.
 
-**Constraints:** The input array will have at most 1000 elements, and all elements will be integers between -10000 and 10000.
+* Input: arr[] = {1, 2, 3, 4}
+Output: false
+Explanation: All values are distinct.
 
-Note that I have removed any solution code and only provided a clear problem statement.
+* Input: arr[] = {10, 20, 30, 40, 50}
+Output: false
+Explanation: No duplicates in the array.
+
+**Constraints:** 
+- The size of the input array is within the range 1 <= N <= 10^5.
+- Each element in the array is an integer with a value between -10^9 and 10^9.
+
+Note: All solution code (C++, Python implementations) has been removed from this structured string, leaving only the problem statement, examples, and constraints.
