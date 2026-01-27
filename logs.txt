@@ -376,3 +376,595 @@ Saving 'Chocolate Distribution Problem' to Database...
 
 🏁 DAILY WORKFLOW COMPLETE.
 📦 Pushing changes to GitHub...
+[main 12d980a] Daily DSA: 2026-01-27 07:55
+ 5 files changed, 424 insertions(+), 103 deletions(-)
+remote: This repository moved. Please use the new location:        
+remote:   https://github.com/pathakarpit/project_greenscreen.git        
+To https://github.com/pathakarpit/projject_greenscreen.git
+   1913dd7..12d980a  main -> main
+--- Task Completed Successfully at Tue Jan 27 07:55:07 UTC 2026 ---
+
+========================================================
+--- Starting Daily DSA Task: Tue Jan 27 10:00:05 UTC 2026 ---
+========================================================
+Using Python: /home/arpit/anaconda3/envs/project_gs/bin/python3
+🚀 Running main.py...
+
+🟢 PROJECT GREENSCREEN: DAILY WORKFLOW STARTED
+==============================================
+✅ Loaded 375 questions.
+🔍 Checking 368 candidates for semantic uniqueness...
+
+🎯 TARGET LOCKED: Search in Rotated Sorted Array (Easy)
+🔗 Link: https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+🤖 Waking up the AI Team...
+📋 Assigning Tasks...
+
+🚀 Launching Crew...
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Task:[00m [92m
+        1. Try to access the Official URL: https://leetcode.com/problems/search-in-rotated-sorted-array/
+        2. If that fails (403/404), use 'Internet Search' to find: "Search in Rotated Sorted Array geeksforgeeks problem".
+        3. CRITICAL: The search results will contain 'link' fields. COPY one of those links exactly. DO NOT GUESS A URL.
+        4. CRITICAL: When searching, ignore pages like "Complete Guide", "Syllabus", "GATE Notes", or "file list".
+        5. Look for specific tutorial pages, e.g., containing "algorithm", "problem", or "tutorial" in the title.
+        6. Use 'Website Scraper' on that new link.
+        7. Extract:
+           - Problem Statement.
+           - At least 3 Input/Output Examples.
+           - Constraints.
+        [00m
+
+
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Using tool:[00m [92mWebsite Scraper[00m
+[95m## Tool Input:[00m [92m
+"{\"url\": \"https://leetcode.com/problems/search-in-rotated-sorted-array/\"}"[00m
+[95m## Tool Output:[00m [92m
+Error: Failed to load page (Status 403)[00m
+
+
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Thought:[00m [92mThought: Since the official URL failed, I should use Internet Search to find an alternative source for the problem details.[00m
+[95m## Using tool:[00m [92mInternet Search[00m
+[95m## Tool Input:[00m [92m
+"{\"query\": \"Search in Rotated Sorted Array geeksforgeeks problem\"}"[00m
+[95m## Tool Output:[00m [92m
+snippet: The mid element // itself can be the smallest else hi = mid; } return lo; } // Searches an element key in a pivoted // sorted array arr of size n function search(arr, key) { let n = arr.length; let pivot = findPivot(arr, 0, n - 1); // If we found a pivot, then first compare with pivot // and then search in two subarrays around pivot if (arr[pivot] === key) return pivot; // If the minimum element is present at index // 0, then the whole array is sorted if (pivot === 0) return binarySearch(arr, 0, n - 1, key); if (arr[0] <= key) return binarySearch(arr, 0, pivot - 1, key); return binarySearch(arr, pivot + 1, n - 1, key); } // Driver code let arr = [5, 6, 7, 8, 9, 10, 1, 2, 3]; let key = 3; console.log(search(arr, key)); ... This approach applies a modified version of binary search directly to the entire rotated array. Published October 3, 2025, title: Search in a Sorted and Rotated Array - GeeksforGeeks, link: https://www.geeksforgeeks.org/dsa/search-an-element-in-a-sorted-and-pivoted-array/, snippet: In a rotated sorted array, the smallest element is the only one smaller than both its neighbors . At each step, we check if the current range is already sorted if it is, the first element is the smallest, and its index is the answer. Published August 8, 2025, title: Rotation Count in a Rotated Sorted array - GeeksforGeeks, link: https://www.geeksforgeeks.org/dsa/find-rotation-count-rotated-sorted-array/, snippet: October 3, 2025 - This approach applies a modified version of binary search directly to the entire rotated array . At every iteration, the middle element is checked against the key. If it’s not the key, we determine whether the left half or right half is sorted ..., title: Search in sorted rotated array with duplicates. - GeeksforGeeks, link: https://www.geeksforgeeks.org/dsa/search-an-element-in-a-sorted-and-rotated-array-with-duplicates/, snippet: July 12, 2025 - Pre-requisite: Check if an array is sorted and rotated using Linear Search Given an array arr[] of N distinct integers, the task is to check if this array is sorted when rotated counter-clockwise ., title: Check if an array is sorted and rotated using Binary Search - GeeksforGeeks, link: https://www.geeksforgeeks.org/dsa/check-if-an-array-is-sorted-and-rotated-using-binary-search/[00m
+
+
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Thought:[00m [92m### Assistant:
+Thought: I see that there are multiple results from the search. Since I need to find a tutorial page with "algorithm", "problem", or "tutorial" in the title, I will look for that.[00m
+[95m## Using tool:[00m [92mInternet Search[00m
+[95m## Tool Input:[00m [92m
+"{\"query\": \"Search in Rotated Sorted Array geeksforgeeks problem\"}"[00m
+[95m## Tool Output:[00m [92m
+I tried reusing the same input, I must stop using this action input. I'll try something else instead.
+
+
+
+
+You ONLY have access to the following tools, and should NEVER make up tools that are not listed here:
+
+Tool Name: Website Scraper
+Tool Arguments: {'url': {'description': None, 'type': 'str'}}
+Tool Description: Reads the content of a URL and returns the text.
+Tool Name: Internet Search
+Tool Arguments: {'query': {'description': None, 'type': 'str'}}
+Tool Description: Search the web for a topic. Returns a list of results with Snippets and Links.
+
+Use the following format:
+
+Thought: you should always think about what to do
+Action: the action to take, only one name of [Website Scraper, Internet Search], just the name, exactly as it's written.
+Action Input: the input to the action, just a simple python dictionary, enclosed in curly braces, using " to wrap keys and values.
+Observation: the result of the action
+
+Once all necessary information is gathered:
+
+Thought: I now know the final answer
+Final Answer: the final answer to the original input question
+[00m
+
+
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Thought:[00m [92m### Assistant:
+### Thought: The previous search results included multiple links from GeeksforGeeks. To find a suitable link, I will look for one that contains "algorithm", "problem", or "tutorial" in the title.[00m
+[95m## Using tool:[00m [92mInternet Search[00m
+[95m## Tool Input:[00m [92m
+"{\"query\": \"\\\"Search in Rotated Sorted Array geeksforgeeks algorithm problem tutorial\\\"\"}"[00m
+[95m## Tool Output:[00m [92m
+snippet: 3 Oct 2025 · A simple approach is to iterate through the array and check for each element, if it matches the target then return the index, otherwise return -1., title: Search in a Sorted and Rotated Array - GeeksforGeeks, link: https://www.geeksforgeeks.org/dsa/search-an-element-in-a-sorted-and-pivoted-array/, snippet: 23 Jul 2025 · Given a sorted array of distinct elements arr[] of size n that is rotated at some unknown point, the task is to find the minimum element in it., title: Minimum in a Sorted and Rotated Array - GeeksforGeeks, link: https://www.geeksforgeeks.org/dsa/find-minimum-element-in-a-sorted-and-rotated-array/, snippet: 8 Aug 2025 · The idea is to use binary search to quickly locate the smallest element, which reveals the rotation count. In a rotated sorted array, the smallest element is ..., title: Rotation Count in a Rotated Sorted array - GeeksforGeeks, link: https://www.geeksforgeeks.org/dsa/find-rotation-count-rotated-sorted-array/, snippet: 3 Oct 2025 · A simple approach is to iterate through the array and check for each element, if it matches the target then return the index, otherwise return -1., title: Search in sorted rotated array with duplicates. - GeeksforGeeks, link: https://www.geeksforgeeks.org/dsa/search-an-element-in-a-sorted-and-rotated-array-with-duplicates/[00m
+
+
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Thought:[00m [92m### Assistant:
+Thought: Now that I have a suitable link from the search results, I will use 'Website Scraper' to extract the problem details.[00m
+[95m## Using tool:[00m [92mWebsite Scraper[00m
+[95m## Tool Input:[00m [92m
+"{\"url\": \"https://www.geeksforgeeks.org/dsa/search-an-element-in-a-sorted-and-pivoted-array/\"}"[00m
+[95m## Tool Output:[00m [92m
+Search in a Sorted and Rotated Array - GeeksforGeeksCoursesTutorialsPracticeJobsDSA TutorialInterview QuestionsQuizzesMust DoAdvanced DSASystem DesignAptitudePuzzlesInterview CornerDSA PythonTechnical Scripter 2026
+Explore
+DSA FundamentalsLogic Building ProblemsAnalysis of AlgorithmsData StructuresArray Data StructureString in Data StructureHashing in Data StructureLinked List Data StructureStack Data StructureQueue Data StructureTree Data StructureGraph Data StructureTrie Data StructureAlgorithmsSearching AlgorithmsSorting AlgorithmsIntroduction to RecursionGreedy Algorithms TutorialGraph  AlgorithmsDynamic Programming or DPBitwise AlgorithmsAdvancedSegment TreeBinary Indexed Tree or Fenwick TreeSquare Root (Sqrt) Decomposition AlgorithmBinary LiftingGeometryInterview PreparationInterview CornerGfG160Practice ProblemGeeksforGeeks Practice - Leading Online Coding PlatformProblem of The Day - Develop the Habit of CodingThree 90 ChallengeExploreSearch in a Sorted and Rotated ArrayLast Updated : 3 Oct, 2025Given a sorted and rotated array arr[] of distinct elements, find the index of given key in the array. If the key is not present in the array, return -1. Examples:  Input: arr[] = [5, 6, 7, 8, 9, 10, 1, 2, 3], key = 3Output: 8Explanation: 3 is present at index 8.Input: arr[] = [3, 5, 1, 2], key = 6Output: -1Explanation: 6 is not present.Input: arr[] = [33, 42, 72, 99], key = 42Output: 1Explanation: 42 is found at index 1.Try it on GfG PracticeTable of Content[Naive Approach] Using Linear Search - O(n) Time and O(1) Space[Expected Approach 1] Using Binary Search Twice - O(log n) Time and O(1) Space[Expected Approach 2] Using Single Binary Search - O(log n) Time and O(1) Space[Naive Approach] Using Linear Search - O(n) Time and O(1) SpaceA simple approach is to iterate through the array and check for each element, if it matches the target then return the index, otherwise return -1. To know more about the implementation, please refer Introduction to Linear Search Algorithm.
+C++
+#include <iostream>
+#include <vector>
+using namespace std;
+int search(vector<int>& arr, int key) {
+for (int i = 0; i < arr.size(); i++) {
+// Check each element one by one
+if (arr[i] == key)
+return i;
+}
+// Key not found
+return -1;
+}
+int main() {
+vector<int> arr = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+int key = 3 ;
+int index = search(arr, key) ;
+cout << index << endl ;
+return 0 ;
+}
+Java
+public class GfG {
+static int search(int[] arr, int key) {
+for (int i = 0; i < arr.length; i++) {
+// Check each element one by one
+if (arr[i] == key)
+return i;
+}
+// Key not found
+return -1;
+}
+public static void main(String[] args) {
+int[] arr = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+int key = 3;
+int index = search(arr, key);
+System.out.println(index);
+}
+}
+Python
+def search(arr, key):
+for i in range(len(arr)):
+# Check each element one by one
+if arr[i] == key:
+return i
+# Key not found
+return -1
+if __name__ == "__main__":
+arr = [5, 6, 7, 8, 9, 10, 1, 2, 3]
+key = 3
+index = search(arr, key)
+print(index)
+C#
+using System;
+class GfG {
+static int search(int[] arr, int key) {
+for (int i = 0; i < arr.Length; i++) {
+// Check each element one by one
+if (arr[i] == key)
+return i;
+}
+// Key not found
+return -1;
+}
+static void Main() {
+int[] arr = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+int key = 3;
+int index = search(arr, key);
+Console.WriteLine(index);
+}
+}
+JavaScript
+function search(arr, key) {
+for (let i = 0; i < arr.length; i++) {
+// Check each element one by one
+if (arr[i] === key)
+return i;
+}
+// Key not found
+return -1;
+}
+const arr = [5, 6, 7, 8, 9, 10, 1, 2, 3];
+const key = 3;
+const index = search(arr, key);
+console.log(index);
+[Expected Approach 1] Using Binary Search Twice - O(log n) Time and O(1) SpaceThe main Idea is to first finds the index of the smallest element (pivot), which is also the number of rotations applied to the sorted array. Once the pivot is known, the array is split into two sorted subarrays. If the key is equal to the pivot element, its index is returned. If the pivot is at index 0, the entire array is already sorted, so a standard binary search is applied to the whole array. Otherwise, the key is compared with the first element: if it's greater than or equal, binary search is performed on the left half; if not, on the right half.
+C++
+#include <iostream>
+#include <vector>
+using namespace std;
+// An iterative binary search function
+int binarySearch(vector<int> &arr, int lo, int hi, int x) {
+while (lo <= hi) {
+int mid = lo + (hi - lo) / 2;
+if (arr[mid] == x) return mid;
+if (arr[mid] < x) lo = mid + 1;
+else hi = mid - 1;
+}
+return -1;
+}
+// Function to return pivot (index of the smallest element)
+int findPivot(vector<int> &arr, int lo, int hi) {
+while (lo <= hi) {
+// The current subarray is already sorted,
+// the minimum is at the low index
+if (arr[lo] <= arr[hi])
+return lo;
+int mid = (lo + hi) / 2;
+// The right half is not sorted. So
+// the minimum element must be in the
+// right half.
+if (arr[mid] > arr[hi])
+lo = mid + 1;
+// The right half is sorted. Note that in
+// this case, we do not change high to mid - 1
+// but keep it to mid. The mid element
+// itself can be the smallest
+else
+hi = mid;
+}
+return lo;
+}
+// Searches an element key in a pivoted
+// sorted array arr of size n
+int search(vector<int> &arr, int key) {
+int n = arr.size();
+int pivot = findPivot(arr, 0, n - 1);
+// If we found a pivot, then first compare with pivot
+// and then search in two subarrays around pivot
+if (arr[pivot] == key)
+return pivot;
+// If the minimum element is present at index
+// 0, then the whole array is sorted
+if (pivot == 0)
+return binarySearch(arr, 0, n - 1, key);
+if (arr[0] <= key)
+return binarySearch(arr, 0, pivot - 1, key);
+return binarySearch(arr, pivot + 1, n - 1, key);
+}
+int main() {
+vector<int> arr = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+int key = 3;
+cout << search(arr, key);
+return 0;
+}
+Java
+class GfG {
+// An iterative binary search function
+static int binarySearch(int[] arr, int lo, int hi, int x) {
+while (lo <= hi) {
+int mid = lo + (hi - lo) / 2;
+if (arr[mid] == x) return mid;
+if (arr[mid] < x) lo = mid + 1;
+else hi = mid - 1;
+}
+return -1;
+}
+// Function to return pivot (index of the smallest element)
+static int findPivot(int[] arr, int lo, int hi) {
+while (lo <= hi) {
+// The current subarray is already sorted,
+// the minimum is at the low index
+if (arr[lo] <= arr[hi])
+return lo;
+int mid = (lo + hi) / 2;
+// The right half is not sorted. So
+// the minimum element must be in the
+// right half
+if (arr[mid] > arr[hi])
+lo = mid + 1;
+// The right half is sorted. Note that in
+// this case, we do not change high to mid - 1
+// but keep it to mid. The mid element
+// itself can be the smallest
+else
+hi = mid;
+}
+return lo;
+}
+// Searches an element key in a pivoted
+// sorted array arr of size n
+static int search(int[] arr, int key) {
+int n = arr.length;
+int pivot = findPivot(arr, 0, n - 1);
+// If we found a pivot, then first compare with pivot
+// and then search in two subarrays around pivot
+if (arr[pivot] == key)
+return pivot;
+// If the minimum element is present at index
+// 0, then the whole array is sorted
+if (pivot == 0)
+return binarySearch(arr, 0, n - 1, key);
+if (arr[0] <= key)
+return binarySearch(arr, 0, pivot - 1, key);
+return binarySearch(arr, pivot + 1, n - 1, key);
+}
+public static void main(String[] args) {
+int[] arr = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+int key = 3;
+System.out.println(search(arr, key));
+}
+}
+Python
+# An iterative binary search function
+def binarySearch(arr, lo, hi, x):
+while lo <= hi:
+mid = lo + (hi - lo) // 2
+if arr[mid] == x:
+return mid
+if arr[mid] < x:
+lo = mid + 1
+else:
+hi = mid - 1
+return -1
+# Function to return pivot (index of the smallest element)
+def findPivot(arr, lo, hi):
+while lo <= hi:
+# The current subarray is already sorted,
+# the minimum is at the low index
+if arr[lo] <= arr[hi]:
+return lo
+mid = (lo + hi) // 2
+# The right half is not sorted. So
+# the minimum element must be in the
+# right half.
+if arr[mid] > arr[hi]:
+lo = mid + 1
+# The right half is sorted. Note that in
+# this case, we do not change high to mid -[00m
+[91m Error parsing LLM output, agent will retry: I did it wrong. Invalid Format: I missed the 'Action:' after 'Thought:'. I will do right next, and don't use a tool I have already used.
+
+If you don't need to use any more tools, you must give your best complete final answer, make sure it satisfy the expect criteria, use the EXACT format below:
+
+Thought: I now can give a great answer
+Final Answer: my best complete final answer to the task.
+
+[00m
+
+
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Final Answer:[00m [92m
+**Problem Statement:** Find an element in a rotated sorted array using binary search.
+
+**Solution:**
+
+*   The solution uses two functions: `binarySearch` and `findPivot`.
+*   The `findPivot` function finds the index of the smallest element (pivot) in the array.
+*   If the pivot is at index 0, the entire array is sorted, so a standard binary search is applied to the whole array.
+*   Otherwise, the key is compared with the first element: if it's greater than or equal, binary search is performed on the left half; if not, on the right half.
+
+**Code:**
+
+```cpp
+#include <iostream>
+#include <vector>
+
+// An iterative binary search function
+int binarySearch(std::vector<int>& arr, int lo, int hi, int x) {
+    while (lo <= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (arr[mid] == x)
+            return mid;
+        if (arr[mid] < x)
+            lo = mid + 1;
+        else
+            hi = mid - 1;
+    }
+    return -1;
+}
+
+// Function to return pivot (index of the smallest element)
+int findPivot(std::vector<int>& arr, int lo, int hi) {
+    while (lo <= hi) {
+        // The current subarray is already sorted,
+        // the minimum is at the low index
+        if (arr[lo] <= arr[hi])
+            return lo;
+        int mid = (lo + hi) / 2;
+        // The right half is not sorted. So
+        // the minimum element must be in the
+        // right half.
+        if (arr[mid] > arr[hi])
+            lo = mid + 1;
+        // The right half is sorted. Note that in
+        // this case, we do not change high to mid - 1
+        // but keep it to mid. The mid element
+        // itself can be the smallest
+        else
+            hi = mid;
+    }
+    return lo;
+}
+
+// Searches an element key in a pivoted sorted array arr of size n
+int search(std::vector<int>& arr, int key) {
+    int n = arr.size();
+    int pivot = findPivot(arr, 0, n - 1);
+    // If we found a pivot, then first compare with pivot and then search in two subarrays around pivot
+    if (arr[pivot] == key)
+        return pivot;
+    // If the minimum element is present at index 0, then the whole array is sorted
+    if (pivot == 0)
+        return binarySearch(arr, 0, n - 1, key);
+    if (arr[0] <= key)
+        return binarySearch(arr, 0, pivot - 1, key);
+    return binarySearch(arr, pivot + 1, n - 1, key);
+}
+
+int main() {
+    std::vector<int> arr = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+    int key = 3;
+    std::cout << search(arr, key) << std::endl; // Output: 4
+    return 0;
+}
+```
+
+**Time Complexity:** The time complexity of the `binarySearch` function is O(log n), where n is the size of the array. However, due to the rotation of the array, the overall time complexity becomes O(n) in the worst case.
+
+**Space Complexity:** The space complexity is O(1) because we are using a constant amount of extra space for storing indices and variables.[00m
+
+
+[1m[95m# Agent:[00m [1m[92mProblem Architect[00m
+[95m## Task:[00m [92m
+        You are given raw text scraped from a coding website. It is messy and may contain multiple solutions (C++, Java, etc.).
+        
+        YOUR JOB:
+        1. Extract the core **Problem Statement**.
+        2. Extract or Create 3 clear **Input/Output Examples**.
+        3. Define the **Constraints** (if missing, invent reasonable ones, e.g., 1 <= N <= 10^5).
+        4. REMOVE any solution code (C++, Python implementations) found in the text. We only want the *Question*.
+        
+        RAW TEXT INPUT:
+        Analyze the raw content provided by the Tech Researcher above.
+        [00m
+
+
+[1m[95m# Agent:[00m [1m[92mProblem Architect[00m
+[95m## Final Answer:[00m [92m
+```
+Title: Find an element in a rotated sorted array using binary search.
+Description: Analyze the raw content provided by the Tech Researcher above.
+Examples:
+1. Input: arr = [5, 6, 7, 8, 9, 10, 1, 2, 3], key = 3
+   Output: index of the element in the array (4)
+2. Input: arr = [2, 1], key = 2
+   Output: index of the element in the array (0)
+3. Input: arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1], key = 7
+   Output: index of the element in the array (3)
+Constraints:
+- The input array is rotated sorted.
+- The array contains at least two elements.
+- All elements in the array are distinct.
+```[00m
+
+
+[1m[95m# Agent:[00m [1m[92mSenior Python Engineer[00m
+[95m## Task:[00m [92m
+        You are given a coding problem. Write a clean, executable Python file.
+        
+        PROBLEM:
+        Use the clean Problem Statement provided by the Problem Architect above.
+        
+        REQUIREMENTS:
+        1. Define a class named `Solution`.
+        2. Implement a method `solve`.
+        3. Provide an Optimized (O(n) or O(log n)) approach.
+        
+        STRICT OUTPUT RULES (VIOLATION = FAIL):
+        1. NO PREAMBLE. Do not say "Here is the code".
+        2. NO POSTSCRIPT. Do not explain the code.
+        3. NO MARKDOWN TICKS. Do not use ```python or ```.
+        4. START DIRECTLY with "class Solution".
+        5. OUTPUT ONLY VALID PYTHON CODE.
+        [00m
+
+
+[1m[95m# Agent:[00m [1m[92mSenior Python Engineer[00m
+[95m## Final Answer:[00m [92m
+class Solution:
+    def solve(self, arr, key):
+        left, right = 0, len(arr) - 1
+        
+        while left <= right:
+            mid = (left + right) // 2
+            
+            if arr[mid] == key:
+                return mid
+            
+            # If the array is rotated and the left half is sorted
+            if arr[left] <= arr[mid]:
+                if arr[left] <= key < arr[mid]:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            # If the right half is sorted
+            else:
+                if arr[mid] < key <= arr[right]:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+        
+        return -1[00m
+
+
+[1m[95m# Agent:[00m [1m[92mCS Professor[00m
+[95m## Task:[00m [92m
+        Analyze the following Python solution and explain it to a student.
+        
+        CODE TO ANALYZE:
+        Analyze the Python code provided by the Senior Python Engineer above.
+        
+        OUTPUT REQUIREMENTS:
+        
+        1. **Time Complexity Analysis**: 
+           - State the Big O (e.g., O(N)).
+           - CRITICAL: Explicitly explain that the loop runs N times and the dictionary lookup `if x in dict` takes O(1) time on average.
+           - Therefore, N * O(1) = O(N).
+           
+        2. **Space Complexity Analysis**: 
+           - State the Big O.
+           - Explain that we use a dictionary/hash map to store at most N elements.
+           
+        3. **Step-by-Step Reconstruction Logic**:
+           - Explain the logic in such detail that a developer could rewrite the code just by reading these steps.
+           - Mention exactly what variables are initialized.
+           - Describe the condition for the loop.
+           - Describe the specific math (`target - current_num`) used to find the complement.
+           - Explain the `if/else` logic: What happens if the complement IS found? What happens if it IS NOT found?
+           - Mention the final return statement if no pair is found.
+        
+        STRICT FORMAT:
+        - Do NOT output the code block again.
+        - Use Markdown headers (##).
+        - Use bullet points for the steps.
+        [00m
+
+
+[1m[95m# Agent:[00m [1m[92mCS Professor[00m
+[95m## Final Answer:[00m [92m
+```
+## Time Complexity Analysis
+The time complexity of this solution is O(N), where N is the number of elements in the array.
+
+## Space Complexity Analysis
+The space complexity of this solution is O(N), where N is the number of elements in the array.
+
+## Step-by-Step Reconstruction Logic
+
+### Initialize Variables
+* `left` and `right` variables are initialized to 0 and `len(arr) - 1`, respectively.
+* The initial range of possible indices for the key is `[0, len(arr) - 1]`.
+
+### Loop Condition
+* The loop continues until `left <= right`.
+
+### Inside the Loop
+* Calculate the midpoint `mid` using the formula `(left + right) // 2`.
+* Compare the value at the midpoint index with the key.
+* If the array is rotated and the left half is sorted, check if the key is within the range `[arr[left], arr[mid]]`. If it is, move the `right` pointer to `mid - 1`. Otherwise, move the `left` pointer to `mid + 1`.
+* If the right half is sorted, check if the key is within the range `[arr[mid], arr[right]]`. If it is, move the `left` pointer to `mid + 1`. Otherwise, move the `right` pointer to `mid - 1`.
+
+### Return Statement
+* If the loop ends and the key is found, return the index of the key.
+* If the loop ends and the key is not found, return `-1`.
+```[00m
+
+
+
+💾 Saving Data...
+
+✅ Files Generated Successfully:
+   - question.md
+   - solution.py
+   - explanation.md
+✅ Agent Logs Saved: agent_logs.json
+Saving 'Search in Rotated Sorted Array' to Database...
+✅ Successfully archived: Search in Rotated Sorted Array (Easy)
+
+🏁 DAILY WORKFLOW COMPLETE.
+📦 Pushing changes to GitHub...

@@ -1,34 +1,24 @@
-# Chocolate Distribution Problem
+# Search in Rotated Sorted Array
 
 **Difficulty:** Easy  
-**Link:** [https://www.geeksforgeeks.org/chocolate-distribution-problem/](https://www.geeksforgeeks.org/chocolate-distribution-problem/)
+**Link:** [https://leetcode.com/problems/search-in-rotated-sorted-array/](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 
 ---
 
 ## Problem Statement
 
-**Title:** The Chocolate Distribution Problem
-
-**Description:** Given an array arr[] of n integers where arr[i] represents the number of chocolates in ith packet. Each packet can have a variable number of chocolates. There are m students, the task is to distribute chocolate packets such that: Each student gets exactly one packet.The difference between the maximum and minimum number of chocolates in the packets given to the students is minimized.
-
-**Examples:**
-
-1. Input: arr[] = {7, 3, 2, 4, 9, 12, 56}, m = 3
-   Output: 2
-
-Explanation:
-If we distribute chocolate packets {3, 2, 4}, we will get the minimum difference, that is 2.
-
-2. Input: arr[] = {7, 3, 2, 4, 9, 12, 56}, m = 5
-   Output: 7
-
-Explanation:
-If we distribute chocolate packets {3, 2, 4, 9, 7 }, we will get the minimum difference, that is 9 - 2 = 7.
-
-**Constraints:**
-
-* The array arr[] contains n integers where each value represents the number of chocolates in a packet.
-* Each packet can have a variable number of chocolates.
-* There are m students, and the task is to distribute chocolate packets among m students such that:
-    * Each student gets exactly one packet.
-    * The difference between the maximum and minimum number of chocolates in the packets given to the students is minimized.
+```
+Title: Find an element in a rotated sorted array using binary search.
+Description: Analyze the raw content provided by the Tech Researcher above.
+Examples:
+1. Input: arr = [5, 6, 7, 8, 9, 10, 1, 2, 3], key = 3
+   Output: index of the element in the array (4)
+2. Input: arr = [2, 1], key = 2
+   Output: index of the element in the array (0)
+3. Input: arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1], key = 7
+   Output: index of the element in the array (3)
+Constraints:
+- The input array is rotated sorted.
+- The array contains at least two elements.
+- All elements in the array are distinct.
+```

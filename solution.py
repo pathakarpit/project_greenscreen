@@ -1,25 +1,31 @@
-# Problem: Chocolate Distribution Problem
+# Problem: Search in Rotated Sorted Array
 # Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/chocolate-distribution-problem/
+# Link: https://leetcode.com/problems/search-in-rotated-sorted-array/
 
 class Solution:
-    def solve(self, arr, m):
-        if m == 0 or len(arr) < m:
-            return -1
+    def solve(self, arr, key):
+        left, right = 0, len(arr) - 1
         
-        # Sort the array to easily find the minimum difference between packets
-        arr.sort()
+        while left <= right:
+            mid = (left + right) // 2
+            
+            if arr[mid] == key:
+                return mid
+            
+            # If the array is rotated and the left half is sorted
+            if arr[left] <= arr[mid]:
+                if arr[left] <= key < arr[mid]:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            # If the right half is sorted
+            else:
+                if arr[mid] < key <= arr[right]:
+                    left = mid + 1
+                else:
+                    right = mid - 1
         
-        # Initialize min_diff to a large number
-        min_diff = float('inf')
-        
-        # Iterate through the sorted array and find the minimum difference
-        for i in range(len(arr) - m + 1):
-            current_diff = arr[i + m - 1] - arr[i]
-            if current_diff < min_diff:
-                min_diff = current_diff
-        
-        return min_diff
+        return -1
 
 ########################################
 # if __name__ == '__main__':
