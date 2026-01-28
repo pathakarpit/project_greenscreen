@@ -1,28 +1,86 @@
-# Professor's Analysis: Search in Rotated Sorted Array
+# Professor's Analysis: Next Permutation
 
-```
 ## Time Complexity Analysis
-The time complexity of this solution is O(N), where N is the number of elements in the array.
+
+* Big O notation: O(N)
+* Explanation: The loop runs N times, where N is the number of elements in the array. Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average. Therefore, the total time complexity is N * O(1) = O(N).
+
 
 ## Space Complexity Analysis
-The space complexity of this solution is O(N), where N is the number of elements in the array.
 
-## Step-by-Step Reconstruction Logic
+* Big O notation: O(N)
+* Explanation: We use a dictionary/hash map to store at most N elements.
 
-### Initialize Variables
-* `left` and `right` variables are initialized to 0 and `len(arr) - 1`, respectively.
-* The initial range of possible indices for the key is `[0, len(arr) - 1]`.
 
-### Loop Condition
-* The loop continues until `left <= right`.
+## Step-by-Step Reconstruction Logic:
 
-### Inside the Loop
-* Calculate the midpoint `mid` using the formula `(left + right) // 2`.
-* Compare the value at the midpoint index with the key.
-* If the array is rotated and the left half is sorted, check if the key is within the range `[arr[left], arr[mid]]`. If it is, move the `right` pointer to `mid - 1`. Otherwise, move the `left` pointer to `mid + 1`.
-* If the right half is sorted, check if the key is within the range `[arr[mid], arr[right]]`. If it is, move the `left` pointer to `mid + 1`. Otherwise, move the `right` pointer to `mid - 1`.
+### 1. Initialize Variables
+* `arr`: input array of integers
+* `perms`: list of permutations of the input array
+* `sorted_perms`: list of sorted permutations (used for removing duplicates)
+* `final_perms`: list of final permutations
 
-### Return Statement
-* If the loop ends and the key is found, return the index of the key.
-* If the loop ends and the key is not found, return `-1`.
+### 2. Generate All Permutations in Lexicographic Order
+* Call function `permute(arr)` to generate all permutations
+* Sort each permutation using `sorted(p)`
+* Convert tuples to lists and remove duplicates using `set(tuple(x) for x in sorted_perms)`
+
+### 3. Find the Next Lexicographic Permutation
+* Check if the next lexicographic permutation is possible by calling function `next_permutation(arr)`
+	+ If not, return "The next lexicographic permutation is not possible."
+
+### 4. Return Final Permutations and Current Array
+* If a next lexicographic permutation exists, return the list of final permutations and the current array
+
+Here's the code with added comments for clarity:
+
+```python
+class Solution:
+    def solve(self, arr):
+        # Generate all permutations in lexicographic order
+        perms = self.permute(arr)
+        
+        # Remove duplicates by sorting each permutation
+        sorted_perms = [sorted(p) for p in perms]
+        
+        # Convert tuples to lists and remove duplicates
+        final_perms = list(map(list, set(tuple(x) for x in sorted_perms)))
+        
+        # Find the next lexicographic permutation
+        if not self.next_permutation(arr):
+            return "The next lexicographic permutation is not possible."
+        
+        # Return final permutations and current array
+        return final_perms, arr
+    
+    def permute(self, nums):
+        # Function to generate all permutations of a list
+        if len(nums) == 1:
+            return [nums[:]]
+        
+        result = []
+        for i in range(len(nums)):
+            n = nums[i]
+            rest = nums[:i] + nums[i+1:]
+            perms_of_rest = self.permute(rest)
+            for perm in perms_of_rest:
+                result.append([n] + perm)
+        return result
+    
+    def next_permutation(self, nums):
+        # Function to find the next lexicographic permutation
+        i = len(nums) - 2
+        while i >= 0 and nums[i] >= nums[i + 1]:
+            i -= 1
+        
+        if i == -1:
+            return False
+        
+        j = len(nums) - 1
+        while nums[j] <= nums[i]:
+            j -= 1
+        
+        nums[i], nums[j] = nums[j], nums[i]
+        nums[i+1:] = reversed(nums[i+1:])
+        return True
 ```
