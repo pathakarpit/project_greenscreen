@@ -1,41 +1,46 @@
-# Next Permutation
+# Best time to Buy and Sell Stock
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/next-permutation/](https://leetcode.com/problems/next-permutation/)
+**Link:** [https://leetcode.com/problems/best-time-to-buy-and-sell-stock/](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Generate Permutations and Next Lexicographic Permutation
+**Problem Statement:**
+Maximize Two Transaction Profit
+
+Given an array of stock prices `prices` where `n >= 2`, find the maximum total profit that can be achieved by buying and selling stocks, considering two transactions.
 
 **Description:**
-Given an array of elements, generate all permutations in lexicographic order. Also, find the next permutation in lexicographic order given a current permutation.
 
-1. Sort the array.
-2. Use backtracking to swap elements at different positions for generating permutations.
-3. Generate duplicate-safe permutations by sorting the array and skipping repeated choices.
-
-For finding the next permutation:
-
-*   Find the rightmost element that is smaller than its successor (the first pivot).
-*   Swap the pivot with the smallest element greater than it on the right side (successor).
-*   Reverse all elements on the right side of the pivot to get the next smallest lexicographic permutation.
+Analyze the given JavaScript solution for maximizing profit through two transactions. The algorithm uses dynamic programming to optimize space complexity while achieving a time complexity of O(n). However, the core problem statement focuses on finding the maximum total profit with two transactions allowed.
 
 **Examples:**
 
-1. Input: `arr = [1, 2, 3]`
-Output: Permutations in lexicographic order:
-`[[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]`
+1. **Example 1:** `prices = [2, 3, 5]`
 
-Next Lexicographic Permutation: Given `[1, 2, 3]`, the next permutation is `[1, 3, 2]`.
+   *   Initial investment at price 2
+   *   Sell at 3 (Transaction 1)
+   *   Buy at 4 (new low after sell) and sell at 5 (Transaction 2)
 
-2. Input: `arr = [3, 2, 1]`
-Output: The next lexicographic permutation is not possible because there are no smaller elements on the right side of the pivot.
+   Expected Output: Max profit with two transactions = 7
 
-**Constraints:**
+2. **Example 2:** `prices = [6, 5, 4, 3, 2]`
 
-*   The input array will contain integers.
-*   The length of the input array can be up to 10^5.
-*   The numbers in the array can range from 1 to 10^5.
-*   No duplicate values are allowed in the array.
+   *   No profitable transaction can be made in this case.
+
+   Expected Output: Max profit with two transactions = 0
+
+3. **Example 3:** `prices = [7, 1, 5, 3, 6, 4]`
+
+   *   Sell at 7 (Transaction 1)
+   *   Buy at 2 and sell at 5 (Transaction 2)
+
+   Expected Output: Max profit with two transactions = 9
+
+**Constraints:** 
+
+*   `n >= 2`, where `n` is the length of the array
+*   No upper bound on prices, but it's assumed that there will be no extremely high values affecting performance.
+*   The algorithm should achieve a time complexity of O(n) and space complexity of O(1), implying that it must use efficient dynamic programming techniques to optimize memory usage.

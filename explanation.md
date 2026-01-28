@@ -1,86 +1,40 @@
-# Professor's Analysis: Next Permutation
+# Professor's Analysis: Best time to Buy and Sell Stock
 
 ## Time Complexity Analysis
+The time complexity of this solution is O(N), where N is the number of prices in the input list. This is because the loop runs exactly N times, performing constant-time operations on each iteration.
 
-* Big O notation: O(N)
-* Explanation: The loop runs N times, where N is the number of elements in the array. Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average. Therefore, the total time complexity is N * O(1) = O(N).
-
+* The dictionary lookup `if x in dict` takes O(1) time on average.
+* Therefore, N * O(1) = O(N).
 
 ## Space Complexity Analysis
+The space complexity of this solution is O(N), where N is the number of prices in the input list. This is because we use a dictionary/hash map to store at most N elements.
 
-* Big O notation: O(N)
-* Explanation: We use a dictionary/hash map to store at most N elements.
+## Step-by-Step Reconstruction Logic
 
+### Initialize Variables
+* `buy1` and `sell1`: initialized with positive infinity, representing the minimum cost to buy and maximum profit from selling for the first transaction.
+* `buy2` and `sell2`: initialized with positive infinity, representing the minimum cost to buy and maximum profit from selling for the second transaction.
 
-## Step-by-Step Reconstruction Logic:
+### Loop Condition
+The loop iterates over each price in the input list. The condition is simply iterating over all prices, ensuring that each one is processed exactly once.
 
-### 1. Initialize Variables
-* `arr`: input array of integers
-* `perms`: list of permutations of the input array
-* `sorted_perms`: list of sorted permutations (used for removing duplicates)
-* `final_perms`: list of final permutations
+### Math Operation Inside the Loop
+* `price - buy1`: calculates the potential profit from selling at the current price, considering the minimum cost to buy for the first transaction.
+* `sell1 = max(sell1, price - buy1)`: updates the maximum profit from selling for the first transaction if a better opportunity arises.
 
-### 2. Generate All Permutations in Lexicographic Order
-* Call function `permute(arr)` to generate all permutations
-* Sort each permutation using `sorted(p)`
-* Convert tuples to lists and remove duplicates using `set(tuple(x) for x in sorted_perms)`
+### Logic Inside the Loop
+#### First Transaction (buy1 and sell1)
+* `buy1 = min(buy1, price)`: updates the minimum cost to buy for the first transaction if a lower price is found.
+* `sell1 = max(sell1, price - buy1)`: updates the maximum profit from selling for the first transaction.
 
-### 3. Find the Next Lexicographic Permutation
-* Check if the next lexicographic permutation is possible by calling function `next_permutation(arr)`
-	+ If not, return "The next lexicographic permutation is not possible."
+#### Second Transaction (buy2 and sell2)
+* `buy2 = min(buy2, price - sell1)`: considers how much would have been earned after buying at a lower price and then selling now (if profitable).
+* `sell2 = max(sell2, price - buy2)`: updates the maximum profit from selling for the second transaction.
 
-### 4. Return Final Permutations and Current Array
-* If a next lexicographic permutation exists, return the list of final permutations and the current array
+### If/Else Logic
+There are no explicit if-else statements. However, the logic within the loop implicitly checks two conditions:
+*   **If complement found:** The maximum profit from selling for the current iteration is considered as it may provide a better opportunity than previously found.
+*   **If not found:** No specific action is taken; the algorithm continues to iterate through all prices.
 
-Here's the code with added comments for clarity:
-
-```python
-class Solution:
-    def solve(self, arr):
-        # Generate all permutations in lexicographic order
-        perms = self.permute(arr)
-        
-        # Remove duplicates by sorting each permutation
-        sorted_perms = [sorted(p) for p in perms]
-        
-        # Convert tuples to lists and remove duplicates
-        final_perms = list(map(list, set(tuple(x) for x in sorted_perms)))
-        
-        # Find the next lexicographic permutation
-        if not self.next_permutation(arr):
-            return "The next lexicographic permutation is not possible."
-        
-        # Return final permutations and current array
-        return final_perms, arr
-    
-    def permute(self, nums):
-        # Function to generate all permutations of a list
-        if len(nums) == 1:
-            return [nums[:]]
-        
-        result = []
-        for i in range(len(nums)):
-            n = nums[i]
-            rest = nums[:i] + nums[i+1:]
-            perms_of_rest = self.permute(rest)
-            for perm in perms_of_rest:
-                result.append([n] + perm)
-        return result
-    
-    def next_permutation(self, nums):
-        # Function to find the next lexicographic permutation
-        i = len(nums) - 2
-        while i >= 0 and nums[i] >= nums[i + 1]:
-            i -= 1
-        
-        if i == -1:
-            return False
-        
-        j = len(nums) - 1
-        while nums[j] <= nums[i]:
-            j -= 1
-        
-        nums[i], nums[j] = nums[j], nums[i]
-        nums[i+1:] = reversed(nums[i+1:])
-        return True
-```
+### Return Statement
+The function returns `sell2` at the end of the loop, which represents the maximum profit that can be obtained from two transactions. If no pair is found, this value will reflect the best single transaction opportunity.
