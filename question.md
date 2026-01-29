@@ -1,25 +1,36 @@
-# Repeat and Missing Number Array
+# Kth-Largest Element in an Array
 
 **Difficulty:** Medium  
-**Link:** [https://www.interviewbit.com/problems/repeat-and-missing-number-array/](https://www.interviewbit.com/problems/repeat-and-missing-number-array/)
+**Link:** [https://leetcode.com/problems/kth-largest-element-in-an-array/](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Find Two Elements that Appear Twice and Once Respectively in an Array
+```
+Title: Implement QuickSelect Algorithm
+Description:
+Implement the QuickSelect algorithm to find the kth largest element in an array of integers.
 
+Examples:
+Example 1:
+Input: arr = [12, 7, 9, 8, 3, 5], k = 2
+Output: The 2nd largest element is: 9
 
-**Description:** Given an array of integers, find two elements such that one appears twice and the other appears once.
+Example 2:
+Input: arr = [10, 20, 30, 40, 50], k = 1
+Output: The 1st largest element is: 50
 
+Example 3:
+Input: arr = [5, 4, 3, 2, 1], k = 2
+Output: The 2nd largest element is: 4
 
-**Examples:**
+Constraints:
+- The input array arr contains n integers.
+- 1 ≤ k ≤ n.
 
-1. Input: `[4, 2, 2, 3, 1]`
-Output: `[2, 3]` (The elements `2` and `3` appear twice and once respectively.)
+Note:
+The QuickSelect algorithm works by selecting a pivot element and partitioning the array around it. It then recursively selects the kth largest element from the appropriate partition.
+```
 
-2. Input: `[5, 7, 7, 9, 6, 6, 5]`
-Output: `[7, 9]` (The elements `7` and `9` appear twice and once respectively.)
-
-3. Input: `[1, 2, 3, 4, 5, 6, 7]`
-Output: None (No two elements appear twice and once respectively.)
+Please let me know if this is what you are looking for!
