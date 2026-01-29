@@ -1,27 +1,22 @@
-# Problem: Best time to Buy and Sell Stock
+# Problem: Repeat and Missing Number Array
 # Difficulty: Medium
-# Link: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+# Link: https://www.interviewbit.com/problems/repeat-and-missing-number-array/
 
 class Solution:
-    def solve(self, prices):
-        if not prices:
-            return 0
+    def solve(self, nums):
+        seen = set()
+        once_set = set()
         
-        buy1 = float('inf')
-        sell1 = 0
-        buy2 = float('inf')
-        sell2 = 0
+        for num in nums:
+            if num in seen:
+                once_set.discard(num)
+            else:
+                seen.add(num)
+                once_set.add(num)
         
-        for price in prices:
-            # For the first transaction, we minimize the cost to buy and maximize profit from selling
-            buy1 = min(buy1, price)
-            sell1 = max(sell1, price - buy1)
-            
-            # For the second transaction, we consider how much we would have earned after buying at a lower price and then selling now (if profitable)
-            buy2 = min(buy2, price - sell1)
-            sell2 = max(sell2, price - buy2)
-        
-        return sell2
+        if len(once_set) != 2:
+            return None
+        return list(once_set)
 
 ########################################
 # if __name__ == '__main__':

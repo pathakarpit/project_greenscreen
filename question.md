@@ -1,46 +1,25 @@
-# Best time to Buy and Sell Stock
+# Repeat and Missing Number Array
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/best-time-to-buy-and-sell-stock/](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+**Link:** [https://www.interviewbit.com/problems/repeat-and-missing-number-array/](https://www.interviewbit.com/problems/repeat-and-missing-number-array/)
 
 ---
 
 ## Problem Statement
 
-**Problem Statement:**
-Maximize Two Transaction Profit
+**Title:** Find Two Elements that Appear Twice and Once Respectively in an Array
 
-Given an array of stock prices `prices` where `n >= 2`, find the maximum total profit that can be achieved by buying and selling stocks, considering two transactions.
 
-**Description:**
+**Description:** Given an array of integers, find two elements such that one appears twice and the other appears once.
 
-Analyze the given JavaScript solution for maximizing profit through two transactions. The algorithm uses dynamic programming to optimize space complexity while achieving a time complexity of O(n). However, the core problem statement focuses on finding the maximum total profit with two transactions allowed.
 
 **Examples:**
 
-1. **Example 1:** `prices = [2, 3, 5]`
+1. Input: `[4, 2, 2, 3, 1]`
+Output: `[2, 3]` (The elements `2` and `3` appear twice and once respectively.)
 
-   *   Initial investment at price 2
-   *   Sell at 3 (Transaction 1)
-   *   Buy at 4 (new low after sell) and sell at 5 (Transaction 2)
+2. Input: `[5, 7, 7, 9, 6, 6, 5]`
+Output: `[7, 9]` (The elements `7` and `9` appear twice and once respectively.)
 
-   Expected Output: Max profit with two transactions = 7
-
-2. **Example 2:** `prices = [6, 5, 4, 3, 2]`
-
-   *   No profitable transaction can be made in this case.
-
-   Expected Output: Max profit with two transactions = 0
-
-3. **Example 3:** `prices = [7, 1, 5, 3, 6, 4]`
-
-   *   Sell at 7 (Transaction 1)
-   *   Buy at 2 and sell at 5 (Transaction 2)
-
-   Expected Output: Max profit with two transactions = 9
-
-**Constraints:** 
-
-*   `n >= 2`, where `n` is the length of the array
-*   No upper bound on prices, but it's assumed that there will be no extremely high values affecting performance.
-*   The algorithm should achieve a time complexity of O(n) and space complexity of O(1), implying that it must use efficient dynamic programming techniques to optimize memory usage.
+3. Input: `[1, 2, 3, 4, 5, 6, 7]`
+Output: None (No two elements appear twice and once respectively.)
