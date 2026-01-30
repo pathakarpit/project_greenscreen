@@ -1,36 +1,35 @@
-# Kth-Largest Element in an Array
+# Trapping Rain Water
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/kth-largest-element-in-an-array/](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+**Link:** [https://leetcode.com/problems/trapping-rain-water/](https://leetcode.com/problems/trapping-rain-water/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Implement QuickSelect Algorithm
-Description:
-Implement the QuickSelect algorithm to find the kth largest element in an array of integers.
+**Container With Most Water**
 
+**Description:** Given an array of heights, find the maximum amount of water that can be trapped between bars in an array.
+
+```
 Examples:
+
 Example 1:
-Input: arr = [12, 7, 9, 8, 3, 5], k = 2
-Output: The 2nd largest element is: 9
+Input: heights = [2, 0, 1]
+Output: 1
+Explanation: The area of water held between the bars at indices 1 and 0 is 1 unit, which is the maximum area we can trap.
 
 Example 2:
-Input: arr = [10, 20, 30, 40, 50], k = 1
-Output: The 1st largest element is: 50
+Input: heights = [3, 1, 4, 6, 7, 5, 2]
+Output: 12
+Explanation: The area of water held between the bars at indices 3 and 4 is 2 units, and between the bars at indices 4 and 5 is 1 unit. So the maximum area we can trap is 12 units.
 
 Example 3:
-Input: arr = [5, 4, 3, 2, 1], k = 2
-Output: The 2nd largest element is: 4
-
-Constraints:
-- The input array arr contains n integers.
-- 1 ≤ k ≤ n.
-
-Note:
-The QuickSelect algorithm works by selecting a pivot element and partitioning the array around it. It then recursively selects the kth largest element from the appropriate partition.
+Input: heights = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+Output: 49
 ```
 
-Please let me know if this is what you are looking for!
+**Constraints:** 
+- The input array `heights` will contain non-negative integers.
+- The number of elements in the array `heights` can range from 1 to 10^6.
+- The maximum value that each element in the array `heights` can hold is 10^5.
