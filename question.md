@@ -1,35 +1,28 @@
-# Product of Array Except Self
+# Maximum Product Subarray
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/product-of-array-except-self/](https://leetcode.com/problems/product-of-array-except-self/)
+**Link:** [https://leetcode.com/problems/maximum-product-subarray/](https://leetcode.com/problems/maximum-product-subarray/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Product of Array Except Self
-
+**Title:** Find the Smallest Missing Number in an Array
 **Description:**
 
-Given an array `arr` of integers, return an array where each element at index `i` is the product of all elements in `arr` except for `arr[i]`.
+Given an array of integers, find the smallest missing number. The input array will contain distinct positive integers greater than 0.
+ 
+Constraints:
+- The length of the input array will be between 1 and 10^5 (inclusive).
+- Each element in the input array will be a distinct positive integer greater than 0.
 
-### Examples:
+**Examples:**
 
-1. **Example 1:**
-   - Input: `arr = [10, 3, 5, 6, 2]`
-   - Output: `[180, 60, 36, 30, 90]`
+Input: [1, 2, 3, 4, 6]
+Output: 5
 
-2. **Example 2:**
-   - Input: `arr = [1, 2, 3, 4, 5]`
-   - Output: `[120, 60, 40, 30, 24]`
+Input: [1, 2, 3, 5]
+Output: 4
 
-3. **Example 3:**
-   - Input: `arr = [0, 1, 0, 3]`
-   - Output: `[0, 0, 0, 0]`
-
-### Constraints:
-
-- The length of the input array is at most `10^5`.
-- The elements in the input array are non-negative integers.
-
-Note: This problem does not require any additional constraints beyond those mentioned above.
+Input: [10, 20, 30, 40, 50]
+Output: 1

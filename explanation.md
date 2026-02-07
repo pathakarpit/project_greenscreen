@@ -1,34 +1,36 @@
-# Professor's Analysis: Product of Array Except Self
+# Professor's Analysis: Maximum Product Subarray
 
+```
 ## Time Complexity Analysis
 
-* The time complexity of this solution is O(N).
-* **Critical**: The loop runs N times (where N is the length of the input array `arr`), and the dictionary lookup (`if x in dict`) takes O(1) time on average. Therefore, N * O(1) = O(N).
+The time complexity of this solution is O(N), where N is the number of elements in the `nums` list. This is because the loop runs N times and each dictionary lookup takes O(1) time on average.
 
 ## Space Complexity Analysis
 
-* The space complexity is O(N).
-* We use a dictionary/hash map to store at most N elements.
+The space complexity of this solution is O(N), where N is the number of elements in the `nums` list. This is because we use a dictionary or hash map to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
 
-### Initialization
-* Initialize an empty list `arr` containing the input array.
-* Get the length of the input array and store it in the variable `n`.
+### Initialize Variables
+* We initialize two pointers, `left` and `right`, to the start and end of the `nums` list respectively.
+* We also initialize an empty dictionary or hash map to store at most N elements.
 
-### Loop 1: Left Products
-* Create an array `left_products` of size `n` with all elements initialized to 1.
-* Iterate over the range (1, n) using a for loop. For each iteration:
-	+ Multiply the current element at index `i-1` in `left_products` by the corresponding element at index `i-1` in the input array (`arr[i - 1]`). Store the result back in `left_products[i]`.
+### Loop Condition
+* The loop condition is `while left <= right`.
 
-### Loop 2: Right Products
-* Create an array `right_products` of size `n` with all elements initialized to 1.
-* Iterate over the range (n-2, -1) using a for loop. For each iteration:
-	+ Multiply the current element at index `i+1` in `right_products` by the corresponding element at index `i+1` in the input array (`arr[i + 1]`). Store the result back in `right_products[i]`.
+### Loop Body
+* Inside the loop body:
+	+ We calculate the midpoint, `mid`, using the formula `(left + right) // 2`.
+	+ We then check if the element at index `mid` in the `nums` list is equal to `mid + 1`. This is done using the condition `if nums[mid] == mid + 1`.
+	+ If this condition is true, we update the left pointer to `mid + 1` using the statement `left = mid + 1`.
 
-### Final Calculation
-* Create a new list (using list comprehension) where each element is the product of the corresponding elements from `left_products` and `right_products`.
-* Return the resulting list.
+### Complement Logic
+* We calculate the complement of the current number at index `mid` by subtracting it from `mid + 1`, i.e., `(mid + 1) - nums[mid]`.
 
-### No Pair Found
-* If no pair is found, return an empty list (`return []`).
+### If/Else Logic
+* If the complement IS found in the dictionary, we update the left pointer to `mid + 1` and continue with the next iteration of the loop.
+* If the complement IS NOT found in the dictionary, we update the right pointer to `mid - 1` using the statement `right = mid - 1`.
+
+### Return Statement
+* If no pair is found after the loop terminates, we return `left + 1`, which represents the index of the missing number.
+```
