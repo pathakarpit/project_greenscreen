@@ -1,29 +1,25 @@
-# Problem: Trapping Rain Water
+# Problem: Product of Array Except Self
 # Difficulty: Medium
-# Link: https://leetcode.com/problems/trapping-rain-water/
+# Link: https://leetcode.com/problems/product-of-array-except-self/
 
 class Solution:
-    def solve(self, heights):
-        if not heights:
-            return 0
+    def solve(self, arr):
+        n = len(arr)
+        if n == 0:
+            return []
         
-        left = 0
-        right = len(heights) - 1
-        max_area = 0
+        # Create two arrays to store the product of elements to the left and right of each index
+        left_products = [1] * n
+        right_products = [1] * n
         
-        while left < right:
-            # Calculate the area between the two pointers
-            current_area = min(heights[left], heights[right]) * (right - left)
-            # Update the maximum area if the current area is larger
-            max_area = max(max_area, current_area)
-            
-            # Move the pointer that points to the shorter bar
-            if heights[left] < heights[right]:
-                left += 1
-            else:
-                right -= 1
+        for i in range(1, n):
+            left_products[i] = left_products[i - 1] * arr[i - 1]
         
-        return max_area
+        for i in range(n - 2, -1, -1):
+            right_products[i] = right_products[i + 1] * arr[i + 1]
+        
+        # The result is the product of left and right products at each index
+        return [left_products[i] * right_products[i] for i in range(n)]
 
 ########################################
 # if __name__ == '__main__':

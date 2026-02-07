@@ -1,35 +1,35 @@
-# Trapping Rain Water
+# Product of Array Except Self
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/trapping-rain-water/](https://leetcode.com/problems/trapping-rain-water/)
+**Link:** [https://leetcode.com/problems/product-of-array-except-self/](https://leetcode.com/problems/product-of-array-except-self/)
 
 ---
 
 ## Problem Statement
 
-**Container With Most Water**
+**Title:** Product of Array Except Self
 
-**Description:** Given an array of heights, find the maximum amount of water that can be trapped between bars in an array.
+**Description:**
 
-```
-Examples:
+Given an array `arr` of integers, return an array where each element at index `i` is the product of all elements in `arr` except for `arr[i]`.
 
-Example 1:
-Input: heights = [2, 0, 1]
-Output: 1
-Explanation: The area of water held between the bars at indices 1 and 0 is 1 unit, which is the maximum area we can trap.
+### Examples:
 
-Example 2:
-Input: heights = [3, 1, 4, 6, 7, 5, 2]
-Output: 12
-Explanation: The area of water held between the bars at indices 3 and 4 is 2 units, and between the bars at indices 4 and 5 is 1 unit. So the maximum area we can trap is 12 units.
+1. **Example 1:**
+   - Input: `arr = [10, 3, 5, 6, 2]`
+   - Output: `[180, 60, 36, 30, 90]`
 
-Example 3:
-Input: heights = [1, 8, 6, 2, 5, 4, 8, 3, 7]
-Output: 49
-```
+2. **Example 2:**
+   - Input: `arr = [1, 2, 3, 4, 5]`
+   - Output: `[120, 60, 40, 30, 24]`
 
-**Constraints:** 
-- The input array `heights` will contain non-negative integers.
-- The number of elements in the array `heights` can range from 1 to 10^6.
-- The maximum value that each element in the array `heights` can hold is 10^5.
+3. **Example 3:**
+   - Input: `arr = [0, 1, 0, 3]`
+   - Output: `[0, 0, 0, 0]`
+
+### Constraints:
+
+- The length of the input array is at most `10^5`.
+- The elements in the input array are non-negative integers.
+
+Note: This problem does not require any additional constraints beyond those mentioned above.
