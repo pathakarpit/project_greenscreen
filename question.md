@@ -1,28 +1,33 @@
-# Maximum Product Subarray
+# Find Minimum in Rotated Sorted Array
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/maximum-product-subarray/](https://leetcode.com/problems/maximum-product-subarray/)
+**Link:** [https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Find the Smallest Missing Number in an Array
-**Description:**
+**Title:** 
+Minimum Element in Rotated Sorted Array
 
-Given an array of integers, find the smallest missing number. The input array will contain distinct positive integers greater than 0.
- 
-Constraints:
-- The length of the input array will be between 1 and 10^5 (inclusive).
-- Each element in the input array will be a distinct positive integer greater than 0.
+
+**Description:**
+The input array `nums` is a rotated sorted array, meaning it was initially sorted but then rotated (shifted) some number of positions, potentially more than once. Find the minimum element in this array.
 
 **Examples:**
 
-Input: [1, 2, 3, 4, 6]
-Output: 5
+1. Input: `nums = [3, 4, 5, 1, 2]`
+Output: `1`
 
-Input: [1, 2, 3, 5]
-Output: 4
+2. Input: `nums = [4, 5, 6, 7, 0, 1, 2]`
+Output: `0`
 
-Input: [10, 20, 30, 40, 50]
-Output: 1
+3. Input: `nums = [1]`
+Output: `1`
+
+
+**Constraints:**
+*   The input array `nums` is not empty.
+*   The length of the input array `nums` can be up to `10^5`.
+*   The elements in the input array `nums` are all integers.
+*   The array `nums` contains at least one element.
