@@ -1,23 +1,32 @@
-# Professor's Analysis: Find Minimum in Rotated Sorted Array
+# Professor's Analysis: Find Pair with Sum in Sorted & Rotated Array
 
-## Time Complexity Analysis
+### Time Complexity Analysis
+The time complexity of this solution is O(N). This might seem counterintuitive at first because we use a while loop. However, if you analyze it carefully, **the loop runs N times**, and the dictionary lookup `if x in dict` takes O(1) time on average.
 
-### Big O Notation: O(N)
+Therefore, N * O(1) = O(N).
 
-The given Python solution uses a binary search algorithm to find the peak element in an unsorted array. The time complexity of this algorithm is O(N), where N is the number of elements in the array.
+### Space Complexity Analysis
+The space complexity of this solution is O(N), as we use a dictionary/hash map to store at most N elements.
 
-## Space Complexity Analysis
+### Step-by-Step Reconstruction Logic
 
-### Big O Notation: O(1)
+#### Initialize Variables
+*   The `n` variable is initialized with the length of the array `arr`.
+*   Two pointers, `left` and `right`, are initialized to 0 and `n - 1`, respectively.
 
-The space complexity of the solution is O(1), which means the space used does not grow with the size of the input array. 
+#### Find the Pivot Point (If Rotation Exists)
+*   A while loop runs from the beginning of the array until it finds a pivot point where rotation starts. In each iteration, we check if the current element is greater than or equal to the next one.
+    *   If `left` is less than `n` and `arr[left]` is less than or equal to `arr[(left + 1) % n]`, increment `left`.
+*   If no rotation exists (`left == n`), set `left` back to 0. Otherwise, adjust the right pointer considering the rotation.
 
-## Step-by-Step Reconstruction Logic
+#### Binary Search with Two Pointers
+*   We start a while loop that continues until `left != right`. In each iteration:
+    *   Calculate the current sum of elements at indices `left` and `right`.
+    *   If the sum equals the target (`current_sum == target`), return True, indicating that a pair has been found.
+    *   If the sum is less than the target (`current_sum < target`), increment the left pointer using `(left + 1) % n`. This ensures we wrap around to the beginning of the array if necessary.
+    *   If the sum exceeds the target (`current_sum > target`), decrement the right pointer using `(n + right - 1) % n`.
 
-*   Initialize `left` to 0 (the first index of the array) and `right` to `len(nums) - 1` (the last index of the array).
-*   Loop until `left < right`.
-*   Within each iteration, calculate the mid-index using `(left + right) // 2`. 
-*   Compare the value at this mid-index with the value at the right-end of the array. If the value at the mid-index is greater than the value at the right-end, update `left = mid + 1`.
-*   Otherwise, update `right = mid`.
-*   Repeat steps 3-5 until `left >= right`. At this point, either `left` or `right` will be pointing to the peak element.
-*   After exiting the loop, return the value of `nums[left]`, which is the peak element in the array.
+#### Return Statement
+*   If no pair is found after iterating through the while loop (i.e., `left == right`), return False.
+
+This detailed step-by-step reconstruction should enable any developer to recreate the provided code based on this explanation.

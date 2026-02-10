@@ -1,33 +1,25 @@
-# Find Minimum in Rotated Sorted Array
+# Find Pair with Sum in Sorted & Rotated Array
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+**Link:** [https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/?ref=lbp](https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/?ref=lbp)
 
 ---
 
 ## Problem Statement
 
-**Title:** 
-Minimum Element in Rotated Sorted Array
-
-
-**Description:**
-The input array `nums` is a rotated sorted array, meaning it was initially sorted but then rotated (shifted) some number of positions, potentially more than once. Find the minimum element in this array.
-
+**Title:** Pair in Sorted Rotated Array
+**Description:** Given a sorted rotated array and a target sum, find if there exists any pair with the given sum. If yes, return true, else return false.
 **Examples:**
+1. Input: arr = [11, 15, 6, 8, 9, 10], target = 16
+   Output: true
 
-1. Input: `nums = [3, 4, 5, 1, 2]`
-Output: `1`
+2. Input: arr = [11, 15, 6, 8, 9, 10], target = 18
+   Output: false
 
-2. Input: `nums = [4, 5, 6, 7, 0, 1, 2]`
-Output: `0`
+3. Input: arr = [1, 2, 3, 4, 5], target = 7
+   Output: true
 
-3. Input: `nums = [1]`
-Output: `1`
-
-
-**Constraints:**
-*   The input array `nums` is not empty.
-*   The length of the input array `nums` can be up to `10^5`.
-*   The elements in the input array `nums` are all integers.
-*   The array `nums` contains at least one element.
+**Constraints:** 
+- The input array will have a minimum of 3 elements.
+- All the elements in the array will be positive integers between 1 and 10^9 (inclusive).
+- The array is sorted rotated, i.e., after some point it starts rotating back to the smallest element.
