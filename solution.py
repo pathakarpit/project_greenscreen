@@ -1,32 +1,40 @@
-# Problem: Find Pair with Sum in Sorted & Rotated Array
+# Problem: 3Sum
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/?ref=lbp
+# Link: https://leetcode.com/problems/3sum/
 
 class Solution:
-    def solve(self, arr, target):
-        n = len(arr)
-        left, right = 0, n - 1
+    def solve(self, nums, target):
+        nums.sort()
+        result = []
+        n = len(nums)
         
-        # Find the pivot point where rotation starts
-        while left < n and arr[left] <= arr[(left + 1) % n]:
-            left += 1
+        for i in range(n - 2):
+            # Skip duplicate elements
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            
+            left, right = i + 1, n - 1
+            
+            while left < right:
+                current_sum = nums[i] + nums[left] + nums[right]
+                
+                if current_sum == target:
+                    result.append((nums[i], nums[left], nums[right]))
+                    
+                    # Skip duplicates for left and right pointers
+                    while left < right and nums[left] == nums[left + 1]:
+                        left += 1
+                    while left < right and nums[right] == nums[right - 1]:
+                        right -= 1
+                    
+                    left += 1
+                    right -= 1
+                elif current_sum < target:
+                    left += 1
+                else:
+                    right -= 1
         
-        # Adjust pointers considering the rotation
-        if left == n:
-            left = 0
-        else:
-            right = (n - 1) % left
-        
-        while left != right:
-            current_sum = arr[left] + arr[right]
-            if current_sum == target:
-                return True
-            elif current_sum < target:
-                left = (left + 1) % n
-            else:
-                right = (n + right - 1) % n
-        
-        return False
+        return result
 
 ########################################
 # if __name__ == '__main__':
