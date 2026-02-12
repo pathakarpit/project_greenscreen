@@ -1,33 +1,31 @@
-# 3Sum
+# Container With Most Water
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/3sum/](https://leetcode.com/problems/3sum/)
+**Link:** [https://leetcode.com/problems/container-with-most-water/](https://leetcode.com/problems/container-with-most-water/)
 
 ---
 
 ## Problem Statement
 
-**Title:** 3-Sum Problem
-**Description:** 
-Find all unique triplets in an array that sum up to a specific target value.
-The problem can be divided into two categories based on whether the input array is sorted or unsorted. Examples include finding all triplets with zero sum, finding all triplets with a given sum, and finding the triplet with the sum closest to a given value.
-
+**Max Water Trapped**
+=======================
+**Description:**
+The problem asks to find the maximum water that can be trapped between lines in an array. This is achieved by treating every line as both the left and right boundaries of a container.
 **Examples:**
 
-*   All Triplets with Zero Sum:
-    *   Input: [-1, 0, 1]
-    *   Output: [(-1, 0, 1), (0, -1, 1), (0, 1, -1)]
-*   All Triplets with Given Sum:
-    *   Input: [2, -4, 5]
-    *   Output: [(2, -4, 5), (-2, 4, -5)]
-*   Triplet Sum Closest to Target:
-    *   Input: [-1, 0, 3]
-    *   Output: [(-1, 0, 3) and (0, -1, 3)]
+* Input: `[1, 8, 6, 2, 5, 4, 8, 3, 7]`
+Output: `49`
+
+* Input: `[1, 1]`
+Output: `0`
+
+* Input: `[4, 2, 0, 3, 2, 5]`
+Output: `9`
 
 **Constraints:** 
-N >= 3
--10^9 <= target <= 10^9
+- The input array will contain only positive integers.
+- The length of the array can be up to 10^5.
 
-Note that the Constraints have been defined assuming the problem is to find triplets with a given sum. If the problem is to count the number of triplets or find other types of triplets, different constraints may be required.
+- Note: Since there are no explicit constraints in the problem statement, I've added some reasonable ones for better understanding. 
 
-All unnecessary text has been removed from the raw input, leaving only the Problem Statement, Examples, and Constraints.
+Please let me know if this is correct!

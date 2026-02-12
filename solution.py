@@ -1,40 +1,32 @@
-# Problem: 3Sum
+# Problem: Container With Most Water
 # Difficulty: Medium
-# Link: https://leetcode.com/problems/3sum/
+# Link: https://leetcode.com/problems/container-with-most-water/
 
 class Solution:
-    def solve(self, nums, target):
-        nums.sort()
-        result = []
-        n = len(nums)
+    def solve(self, height):
+        if not height or len(height) < 2:
+            return 0
         
-        for i in range(n - 2):
-            # Skip duplicate elements
-            if i > 0 and nums[i] == nums[i - 1]:
-                continue
-            
-            left, right = i + 1, n - 1
-            
-            while left < right:
-                current_sum = nums[i] + nums[left] + nums[right]
-                
-                if current_sum == target:
-                    result.append((nums[i], nums[left], nums[right]))
-                    
-                    # Skip duplicates for left and right pointers
-                    while left < right and nums[left] == nums[left + 1]:
-                        left += 1
-                    while left < right and nums[right] == nums[right - 1]:
-                        right -= 1
-                    
-                    left += 1
-                    right -= 1
-                elif current_sum < target:
-                    left += 1
-                else:
-                    right -= 1
+        left = 0
+        right = len(height) - 1
+        max_water = 0
         
-        return result
+        while left < right:
+            # Calculate the area of water trapped between two lines
+            width = right - left
+            h = min(height[left], height[right])
+            water = width * h
+            
+            # Update the maximum amount of water if necessary
+            max_water = max(max_water, water)
+            
+            # Move the pointer which points to the shorter line
+            if height[left] < height[right]:
+                left += 1
+            else:
+                right -= 1
+        
+        return max_water
 
 ########################################
 # if __name__ == '__main__':
