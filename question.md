@@ -1,38 +1,32 @@
-# Given Sum Pair
+# Kth - Smallest Element
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/](https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/)
+**Link:** [https://practice.geeksforgeeks.org/problems/kth-smallest-element5635/1](https://practice.geeksforgeeks.org/problems/kth-smallest-element5635/1)
 
 ---
 
 ## Problem Statement
 
-**Problem Title:** Two Sum Problem
-
+**Problem Statement:**
+Find the kth smallest element in an unsorted array of integers.
 
 **Description:**
-
-Given an array of integers `arr` and an integer target sum `target`, determine if there exists a pair of elements in the array that adds up to the target sum. If such a pair is found, return `true`; otherwise, return `false`.
-
-### Examples:
+Given an array of integers and an integer k, find the kth smallest element in the array. The solution involves using a Max Heap data structure to efficiently select the kth smallest element.
 
 
-* Example 1:
-	+ Input: `arr = [0, -1, 2, -3, 1]`, `target = -2`
-	+ Output: `true` (pair (-1, 1) adds up to -2)
-* Example 2:
-	+ Input: `arr = [-5, -6, -7, 8, 9]`, `target = 0`
-	+ Output: `false` (no pair adds up to 0)
-* Example 3:
-	+ Input: `arr = [10, 20, 30, 40, 50]`, `target = 70`
-	+ Output: `true` (pair (20, 50) adds up to 70)
+**Examples:**
+
+1. **Input:** arr = [10, 5, 4, 3, 48, 6, 2, 33, 53, 10], k = 4
+   **Output:** The 4th smallest element in the array is 6.
+
+2. **Input:** arr = [1, 2, 3, 4, 5], k = 3
+   **Output:** The 3rd smallest element in the array is 3.
+
+3. **Input:** arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1], k = 5
+   **Output:** The 5th smallest element in the array is 5.
 
 
-### Constraints:
-
-
-* The input array `arr` contains at least two elements.
-* All elements in the array are integers.
-* The target sum `target` is an integer.
-
-Note that the constraints assume reasonable bounds for the problem. In a real-world scenario, additional constraints might be imposed based on specific requirements.
+**Constraints:**
+- The input array contains n integers.
+- The integer k is within the range 1 <= k <= n.
+- All elements in the array are distinct positive integers.
