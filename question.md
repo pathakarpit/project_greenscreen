@@ -1,34 +1,34 @@
-# Find Minimum Number of Merge Operations to Make an Array Palindrome
+# Given an Array of Numbers Arrange the Numbers to Form the Biggest Number
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/find-minimum-number-of-merge-operations-to-make-an-array-palindrome/](https://www.geeksforgeeks.org/find-minimum-number-of-merge-operations-to-make-an-array-palindrome/)
+**Link:** [https://www.geeksforgeeks.org/given-an-array-of-numbers-arrange-the-numbers-to-form-the-biggest-number/](https://www.geeksforgeeks.org/given-an-array-of-numbers-arrange-the-numbers-to-form-the-biggest-number/)
 
 ---
 
 ## Problem Statement
 
-**
+**Title:** Largest Concatenated Number
 
-**Title:** Minimum Operations to Make Array Palindrome
+**Description:** 
+Given a list of strings representing numbers in string format, find the largest number that can be formed by concatenating these strings.
 
-**Description:**
-
-Given an array of integers, find the minimum number of operations required to make the array palindrome. An operation is defined as either increasing the current element or inserting a new element with the value of the next element in the array.
+Remove any non-digit characters from each string and sort all the remaining digits in descending order (from largest to smallest). If there is a tie, we compare the first digit to break it. The resulting sorted string will represent the largest concatenated number.
 
 **Examples:**
 
-1. Input: `arr = [1, 4, 5, 9, 1]`
-Output: `2` (Increase the middle two elements to make the array palindrome)
+1. Input: ["2", "21", "12"]
+   Output: "1212"
+   Explanation: The largest concatenated number formed by these strings is 1212.
+   
+2. Input: ["3", "30", "33"]
+   Output: "3330"
+   Explanation: The largest concatenated number formed by these strings is 3330.
 
-2. Input: `arr = [10, 20, 30, 40, 50]`
-Output: `0` (The input array is already a palindrome)
+3. Input: ["1", "11", "13"]
+   Output: "31113"
+   Explanation: The largest concatenated number formed by these strings is 31113.
 
-3. Input: `arr = [1, 2, 3, 4, 5]`
-Output: `4` (Increase the middle three elements to make the array palindrome)
-
-**Constraints:**
-
-* The length of the input array `n` will be between `1` and `10^6`.
-* The values in the input array will be non-negative integers.
-
-Note that this problem assumes that the input array can be modified. If the input array is immutable, the number of operations would need to be adjusted accordingly.
+**Constraints:** 
+* N <= 10^5 (where N is the maximum length of any string in the input list).
+* All numbers in the input list are non-negative.
+* No leading zeroes will be present in the output.
