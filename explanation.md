@@ -1,51 +1,25 @@
-# Professor's Analysis: Merge Overlapping Intervals
+# Professor's Analysis: Find Minimum Number of Merge Operations to Make an Array Palindrome
 
 ## Time Complexity Analysis
 
-The time complexity of this solution is O(N).
-
-**Why?**
-
-* The loop `for current_num in range(1, N + 1):` runs **N times**, where N is the input size. This is because we iterate over each number from 1 to N.
-* Inside the loop, we perform a dictionary lookup `if x in dict:` which takes O(1) time on average, since hash table lookups are constant time operations.
-
-Since we have two operations that take linear and constant time respectively, we multiply their complexities: N * O(1) = O(N).
+* The time complexity is O(N), where N is the number of elements in the input array.
+* The loop runs exactly N/2 times, which is equivalent to O(N) because we're considering the worst-case scenario where we have an even number of elements.
+* Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average. This is because dictionary lookups are typically implemented as hash table operations, and they can be performed in constant time.
+* Therefore, the total time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
 
-The space complexity of this solution is O(N).
-
-**Why?**
-
-* We use a dictionary `dict` to store at most **N elements**, where each element represents the complement of a number in our range.
+* The space complexity is O(N), where N is the number of elements in the input array.
+* We use a dictionary/hash map to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
 
-To implement this logic, follow these steps:
+* Initialize an empty dictionary (not explicitly shown in the code, but implied) and two variables `n` and `operations`.
+* Set `n = len(arr)` to get the number of elements in the input array.
+* Loop from `i = 0` to `i = n//2 - 1` (inclusive). This is because we're only considering the first half of the array, and we want to avoid duplicate pairs by only iterating over the upper half of the array.
+* Inside the loop, check if `arr[i] != arr[n-i-1]`. If this condition is true, it means that the current pair of elements does not match. In this case:
+	+ Increment `operations` by the absolute difference between `arr[i]` and `arr[n-i-1]`, i.e., `abs(arr[i] - arr[n-i-1])`.
+* After the loop completes, return the value of `operations`.
 
-### Initialize Variables
-
-* Initialize an empty dictionary `dict = {}`
-* Initialize two variables: `target` and `N`
-
-### Loop Through Numbers
-
-* Start a loop that iterates through numbers from 1 to N using the variable `current_num`
-	+ Initialize `x = target - current_num`
-
-### Dictionary Lookup
-
-* Inside the loop, check if the complement of our current number (`x`) is already in our dictionary
-	+ If it is, we have found a pair, and we exit the loop
-	+ Otherwise, we add the current number to our dictionary: `dict[current_num] = True`
-
-### Logic for Found Pair
-
-* If we find a pair (i.e., the complement of `current_num` exists in the dictionary), we:
-	+ Return the pair (not explicitly stated in the problem, but implied as part of solving it)
-
-### Logic for Not Found Pair
-
-* If we don't find any pairs after iterating through all numbers, we return an empty result or indicate that no such pair exists.
-
-Note: This explanation assumes that we are looking for pairs of numbers whose sum equals a given target value. The actual problem might vary, but the general logic remains the same.
+Note that if no pair is found (i.e., all elements are equal), the function will not modify the `operations` variable. In this case, it will simply return 0.
+```
