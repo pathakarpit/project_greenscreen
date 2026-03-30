@@ -1,32 +1,30 @@
-# Space Optimization Using Bit Manipulations
+# Subarray Sum Divisible K
 
-**Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/space-optimization-using-bit-manipulations/](https://www.geeksforgeeks.org/space-optimization-using-bit-manipulations/)
+**Difficulty:** Hard  
+**Link:** [https://www.geeksforgeeks.org/longest-subarray-sum-divisible-k/](https://www.geeksforgeeks.org/longest-subarray-sum-divisible-k/)
 
 ---
 
 ## Problem Statement
 
-**
+```
+**Title:** Longest Subarray Divisible by K
 
-**Title:** Multiples of 2 and 5
-
-**Description:** Given two integers `a` and `b`, find all multiples of 2 and 5 within the range `[a, b]`. Create an array to store these multiples and output them.
+**Description:**
+Given an array `arr` and an integer `k`, find the length of the longest subarray such that the sum of its elements is divisible by `k`.
 
 **Examples:**
 
-1. Input: `a = 2, b = 10`
-Output: `2 4 5 6 8 10`
+1. Input: `arr = [2, 7, 6, 1, 4, 5], k = 3`
+Output: `7` (subarray `[2, 7, 6]`)
+1. Input: `arr = [1, 2, 3, 4, 5], k = 3`
+Output: `0`
+2. Input: `arr = [12, 15, 18, 21, 24], k = 5`
+Output: `10` (subarray `[12, 15, 18]`)
 
-2. Input: `a = 5, b = 20`
-Output: `5 10 15 20`
+**Constraints:**
+- 1 <= arr.length <= 10^5
+- 0 <= arr[i] <= 10^9
+- 1 <= k <= 10^6
 
-3. Input: `a = 10, b = 20`
-Output: `10 12 14 16 18 20`
-
-**Constraints:** 
-
-*   The range `[a, b]` will be within the bounds of a 32-bit integer.
-*   The array size will be calculated dynamically based on the range `[a, b]`.
-
-Note: The input and output formats are as per the example usage in the provided code snippets.
+```
