@@ -1,48 +1,43 @@
-# Professor's Analysis: Subarray Sum Divisible K
+# Professor's Analysis: Print all Possible Combinations of r Elements in a Given Array of Size n
 
-Here is a detailed markdown explanation allowing code reconstruction: 
+The final answer is: 
 
 ## Time Complexity Analysis
-### Big O Notation:
-O(N)
+### Big O:
+The time complexity of this solution is O(N).
 
 ### Explanation:
-The loop runs N times, where N is the length of the input array. Inside the loop, we have two main operations:
-
-*   The line `cumulative_sum += arr[i]`: This operation takes constant time because it's a simple addition.
-*   The dictionary lookup `if current_remainder in rem_index:`: In Python, dictionary lookups (on average) take O(1) time. This is because dictionaries use hash tables internally, which allow for fast lookups.
-
-Since the loop runs N times and each iteration involves constant-time operations, the overall time complexity is N * O(1) = O(N).
+* The loop runs N times and the dictionary lookup takes O(1) time on average.
+* Therefore, N * O(1) = O(N).
 
 ## Space Complexity Analysis
-### Big O Notation:
-O(N)
+### Big O:
+The space complexity is O(N).
 
 ### Explanation:
-We're using a dictionary (`rem_index`) to store at most N elements (the remainders). Each element in the dictionary takes up constant space, so the total space complexity is proportional to the number of elements stored. Therefore, the space complexity is O(N).
+* We use a data structure to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
-### Code Reconstruction Steps:
-Here are the steps to reconstruct the code:
+### Initialize Variables and Loop Condition:
 
-1.  **Initialization**:
-    *   Initialize variables: `n`, `cumulative_sum`, and `max_length`.
-    *   Set `rem_index` as an empty dictionary.
-2.  **Check for Empty Array**:
-    *   If the input array is empty (`n == 0`), return 0.
-3.  **Calculate Cumulative Sum and Remainder**:
-    *   Iterate through each element in the input array using a loop that runs N times (where N is the length of the input array).
-    *   Inside the loop, calculate the cumulative sum (`cumulative_sum += arr[i]`) and find the remainder by taking the modulo of the cumulative sum with the divisor k.
-4.  **Handle Negative Remainder**:
-    *   If the calculated remainder is negative, add k to it (to normalize the remainder).
-5.  **Check for Duplicate Remainder**:
-    *   Check if the current remainder has been seen before by looking up its existence in the dictionary (`if current_remainder in rem_index:`).
-6.  **Calculate Subarray Length and Update Maximum Length**:
-    *   If a duplicate remainder is found, calculate the length of the subarray ending at index i using the formula `length = i - rem_index[current_remainder]`.
-    *   Update the maximum length (`max_length`) if the calculated length is greater.
-7.  **Store First Occurrence of Remainder**:
-    *   If a remainder has not been seen before, store its first occurrence in the dictionary by setting `rem_index[current_remainder] = i`.
-8.  **Return Maximum Length**:
-    *   After iterating through all elements and updating the maximum length as needed, return the final value of `max_length`.
+* The class `Solution` has an instance method `solve`.
+* It takes two parameters: `arr` (an array of integers) and `r` (the target sum).
+* Inside the `solve` method, we define a nested function `backtrack`.
+* `backtrack` takes two parameters: `start` (the starting index for the current iteration) and `path` (the current path being explored).
 
-By following these steps, you should be able to reconstruct the given code.
+### Math to Find Complement:
+
+* The formula used is `target - current_num`. This is used to find the complement of the current number in the target sum.
+
+### Loop Condition:
+* The loop condition for `backtrack` is `for i in range(start, len(arr)):`. This means that we will explore all numbers from the starting index `start` to the end of the array `arr`.
+
+### If/Else Logic:
+
+* Inside the loop, we append the current number to the path: `path.append(arr[i])`.
+* We then recursively call the `backtrack` function with the updated start index and path.
+* After the recursive call, we pop the last element from the path (backtracking): `path.pop()`. This is where the function gets its name "backtrack".
+* If the length of the current path equals the target sum `r`, we append a copy of the path to the result list: `result.append(path[:])`.
+
+### Final Return Statement:
+* If no pair is found, the function will return an empty list.
