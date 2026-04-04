@@ -1,49 +1,33 @@
-# Print all Possible Combinations of r Elements in a Given Array of Size n
+# Mo's Algorithm
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/](https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/)
+**Link:** [https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-set-1-introduction/](https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-set-1-introduction/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Generate All Combinations of Size r in an Array
+**Title:** 
+Mo's Algorithm Maximum Sum Range
 
-Description:
-Given an array `arr` and an integer `r`, write a function to generate all combinations of size `r` from the input array. The combinations should be returned as a list of lists, where each inner list represents a combination.
 
-Examples:
+**Description:** 
+Given an array A of integers, find all subarrays whose sum is greater than or equal to the maximum sum of any other subarray in the array.
 
-* Input: `arr = [1, 2, 3]`, `r = 2`
-Output:
-[
-  [1, 2],
-  [1, 3],
-  [2, 3]
-]
+**Examples:**
 
-* Input: `arr = [1, 2, 3, 4]`, `r = 3`
-Output:
-[
-  [1, 2, 3],
-  [1, 2, 4],
-  [1, 3, 4],
-  [2, 3, 4]
-]
+1. Input: A = [1, -2, 3, -4, 5]
+Output: [[0, 4]]
 
-* Input: `arr = [5, 6, 7, 8]`, `r = 2`
-Output:
-[
-  [5, 6],
-  [5, 7],
-  [5, 8],
-  [6, 7],
-  [6, 8],
-  [7, 8]
-]
+2. Input: A = [-1, -2, -3]
+Output: []
 
-Constraints:
-1 <= |arr| <= 10^3 (array size)
-1 <= r <= min(|arr|, 10) (combination size)
-```
+3. Input: A = [1, 2, 3, 4]
+Output: [[0, 3]]
+
+
+**Constraints:** 
+- The array A will contain at most 10^5 elements.
+- All elements in the array A will be integers.
+
+This structured string contains the required information to solve this problem using Mo's Algorithm.

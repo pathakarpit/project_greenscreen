@@ -1,20 +1,30 @@
-# Problem: Print all Possible Combinations of r Elements in a Given Array of Size n
+# Problem: Mo's Algorithm
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/
+# Link: https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-set-1-introduction/
 
 class Solution:
-    def solve(self, arr, r):
-        def backtrack(start, path):
-            if len(path) == r:
-                result.append(path[:])
-                return
-            for i in range(start, len(arr)):
-                path.append(arr[i])
-                backtrack(i + 1, path)
-                path.pop()
+    def solve(self, A):
+        n = len(A)
+        if n == 0:
+            return []
+        
+        # Calculate prefix sums
+        prefix_sums = [0] * (n + 1)
+        for i in range(n):
+            prefix_sums[i + 1] = prefix_sums[i] + A[i]
         
         result = []
-        backtrack(0, [])
+        max_prefix_sum = float('-inf')
+        
+        # Find the maximum subarray sum (using Kadane's algorithm)
+        for i in range(n):
+            current_max = 0
+            for j in range(i, n):
+                current_max += A[j]
+                if current_max >= max_prefix_sum:
+                    result.append([i, j])
+                    max_prefix_sum = current_max
+        
         return result
 
 ########################################

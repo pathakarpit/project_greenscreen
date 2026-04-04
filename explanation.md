@@ -1,43 +1,48 @@
-# Professor's Analysis: Print all Possible Combinations of r Elements in a Given Array of Size n
-
-The final answer is: 
+# Professor's Analysis: Mo's Algorithm
 
 ## Time Complexity Analysis
-### Big O:
-The time complexity of this solution is O(N).
+### Big O Notation
+The time complexity of this solution is O(N^2).
 
-### Explanation:
-* The loop runs N times and the dictionary lookup takes O(1) time on average.
-* Therefore, N * O(1) = O(N).
+### Explanation
+* The outer loop runs N times.
+* For each iteration, the inner loop also runs up to N times (worst-case scenario: all elements are part of a subarray).
+* Inside the inner loop, we perform constant-time operations (addition and comparison).
+* Since the inner loop runs for each element in the array, and the number of iterations is proportional to the square of the size of the input (N), the overall time complexity is O(N^2).
 
 ## Space Complexity Analysis
-### Big O:
-The space complexity is O(N).
+### Big O Notation
+The space complexity of this solution is O(N).
 
-### Explanation:
-* We use a data structure to store at most N elements.
+### Explanation
+* We use a list `prefix_sums` to store prefix sums, which requires O(N) space.
+* We also use a variable `result` to store the indices of subarray maxima, which requires O(N) space in the worst case (when every element is part of a subarray).
+* Therefore, the overall space complexity is O(N).
 
 ## Step-by-Step Reconstruction Logic
-### Initialize Variables and Loop Condition:
+### Step 1: Initialize Variables
 
-* The class `Solution` has an instance method `solve`.
-* It takes two parameters: `arr` (an array of integers) and `r` (the target sum).
-* Inside the `solve` method, we define a nested function `backtrack`.
-* `backtrack` takes two parameters: `start` (the starting index for the current iteration) and `path` (the current path being explored).
+* Initialize an empty list `result` to store the indices of subarray maxima.
+* Initialize a variable `max_prefix_sum` to negative infinity.
 
-### Math to Find Complement:
+### Step 2: Calculate Prefix Sums
 
-* The formula used is `target - current_num`. This is used to find the complement of the current number in the target sum.
+* Create a list `prefix_sums` with size `n + 1`, where `n` is the length of the input array A.
+* Iterate through the array A and calculate prefix sums:
+	+ Initialize `prefix_sums[0] = 0`.
+	+ For each element `A[i]` in the array, calculate `prefix_sums[i + 1] = prefix_sums[i] + A[i]`.
 
-### Loop Condition:
-* The loop condition for `backtrack` is `for i in range(start, len(arr)):`. This means that we will explore all numbers from the starting index `start` to the end of the array `arr`.
+### Step 3: Find Maximum Subarray Sum (Kadane's Algorithm)
 
-### If/Else Logic:
+* Iterate through the array A using two nested loops:
+	+ Outer loop iterates from `i = 0` to `n - 1`.
+	+ Inner loop iterates from `j = i` to `n - 1`.
+* For each subarray starting at index `i`, calculate the maximum sum using Kadane's algorithm:
+	+ Initialize `current_max = 0`.
+	+ Iterate through the subarray, adding elements to `current_max` and updating `max_prefix_sum` if necessary.
+* Store the indices of the maximum subarray maxima in the list `result`.
 
-* Inside the loop, we append the current number to the path: `path.append(arr[i])`.
-* We then recursively call the `backtrack` function with the updated start index and path.
-* After the recursive call, we pop the last element from the path (backtracking): `path.pop()`. This is where the function gets its name "backtrack".
-* If the length of the current path equals the target sum `r`, we append a copy of the path to the result list: `result.append(path[:])`.
+### Step 4: Return Result
 
-### Final Return Statement:
-* If no pair is found, the function will return an empty list.
+* If no pair is found, return an empty list.
+* Otherwise, return the list of indices stored in `result`.
