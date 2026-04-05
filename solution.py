@@ -1,31 +1,20 @@
-# Problem: Mo's Algorithm
-# Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-set-1-introduction/
+# Problem: Valid Palindrome
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/valid-palindrome/
 
 class Solution:
-    def solve(self, A):
-        n = len(A)
-        if n == 0:
-            return []
+    def solve(self, sentence):
+        # Remove all non-alphabetic characters and convert to lowercase
+        cleaned_sentence = ''.join(char.lower() for char in sentence if char.isalpha())
         
-        # Calculate prefix sums
-        prefix_sums = [0] * (n + 1)
-        for i in range(n):
-            prefix_sums[i + 1] = prefix_sums[i] + A[i]
-        
-        result = []
-        max_prefix_sum = float('-inf')
-        
-        # Find the maximum subarray sum (using Kadane's algorithm)
-        for i in range(n):
-            current_max = 0
-            for j in range(i, n):
-                current_max += A[j]
-                if current_max >= max_prefix_sum:
-                    result.append([i, j])
-                    max_prefix_sum = current_max
-        
-        return result
+        # Use two pointers to check if the cleaned sentence is a palindrome
+        left, right = 0, len(cleaned_sentence) - 1
+        while left < right:
+            if cleaned_sentence[left] != cleaned_sentence[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
 
 ########################################
 # if __name__ == '__main__':

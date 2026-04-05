@@ -1,33 +1,19 @@
-# Mo's Algorithm
+# Valid Palindrome
 
-**Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-set-1-introduction/](https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-set-1-introduction/)
+**Difficulty:** Easy  
+**Link:** [https://leetcode.com/problems/valid-palindrome/](https://leetcode.com/problems/valid-palindrome/)
 
 ---
 
 ## Problem Statement
 
-**Title:** 
-Mo's Algorithm Maximum Sum Range
-
-
-**Description:** 
-Given an array A of integers, find all subarrays whose sum is greater than or equal to the maximum sum of any other subarray in the array.
-
-**Examples:**
-
-1. Input: A = [1, -2, 3, -4, 5]
-Output: [[0, 4]]
-
-2. Input: A = [-1, -2, -3]
-Output: []
-
-3. Input: A = [1, 2, 3, 4]
-Output: [[0, 3]]
-
-
-**Constraints:** 
-- The array A will contain at most 10^5 elements.
-- All elements in the array A will be integers.
-
-This structured string contains the required information to solve this problem using Mo's Algorithm.
+Title: Palindrome Sentence Checker
+Description: Given a sentence, determine if it is a palindrome.
+Examples:
+1. Input: "madam" Output: True
+2. Input: "hello" Output: False
+3. Input: "a man a plan a canal panama" Output: True
+Constraints:
+- The input string only contains alphabetic characters (no numbers or special symbols).
+- The input string has a maximum length of 1000 characters.
+- The function `isPalinSent` uses a Two Pointers approach, ensuring O(n) Time and O(1) Space complexity.
