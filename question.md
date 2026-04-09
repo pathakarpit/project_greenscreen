@@ -1,19 +1,31 @@
-# Valid Palindrome
+# Valid Anagram
 
 **Difficulty:** Easy  
-**Link:** [https://leetcode.com/problems/valid-palindrome/](https://leetcode.com/problems/valid-palindrome/)
+**Link:** [https://leetcode.com/problems/valid-anagram/](https://leetcode.com/problems/valid-anagram/)
 
 ---
 
 ## Problem Statement
 
-Title: Palindrome Sentence Checker
-Description: Given a sentence, determine if it is a palindrome.
+```
+Title: Check if two Strings are Anagrams of each other
+Description:
+Given two non-empty strings s1 and s2, check whether they are anagrams of each other.
 Examples:
-1. Input: "madam" Output: True
-2. Input: "hello" Output: False
-3. Input: "a man a plan a canal panama" Output: True
+Example 1:
+Input: s1 = "geeks", s2 = "kseeg"
+Output: true
+
+Example 2:
+Input: s1 = "hello", s2 = "ollhe"
+Output: true
+
+Example 3:
+Input: s1 = "abcde", s2 = "edcba"
+Output: true
+
 Constraints:
-- The input string only contains alphabetic characters (no numbers or special symbols).
-- The input string has a maximum length of 1000 characters.
-- The function `isPalinSent` uses a Two Pointers approach, ensuring O(n) Time and O(1) Space complexity.
+- The input strings are non-empty and contain only ASCII characters.
+- The length of the input strings is less than or equal to 10^5.
+
+```

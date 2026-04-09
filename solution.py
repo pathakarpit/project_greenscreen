@@ -1,20 +1,18 @@
-# Problem: Valid Palindrome
+# Problem: Valid Anagram
 # Difficulty: Easy
-# Link: https://leetcode.com/problems/valid-palindrome/
+# Link: https://leetcode.com/problems/valid-anagram/
 
 class Solution:
-    def solve(self, sentence):
-        # Remove all non-alphabetic characters and convert to lowercase
-        cleaned_sentence = ''.join(char.lower() for char in sentence if char.isalpha())
-        
-        # Use two pointers to check if the cleaned sentence is a palindrome
-        left, right = 0, len(cleaned_sentence) - 1
-        while left < right:
-            if cleaned_sentence[left] != cleaned_sentence[right]:
-                return False
-            left += 1
-            right -= 1
-        return True
+    def solve(self, s1, s2):
+        if len(s1) != len(s2):
+            return False
+        count_s1 = [0] * 256
+        count_s2 = [0] * 256
+        for char in s1:
+            count_s1[ord(char)] += 1
+        for char in s2:
+            count_s2[ord(char)] += 1
+        return count_s1 == count_s2
 
 ########################################
 # if __name__ == '__main__':

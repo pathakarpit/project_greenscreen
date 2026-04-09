@@ -1,19 +1,32 @@
-# Professor's Analysis: Valid Palindrome
+# Professor's Analysis: Valid Anagram
 
+```
 ## Time Complexity Analysis
-The time complexity of this algorithm is O(N).
+
+* The given Python code has two loops that iterate over the strings `s1` and `s2`.
+* Each loop runs in linear time, O(N), where N is the length of the string.
+* Inside each loop, there is a dictionary lookup `ord(char)` which takes constant time, O(1).
+* Therefore, the total time complexity is O(N) * O(1) = O(N).
 
 ## Space Complexity Analysis
-The space complexity of this algorithm is O(N).
+
+* The space complexity is O(N), where N is the length of the string.
+* We use an array `count_s1` and `count_s2` to store at most 256 elements.
 
 ## Step-by-Step Reconstruction Logic
 
-* **Initialization**:
-	+ The function `solve` is called with the input `sentence`.
-	+ We initialize two pointers, `left` and `right`, to the start and end of the cleaned sentence respectively.
-* **Loop Condition**: The loop continues as long as `left` is less than `right`.
-* **Inside Loop**:
-	+ We check if the characters at the current positions of `left` and `right` are equal. If they are not, we return `False`, indicating that the sentence is not a palindrome.
-	+ If they are equal, we increment `left` by 1 and decrement `right` by 1 to move towards the center of the sentence.
-* **Return Statement**:
-	+ If the loop completes without returning `False`, it means that all pairs of characters have been checked and are equal. In this case, we return `True`, indicating that the sentence is a palindrome.
+### Variables Initialization
+* Two arrays, `count_s1` and `count_s2`, are initialized with size 256 to store character counts.
+* The length of the strings `s1` and `s2` is compared. If they are not equal, the function returns False.
+
+### Loop Iterations
+* Two loops iterate over the characters in `s1` and `s2`.
+* Inside each loop, the character count for the current character is incremented in the corresponding array (`count_s1` or `count_s2`).
+
+### Comparison of Character Counts
+* After iterating over all characters, the two arrays are compared.
+* If they are equal, it means that both strings have the same characters with the same frequencies.
+
+### Return Statement
+* If the character counts are equal, the function returns True. Otherwise, it returns False.
+```
