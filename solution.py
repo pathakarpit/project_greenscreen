@@ -1,18 +1,21 @@
-# Problem: Valid Anagram
+# Problem: Valid parentheses
 # Difficulty: Easy
-# Link: https://leetcode.com/problems/valid-anagram/
+# Link: https://leetcode.com/problems/valid-parentheses/
 
 class Solution:
-    def solve(self, s1, s2):
-        if len(s1) != len(s2):
-            return False
-        count_s1 = [0] * 256
-        count_s2 = [0] * 256
-        for char in s1:
-            count_s1[ord(char)] += 1
-        for char in s2:
-            count_s2[ord(char)] += 1
-        return count_s1 == count_s2
+    def solve(self, s: str) -> bool:
+        stack = []
+        bracket_map = {')': '(', ']': '[', '}': '{'}
+        
+        for char in s:
+            if char in bracket_map.values():
+                stack.append(char)
+            elif char in bracket_map.keys():
+                if not stack or stack[-1] != bracket_map[char]:
+                    return False
+                stack.pop()
+        
+        return not stack
 
 ########################################
 # if __name__ == '__main__':

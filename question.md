@@ -1,31 +1,27 @@
-# Valid Anagram
+# Valid parentheses
 
 **Difficulty:** Easy  
-**Link:** [https://leetcode.com/problems/valid-anagram/](https://leetcode.com/problems/valid-anagram/)
+**Link:** [https://leetcode.com/problems/valid-parentheses/](https://leetcode.com/problems/valid-parentheses/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Check if two Strings are Anagrams of each other
-Description:
-Given two non-empty strings s1 and s2, check whether they are anagrams of each other.
-Examples:
-Example 1:
-Input: s1 = "geeks", s2 = "kseeg"
-Output: true
+**Title:** Balanced String of Brackets
 
-Example 2:
-Input: s1 = "hello", s2 = "ollhe"
-Output: true
+**Description:** A string of brackets is balanced if every opening bracket has a corresponding closing bracket of the same type, the pairs are properly ordered, and no bracket closes before its matching opening bracket.
 
-Example 3:
-Input: s1 = "abcde", s2 = "edcba"
-Output: true
+**Examples:**
 
-Constraints:
-- The input strings are non-empty and contain only ASCII characters.
-- The length of the input strings is less than or equal to 10^5.
+1. Input: `[({[]})]`
+Output: `True`
 
-```
+2. Input: `( [ ] )` 
+Output: `False` (extra closing parenthesis)
+
+3. Input: `{()[]}()`
+Output: `True`
+
+**Constraints:** 1 <= N <= 10^5, where N is the length of the input string.
+
+I have removed any solution code and provided a clear Problem Statement, Examples, and Constraints as per your requirements.
