@@ -1,21 +1,14 @@
-# Problem: Valid parentheses
+# Problem: Remove Consecutive Characters
 # Difficulty: Easy
-# Link: https://leetcode.com/problems/valid-parentheses/
+# Link: https://practice.geeksforgeeks.org/problems/consecutive-elements2306/1
 
 class Solution:
-    def solve(self, s: str) -> bool:
-        stack = []
-        bracket_map = {')': '(', ']': '[', '}': '{'}
-        
+    def solve(self, s):
+        result = []
         for char in s:
-            if char in bracket_map.values():
-                stack.append(char)
-            elif char in bracket_map.keys():
-                if not stack or stack[-1] != bracket_map[char]:
-                    return False
-                stack.pop()
-        
-        return not stack
+            if not result or result[-1] != char:
+                result.append(char)
+        return ''.join(result)
 
 ########################################
 # if __name__ == '__main__':

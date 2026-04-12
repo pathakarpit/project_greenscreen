@@ -1,27 +1,29 @@
-# Valid parentheses
+# Remove Consecutive Characters
 
 **Difficulty:** Easy  
-**Link:** [https://leetcode.com/problems/valid-parentheses/](https://leetcode.com/problems/valid-parentheses/)
+**Link:** [https://practice.geeksforgeeks.org/problems/consecutive-elements2306/1](https://practice.geeksforgeeks.org/problems/consecutive-elements2306/1)
 
 ---
 
 ## Problem Statement
 
-**Title:** Balanced String of Brackets
+**Title:** Remove Consecutive Duplicates from a String
 
-**Description:** A string of brackets is balanced if every opening bracket has a corresponding closing bracket of the same type, the pairs are properly ordered, and no bracket closes before its matching opening bracket.
+**Description:**
+Given a string s , we have  to remove all the consecutive duplicate characters of the string and return the resultant string. 
 
 **Examples:**
 
-1. Input: `[({[]})]`
-Output: `True`
+*   Input: str = "aaaaabbbbbb"
+    Output: ab
+    Explanation: Remove consecutive duplicate characters from a string s  such as 5 a's are at consecutive so only write a and same like that in b's condition.
+*   Input: str = "geeksforgeeks"
+    Output: geksforgeks
+    Explanation: Remove consecutive duplicate characters from "geeksforgeeks", so "ee" becomes "e", resulting in "geksforgeks"
 
-2. Input: `( [ ] )` 
-Output: `False` (extra closing parenthesis)
+**Constraints:**
 
-3. Input: `{()[]}()`
-Output: `True`
+*   The input string s will only contain lowercase English letters.
+*   The length of the input string s will not exceed 10^5.
 
-**Constraints:** 1 <= N <= 10^5, where N is the length of the input string.
-
-I have removed any solution code and provided a clear Problem Statement, Examples, and Constraints as per your requirements.
+Note: This problem requires removing consecutive duplicates from a string. The goal is to return the resultant string after removing these duplicates. The examples provided demonstrate how this works with different inputs.

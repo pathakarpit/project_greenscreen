@@ -1,34 +1,49 @@
-# Professor's Analysis: Valid parentheses
+# Professor's Analysis: Remove Consecutive Characters
 
 ## Time Complexity Analysis
 
-* The time complexity of this algorithm is O(N), where N is the number of characters in the input string.
-* This is because the loop runs N times, and each iteration performs a constant amount of work (dictionary lookup and stack operations).
-* Specifically, the line `if x in dict` takes O(1) time on average, since dictionary lookups are typically very fast. Therefore, N * O(1) = O(N).
+
+The time complexity of this solution is O(N).
+
+
+• The loop runs N times, where N is the number of characters in the string `s`.
+• Inside the loop, we perform an average-case dictionary lookup using `if char in result`, which takes O(1) time.
+• Therefore, the total time complexity is N * O(1) = O(N).
+
 
 ## Space Complexity Analysis
 
-* The space complexity of this algorithm is O(N), where N is the number of characters in the input string.
-* This is because we use a dictionary to store at most N elements (the opening brackets).
+
+The space complexity of this solution is O(N).
+
+
+• We use a list (`result`) to store at most N characters.
+
 
 ## Step-by-Step Reconstruction Logic
 
-### 1. Initialize Variables
-* We initialize an empty stack `stack` and a dictionary `bracket_map` that maps closing brackets to their corresponding opening brackets.
 
-### 2. Loop Through the Input String
-* We iterate through each character `char` in the input string `s`.
-* If we encounter an opening bracket (`char in bracket_map.values()`), we push it onto the stack.
-* If we encounter a closing bracket (`char in bracket_map.keys()`), we check if:
-	+ The stack is empty: if so, we return False (since there's no matching opening bracket).
-	+ The top of the stack does not match the current closing bracket: if so, we return False (since the brackets do not match).
+To reconstruct the logic behind this code, follow these steps:
 
-### 3. Pop Opening Bracket from Stack
-* If we pass the checks above, we pop the corresponding opening bracket from the stack.
 
-### 4. Return Result
-* After iterating through all characters in the input string:
-	+ If the stack is empty, we return True (since all brackets were matched).
-	+ If the stack is not empty, we return False (since there are unmatched opening brackets).
+### Initialize Variables
 
-Note that this algorithm has a time complexity of O(N) and space complexity of O(N), making it efficient for large input strings.
+* `result`: an empty list to store the compressed string
+* `char`: each character in the input string `s`
+
+### Loop Through Characters in String
+
+* Iterate through each character `char` in the input string `s`
+* Use a condition to check if the current character is different from the last character in the result list (`result[-1] != char`)
+
+### Append Character to Result List
+
+* If the current character is not equal to the last character, append it to the result list
+* Continue with the next iteration of the loop
+
+### Return Compressed String
+
+* After iterating through all characters in the string, return the compressed string by joining all characters in the result list (`''.join(result)`)
+
+
+Note that if no pair is found, an empty string will be returned.
