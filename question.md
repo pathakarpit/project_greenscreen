@@ -1,29 +1,29 @@
-# Remove Consecutive Characters
+# Longest Common Prefix
 
 **Difficulty:** Easy  
-**Link:** [https://practice.geeksforgeeks.org/problems/consecutive-elements2306/1](https://practice.geeksforgeeks.org/problems/consecutive-elements2306/1)
+**Link:** [https://leetcode.com/problems/longest-common-prefix/](https://leetcode.com/problems/longest-common-prefix/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Remove Consecutive Duplicates from a String
-
+**Title:** Longest Common Prefix
 **Description:**
-Given a string s , we have  to remove all the consecutive duplicate characters of the string and return the resultant string. 
-
+Given an array of strings arr[], return the longest common prefix among each and every strings present in the array. If there’s no prefix common in all the strings, return “”.
 **Examples:**
 
-*   Input: str = "aaaaabbbbbb"
-    Output: ab
-    Explanation: Remove consecutive duplicate characters from a string s  such as 5 a's are at consecutive so only write a and same like that in b's condition.
-*   Input: str = "geeksforgeeks"
-    Output: geksforgeks
-    Explanation: Remove consecutive duplicate characters from "geeksforgeeks", so "ee" becomes "e", resulting in "geksforgeks"
+1. Input: arr[] = ["geeksforgeeks", "geeks", "geek", "geezer"]
+Output: "gee"
+Explanation: "gee" is the longest common prefix in all the given strings.
+2. Input: arr[] = ["apple", "ape", "april"]
+Output: "ap"
+Explanation: "ap" is the longest common prefix in all the given strings.
+3. Input: arr[] = ["hello", "world"]
+Output: ""
+Explanation: There’s no common prefix in the given strings.
 
 **Constraints:**
+1 <= N <= 10^5 (number of strings)
+1 <= M <= 10^3 (length of each string)
 
-*   The input string s will only contain lowercase English letters.
-*   The length of the input string s will not exceed 10^5.
-
-Note: This problem requires removing consecutive duplicates from a string. The goal is to return the resultant string after removing these duplicates. The examples provided demonstrate how this works with different inputs.
+Note: The constraints assume that the input array will have at most 100,000 elements and each string will be at most 1,000 characters long. If the actual input is much larger or smaller than these values, the constraints should be adjusted accordingly.

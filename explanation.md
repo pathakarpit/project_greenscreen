@@ -1,49 +1,7 @@
-# Professor's Analysis: Remove Consecutive Characters
+# Professor's Analysis: Longest Common Prefix
 
-## Time Complexity Analysis
+In this solution, we first check if the input array is empty and return an empty string if it's empty. Then, we find the length of each string in the array using a list comprehension and store the minimum length (`min_len`) for further use.
 
+Next, we initialize an empty string `prefix` to store the common prefix and iterate over each character position from 0 to `min_len - 1`. For each iteration, we get the character at position `i` from the first string in the array and check if it's the same in all strings using a generator expression with the `all()` function.
 
-The time complexity of this solution is O(N).
-
-
-• The loop runs N times, where N is the number of characters in the string `s`.
-• Inside the loop, we perform an average-case dictionary lookup using `if char in result`, which takes O(1) time.
-• Therefore, the total time complexity is N * O(1) = O(N).
-
-
-## Space Complexity Analysis
-
-
-The space complexity of this solution is O(N).
-
-
-• We use a list (`result`) to store at most N characters.
-
-
-## Step-by-Step Reconstruction Logic
-
-
-To reconstruct the logic behind this code, follow these steps:
-
-
-### Initialize Variables
-
-* `result`: an empty list to store the compressed string
-* `char`: each character in the input string `s`
-
-### Loop Through Characters in String
-
-* Iterate through each character `char` in the input string `s`
-* Use a condition to check if the current character is different from the last character in the result list (`result[-1] != char`)
-
-### Append Character to Result List
-
-* If the current character is not equal to the last character, append it to the result list
-* Continue with the next iteration of the loop
-
-### Return Compressed String
-
-* After iterating through all characters in the string, return the compressed string by joining all characters in the result list (`''.join(result)`)
-
-
-Note that if no pair is found, an empty string will be returned.
+If the character is the same in all strings, we add it to the `prefix` string. If not, we break out of the loop. After checking each character position up to the length of the shortest string, we return the common prefix stored in the `prefix` string if a pair is found; otherwise, return an empty string.
