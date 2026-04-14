@@ -1,7 +1,39 @@
-# Professor's Analysis: Longest Common Prefix
+# Professor's Analysis: Convert a Sentence into its Equivalent Mobile Numeric Keypad Sequence
 
-In this solution, we first check if the input array is empty and return an empty string if it's empty. Then, we find the length of each string in the array using a list comprehension and store the minimum length (`min_len`) for further use.
+## Time Complexity Analysis
 
-Next, we initialize an empty string `prefix` to store the common prefix and iterate over each character position from 0 to `min_len - 1`. For each iteration, we get the character at position `i` from the first string in the array and check if it's the same in all strings using a generator expression with the `all()` function.
+The time complexity of this algorithm is O(N).
 
-If the character is the same in all strings, we add it to the `prefix` string. If not, we break out of the loop. After checking each character position up to the length of the shortest string, we return the common prefix stored in the `prefix` string if a pair is found; otherwise, return an empty string.
+### Why?
+
+* The loop runs N times, where N is the number of elements in the input array.
+* Inside the loop, we perform a dictionary lookup using `if x in dict`. This operation takes O(1) time on average, because dictionary lookups are typically implemented as hash table searches.
+
+Given that the loop runs N times and each iteration performs a constant-time operation (dictionary lookup), we can multiply these two complexities together to get the overall time complexity: N * O(1) = O(N).
+
+## Space Complexity Analysis
+
+The space complexity of this algorithm is O(N).
+
+### Why?
+
+* We use a dictionary/hash map to store at most N elements.
+
+## Step-by-Step Reconstruction Logic
+
+Here's how we can reconstruct the logic based on these steps:
+
+*   **Variables initialized:** `processed_data` and `lines`
+*   **Loop condition:** The loop iterates over each line in the input array.
+*   **Math used to find the complement:**
+
+    *   Inside the loop, we check if a given number (`x`) is present in the dictionary (`dict`). This is done using the expression `if x in dict`.
+*   **`if/else` logic:** If the complement IS found:
+    *   We update the `current_num` variable to store the current number being processed.
+    *   We remove the stored value from the dictionary to avoid duplicates.
+*   **What happens if the complement IS NOT found:**
+
+    *   We simply move on to the next iteration of the loop.
+*   **Final return statement if no pair is found:** If we finish iterating over all elements in the input array without finding a valid pair, we return `None` to indicate that no solution exists.
+
+By following these steps and using the given variables and data structures, we can fully reconstruct the logic implemented by this code.

@@ -1,29 +1,45 @@
-# Longest Common Prefix
+# Convert a Sentence into its Equivalent Mobile Numeric Keypad Sequence
 
 **Difficulty:** Easy  
-**Link:** [https://leetcode.com/problems/longest-common-prefix/](https://leetcode.com/problems/longest-common-prefix/)
+**Link:** [https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/](https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Longest Common Prefix
-**Description:**
-Given an array of strings arr[], return the longest common prefix among each and every strings present in the array. If there’s no prefix common in all the strings, return “”.
-**Examples:**
+Title: Analyze Raw Content Provided by Tech Researcher
 
-1. Input: arr[] = ["geeksforgeeks", "geeks", "geek", "geezer"]
-Output: "gee"
-Explanation: "gee" is the longest common prefix in all the given strings.
-2. Input: arr[] = ["apple", "ape", "april"]
-Output: "ap"
-Explanation: "ap" is the longest common prefix in all the given strings.
-3. Input: arr[] = ["hello", "world"]
-Output: ""
-Explanation: There’s no common prefix in the given strings.
 
-**Constraints:**
-1 <= N <= 10^5 (number of strings)
-1 <= M <= 10^3 (length of each string)
+Description: Given raw text scraped from a coding website, extract the core problem statement, create input/output examples, define constraints, and remove solution code.
 
-Note: The constraints assume that the input array will have at most 100,000 elements and each string will be at most 1,000 characters long. If the actual input is much larger or smaller than these values, the constraints should be adjusted accordingly.
+
+Examples:
+
+
+Example 1:
+Input: [raw text input]
+Output: [formatted output]
+
+
+Example 2:
+Input: [example input for second case]
+Output: [example output for second case]
+
+
+Example 3:
+Input: [example input for third case]
+Output: [example output for third case]
+
+
+Constraints:
+- The raw text is scraped from a coding website and may contain multiple solutions.
+- The problem statement should be clear and concise.
+- The input/output examples should cover different cases.
+- Constraints, if missing, should be invented to make the problem feasible.
+
+
+Note: Since the original raw text is not provided, I will leave it empty. Please fill in the actual content as per your task requirements.
+
+
+
+Note 2: If you would like me to provide a specific example of structured output based on some sample raw input, please let me know and I'll be happy to assist!
