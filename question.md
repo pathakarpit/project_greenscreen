@@ -1,45 +1,40 @@
-# Convert a Sentence into its Equivalent Mobile Numeric Keypad Sequence
+# Print all the Duplicates in the Input String
 
 **Difficulty:** Easy  
-**Link:** [https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/](https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/)
+**Link:** [https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/](https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/)
 
 ---
 
 ## Problem Statement
 
-Title: Analyze Raw Content Provided by Tech Researcher
+```markdown
+# Problem Title: Find Duplicates in a String
 
+## Description:
+Given a string `s`, find and print all characters that have a frequency greater than 1. This should be done using two methods:
 
-Description: Given raw text scraped from a coding website, extract the core problem statement, create input/output examples, define constraints, and remove solution code.
+1. Sorting method: Sort the string and then traverse it to find consecutive duplicates.
+2. Hashing method: Use an unordered map (or equivalent data structure in other languages) to count the frequency of each character.
 
+## Examples:
 
-Examples:
+### Example 1:
+Input: `s = "geeksforgeeks"`
+Output:
+- Sorting method: `[ ['e', 4], ['f', 2], ['g', 3], ['k', 2], ['o', 1], ['r', 2], ['s', 2] ]`
+- Hashing method: `[ ['e', 4], ['f', 2], ['g', 3], ['k', 2], ['r', 2], ['s', 2] ]`
 
+### Example 2:
+Input: `s = "aaaabbbbcccc"`
+Output (Sorting method):
+- `[ ['a', 5], ['b', 4], ['c', 4] ]`
+Output (Hashing method): Same as above
 
-Example 1:
-Input: [raw text input]
-Output: [formatted output]
+### Example 3:
+Input: `s = "abcdefg"`
+Output (both methods): No duplicates found, output is empty or an indication of no duplicates.
 
-
-Example 2:
-Input: [example input for second case]
-Output: [example output for second case]
-
-
-Example 3:
-Input: [example input for third case]
-Output: [example output for third case]
-
-
-Constraints:
-- The raw text is scraped from a coding website and may contain multiple solutions.
-- The problem statement should be clear and concise.
-- The input/output examples should cover different cases.
-- Constraints, if missing, should be invented to make the problem feasible.
-
-
-Note: Since the original raw text is not provided, I will leave it empty. Please fill in the actual content as per your task requirements.
-
-
-
-Note 2: If you would like me to provide a specific example of structured output based on some sample raw input, please let me know and I'll be happy to assist!
+## Constraints: 
+- The input string `s` will contain only lowercase English letters.
+- The length of the string `s` can be up to 10^5 characters.
+```

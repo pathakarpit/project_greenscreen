@@ -1,22 +1,17 @@
-# Problem: Convert a Sentence into its Equivalent Mobile Numeric Keypad Sequence
+# Problem: Print all the Duplicates in the Input String
 # Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/
+# Link: https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
 
 class Solution:
-    def solve(self, raw_text):
-        # This function will analyze the raw text and return a formatted output
-        # The implementation details are not provided in the prompt, so let's assume it processes the input to extract useful information.
+    def solve(self, s):
+        from collections import Counter
         
-        # Placeholder for actual processing logic
-        processed_data = self._process_raw_text(raw_text)
-        return processed_data
-    
-    def _process_raw_text(self, raw_text):
-        # Implement a method to process the raw text and extract meaningful data.
-        # This is an example of how you might start processing:
-        lines = raw_text.split('\n')
-        cleaned_data = [line for line in lines if not line.strip().startswith('solution')]
-        return '\n'.join(cleaned_data)
+        # Using Hashing method (Counter in Python)
+        freq = Counter(s)
+        duplicates = [char for char in freq if freq[char] > 1]
+        
+        result = [[char, freq[char]] for char in duplicates]
+        return result
 
 ########################################
 # if __name__ == '__main__':
