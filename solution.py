@@ -1,17 +1,13 @@
-# Problem: Print all the Duplicates in the Input String
-# Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
+# Problem: Longest Substring without Repeating Characters
+# Difficulty: Medium
+# Link: https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
 class Solution:
-    def solve(self, s):
-        from collections import Counter
-        
-        # Using Hashing method (Counter in Python)
-        freq = Counter(s)
-        duplicates = [char for char in freq if freq[char] > 1]
-        
-        result = [[char, freq[char]] for char in duplicates]
-        return result
+    def solve(self, heights):
+        total_height = sum(heights)
+        num_students = len(heights)
+        average_height = total_height / num_students
+        return round(average_height, 2)
 
 ########################################
 # if __name__ == '__main__':

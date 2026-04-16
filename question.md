@@ -1,40 +1,28 @@
-# Print all the Duplicates in the Input String
+# Longest Substring without Repeating Characters
 
-**Difficulty:** Easy  
-**Link:** [https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/](https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/)
+**Difficulty:** Medium  
+**Link:** [https://leetcode.com/problems/longest-substring-without-repeating-characters/](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
 ---
 
 ## Problem Statement
 
-```markdown
-# Problem Title: Find Duplicates in a String
+**Title:** Analyze Raw Text Content
+**Description:** Extract problem statement, input/output examples, and constraints from raw text scraped from a coding website.
+**Examples:**
+1. **Problem Statement:** What is the average height of students in a class?
+   **Input/Output Examples:**
+     - Input: [Student 1: (height=180), Student 2: (height=170), Student 3: (height=190)]
+     - Output: Average Height = 180
+     - Explanation: Calculate the average height by adding up all the heights and dividing by the number of students.
+     - **Example 2:**
+       Input: [Student 1: (height=160), Student 2: (height=170), Student 3: (height=200)]
+       Output: Average Height = 177.33
+       Explanation: Calculate the average height by adding up all the heights and dividing by the number of students.
+     - **Example 3:**
+       Input: [Student 1: (height=180), Student 2: (height=160), Student 3: (height=190)]
+       Output: Average Height = 176.67
+       Explanation: Calculate the average height by adding up all the heights and dividing by the number of students.
+**Constraints:** N >= 2, 1 <= height[i] <= 200
 
-## Description:
-Given a string `s`, find and print all characters that have a frequency greater than 1. This should be done using two methods:
-
-1. Sorting method: Sort the string and then traverse it to find consecutive duplicates.
-2. Hashing method: Use an unordered map (or equivalent data structure in other languages) to count the frequency of each character.
-
-## Examples:
-
-### Example 1:
-Input: `s = "geeksforgeeks"`
-Output:
-- Sorting method: `[ ['e', 4], ['f', 2], ['g', 3], ['k', 2], ['o', 1], ['r', 2], ['s', 2] ]`
-- Hashing method: `[ ['e', 4], ['f', 2], ['g', 3], ['k', 2], ['r', 2], ['s', 2] ]`
-
-### Example 2:
-Input: `s = "aaaabbbbcccc"`
-Output (Sorting method):
-- `[ ['a', 5], ['b', 4], ['c', 4] ]`
-Output (Hashing method): Same as above
-
-### Example 3:
-Input: `s = "abcdefg"`
-Output (both methods): No duplicates found, output is empty or an indication of no duplicates.
-
-## Constraints: 
-- The input string `s` will contain only lowercase English letters.
-- The length of the string `s` can be up to 10^5 characters.
-```
+**Note:** Removed solution code to maintain the required format.
