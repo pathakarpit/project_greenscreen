@@ -1,24 +1,12 @@
-# Professor's Analysis: Longest Substring without Repeating Characters
+# Professor's Analysis: Longest Repeating Character Replacement
 
-The final answer is: 
+The provided solution uses a sliding window approach with two pointers (`left` and `right`) to find the maximum length substring with at most `k` distinct characters. The time complexity of this solution is O(N), where N is the length of the string, due to the single loop over all characters in the string. The space complexity is also O(N) because we use a dictionary to store character frequencies. 
 
-## Time Complexity Analysis
-### O(N) Time Complexity
+The logic can be reconstructed as follows:
 
-* The loop runs N times, where N is the number of students.
-* Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average.
-* Since the loop runs N times and each iteration involves a constant-time operation (dictionary lookup), the overall time complexity is N * O(1) = O(N).
-
-## Space Complexity Analysis
-### O(N)
-
-* We use a dictionary/hash map to store at most N elements.
-
-## Step-by-Step Reconstruction Logic
-
-* Initialize `total_height` as 0 and `num_students` as the length of the input list `heights`.
-* Calculate the average height by dividing `total_height` by `num_students`: `average_height = total_height / num_students`.
-* Iterate over each element in the input list `heights`.
-	+ For each student, subtract their height from the average height to find their complement: `(target - current_num)`.
-	+ If the complement is found (not shown in the provided code), return the average height rounded to 2 decimal places using `round(average_height, 2)`.
-* If no pair of students with equal total height is found after processing all students, return an empty result (not shown in the provided code).
+* Initialize `char_count` (dictionary to store character frequencies), `max_length` (to keep track of maximum length substring with at most k distinct characters), and `left` (left pointer of the sliding window).
+* Iterate over all characters in the string using the `right` pointer.
+	+ For each new character, increment its frequency in the dictionary. If it's a new character, add it to the dictionary with a frequency of 1.
+	+ While the number of distinct characters in the current substring (i.e., `max(char_count.values())`) is greater than `k`, move the `left` pointer one step to the right and decrement the frequency of the character at `s[left]`.
+* After each iteration, update `max_length` with the maximum length substring found so far.
+* If no pair is found after iterating over all characters in the string, return `max_length`.
