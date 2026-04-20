@@ -1,12 +1,53 @@
-# Professor's Analysis: Longest Repeating Character Replacement
+# Professor's Analysis: Group Anagrams
 
-The provided solution uses a sliding window approach with two pointers (`left` and `right`) to find the maximum length substring with at most `k` distinct characters. The time complexity of this solution is O(N), where N is the length of the string, due to the single loop over all characters in the string. The space complexity is also O(N) because we use a dictionary to store character frequencies. 
+## Time Complexity Analysis
 
-The logic can be reconstructed as follows:
+* The time complexity of this solution is O(N).
+* This is because the loop runs N times, where N is the number of words in the input list.
+* Inside the loop, there is a dictionary lookup `if x in dict` to check if a sorted word is already in the `anagrams` dictionary. On average, dictionary lookups take constant time O(1).
+* Therefore, the total time complexity is N * O(1) = O(N).
 
-* Initialize `char_count` (dictionary to store character frequencies), `max_length` (to keep track of maximum length substring with at most k distinct characters), and `left` (left pointer of the sliding window).
-* Iterate over all characters in the string using the `right` pointer.
-	+ For each new character, increment its frequency in the dictionary. If it's a new character, add it to the dictionary with a frequency of 1.
-	+ While the number of distinct characters in the current substring (i.e., `max(char_count.values())`) is greater than `k`, move the `left` pointer one step to the right and decrement the frequency of the character at `s[left]`.
-* After each iteration, update `max_length` with the maximum length substring found so far.
-* If no pair is found after iterating over all characters in the string, return `max_length`.
+## Space Complexity Analysis
+
+* The space complexity of this solution is O(N).
+* This is because we use a dictionary to store at most N elements, where N is the number of words in the input list.
+
+## Step-by-Step Reconstruction Logic
+
+### Step 1: Initialize variables
+
+* Create an empty dictionary `anagrams` to store anagrams.
+* Initialize an empty list `words` to store the input words.
+
+### Step 2: Loop through each word
+
+* For each word `word` in the input list `words`, perform the following steps:
+	+ **Step 3:** Sort the characters of the word and join them into a string `sorted_word`.
+
+### Step 3: Create or retrieve anagram group
+
+* If `sorted_word` is not already in the `anagrams` dictionary, create a new empty list for it.
+* Otherwise, retrieve the existing list of anagrams for `sorted_word`.
+
+### Step 4: Add word to anagram group
+
+* Append the original unsorted word `word` to the list of anagrams for `sorted_word`.
+
+### Step 5: Return anagram groups
+
+* After processing all words, return a list of lists containing the anagram groups.
+	+ Each inner list represents a set of anagrams that are permutations of each other.
+
+Here's the final code based on these steps:
+```python
+class Solution:
+    def solve(self, words):
+        anagrams = {}
+        for word in words:
+            sorted_word = ''.join(sorted(word))
+            if sorted_word not in anagrams:
+                anagrams[sorted_word] = []
+            anagrams[sorted_word].append(word)
+        
+        return list(anagrams.values())
+```
