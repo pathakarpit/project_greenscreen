@@ -1,28 +1,32 @@
-# Group Anagrams
+# Longest Palindromic Substring
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/group-anagrams/](https://leetcode.com/problems/group-anagrams/)
+**Link:** [https://leetcode.com/problems/longest-palindromic-substring/](https://leetcode.com/problems/longest-palindromic-substring/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Group Anagrams Together
+**Title:** Longest Palindromic Substring
+
 **Description:**
-Given a list of words, group anagrams together.
+
+Given a string s, find the longest palindromic substring within the string. The algorithm maintains a table dp where dp[i] denotes whether the character at index i in the string s is part of the palindrome or not.
+
 **Examples:**
 
-1. Input: `["eat", "tea", "tan", "ate", "nat", "bat"]`
-Output: `[["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]`
+1. Input: s = "forgeeksskeegfor"
+   Output: "geeks"
 
-2. Input: `["abc", "bac", "cab", "bca", "acb", "cba"]`
-Output: `[["abc", "bac", "cab", "bca", "acb", "cba"]]`
+2. Input: s = "abccba"
+   Output: "abccba"
 
-3. Input: `["listen", "silent", "enlist", "tinsel", "inlets", "telsen", "inlet", "tins", "inle", "silen"]`
-Output: `[["listen", "silent", "enlist", "tinsel", "inlets"], ["telsen"], ["inlet"], ["tins"], ["inle", "silen"]]`
+3. Input: s = "abcddcba"
+   Output: "abcddcba"
 
-**Constraints:** 
+**Constraints:**
 
-* 1 <= N <= 10^5 (where N is the number of words in the input list)
-* Each word consists only of lowercase English letters
-* The input list may contain multiple anagram groups, and some words might not be part of any anagram group
+* The string s will contain only lowercase English letters.
+* 1 <= len(s) <= 10^6
+
+Note: I removed the Python code for Manacher's Algorithm as it was given in the original text, and focused on extracting the core problem statement, input/output examples, and constraints.

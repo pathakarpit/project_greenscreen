@@ -1,17 +1,27 @@
-# Problem: Group Anagrams
+# Problem: Longest Palindromic Substring
 # Difficulty: Medium
-# Link: https://leetcode.com/problems/group-anagrams/
+# Link: https://leetcode.com/problems/longest-palindromic-substring/
 
 class Solution:
-    def solve(self, words):
-        anagrams = {}
-        for word in words:
-            sorted_word = ''.join(sorted(word))
-            if sorted_word not in anagrams:
-                anagrams[sorted_word] = []
-            anagrams[sorted_word].append(word)
+    def solve(self, s: str) -> str:
+        if len(s) <= 1:
+            return s
         
-        return list(anagrams.values())
+        start = end = 0
+        for i in range(len(s)):
+            len1 = self.expandAroundCenter(s, i, i)
+            len2 = self.expandAroundCenter(s, i, i + 1)
+            max_len = max(len1, len2)
+            if max_len > end - start:
+                start = i - (max_len - 1) // 2
+                end = i + max_len // 2
+        return s[start:end+1]
+    
+    def expandAroundCenter(self, s: str, left: int, right: int) -> int:
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return right - left - 1
 
 ########################################
 # if __name__ == '__main__':
