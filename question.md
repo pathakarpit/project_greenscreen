@@ -1,35 +1,51 @@
-# Palindromic Substrings
+# Count Palindromic Subsequences
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/palindromic-substrings/](https://leetcode.com/problems/palindromic-substrings/)
+**Link:** [https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1](https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1)
 
 ---
 
 ## Problem Statement
 
-**Title:** Palindrome Substrings Count
+```
+Title: Count Palindromic Subsequences
+Description:
+Given a string s, return the count of distinct palindromic subsequences in it.
+A palindromic subsequence is a sequence that can be formed by deleting some characters from s such that it remains the same when reversed.
 
-**Description:**
+Examples:
 
-Given a string s, find the total number of palindromic substrings of length greater than or equal to 2 present in the string. A substring is considered as palindrome if it reads same from both forward and backward.
+Example 1:
+Input: s = "aab"
+Output: 8
+Explanation: The possible palindromic subsequences are: 
+- a (delete b)
+- a (delete b)
+- aa (no deletion needed)
+- ab (delete a in second occurrence of 'a')
+- ba (delete a in first occurrence of 'a')
+- bb (no deletion needed)
+- aba (delete b)
+- abb (delete a)
 
-**Examples:**
-
-1. Input: s = "abaab"
+Example 2:
+Input: s = "abc"
 Output: 3
-Explanation:
-All substrings with length greater than 1 are - 
-"aa", "aba" , "baa". So total number of palindromic substrings are 3.
+Explanation: The possible palindromic subsequences are: 
+- a (delete b and c)
+- b (delete a and c)
+- c (delete a and b)
 
-2. Input : s = "abbaeae"
-Output : 4
-Explanation :
-All substrings with length greater than 1 are -
-"bb"," abba ", "aea", " eae".
+Example 3:
+Input: s = "aaa"
+Output: 4
+Explanation: The possible palindromic subsequences are: 
+- a (no deletion needed)
+- aa (no deletion needed)
+- aaa (no deletion needed)
+- empty string
 
-**Constraints:**
-
-* The string s will consist only of lowercase English letters.
-* The length of the string s will be at least 2.
-
-I have now removed any solution code from the text and reformatted it to meet the required format.
+Constraints:
+1 <= s.length <= 10^5
+s consists of lowercase English letters
+```
