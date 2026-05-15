@@ -1,31 +1,41 @@
-# Smallest Window in a String Containing all the Characters of Another String
+# Wildcard String Matching
 
 **Difficulty:** Medium  
-**Link:** [https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1](https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1)
+**Link:** [https://practice.geeksforgeeks.org/problems/wildcard-string-matching1126/1](https://practice.geeksforgeeks.org/problems/wildcard-string-matching1126/1)
 
 ---
 
 ## Problem Statement
 
-**Title:** Smallest Window Containing All Characters
+**Title:** Recursive Wild Card Pattern Matching
+**Description:**
+
+Analyze the raw content provided by the Tech Researcher above.
 
 
-**Description:** 
-Find the smallest window in a string `s1` that contains all characters of another string `s2`. A character is considered present in the window if its frequency in the window is greater than or equal to its frequency in `s2`.
+```
+Given two strings `text` and `pattern`, determine if `pattern` matches `text` using wildcards (`*`) for any number of characters.
 
-**Examples:**
+Core Problem Statement:
 
-* Input: `s1 = "ADOBECODEBANC"`, `s2 = "ABC"`
-Output: `"BANC"`
+Given a string `text` and a pattern `pattern`, return True if the pattern matches the text, False otherwise.
 
-* Input: `s1 = "a"`, `s2 = "aa"`
-Output: `""`
+Input/Output Examples:
 
-* Input: `s1 = "bba", s2 = "ab"`
-Output: `"bba"`
+1. Input: `text = "abcde", pattern = "a?c*"`
+   Output: `True`
+
+2. Input: `text = "abcde", pattern = "abcdefg"`
+   Output: `False`
+
+3. Input: `text = "abcde", pattern = "*"`
+   Output: `True`
 
 
-**Constraints:** 
-1. The input strings `s1` and `s2` consist only of lowercase English letters.
-2. 1 <= length(s1) <= 10^5
-3. 0 <= length(s2) <= 10^4
+Constraints:
+
+- 1 <= len(text) <= 100
+- 1 <= len(pattern) <= 100
+
+```
+Note that the constraints are added to limit the input size and prevent excessive computation.
