@@ -1,41 +1,29 @@
-# Wildcard String Matching
+# Longest Prefix Suffix
 
 **Difficulty:** Medium  
-**Link:** [https://practice.geeksforgeeks.org/problems/wildcard-string-matching1126/1](https://practice.geeksforgeeks.org/problems/wildcard-string-matching1126/1)
+**Link:** [https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1](https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1)
 
 ---
 
 ## Problem Statement
 
-**Title:** Recursive Wild Card Pattern Matching
-**Description:**
+**Title:** Longest Common Prefix which is also Suffix
 
-Analyze the raw content provided by the Tech Researcher above.
+**Description:** Given a string of characters, find the longest prefix that is also a suffix. The prefix and suffix are contiguous substrings of the same length, and they must appear at the start and end of the string respectively.
 
+**Examples:**
 
-```
-Given two strings `text` and `pattern`, determine if `pattern` matches `text` using wildcards (`*`) for any number of characters.
+1. Input: "abca"
+Output: "abc"
 
-Core Problem Statement:
+2. Input: "abcdef"
+Output: ""
 
-Given a string `text` and a pattern `pattern`, return True if the pattern matches the text, False otherwise.
+3. Input: "aa"
+Output: "aa"
 
-Input/Output Examples:
+**Constraints:** 
 
-1. Input: `text = "abcde", pattern = "a?c*"`
-   Output: `True`
-
-2. Input: `text = "abcde", pattern = "abcdefg"`
-   Output: `False`
-
-3. Input: `text = "abcde", pattern = "*"`
-   Output: `True`
-
-
-Constraints:
-
-- 1 <= len(text) <= 100
-- 1 <= len(pattern) <= 100
-
-```
-Note that the constraints are added to limit the input size and prevent excessive computation.
+- The input string will only contain alphabetic characters (both uppercase and lowercase).
+- The length of the input string can vary from 1 to 10^5.
+- The longest common prefix that is also a suffix should be found in O(n) time complexity.
