@@ -1,45 +1,32 @@
-# Rabin-Karp Algorithm for Pattern Searching
+# Transform One String to Another using Minimum Number of Given Operation
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/](https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/)
+**Link:** [https://www.geeksforgeeks.org/transform-one-string-to-another-using-minimum-number-of-given-operation/](https://www.geeksforgeeks.org/transform-one-string-to-another-using-minimum-number-of-given-operation/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Rabin-Karp Algorithm Pattern Search
+**Transforming Strings**
 
-Description:
-Given a text string T of length N and a pattern string P of length M, implement the Rabin-Karp algorithm to efficiently detect all occurrences of P in T. The algorithm should use rolling hash functions to compute the hash value of a string starting at each position of T with the same length as P.
+**Title:** Minimum Operations to Transform One String into Another
 
-Examples:
+**Description:**
 
-1. Input: 
-   T = "banana"
-   P = "ana"
-   
-   Output:
-   Positions of pattern occurrence: [1, 3]
+Given two strings `s1` and `s2`, determine the minimum number of operations required to transform `s1` into `s2`. An operation is defined as replacing a character in `s1` with a character from `s2`.
 
-2. Input: 
-   T = "abcdefg"
-   P = "cde"
+**Examples:**
 
-   Output:
-   Positions of pattern occurrence: [2]
+* Input: `s1 = "GeeksForGeeks", s2 = "ForGeeksGeeks"`
+  Output: `3`
+* Input: `s1 = "hello", s2 = "world"`
+  Output: `-1` (since strings are not anagrams)
+* Input: `s1 = "abc", s2 = "bca"`
+  Output: `0`
 
-3. Input: 
-   T = "abracadabra"
-   P = "abra"
+**Constraints:**
 
-   Output:
-   Positions of pattern occurrence: [0, 7]
+* Strings `s1` and `s2` have the same length.
+* All characters in both strings are alphanumeric.
 
-Constraints:
-1 <= N, M <= 10^6
-All characters in both T and P are lowercase English letters.
-
-Note: The algorithm should be able to handle multiple patterns and return all occurrences.
-```
-I hope this meets the requirements!
+Note that I removed all solution code from the original text to ensure only the question remains.

@@ -1,66 +1,53 @@
-# Professor's Analysis: Rabin-Karp Algorithm for Pattern Searching
+# Professor's Analysis: Transform One String to Another using Minimum Number of Given Operation
 
-Here's the detailed Markdown explanation allowing code reconstruction:
-
-
-
-Time Complexity Analysis
-------------------------
-
-The time complexity of the provided Python solution is O(N).
-
-*   The loop runs N times, where N is the number of elements in the text (T).
-*   Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average.
-*   Therefore, the overall time complexity is N * O(1) = O(N).
+## Time Complexity Analysis
 
 
-
-Space Complexity Analysis
--------------------------
-
-The space complexity of the provided Python solution is O(N).
-
-*   We use a dictionary/hash map to store at most N elements.
+* The Big O time complexity is O(N).
+* The loop runs N times, where N is the length of the input string.
+* Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average.
+* Since the loop runs N times and the dictionary lookup takes O(1) time, the overall time complexity is N * O(1) = O(N).
 
 
-
-Step-by-Step Reconstruction Logic
----------------------------------
-
-### Variables Initialization
-
-*   The class Solution has two methods: `solve(self, T, P)`.
-*   Inside the `solve` method:
-    *   We have two constants defined: `BASE` and `MOD`, which are used for hash computation.
-    *   We define a nested function `compute_hash(s, start, M)` to compute the hash value of a string from the given start index with length M.
+## Space Complexity Analysis
 
 
-
-### Computing Hash Values
-
-*   The `compute_hash` function takes three parameters: `s` (string), `start` (index), and `M` (length).
-*   It initializes an integer variable `hash_value` to 0.
-*   Then, it iterates over the string from index `start` to `start + M - 1`.
-*   For each character, it updates the hash value using the formula `(hash_value * BASE + ord(s[start + i]) - ord('a') + 1) % MOD`.
-*   Finally, it returns the computed hash value.
+* The Big O space complexity is O(N).
+* We use a dictionary/hash map to store at most N elements, where N is the length of the input string.
 
 
-
-### Computing Pattern and Text Hashes
-
-*   We compute the pattern (P) hash by calling `compute_hash` with P, 0, and M.
-*   We compute the text (T) hashes by applying a list comprehension to T_hashes using `compute_hash` for each index from 0 to N - M.
+## Step-by-Step Reconstruction Logic:
 
 
-
-### Matching Pattern Hash with Text Hashes
-
-*   We iterate over the computed text hashes (`T_hashes`) in the range of indices from 0 to len(T_hashes).
-*   For each iteration, we check if the current text hash is equal to the pattern hash (P_hash) using an `if` statement.
-*   If a match is found, we append the index to the result list.
+### Initialize Variables
 
 
+* `count_s1` and `count_s2`: dictionaries to count the frequency of each character in both strings.
+* `min_operations`: variable to keep track of the minimum number of operations.
 
-### Returning Result
+### Loop Through Characters
 
-*   Finally, after iterating over all text hashes and checking for matches, we return the result list.
+
+* The outer loop iterates over the characters in the first string `s1`.
+* For each character, we check if it exists in the second string `s2` using the dictionary lookup `if x in dict`. This takes O(1) time on average.
+* If the character is found in `s2`, we increment its count by 1. Otherwise, we set its count to 1.
+
+### Check for Anagrams
+
+
+* After counting the frequency of each character in both strings, we check if they are not anagrams of each other using the `count_s1 != count_s2` condition.
+* If they are not anagrams, we return -1.
+
+
+### Brute Force Approach
+
+
+* We iterate over all possible pairs of indices `(i, j)` where `0 <= i < len(s1)` and `0 <= j < len(s2)`.
+* For each pair, we calculate the minimum number of operations required to transform `s1` into `s2` using the formula `current_operations = 0; for j in range(len(s2)): if s1[j] != s2[(i + j) % len(s1)]: current_operations += 1`.
+* We keep track of the minimum number of operations found so far and update it whenever we find a pair with fewer operations.
+
+### Return Minimum Operations
+
+
+* If no pair is found, we return -1.
+* Otherwise, we return the minimum number of operations found.
