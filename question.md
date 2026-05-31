@@ -1,29 +1,45 @@
-# Longest Prefix Suffix
+# Rabin-Karp Algorithm for Pattern Searching
 
 **Difficulty:** Medium  
-**Link:** [https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1](https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1)
+**Link:** [https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/](https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Longest Common Prefix which is also Suffix
+```
+Title: Rabin-Karp Algorithm Pattern Search
 
-**Description:** Given a string of characters, find the longest prefix that is also a suffix. The prefix and suffix are contiguous substrings of the same length, and they must appear at the start and end of the string respectively.
+Description:
+Given a text string T of length N and a pattern string P of length M, implement the Rabin-Karp algorithm to efficiently detect all occurrences of P in T. The algorithm should use rolling hash functions to compute the hash value of a string starting at each position of T with the same length as P.
 
-**Examples:**
+Examples:
 
-1. Input: "abca"
-Output: "abc"
+1. Input: 
+   T = "banana"
+   P = "ana"
+   
+   Output:
+   Positions of pattern occurrence: [1, 3]
 
-2. Input: "abcdef"
-Output: ""
+2. Input: 
+   T = "abcdefg"
+   P = "cde"
 
-3. Input: "aa"
-Output: "aa"
+   Output:
+   Positions of pattern occurrence: [2]
 
-**Constraints:** 
+3. Input: 
+   T = "abracadabra"
+   P = "abra"
 
-- The input string will only contain alphabetic characters (both uppercase and lowercase).
-- The length of the input string can vary from 1 to 10^5.
-- The longest common prefix that is also a suffix should be found in O(n) time complexity.
+   Output:
+   Positions of pattern occurrence: [0, 7]
+
+Constraints:
+1 <= N, M <= 10^6
+All characters in both T and P are lowercase English letters.
+
+Note: The algorithm should be able to handle multiple patterns and return all occurrences.
+```
+I hope this meets the requirements!
