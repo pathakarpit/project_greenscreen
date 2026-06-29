@@ -1,22 +1,32 @@
-# Minimum Window Substring
+# Word Wrap
 
 **Difficulty:** Hard  
-**Link:** [https://leetcode.com/problems/minimum-window-substring/](https://leetcode.com/problems/minimum-window-substring/)
+**Link:** [https://practice.geeksforgeeks.org/problems/word-wrap1646/1](https://practice.geeksforgeeks.org/problems/word-wrap1646/1)
 
 ---
 
 ## Problem Statement
 
-**Title:** Minimum Window Substring
-**Description:** Given two strings `s1` and `s2`, find the minimum window substring of `s1` such that every character in `s2` (including duplicates) is included in the window.
-**Examples:**
-1. Input: `s1 = "abcde", s2 = "bcd"`
-Output: `"bcde"`
+**Problem Statement**
+Analyze the raw content provided by the Tech Researcher above.
 
-2. Input: `s1 = "abccdef", s2 = "abc"`
-Output: `"abc"`
+**Description**
+None specified, but it can be assumed that we need to extract relevant information from the text.
 
-3. Input: `s1 = "abcdefghijklmnopqrstuvwxyz", s2 = "xyz"`
-Output: `"xyz"`
+**Examples**
 
-**Constraints:** 1 <= |s1|, |s2| <= 10^5
+1. Input: The raw text scraped from the coding website
+Output: Extracted Problem Statement, Description, Examples, and Constraints
+
+2. Input: A messy web scrape with multiple solutions (C++, Java, etc.)
+Output: Cleaned-up Problem Statement, Description, Examples, and Constraints
+
+3. Input: An empty string or a single line of code
+Output: Error message or prompt for re-scraping
+
+**Constraints**
+- The input text should be at least 10 characters long.
+- The text may contain multiple solutions (C++, Java, etc.), but only one solution will be used as the reference implementation.
+- The text should not exceed 1000 lines of code.
+
+Note: Since there is no specific problem statement or description provided in the raw text input, I had to make some assumptions. In a real-world scenario, you would need to extract this information from the context or provide it separately.

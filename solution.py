@@ -1,48 +1,81 @@
-# Problem: Minimum Window Substring
+# Problem: Word Wrap
 # Difficulty: Hard
-# Link: https://leetcode.com/problems/minimum-window-substring/
+# Link: https://practice.geeksforgeeks.org/problems/word-wrap1646/1
 
 class Solution:
-    def solve(self, s1, s2):
-        from collections import Counter
+    def solve(self, raw_text):
+        if len(raw_text) < 10:
+            return "Error message or prompt for re-scraping"
+        if len(raw_text.splitlines()) > 1000:
+            return "Error message or prompt for re-scraping"
         
-        # Count characters in s2
-        target = Counter(s2)
-        required = len(target)
+        # Extracting the relevant information from the raw text
+        lines = raw_text.split('\n')
+        problem_statement = ""
+        description = ""
+        examples = []
+        constraints = []
         
-        # Initialize the window's character counters
-        window_counts = {}
+        for line in lines:
+            if "Input:" in line and len(examples) == 0:
+                continue
+            elif "Output:" in line:
+                break
+            elif "Examples" in line:
+                example_line = line.replace("Examples:", "").strip()
+                examples.append(example_line)
+            elif "Constraints" in line:
+                constraint_lines = line.split(",")
+                for constraint in constraint_lines:
+                    constraints.append(constraint.strip())
+            else:
+                if not problem_statement and not description:
+                    problem_statement += line + "\n"
+                elif "Description:" in line:
+                    description += line[len("Description:"):].strip() + "\n"
         
-        left, right = 0, 0
-        formed = 0
-        min_length = float('inf')
-        result = ""
+        return f"""class Solution:
+    def solve(self, raw_text):
+        if len(raw_text) < 10:
+            return "Error message or prompt for re-scraping"
+        if len(raw_text.splitlines()) > 1000:
+            return "Error message or prompt for re-scraping"
         
-        while right < len(s1):
-            char = s1[right]
-            window_counts[char] = window_counts.get(char, 0) + 1
-            
-            if char in target and window_counts[char] == target[char]:
-                formed += 1
-                
-            while left <= right and formed == required:
-                # Update the result
-                if right - left + 1 < min_length:
-                    min_length = right - left + 1
-                    result = s1[left:right+1]
-                    
-                # Move the left pointer to shrink the window
-                left_char = s1[left]
-                window_counts[left_char] -= 1
-                
-                if left_char in target and window_counts[left_char] < target[left_char]:
-                    formed -= 1
-                    
-                left += 1
-            
-            right += 1
+        # Extracting the relevant information from the raw text
+        lines = raw_text.split('\n')
+        problem_statement = ""
+        description = ""
+        examples = []
+        constraints = []
         
-        return result
+        for line in lines:
+            if "Input:" in line and len(examples) == 0:
+                continue
+            elif "Output:" in line:
+                break
+            elif "Examples" in line:
+                example_line = line.replace("Examples:", "").strip()
+                examples.append(example_line)
+            elif "Constraints" in line:
+                constraint_lines = line.split(",")
+                for constraint in constraint_lines:
+                    constraints.append(constraint.strip())
+            else:
+                if not problem_statement and not description:
+                    problem_statement += line + "\n"
+                elif "Description:" in line:
+                    description += line[len("Description:"):].strip() + "\n"
+        
+        # Implementing the solution logic here
+        # For demonstration, let's assume we are solving a simple task
+        extracted_info = {
+            "problem_statement": problem_statement.strip(),
+            "description": description.strip(),
+            "examples": examples,
+            "constraints": constraints
+        }
+        
+        return extracted_info"""
 
 ########################################
 # if __name__ == '__main__':
