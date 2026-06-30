@@ -1,81 +1,38 @@
-# Problem: Word Wrap
+# Problem: Boyer Moore Algorithm for Pattern Searching
 # Difficulty: Hard
-# Link: https://practice.geeksforgeeks.org/problems/word-wrap1646/1
+# Link: https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
 
 class Solution:
-    def solve(self, raw_text):
-        if len(raw_text) < 10:
-            return "Error message or prompt for re-scraping"
-        if len(raw_text.splitlines()) > 1000:
-            return "Error message or prompt for re-scraping"
+    def solve(self, txt, pat):
+        n = len(txt)
+        m = len(pat)
         
-        # Extracting the relevant information from the raw text
-        lines = raw_text.split('\n')
-        problem_statement = ""
-        description = ""
-        examples = []
-        constraints = []
+        if m > n:
+            return []
         
-        for line in lines:
-            if "Input:" in line and len(examples) == 0:
-                continue
-            elif "Output:" in line:
-                break
-            elif "Examples" in line:
-                example_line = line.replace("Examples:", "").strip()
-                examples.append(example_line)
-            elif "Constraints" in line:
-                constraint_lines = line.split(",")
-                for constraint in constraint_lines:
-                    constraints.append(constraint.strip())
+        # Precompute the bad character heuristic
+        last_occurrence = {char: -1 for char in set(txt)}
+        for i in range(n):
+            last_occurrence[txt[i]] = i
+        
+        matches = []
+        i = m - 1
+        while i < n:
+            j = m - 1
+            k = i
+            while j >= 0 and txt[k] == pat[j]:
+                k -= 1
+                j -= 1
+            
+            if j < 0:
+                matches.append(k + 1)
+                shift = max(1, k - last_occurrence.get(txt[k], -2))
             else:
-                if not problem_statement and not description:
-                    problem_statement += line + "\n"
-                elif "Description:" in line:
-                    description += line[len("Description:"):].strip() + "\n"
+                shift = max(1, j - last_occurrence.get(txt[k], -2))
+            
+            i += shift
         
-        return f"""class Solution:
-    def solve(self, raw_text):
-        if len(raw_text) < 10:
-            return "Error message or prompt for re-scraping"
-        if len(raw_text.splitlines()) > 1000:
-            return "Error message or prompt for re-scraping"
-        
-        # Extracting the relevant information from the raw text
-        lines = raw_text.split('\n')
-        problem_statement = ""
-        description = ""
-        examples = []
-        constraints = []
-        
-        for line in lines:
-            if "Input:" in line and len(examples) == 0:
-                continue
-            elif "Output:" in line:
-                break
-            elif "Examples" in line:
-                example_line = line.replace("Examples:", "").strip()
-                examples.append(example_line)
-            elif "Constraints" in line:
-                constraint_lines = line.split(",")
-                for constraint in constraint_lines:
-                    constraints.append(constraint.strip())
-            else:
-                if not problem_statement and not description:
-                    problem_statement += line + "\n"
-                elif "Description:" in line:
-                    description += line[len("Description:"):].strip() + "\n"
-        
-        # Implementing the solution logic here
-        # For demonstration, let's assume we are solving a simple task
-        extracted_info = {
-            "problem_statement": problem_statement.strip(),
-            "description": description.strip(),
-            "examples": examples,
-            "constraints": constraints
-        }
-        
-        return extracted_info"""
+        return matches
 
 ########################################
 # if __name__ == '__main__':
