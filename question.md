@@ -1,39 +1,33 @@
-# Boyer Moore Algorithm for Pattern Searching
+# Zigzag (or diagonal) Traversal of Matrix
 
-**Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/](https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/)
+**Difficulty:** Medium  
+**Link:** [https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/](https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/)
 
 ---
 
 ## Problem Statement
 
-Title: Boyer Moore Algorithm for Pattern Searching - GeeksforGeeks
+```
+Title: Diagonal Traversal of a Matrix
 Description:
+Given an m x n matrix, return all elements of the matrix in diagonal order from top-left to bottom-right.
 
-The Boyer Moore Algorithm is a string searching algorithm that uses two main ideas to find the first occurrence of a pattern in a given text.
+Examples:
 
-Input/Output Examples:
+Example 1:
+Input: mat = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,4,7,5,3,6,8,9]
 
+Example 2:
+Input: mat = [[1,2],[3,4]]
+Output: [1,2,3,4]
 
-1. 
-Input: txt = "ABAAABCD", pat = "ABC"
-Output: 0
-
-
-2.
-Input: txt = "ABCDABD", pat = "ABD"
-Output: 0, 3
-
-
-3.
-Input: txt = "ABCDABCD", pat = "ABC"
-Output: 0, 4
-
+Example 3:
+Input: mat = [[1,1],[1,1]]
+Output: [1,1,1,1]
 
 Constraints:
-
-
-* The input text (txt) and pattern (pat) are strings of characters, where each character is either a lowercase letter or an uppercase letter.
-
-
-* The length of the pattern (m) must be less than the length of the text (n).
+- The number of rows in the given matrix (m) will not exceed 100.
+- The number of columns in the given matrix (n) will not exceed 100.
+- The given matrix has at least one row and one column.
+```

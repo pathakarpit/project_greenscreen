@@ -1,38 +1,23 @@
-# Problem: Boyer Moore Algorithm for Pattern Searching
-# Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
+# Problem: Zigzag (or diagonal) Traversal of Matrix
+# Difficulty: Medium
+# Link: https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/
 
 class Solution:
-    def solve(self, txt, pat):
-        n = len(txt)
-        m = len(pat)
-        
-        if m > n:
+    def solve(self, mat):
+        if not mat or not mat[0]:
             return []
         
-        # Precompute the bad character heuristic
-        last_occurrence = {char: -1 for char in set(txt)}
-        for i in range(n):
-            last_occurrence[txt[i]] = i
-        
-        matches = []
-        i = m - 1
-        while i < n:
-            j = m - 1
-            k = i
-            while j >= 0 and txt[k] == pat[j]:
-                k -= 1
-                j -= 1
-            
-            if j < 0:
-                matches.append(k + 1)
-                shift = max(1, k - last_occurrence.get(txt[k], -2))
-            else:
-                shift = max(1, j - last_occurrence.get(txt[k], -2))
-            
-            i += shift
-        
-        return matches
+        m, n = len(mat), len(mat[0])
+        result = []
+        for d in range(m + n - 1):
+            temp = []
+            r, c = d if d < n else n - 1, 0 if d < n else d - (n - 1)
+            while r >= 0 and c < n:
+                temp.append(mat[r][c])
+                r -= 1
+                c += 1
+            result.extend(temp if d % 2 == 0 else reversed(temp))
+        return result
 
 ########################################
 # if __name__ == '__main__':
