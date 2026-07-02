@@ -1,30 +1,32 @@
-# Professor's Analysis: Zigzag (or diagonal) Traversal of Matrix
+# Professor's Analysis: Set Matrix Zeroes
 
+```
 ## Time Complexity Analysis
-
-* The time complexity of this algorithm is O(N), where N is the total number of elements in the matrix.
-* This is because the loop runs N times (from d = 0 to m + n - 1) and each iteration performs a constant amount of work, which includes dictionary lookup (`if x in dict`) that takes O(1) time on average. Therefore, N * O(1) = O(N).
-* The space complexity is also O(N), as we use a list to store at most N elements.
+The time complexity of this solution is O(N * M), where N is the number of rows in the matrix and M is the number of columns.
 
 ## Space Complexity Analysis
-
-* The space complexity of this algorithm is O(N), where N is the total number of elements in the matrix.
-* This is because we use a dictionary/hash map to store at most N elements, which requires O(N) space.
+The space complexity is O(N + M), where N is the number of rows and M is the number of columns.
 
 ## Step-by-Step Reconstruction Logic
 
-* Initialize an empty list `result` to store the final result.
-* Check if the input matrix `mat` is not empty and its first row is not empty. If either condition is false, return an empty list.
-* Initialize two variables: `m` (number of rows) and `n` (number of columns), which are obtained from the shape of the input matrix.
-* Iterate over a range from 0 to m + n - 1 using variable `d`.
-	+ For each iteration:
-		- Initialize an empty list `temp` to store the current diagonal elements.
-		- Calculate the row and column indices for the current diagonal element: `r = d if d < n else n - 1`, `c = 0 if d < n else d - (n - 1)`.
-		- While the row index is non-negative (`r >= 0`) and the column index is less than the number of columns (`c < n`):
-			+ Append the current diagonal element to the `temp` list.
-			+ Decrement the row index by 1 (`r -= 1`).
-			+ Increment the column index by 1 (`c += 1`).
-		- If the current iteration is even (i.e., `d % 2 == 0`), extend the `result` list with the `temp` list. Otherwise, extend the `result` list with the reversed `temp` list.
-* Return the final `result` list if no pair is found.
+### Initialization
+* The function takes in a matrix as input.
+* Two sets are initialized: `rows_to_zero` and `cols_to_zero`.
 
-Note: The code uses a clever technique to diagonalize the matrix, which allows it to efficiently find the elements of each diagonal in a single pass.
+### Loop 1: Identify rows to zero
+* The first loop runs N times, where N is the number of rows in the matrix.
+* For each row i, we check if any element at index (i, j) is equal to 0 for all columns j.
+* If such an element is found, we add the entire row i to the `rows_to_zero` set.
+
+### Loop 2: Identify columns to zero
+* The second loop runs M times, where M is the number of columns in the matrix.
+* For each column j, we check if any element at index (i, j) is equal to 0 for all rows i.
+* If such an element is found, we add the entire column j to the `cols_to_zero` set.
+
+### Zeroing rows and columns
+* We then iterate through each row that needs to be zeroed and set its elements to 0.
+* Similarly, we iterate through each column that needs to be zeroed and set its elements to 0.
+
+### Final Return Statement
+* Finally, the function returns the modified matrix with all the necessary rows and columns zeroed out.
+```

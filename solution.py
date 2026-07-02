@@ -1,23 +1,32 @@
-# Problem: Zigzag (or diagonal) Traversal of Matrix
+# Problem: Set Matrix Zeroes
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/
+# Link: https://leetcode.com/problems/set-matrix-zeroes/
 
 class Solution:
     def solve(self, mat):
-        if not mat or not mat[0]:
-            return []
+        n = len(mat)
+        m = len(mat[0])
+        rows_to_zero = set()
+        cols_to_zero = set()
         
-        m, n = len(mat), len(mat[0])
-        result = []
-        for d in range(m + n - 1):
-            temp = []
-            r, c = d if d < n else n - 1, 0 if d < n else d - (n - 1)
-            while r >= 0 and c < n:
-                temp.append(mat[r][c])
-                r -= 1
-                c += 1
-            result.extend(temp if d % 2 == 0 else reversed(temp))
-        return result
+        # Identify the rows and columns that need to be zeroed
+        for i in range(n):
+            for j in range(m):
+                if mat[i][j] == 0:
+                    rows_to_zero.add(i)
+                    cols_to_zero.add(j)
+        
+        # Set the identified rows to zero
+        for row in rows_to_zero:
+            for j in range(m):
+                mat[row][j] = 0
+        
+        # Set the identified columns to zero
+        for col in cols_to_zero:
+            for i in range(n):
+                mat[i][col] = 0
+        
+        return mat
 
 ########################################
 # if __name__ == '__main__':

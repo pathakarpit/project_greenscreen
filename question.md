@@ -1,33 +1,40 @@
-# Zigzag (or diagonal) Traversal of Matrix
+# Set Matrix Zeroes
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/](https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/)
+**Link:** [https://leetcode.com/problems/set-matrix-zeroes/](https://leetcode.com/problems/set-matrix-zeroes/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Diagonal Traversal of a Matrix
-Description:
-Given an m x n matrix, return all elements of the matrix in diagonal order from top-left to bottom-right.
+**Title:** Modify Matrix with Zero Rows and Columns
 
-Examples:
 
-Example 1:
-Input: mat = [[1,2,3],[4,5,6],[7,8,9]]
-Output: [1,2,4,7,5,3,6,8,9]
+**Description:** You are given a 2D matrix mat[][] of size n x m. The task is to modify the matrix such that if mat[i][j] is 0, all the elements in the i-th row and j-th column are set to 0.
 
-Example 2:
-Input: mat = [[1,2],[3,4]]
-Output: [1,2,3,4]
 
-Example 3:
-Input: mat = [[1,1],[1,1]]
-Output: [1,1,1,1]
+### Examples:
 
-Constraints:
-- The number of rows in the given matrix (m) will not exceed 100.
-- The number of columns in the given matrix (n) will not exceed 100.
-- The given matrix has at least one row and one column.
-```
+*   **Example 1:**
+    *   **Input:** 
+        [[1,1,1],
+         [1,0,1],
+         [1,1,1]]
+    *   **Output:** 
+        [[1,0,1],
+         [0,0,0],
+         [1,0,1]]
+
+*   **Example 2:**
+    *   **Input:** 
+        [[0,1,2,0],
+         [3,4,5,2],
+         [1,3,1,5]]
+    *   **Output:** 
+        [[0,0,0,0],
+         [0,4,5,0],
+         [0,3,0,0]]
+
+
+### Constraints:
+- The input matrix will only contain 0 and positive integers.
