@@ -1,40 +1,37 @@
-# Set Matrix Zeroes
+# Spiral Matrix
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/set-matrix-zeroes/](https://leetcode.com/problems/set-matrix-zeroes/)
+**Link:** [https://leetcode.com/problems/spiral-matrix/](https://leetcode.com/problems/spiral-matrix/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Modify Matrix with Zero Rows and Columns
+**Title:** 
+Spiral Matrix Traversal
 
 
-**Description:** You are given a 2D matrix mat[][] of size n x m. The task is to modify the matrix such that if mat[i][j] is 0, all the elements in the i-th row and j-th column are set to 0.
+**Description:**
+
+Given an `m x n` matrix of integers where each row is sorted in ascending from left to right and each column is sorted in ascending from top to bottom, return all elements of the matrix in spiral order.
 
 
-### Examples:
+**Examples:**
 
-*   **Example 1:**
-    *   **Input:** 
-        [[1,1,1],
-         [1,0,1],
-         [1,1,1]]
-    *   **Output:** 
-        [[1,0,1],
-         [0,0,0],
-         [1,0,1]]
+1. Input: `[[1,2,3],[4,5,6],[7,8,9]]`
+Output: `[1,2,3,6,9,8,7,4,5]`
 
-*   **Example 2:**
-    *   **Input:** 
-        [[0,1,2,0],
-         [3,4,5,2],
-         [1,3,1,5]]
-    *   **Output:** 
-        [[0,0,0,0],
-         [0,4,5,0],
-         [0,3,0,0]]
+2. Input: `[[1,11,23],[12,13,24],[25,26,30]]`
+Output: `[1,11,23,24,12,13,30,25,26]`
+
+3. Input: `[[7],[3],[6]]`
+Output: `[7,3,6]`
 
 
-### Constraints:
-- The input matrix will only contain 0 and positive integers.
+**Constraints:**
+
+*   0 <= m <= 10
+*   0 <= n <= 10
+*   1 <= m*n <= 100
+*   The input matrix has rows with at least length 1 and columns with at least width 1.
+*   Elements in each row are sorted from left to right in ascending order.

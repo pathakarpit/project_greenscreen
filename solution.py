@@ -1,32 +1,40 @@
-# Problem: Set Matrix Zeroes
+# Problem: Spiral Matrix
 # Difficulty: Medium
-# Link: https://leetcode.com/problems/set-matrix-zeroes/
+# Link: https://leetcode.com/problems/spiral-matrix/
 
 class Solution:
-    def solve(self, mat):
-        n = len(mat)
-        m = len(mat[0])
-        rows_to_zero = set()
-        cols_to_zero = set()
+    def solve(self, matrix):
+        if not matrix or not matrix[0]:
+            return []
         
-        # Identify the rows and columns that need to be zeroed
-        for i in range(n):
-            for j in range(m):
-                if mat[i][j] == 0:
-                    rows_to_zero.add(i)
-                    cols_to_zero.add(j)
+        rows, cols = len(matrix), len(matrix[0])
+        top, bottom, left, right = 0, rows - 1, 0, cols - 1
+        spiral_order = []
         
-        # Set the identified rows to zero
-        for row in rows_to_zero:
-            for j in range(m):
-                mat[row][j] = 0
+        while top <= bottom and left <= right:
+            # Traverse from left to right.
+            for col in range(left, right + 1):
+                spiral_order.append(matrix[top][col])
+            top += 1
+            
+            # Traverse downwards.
+            for row in range(top, bottom + 1):
+                spiral_order.append(matrix[row][right])
+            right -= 1
+            
+            if top <= bottom:
+                # Traverse from right to left.
+                for col in range(right, left - 1, -1):
+                    spiral_order.append(matrix[bottom][col])
+                bottom -= 1
+                
+            if left <= right:
+                # Traverse upwards.
+                for row in range(bottom, top - 1, -1):
+                    spiral_order.append(matrix[row][left])
+                left += 1
         
-        # Set the identified columns to zero
-        for col in cols_to_zero:
-            for i in range(n):
-                mat[i][col] = 0
-        
-        return mat
+        return spiral_order
 
 ########################################
 # if __name__ == '__main__':
