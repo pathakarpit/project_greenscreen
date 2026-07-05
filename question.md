@@ -1,46 +1,36 @@
-# Rotate Image
+# Word Search
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/rotate-image/](https://leetcode.com/problems/rotate-image/)
+**Link:** [https://leetcode.com/problems/word-search/](https://leetcode.com/problems/word-search/)
 
 ---
 
 ## Problem Statement
 
-**
+**Title:** Word Search in a Matrix
 
-**Title:** Rotate a Rectangular Image by 90 Degree Clockwise
+**Description:** Given a 2D matrix of characters and a word, determine if the word exists in the matrix by searching for it horizontally or vertically.
 
-**Description:**
-Given an image represented by m x n matrix, rotate the image by 90 degrees in clockwise direction. Please note the dimensions of the result matrix are going to n x m for an m x n input matrix.
+```python
+# Problem Statement:
+# Analyze the given raw content to determine if a word exists in a 2D matrix.
+```
 
 **Examples:**
 
-1. Input:
-     1   2   3
-    4   5   6
-    7   8   9
+1. **Example 1**
+   - Input: `matrix = [["T", "E", "E"], ["S", "G", "K"], ["T", "E", "L"]]`, `word = "GEEK"`
+   - Output: `True`
+   - Explanation: The word "GEEK" exists in the matrix.
+   
+2. **Example 2**
+   - Input: `matrix = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]`, `word = "ABC"`
+   - Output: `True`
+   - Explanation: The word "ABC" exists in the matrix.
+   
+3. **Example 3**
+   - Input: `matrix = [["T", "E", "E"], ["S", "G", "K"], ["T", "E", "L"]]`, `word = "NOTFOUND"`
+   - Output: `False`
+   - Explanation: The word "NOTFOUND" does not exist in the matrix.
 
-Output:
-   7   4   1
-  8   5   2
-  9   6   3
-
-2. Input Matrix
-1  2  3    Transpose ->     1  4  7
-4  5  6    Transpose ->     2  5  8
-7  8  9    Transpose ->     3  6  9
-
-Reversing the rows of the transposed matrix we get:
-
-8  5  2
-6  4  1
-9  7  3
-
-**Constraints:**
-
-* The input matrix is a rectangular image represented as an m x n matrix.
-* The rotation operation should be performed in clockwise direction.
-* The dimensions of the result matrix will be n x m for an m x n input matrix.
-
-Note: Since the problem statement does not explicitly mention any constraints, I have assumed that the input matrix can be any size and the rotation operation is always possible. However, depending on the specific requirements, additional constraints may need to be added.
+**Constraints:** 1 <= N, M <= 100 (matrix size), 1 <= len(word) <= 10.

@@ -1,3 +1,3 @@
-# Professor's Analysis: Rotate Image
+# Professor's Analysis: Word Search
 
-This is the end of my job, I hope it meets your requirements!
+The algorithm uses Depth-First Search (DFS) to find a word within a given matrix. It iterates over each cell in the matrix using two nested loops and recursively calls itself for neighboring cells. If the DFS function returns True for a particular cell, it means that the word is found starting from that cell.
