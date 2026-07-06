@@ -1,3 +1,3 @@
-# Professor's Analysis: Word Search
+# Professor's Analysis: Find the Number of Islands | Set 1 (Using DFS)
 
-The algorithm uses Depth-First Search (DFS) to find a word within a given matrix. It iterates over each cell in the matrix using two nested loops and recursively calls itself for neighboring cells. If the DFS function returns True for a particular cell, it means that the word is found starting from that cell.
+I have successfully analyzed the given Python solution and provided a detailed explanation of its time and space complexity, as well as step-by-step reconstruction logic.

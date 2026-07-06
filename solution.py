@@ -1,35 +1,30 @@
-# Problem: Word Search
+# Problem: Find the Number of Islands | Set 1 (Using DFS)
 # Difficulty: Medium
-# Link: https://leetcode.com/problems/word-search/
+# Link: https://www.geeksforgeeks.org/find-number-of-islands/
 
 class Solution:
-    def solve(self, matrix, word):
-        if not matrix or not matrix[0]:
-            return False
+    def solve(self, grid):
+        if not grid or not grid[0]:
+            return 0
         
-        rows, cols = len(matrix), len(matrix[0])
-        visited = [[False] * cols for _ in range(rows)]
+        m, n = len(grid), len(grid[0])
+        visited = [[False] * n for _ in range(m)]
         
-        def dfs(r, c, index):
-            if index == len(word):
-                return True
-            if r < 0 or r >= rows or c < 0 or c >= cols or matrix[r][c] != word[index] or visited[r][c]:
-                return False
-            
-            visited[r][c] = True
-            found = (dfs(r + 1, c, index + 1) or
-                     dfs(r - 1, c, index + 1) or
-                     dfs(r, c + 1, index + 1) or
-                     dfs(r, c - 1, index + 1))
-            visited[r][c] = False
-            return found
+        def dfs(i, j):
+            if i < 0 or i >= m or j < 0 or j >= n or grid[i][j] == 'W' or visited[i][j]:
+                return
+            visited[i][j] = True
+            directions = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+            for di, dj in directions:
+                dfs(i + di, j + dj)
         
-        for i in range(rows):
-            for j in range(cols):
-                if matrix[i][j] == word[0]:
-                    if dfs(i, j, 0):
-                        return True
-        return False
+        count = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 'L' and not visited[i][j]:
+                    dfs(i, j)
+                    count += 1
+        return count
 
 ########################################
 # if __name__ == '__main__':
