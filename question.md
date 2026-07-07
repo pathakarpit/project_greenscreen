@@ -1,7 +1,7 @@
-# Find the Number of Islands | Set 1 (Using DFS)
+# Given a Matrix of ‘O’ and ‘X’, Replace ‘O’ with ‘X’ if Surrounded by ‘X’
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/find-number-of-islands/](https://www.geeksforgeeks.org/find-number-of-islands/)
+**Link:** [https://www.geeksforgeeks.org/given-matrix-o-x-replace-o-x-surrounded-x/](https://www.geeksforgeeks.org/given-matrix-o-x-replace-o-x-surrounded-x/)
 
 ---
 
@@ -9,28 +9,63 @@
 
 **
 
-```plaintext
-Title: Island Counting in Grid
+**Title:** Marking Islands in a 2D Grid
 
-Description:
-Given an m x n grid where each cell is either 'W' (Water) or 'L' (Land), count the number of islands. An island is formed by connecting adjacent lands horizontally, vertically, or diagonally.
+**Description:** Given an m x n grid where each cell is either 'O' (representing an island) or 'X' (representing water), write a function to mark all connected islands as 'T' and the rest of the grid as 'X'. The function should modify the input grid in-place.
 
-Examples:
+**Examples:**
 
-1. Example 1
-    - Input: [['L', 'E', 'W', 'W'], ['L', 'R', 'R', 'W'], ['L', 'W', 'R', 'W']]
-    - Output: 2
-
-2. Example 2
-    - Input: [['L', 'L', 'L'], ['L', 'L', 'L'], ['L', 'L', 'L']]
-    - Output: 1
-
-3. Example 3
-    - Input: [['W', 'W', 'W'], ['W', 'W', 'W'], ['W', 'W', 'W']]
-    - Output: 0
-
-Constraints:
-- The grid is a rectangular m x n matrix where m and n are positive integers.
-- Each cell in the grid contains either 'L' (Land) or 'W' (Water).
-- Island formation is restricted to horizontal, vertical, or diagonal connections between lands.
+1. Input:
+```python
+board = [
+    ["O", "O", "O", "O"],
+    ["O", "O", "O", "O"],
+    ["O", "O", "O", "O"]
+]
 ```
+
+Output:
+```python
+board = [
+    ["T", "T", "T", "T"],
+    ["T", "T", "T", "T"],
+    ["T", "T", "T", "T"]
+]
+```
+2. Input:
+```python
+board = [
+    ["X", "O", "O", "X"],
+    ["X", "O", "X", "X"],
+    ["X", "X", "X", "X"]
+]
+```
+
+Output:
+```python
+board = [
+    ["T", "T", "T", "T"],
+    ["T", "T", "T", "T"],
+    ["T", "T", "T", "T"]
+]
+```
+3. Input:
+```python
+board = [
+    ["X", "X", "X", "X"],
+    ["X", "O", "O", "X"],
+    ["X", "X", "O", "X"],
+    ["X", "O", "X", "X"]
+]
+```
+
+Output:
+```python
+board = [
+    ["T", "T", "T", "T"],
+    ["T", "T", "T", "T"],
+    ["T", "T", "T", "T"],
+    ["T", "T", "T", "T"]
+]
+```
+**Constraints:** The grid is represented as a 2D list of size m x n, where each cell is either 'O' or 'X'. The function should modify the input grid in-place.
