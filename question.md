@@ -1,71 +1,32 @@
-# Given a Matrix of ‘O’ and ‘X’, Replace ‘O’ with ‘X’ if Surrounded by ‘X’
+# Find a Common Element in all Rows of a Given Row-Wise Sorted Matrix
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/given-matrix-o-x-replace-o-x-surrounded-x/](https://www.geeksforgeeks.org/given-matrix-o-x-replace-o-x-surrounded-x/)
+**Link:** [https://www.geeksforgeeks.org/find-common-element-rows-row-wise-sorted-matrix/](https://www.geeksforgeeks.org/find-common-element-rows-row-wise-sorted-matrix/)
 
 ---
 
 ## Problem Statement
 
-**
-
-**Title:** Marking Islands in a 2D Grid
-
-**Description:** Given an m x n grid where each cell is either 'O' (representing an island) or 'X' (representing water), write a function to mark all connected islands as 'T' and the rest of the grid as 'X'. The function should modify the input grid in-place.
-
-**Examples:**
-
-1. Input:
-```python
-board = [
-    ["O", "O", "O", "O"],
-    ["O", "O", "O", "O"],
-    ["O", "O", "O", "O"]
-]
 ```
+Title: Find Common Element in All Rows of a Given Row-Wise Sorted Matrix
+Description: Given a matrix, the task is to find an element that exists in every row of the given matrix. The matrix is sorted in a specific way, with each element being greater than or equal to the previous one in the same row.
+Examples:
+Input 1: 
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+Output 1: -1
+Explanation 1: There is no common element in the given matrix.
 
-Output:
-```python
-board = [
-    ["T", "T", "T", "T"],
-    ["T", "T", "T", "T"],
-    ["T", "T", "T", "T"]
-]
-```
-2. Input:
-```python
-board = [
-    ["X", "O", "O", "X"],
-    ["X", "O", "X", "X"],
-    ["X", "X", "X", "X"]
-]
-```
+Input 2:
+matrix = [[1, 1, 1], [2, 2, 2], [3, 3, 3]]
+Output 2: 1
+Explanation 2: The common element present in every row of the given matrix is 1.
 
-Output:
-```python
-board = [
-    ["T", "T", "T", "T"],
-    ["T", "T", "T", "T"],
-    ["T", "T", "T", "T"]
-]
-```
-3. Input:
-```python
-board = [
-    ["X", "X", "X", "X"],
-    ["X", "O", "O", "X"],
-    ["X", "X", "O", "X"],
-    ["X", "O", "X", "X"]
-]
-```
+Input 3:
+matrix = [[10, 20, 30], [40, 50, 60], [70, 80, 90]]
+Output 3: -1
+Explanation 3: There is no common element in the given matrix.
 
-Output:
-```python
-board = [
-    ["T", "T", "T", "T"],
-    ["T", "T", "T", "T"],
-    ["T", "T", "T", "T"],
-    ["T", "T", "T", "T"]
-]
+Constraints: 
+1 ≤ m, n ≤ 200 (where m and n are the number of rows and columns in the matrix)
+m * n <= 104
 ```
-**Constraints:** The grid is represented as a 2D list of size m x n, where each cell is either 'O' or 'X'. The function should modify the input grid in-place.
