@@ -1,27 +1,24 @@
-# Problem: Find a Common Element in all Rows of a Given Row-Wise Sorted Matrix
+# Problem: Create a Matrix with Alternating Rectangles of O and X
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/find-common-element-rows-row-wise-sorted-matrix/
+# Link: https://www.geeksforgeeks.org/create-a-matrix-with-alternating-rectangles-of-0-and-x/
 
 class Solution:
-    def solve(self, matrix):
-        if not matrix or not matrix[0]:
-            return -1
-        
-        rows = len(matrix)
-        cols = len(matrix[0])
-        common_elements = set(matrix[0])
-        
-        for i in range(1, rows):
-            current_row_set = set()
-            for j in range(cols):
-                if matrix[i][j] in common_elements:
-                    current_row_set.add(matrix[i][j])
-            if not current_row_set:
-                return -1
-            common_elements = current_row_set
-        
-        result = min(common_elements) if common_elements else -1
-        return result
+    def solve(self, m, n):
+        matrix = [['' for _ in range(n)] for _ in range(m)]
+        layer = 0
+        while 2 * layer < min(m, n):
+            # Fill the top and bottom rows of the current layer
+            for i in range(layer, n - layer):
+                matrix[layer][i] = 'X' if (layer + i) % 2 == 0 else '0'
+            for i in range(layer, m - layer):
+                matrix[m - layer - 1][i] = 'X' if (layer + i) % 2 == 0 else '0'
+            # Fill the left and right columns of the current layer
+            for j in range(layer, m - layer):
+                matrix[j][layer] = 'X' if (layer + j) % 2 == 0 else '0'
+            for j in range(layer, n - layer):
+                matrix[j][n - layer - 1] = 'X' if (layer + j) % 2 == 0 else '0'
+            layer += 1
+        return matrix
 
 ########################################
 # if __name__ == '__main__':

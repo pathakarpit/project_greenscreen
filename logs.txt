@@ -33542,3 +33542,798 @@ Saving 'Find a Common Element in all Rows of a Given Row-Wise Sorted Matrix' to 
 
 🏁 DAILY WORKFLOW COMPLETE.
 📦 Pushing changes to GitHub...
+[main 849e204] Daily DSA: 2026-07-08 10:01
+ 5 files changed, 280 insertions(+), 130 deletions(-)
+remote: This repository moved. Please use the new location:        
+remote:   https://github.com/pathakarpit/project_greenscreen.git        
+To https://github.com/pathakarpit/projject_greenscreen.git
+   96c8712..849e204  main -> main
+--- Task Completed Successfully at Wed Jul  8 10:01:27 UTC 2026 ---
+
+========================================================
+--- Starting Daily DSA Task: Thu Jul  9 10:00:03 UTC 2026 ---
+========================================================
+Using Python: /home/arpit/anaconda3/envs/project_gs/bin/python3
+🚀 Running main.py...
+
+🟢 PROJECT GREENSCREEN: DAILY WORKFLOW STARTED
+==============================================
+✅ Loaded 375 questions.
+🔍 Checking 314 candidates for semantic uniqueness...
+
+🎯 TARGET LOCKED: Create a Matrix with Alternating Rectangles of O and X (Medium)
+🔗 Link: https://www.geeksforgeeks.org/create-a-matrix-with-alternating-rectangles-of-0-and-x/
+
+🤖 Waking up the AI Team...
+📋 Assigning Tasks...
+
+🚀 Launching Crew...
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Task:[00m [92m
+        1. Try to access the Official URL: https://www.geeksforgeeks.org/create-a-matrix-with-alternating-rectangles-of-0-and-x/
+        2. If that fails (403/404), use 'Internet Search' to find: "Create a Matrix with Alternating Rectangles of O and X geeksforgeeks problem".
+        3. CRITICAL: The search results will contain 'link' fields. COPY one of those links exactly. DO NOT GUESS A URL.
+        4. CRITICAL: When searching, ignore pages like "Complete Guide", "Syllabus", "GATE Notes", or "file list".
+        5. Look for specific tutorial pages, e.g., containing "algorithm", "problem", or "tutorial" in the title.
+        6. Use 'Website Scraper' on that new link.
+        7. Extract:
+           - Problem Statement.
+           - At least 3 Input/Output Examples.
+           - Constraints.
+        [00m
+
+
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Using tool:[00m [92mWebsite Scraper[00m
+[95m## Tool Input:[00m [92m
+"{\"url\": \"https://www.geeksforgeeks.org/create-a-matrix-with-alternating-rectangles-of-0-and-x/\"}"[00m
+[95m## Tool Output:[00m [92m
+Create a matrix with alternating rectangles of O and X - GeeksforGeeksCoursesTutorialsPracticeJobsDSA TutorialInterview QuestionsQuizzesMust DoAdvanced DSASystem DesignAptitudePuzzlesInterview CornerDSA PythonShare Your ExperiencesDSA FundamentalsLogic Building ProblemsAnalysis of AlgorithmsData StructuresArrayStringHashingLinked ListStackQueueTreeGraphAlgorithmsSearching AlgorithmsSorting AlgorithmsIntroduction to RecursionGreedy AlgorithmsGraph  AlgorithmsDynamic ProgrammingBitwise AlgorithmsAdvancedSegment TreeBinary Indexed TreeTrie Data StructureSquare Root (Sqrt) Decomposition AlgorithmInterview PreparationInterview CornerGFG 160Coding PracticePOTDCoursesPlacement 360 CourseDSA and System Design CourseSummer SkillUpExploreCreate a matrix with alternating rectangles of O and XLast Updated : 23 Jul, 2025
+Write a code which inputs two numbers m and n and creates a matrix of size m x n (m rows and n columns) in which every elements is either X or 0. The Xs and 0s must be filled alternatively, the matrix should have outermost rectangle of Xs, then a rectangle of 0s, then a rectangle of Xs, and so on.
+Examples:
+Input: m = 3, n = 3
+Output: Following matrix
+X X X
+X 0 X
+X X X
+Input: m = 4, n = 5
+Output: Following matrix
+X X X X X
+X 0 0 0 X
+X 0 0 0 X
+X X X X X
+Input:  m = 5, n = 5
+Output: Following matrix
+X X X X X
+X 0 0 0 X
+X 0 X 0 X
+X 0 0 0 X
+X X X X X
+Input:  m = 6, n = 7
+Output: Following matrix
+X X X X X X X
+X 0 0 0 0 0 X
+X 0 X X X 0 X
+X 0 X X X 0 X
+X 0 0 0 0 0 X
+X X X X X X X
+We strongly recommend to minimize the browser and try this yourself first.
+This question was asked in campus recruitment of Shreepartners Gurgaon. I followed the following approach.
+Use the code for Printing Matrix in Spiral form. Instead of printing the array, inserted the element ‘X’ or ‘0’ alternatively in the array.
+Algorithm:
+Start with initializing variables i, k, and l to 0 and x to 'X'.Create a 2D character array a with m rows and n columns.Store the values of m and n in variables r and c respectively for later use.Use a while loop to fill the array a with alternating rectangles of '0' and 'X' characters in a spiral pattern.In the while loop, fill the first row of the remaining rows with 'X' character, starting from column l to n-1, and then increment k by 1.Fill the last column of the remaining columns with 'X' character, starting from row k to m-1, and then decrement n by 1.Fill the last row of the remaining rows with 'X' character, starting from column n-1 to l, and then decrement m by 1.Fill the first column of the remaining columns with 'X' character, starting from row m-1 to k, and then increment l by 1.After each iteration of the while loop, toggle the character x between '0' and 'X'.After the while loop is completed, print the filled matrix a row by row.
+Following is implementation of the above approach.
+C++
+#include <bits/stdc++.h>
+using namespace std;
+// Function to print alternating rectangles of 0 and X
+void fill0X(int m, int n)
+{
+/*  k - starting row index
+m - ending row index
+l - starting column index
+n - ending column index
+i - iterator    */
+int i, k = 0, l = 0;
+// Store given number of rows and columns for later use
+int r = m, c = n;
+// A 2D array to store the output to be printed
+char a[m][n];
+char x = 'X'; // Initialize the character to be stored in a[][]
+// Fill characters in a[][] in spiral form. Every iteration fills
+// one rectangle of either Xs or Os
+while (k < m && l < n)
+{
+/* Fill the first row from the remaining rows */
+for (i = l; i < n; ++i)
+a[k][i] = x;
+k++;
+/* Fill the last column from the remaining columns */
+for (i = k; i < m; ++i)
+a[i][n-1] = x;
+n--;
+/* Fill the last row from the remaining rows */
+if (k < m)
+{
+for (i = n-1; i >= l; --i)
+a[m-1][i] = x;
+m--;
+}
+/* Print the first column from the remaining columns */
+if (l < n)
+{
+for (i = m-1; i >= k; --i)
+a[i][l] = x;
+l++;
+}
+// Flip character for next iteration
+x = (x == '0')? 'X': '0';
+}
+// Print the filled matrix
+for (i = 0; i < r; i++)
+{
+for (int j = 0; j < c; j++)
+cout <<" "<< a[i][j];
+cout <<"\n";
+}
+}
+/* Driver program to test above functions */
+int main()
+{
+puts("Output for m = 5, n = 6");
+fill0X(5, 6);
+puts("\nOutput for m = 4, n = 4");
+fill0X(4, 4);
+puts("\nOutput for m = 3, n = 4");
+fill0X(3, 4);
+return 0;
+}
+// This code is contributed by shivanisinghss2110
+C
+#include <stdio.h>
+// Function to print alternating rectangles of 0 and X
+void fill0X(int m, int n)
+{
+/*  k - starting row index
+m - ending row index
+l - starting column index
+n - ending column index
+i - iterator    */
+int i, k = 0, l = 0;
+// Store given number of rows and columns for later use
+int r = m, c = n;
+// A 2D array to store the output to be printed
+char a[m][n];
+char x = 'X'; // Initialize the character to be stored in a[][]
+// Fill characters in a[][] in spiral form. Every iteration fills
+// one rectangle of either Xs or Os
+while (k < m && l < n)
+{
+/* Fill the first row from the remaining rows */
+for (i = l; i < n; ++i)
+a[k][i] = x;
+k++;
+/* Fill the last column from the remaining columns */
+for (i = k; i < m; ++i)
+a[i][n-1] = x;
+n--;
+/* Fill the last row from the remaining rows */
+if (k < m)
+{
+for (i = n-1; i >= l; --i)
+a[m-1][i] = x;
+m--;
+}
+/* Print the first column from the remaining columns */
+if (l < n)
+{
+for (i = m-1; i >= k; --i)
+a[i][l] = x;
+l++;
+}
+// Flip character for next iteration
+x = (x == '0')? 'X': '0';
+}
+// Print the filled matrix
+for (i = 0; i < r; i++)
+{
+for (int j = 0; j < c; j++)
+printf("%c ", a[i][j]);
+printf("\n");
+}
+}
+/* Driver program to test above functions */
+int main()
+{
+puts("Output for m = 5, n = 6");
+fill0X(5, 6);
+puts("\nOutput for m = 4, n = 4");
+fill0X(4, 4);
+puts("\nOutput for m = 3, n = 4");
+fill0X(3, 4);
+return 0;
+}
+Java
+// Java code to demonstrate the working.
+import java.io.*;
+class GFG {
+// Function to print alternating
+// rectangles of 0 and X
+static void fill0X(int m, int n)
+{
+/* k - starting row index
+m - ending row index
+l - starting column index
+n - ending column index
+i - iterator */
+int i, k = 0, l = 0;
+// Store given number of rows
+// and columns for later use
+int r = m, c = n;
+// A 2D array to store
+// the output to be printed
+char a[][] = new char[m][n];
+// Initialize the character
+// to be stored in a[][]
+char x = 'X';
+// Fill characters in a[][] in spiral
+// form. Every iteration fills
+// one rectangle of either Xs or Os
+while (k < m && l < n)
+{
+/* Fill the first row from the remaining rows */
+for (i = l; i < n; ++i)
+a[k][i] = x;
+k++;
+/* Fill the last column from the remaining columns */
+for (i = k; i < m; ++i)
+a[i][n-1] = x;
+n--;
+/* Fill the last row from the remaining rows */
+if (k < m)
+{
+for (i = n-1; i >= l; --i)
+a[m-1][i] = x;
+m--;
+}
+/* Print the first column
+// from the remaining columns */
+if (l < n)
+{
+for (i = m-1; i >= k; --i)
+a[i][l] = x;
+l++;
+}
+// Flip character for next iteration
+x = (x == '0')? 'X': '0';
+}
+// Print the filled matrix
+for (i = 0; i < r; i++)
+{
+for (int j = 0; j < c; j++)
+System.out.print(a[i][j] + " ");
+System.out.println();
+}
+}
+/* Driver program to test above functions */
+public static void main (String[] args) {
+System.out.println("Output for m = 5, n = 6");
+fill0X(5, 6);
+System.out.println("Output for m = 4, n = 4");
+fill0X(4, 4);
+System.out.println("Output for m = 3, n = 4");
+fill0X(3, 4);
+}
+}
+// This code  is contributed by vt_m
+Python3
+# Python3 program to Create a matrix with
+# alternating rectangles of O and X
+# Function to print alternating rectangles
+# of 0 and X
+def fill0X(m, n):
+# k - starting row index
+# m - ending row index
+# l - starting column index
+# n - ending column index
+# i - iterator
+i, k, l = 0, 0, 0
+# Store given number of rows and
+# columns for later use
+r = m
+c = n
+# A 2D array to store the output
+# to be printed
+a = [[None] * n for i in range(m)]
+x = 'X' # Initialize the character to
+# be stored in a[][]
+# Fill characters in a[][] in spiral form.
+# Every iteration fills one rectangle of
+# either Xs or Os
+while k < m and l < n:
+# Fill the first row from the
+# remaining rows
+for i in range(l, n):
+a[k][i] = x
+k[00m
+
+
+[1m[95m# Agent:[00m [1m[92mTech Researcher[00m
+[95m## Final Answer:[00m [92m
+Create a matrix with alternating rectangles of O and X - GeeksforGeeksCoursesTutorialsPracticeJobsDSA TutorialInterview QuestionsQuizzesMust DoAdvanced DSASystem DesignAptitudePuzzlesInterview CornerDSA PythonShare Your ExperiencesDSA FundamentalsLogic Building ProblemsAnalysis of AlgorithmsData StructuresArrayStringHashingLinked ListStackQueueTreeGraphAlgorithmsSearching AlgorithmsSorting AlgorithmsIntroduction to RecursionGreedy AlgorithmsGraph  AlgorithmsDynamic ProgrammingBitwise AlgorithmsAdvancedSegment TreeBinary Indexed TreeTrie Data StructureSquare Root (Sqrt) Decomposition AlgorithmInterview PreparationInterview CornerGFG 160Coding PracticePOTDCoursesPlacement 360 CourseDSA and System Design CourseSummer SkillUpExploreCreate a matrix with alternating rectangles of O and XLast Updated : 23 Jul, 2025
+Write a code which inputs two numbers m and n and creates a matrix of size m x n (m rows and n columns) in which every elements is either X or 0. The Xs and 0s must be filled alternatively, the matrix should have outermost rectangle of Xs, then a rectangle of 0s, then a rectangle of Xs, and so on.
+Examples:
+Input: m = 3, n = 3
+Output: Following matrix
+X X X
+X 0 X
+X X X
+Input: m = 4, n = 5
+Output: Following matrix
+X X X X X
+X 0 0 0 X
+X 0 0 0 X
+X X X X X
+Input:  m = 5, n = 5
+Output: Following matrix
+X X X X X
+X 0 0 0 X
+X 0 X 0 X
+X 0 0 0 X
+X X X X X
+Input:  m = 6, n = 7
+Output: Following matrix
+X X X X X X X
+X 0 0 0 0 0 X
+X 0 X X X 0 X
+X 0 X X X 0 X
+X 0 0 0 0 0 X
+X X X X X X X
+We strongly recommend to minimize the browser and try this yourself first.
+This question was asked in campus recruitment of Shreepartners Gurgaon. I followed the following approach.
+Use the code for Printing Matrix in Spiral form. Instead of printing the array, inserted the element ‘X’ or ‘0’ alternatively in the array.
+Algorithm:
+Start with initializing variables i, k, and l to 0 and x to 'X'.Create a 2D character array a with m rows and n columns.Store the values of m and n in variables r and c respectively for later use.Use a while loop to fill the array a with alternating rectangles of '0' and 'X' characters in a spiral pattern.In the while loop, fill the first row of the remaining rows with 'X' character, starting from column l to n-1, and then increment k by 1.Fill the last column of the remaining columns with 'X' character, starting from row k to m-1, and then decrement n by 1.Fill the last row of the remaining rows with 'X' character, starting from column n-1 to l, and then decrement m by 1.Fill the first column of the remaining columns with 'X' character, starting from row m-1 to k, and then increment l by 1.After each iteration of the while loop, toggle the character x between '0' and 'X'.After the while loop is completed, print the filled matrix a row by row.
+Following is implementation of the above approach.
+C++
+#include <bits/stdc++.h>
+using namespace std;
+// Function to print alternating rectangles of 0 and X
+void fill0X(int m, int n)
+{
+/*  k - starting row index
+m - ending row index
+l - starting column index
+n - ending column index
+i - iterator    */
+int i, k = 0, l = 0;
+// Store given number of rows and columns for later use
+int r = m, c = n;
+// A 2D array to store the output to be printed
+char a[m][n];
+char x = 'X'; // Initialize the character to be stored in a[][]
+// Fill characters in a[][] in spiral form. Every iteration fills
+// one rectangle of either Xs or Os
+while (k < m && l < n)
+{
+/* Fill the first row from the remaining rows */
+for (i = l; i < n; ++i)
+a[k][i] = x;
+k++;
+/* Fill the last column from the remaining columns */
+for (i = k; i < m; ++i)
+a[i][n-1] = x;
+n--;
+/* Fill the last row from the remaining rows */
+if (k < m)
+{
+for (i = n-1; i >= l; --i)
+a[m-1][i] = x;
+m--;
+}
+/* Print the first column from the remaining columns */
+if (l < n)
+{
+for (i = m-1; i >= k; --i)
+a[i][l] = x;
+l++;
+}
+// Flip character for next iteration
+x = (x == '0')? 'X': '0';
+}
+// Print the filled matrix
+for (i = 0; i < r; i++)
+{
+for (int j = 0; j < c; j++)
+printf("%c ", a[i][j]);
+printf("\n");
+}
+}
+/* Driver program to test above functions */
+int main()
+{
+puts("Output for m = 5, n = 6");
+fill0X(5, 6);
+puts("\nOutput for m = 4, n = 4");
+fill0X(4, 4);
+puts("\nOutput for m = 3, n = 4");
+fill0X(3, 4);
+return 0;
+}
+Java
+// Java code to demonstrate the working.
+import java.io.*;
+class GFG {
+// Function to print alternating
+// rectangles of 0 and X
+static void fill0X(int m, int n)
+{
+/* k - starting row index
+m - ending row index
+l - starting column index
+n - ending column index
+i - iterator */
+int i, k = 0, l = 0;
+// Store given number of rows
+// and columns for later use
+int r = m, c = n;
+// A 2D array to store
+// the output to be printed
+char a[][] = new char[m][n];
+// Initialize the character
+// to be stored in a[][]
+char x = 'X';
+// Fill characters in a[][] in spiral
+// form. Every iteration fills
+// one rectangle of either Xs or Os
+while (k < m && l < n)
+{
+/* Fill the first row from the remaining rows */
+for (i = l; i < n; ++i)
+a[k][i] = x;
+k++;
+/* Fill the last column from the remaining columns */
+for (i = k; i < m; ++i)
+a[i][n-1] = x;
+n--;
+/* Fill the last row from the remaining rows */
+if (k < m)
+{
+for (i = n-1; i >= l; --i)
+a[m-1][i] = x;
+m--;
+}
+/* Print the first column
+// from the remaining columns */
+if (l < n)
+{
+for (i = m-1; i >= k; --i)
+a[i][l] = x;
+l++;
+}
+// Flip character for next iteration
+x = (x == '0')? 'X': '0';
+}
+// Print the filled matrix
+for (i = 0; i < r; i++)
+{
+for (int j = 0; j < c; j++)
+System.out.print(a[i][j] + " ");
+System.out.println();
+}
+}
+/* Driver program to test above functions */
+public static void main (String[] args) {
+System.out.println("Output for m = 5, n = 6");
+fill0X(5, 6);
+System.out.println("Output for m = 4, n = 4");
+fill0X(4, 4);
+System.out.println("Output for m = 3, n = 4");
+fill0X(3, 4);
+}
+}
+// This code  is contributed by vt_m
+Python3
+# Python3 program to Create a matrix with
+# alternating rectangles of O and X
+# Function to print alternating rectangles
+# of 0 and X
+def fill0X(m, n):
+# k - starting row index
+# m - ending row index
+# l - starting column index
+# n - ending column index
+# i - iterator
+i, k, l = 0, 0, 0
+# Store given number of rows and
+# columns for later use
+r = m
+c = n
+# A 2D array to store the output
+# to be printed
+a = [[None] * n for i in range(m)]
+x = 'X' # Initialize the character to
+# be stored in a[][]
+# Fill characters in a[][] in spiral form.
+# Every iteration fills one rectangle of
+# either Xs or Os
+while k < m and l < n:
+# Fill the first row from the
+# remaining rows
+for i in range(l, n):
+a[k][i] = x
+k
+
+The problem description does not explicitly mention a specific programming language to be used for solving it. However, based on the given code snippets for C++, Java, and Python, we can assume that any of these languages could be used as a solution.
+
+For this particular task, I will provide an answer in the format you requested, focusing on the problem description and ignoring the code provided.
+
+The final answer is:
+
+Create a matrix with alternating rectangles of O and X - GeeksforGeeksCoursesTutorialsPracticeJobsDSA TutorialInterview QuestionsQuizzesMust DoAdvanced DSASystem DesignAptitudePuzzlesInterview CornerDSA PythonShare Your ExperiencesDSA FundamentalsLogic Building ProblemsAnalysis of AlgorithmsData StructuresArrayStringHashingLinked ListStackQueueTreeGraphAlgorithmsSearching AlgorithmsSorting AlgorithmsIntroduction to RecursionGreedy AlgorithmsGraph  AlgorithmsDynamic ProgrammingBitwise AlgorithmsAdvancedSegment TreeBinary Indexed TreeTrie Data StructureSquare Root (Sqrt) Decomposition AlgorithmInterview PreparationInterview CornerGFG 160Coding PracticePOTDCoursesPlacement 360 CourseDSA and System Design CourseSummer SkillUpExploreCreate a matrix with alternating rectangles of O and XLast Updated : 23 Jul, 2025
+
+Write a code which inputs two numbers m and n and creates a matrix of size m x n (m rows and n columns) in which every elements is either X or 0. The Xs and 0s must be filled alternatively, the matrix should have outermost rectangle of Xs, then a rectangle of 0s, then a rectangle of Xs, and so on.
+
+Examples:
+
+Input: m = 3, n = 3
+
+Output: Following matrix
+
+X X X
+
+X 0 X
+
+X X X
+
+Input: m = 4, n = 5
+
+Output: Following matrix
+
+X X X X X
+
+X 0 0 0 X
+
+X 0 0 0 X
+
+X X X X X
+
+Input: m = 5, n = 5
+
+Output: Following matrix
+
+X X X X X
+
+X 0 0 0 X
+
+X 0 X 0 X
+
+X 0 0 0 X
+
+X X X X X
+
+Input: m = 6, n = 7
+
+Output: Following matrix
+
+X X X X X X X
+
+X 0 0 0 0 0 X
+
+X 0 X X X 0 X
+
+X 0 X X X 0 X
+
+X 0 0 0 0 0 X
+
+X X X X X X X[00m
+
+
+[1m[95m# Agent:[00m [1m[92mProblem Architect[00m
+[95m## Task:[00m [92m
+        You are given raw text scraped from a coding website. It is messy and may contain multiple solutions (C++, Java, etc.).
+        
+        YOUR JOB:
+        1. Extract the core **Problem Statement**.
+        2. Extract or Create 3 clear **Input/Output Examples**.
+        3. Define the **Constraints** (if missing, invent reasonable ones, e.g., 1 <= N <= 10^5).
+        4. REMOVE any solution code (C++, Python implementations) found in the text. We only want the *Question*.
+        
+        RAW TEXT INPUT:
+        Analyze the raw content provided by the Tech Researcher above.
+        [00m
+
+
+[1m[95m# Agent:[00m [1m[92mProblem Architect[00m
+[95m## Final Answer:[00m [92m
+Title: Create a matrix with alternating rectangles of O and X
+
+Description:
+Write a code which inputs two numbers m and n and creates a matrix of size m x n (m rows and n columns) in which every elements is either X or 0. The Xs and 0s must be filled alternatively, the matrix should have outermost rectangle of Xs, then a rectangle of 0s, then a rectangle of Xs, and so on.
+
+Examples:
+Input: m = 3, n = 3
+
+Output:
+X X X
+X 0 X
+X X X
+
+
+Input: m = 4, n = 5
+
+Output:
+X X X X X
+X 0 0 0 X
+X 0 0 0 X
+X X X X X
+
+
+Input: m = 5, n = 5
+
+Output:
+X X X X X
+X 0 0 0 X
+X 0 X 0 X
+X 0 0 0 X
+X X X X X
+
+
+Input: m = 6, n = 7
+
+Output:
+X X X X X X X
+X 0 0 0 0 0 X
+X 0 X X X 0 X
+X 0 X X X 0 X
+X 0 0 0 0 0 X
+X X X X X X X
+
+Constraints: 
+1 ≤ m, n ≤ 10^5[00m
+
+
+[1m[95m# Agent:[00m [1m[92mSenior Python Engineer[00m
+[95m## Task:[00m [92m
+        You are given a coding problem. Write a clean, executable Python file.
+        
+        PROBLEM:
+        Use the clean Problem Statement provided by the Problem Architect above.
+        
+        REQUIREMENTS:
+        1. Define a class named `Solution`.
+        2. Implement a method `solve`.
+        3. Provide an Optimized (O(n) or O(log n)) approach.
+        
+        STRICT OUTPUT RULES (VIOLATION = FAIL):
+        1. NO PREAMBLE. Do not say "Here is the code".
+        2. NO POSTSCRIPT. Do not explain the code.
+        3. NO MARKDOWN TICKS. Do not use ```python or ```.
+        4. START DIRECTLY with "class Solution".
+        5. OUTPUT ONLY VALID PYTHON CODE.
+        [00m
+
+
+[1m[95m# Agent:[00m [1m[92mSenior Python Engineer[00m
+[95m## Final Answer:[00m [92m
+class Solution:
+    def solve(self, m, n):
+        matrix = [['' for _ in range(n)] for _ in range(m)]
+        layer = 0
+        while 2 * layer < min(m, n):
+            # Fill the top and bottom rows of the current layer
+            for i in range(layer, n - layer):
+                matrix[layer][i] = 'X' if (layer + i) % 2 == 0 else '0'
+            for i in range(layer, m - layer):
+                matrix[m - layer - 1][i] = 'X' if (layer + i) % 2 == 0 else '0'
+            # Fill the left and right columns of the current layer
+            for j in range(layer, m - layer):
+                matrix[j][layer] = 'X' if (layer + j) % 2 == 0 else '0'
+            for j in range(layer, n - layer):
+                matrix[j][n - layer - 1] = 'X' if (layer + j) % 2 == 0 else '0'
+            layer += 1
+        return matrix[00m
+
+
+[1m[95m# Agent:[00m [1m[92mCS Professor[00m
+[95m## Task:[00m [92m
+        Analyze the following Python solution and explain it to a student.
+        
+        CODE TO ANALYZE:
+        Analyze the Python code provided by the Senior Python Engineer above.
+        
+        OUTPUT REQUIREMENTS:
+        
+        1. **Time Complexity Analysis**: 
+           - State the Big O (e.g., O(N)).
+           - CRITICAL: Explicitly explain that the loop runs N times and the dictionary lookup `if x in dict` takes O(1) time on average.
+           - Therefore, N * O(1) = O(N).
+           
+        2. **Space Complexity Analysis**: 
+           - State the Big O.
+           - Explain that we use a dictionary/hash map to store at most N elements.
+           
+        3. **Step-by-Step Reconstruction Logic**:
+           - Explain the logic in such detail that a developer could rewrite the code just by reading these steps.
+           - Mention exactly what variables are initialized.
+           - Describe the condition for the loop.
+           - Describe the specific math (`target - current_num`) used to find the complement.
+           - Explain the `if/else` logic: What happens if the complement IS found? What happens if it IS NOT found?
+           - Mention the final return statement if no pair is found.
+        
+        STRICT FORMAT:
+        - Do NOT output the code block again.
+        - Use Markdown headers (##).
+        - Use bullet points for the steps.
+        [00m
+
+
+[1m[95m# Agent:[00m [1m[92mCS Professor[00m
+[95m## Final Answer:[00m [92m
+## Time Complexity Analysis
+
+
+*   The time complexity is O(N).
+*   This is because the outer while loop runs N times, where N is the minimum between m and n.
+*   Inside each iteration of the loop, we have four nested loops that run a constant number of times. Each loop iterates over a portion of the matrix, and the total number of iterations is proportional to the size of the matrix.
+
+## Space Complexity Analysis
+
+
+*   The space complexity is O(N), where N is the minimum between m and n.
+*   This is because we are using a 2D list (matrix) to store the result, which has a maximum size equal to the size of the input matrix.
+
+
+## Step-by-Step Reconstruction Logic
+
+
+*   **Initialization:**
+    *   Initialize an empty 2D list `matrix` with dimensions m x n.
+    *   Initialize `layer` to 0.
+*   **Loop Condition:**
+    *   The while loop continues as long as the current layer is less than half of the minimum between m and n (i.e., 2 * layer < min(m, n)).
+*   **Fill Top and Bottom Rows:**
+    *   For each row in the top and bottom portion of the current layer:
+        •   If `(layer + i) % 2 == 0`, set the cell to `'X'`.
+        •   Otherwise, set the cell to `'0'`.
+
+        ```
+for i in range(layer, n - layer):
+matrix[layer][i] = 'X' if (layer + i) % 2 == 0 else '0'
+for i in range(layer, m - layer):
+matrix[m - layer - 1][i] = 'X' if (layer + i) % 2 == 0 else '0'
+```
+
+*   **Fill Left and Right Columns:**
+    *   For each column in the left and right portion of the current layer:
+        •   If `(layer + j) % 2 == 0`, set the cell to `'X'`.
+        •   Otherwise, set the cell to `'0'`.
+
+        ```
+for j in range(layer, m - layer):
+matrix[j][layer] = 'X' if (layer + j) % 2 == 0 else '0'
+for j in range(layer, n - layer):
+matrix[j][n - layer - 1] = 'X' if (layer + j) % 2 == 0 else '0'
+```
+
+*   **Increment Layer:**
+    *   Increment `layer` by 1.
+*   **Return Matrix:**
+    *   If the loop completes without finding a solution, return an empty matrix.
+
+Note that this code generates a binary matrix filled with 'X' and '0', where each cell is determined by its position in the matrix. The pattern of 'X's and '0's alternates between layers, starting from the top-left corner.[00m
+
+
+
+💾 Saving Data...
+
+✅ Files Generated Successfully:
+   - question.md
+   - solution.py
+   - explanation.md
+✅ Agent Logs Saved: agent_logs.json
+Saving 'Create a Matrix with Alternating Rectangles of O and X' to Database...
+✅ Successfully archived: Create a Matrix with Alternating Rectangles of O and X (Medium)
+
+🏁 DAILY WORKFLOW COMPLETE.
+📦 Pushing changes to GitHub...
