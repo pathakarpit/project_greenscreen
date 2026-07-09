@@ -1,24 +1,40 @@
-# Problem: Create a Matrix with Alternating Rectangles of O and X
-# Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/create-a-matrix-with-alternating-rectangles-of-0-and-x/
+# Problem: Maximum Size Rectangle of all 1s
+# Difficulty: Hard
+# Link: https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/
 
 class Solution:
-    def solve(self, m, n):
-        matrix = [['' for _ in range(n)] for _ in range(m)]
-        layer = 0
-        while 2 * layer < min(m, n):
-            # Fill the top and bottom rows of the current layer
-            for i in range(layer, n - layer):
-                matrix[layer][i] = 'X' if (layer + i) % 2 == 0 else '0'
-            for i in range(layer, m - layer):
-                matrix[m - layer - 1][i] = 'X' if (layer + i) % 2 == 0 else '0'
-            # Fill the left and right columns of the current layer
-            for j in range(layer, m - layer):
-                matrix[j][layer] = 'X' if (layer + j) % 2 == 0 else '0'
-            for j in range(layer, n - layer):
-                matrix[j][n - layer - 1] = 'X' if (layer + j) % 2 == 0 else '0'
-            layer += 1
-        return matrix
+    def solve(self, mat):
+        if not mat or not mat[0]:
+            return 0
+        
+        rows = len(mat)
+        cols = len(mat[0])
+        
+        # Create a histogram for each row considering all previous rows
+        max_area = 0
+        heights = [0] * cols
+        
+        for i in range(rows):
+            for j in range(cols):
+                # Update the height of the histogram based on current and previous rows
+                heights[j] = heights[j] + 1 if mat[i][j] == 1 else 0
+            
+            # Calculate max area using the largest rectangle in histogram method
+            stack = [-1]
+            for k in range(cols):
+                while heights[k] < heights[stack[-1]]:
+                    height = heights[stack.pop()]
+                    width = k - stack[-1] - 1
+                    max_area = max(max_area, height * width)
+                stack.append(k)
+            
+            # For remaining elements in the stack
+            while len(stack) > 1:
+                height = heights[stack.pop()]
+                width = cols - stack[-1] - 1
+                max_area = max(max_area, height * width)
+        
+        return max_area
 
 ########################################
 # if __name__ == '__main__':

@@ -1,54 +1,30 @@
-# Create a Matrix with Alternating Rectangles of O and X
+# Maximum Size Rectangle of all 1s
 
-**Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/create-a-matrix-with-alternating-rectangles-of-0-and-x/](https://www.geeksforgeeks.org/create-a-matrix-with-alternating-rectangles-of-0-and-x/)
+**Difficulty:** Hard  
+**Link:** [https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/](https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/)
 
 ---
 
 ## Problem Statement
 
-Title: Create a matrix with alternating rectangles of O and X
+**
 
-Description:
-Write a code which inputs two numbers m and n and creates a matrix of size m x n (m rows and n columns) in which every elements is either X or 0. The Xs and 0s must be filled alternatively, the matrix should have outermost rectangle of Xs, then a rectangle of 0s, then a rectangle of Xs, and so on.
+**Title:** Maximum Area Rectangle of 1s in a Binary Matrix
 
-Examples:
-Input: m = 3, n = 3
+**Description:** Given a 2D binary matrix mat[][] consisting only of 0s and 1s, find the area of the largest rectangle sub-matrix that contains only 1s.
 
-Output:
-X X X
-X 0 X
-X X X
+**Examples:**
+1. Input: mat[][] = [[0, 1, 1, 0], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 0, 0]]
+Output: 8
+Explanation: The largest rectangle with only 1's is from (1, 0) to (2, 3)
 
+2. Input: mat[][] = [[0, 1, 1], [1, 1, 1], [0, 1, 1]]
+Output: 6
+Explanation: The largest rectangle with only 1's is from (0, 1) to (2, 2)
 
-Input: m = 4, n = 5
+**Constraints:** 
+- mat[][] will always contain binary values (0s and 1s)
+- mat[][] will never be empty
+- Input matrix dimensions will not exceed 10^5 x 10^5
 
-Output:
-X X X X X
-X 0 0 0 X
-X 0 0 0 X
-X X X X X
-
-
-Input: m = 5, n = 5
-
-Output:
-X X X X X
-X 0 0 0 X
-X 0 X 0 X
-X 0 0 0 X
-X X X X X
-
-
-Input: m = 6, n = 7
-
-Output:
-X X X X X X X
-X 0 0 0 0 0 X
-X 0 X X X 0 X
-X 0 X X X 0 X
-X 0 0 0 0 0 X
-X X X X X X X
-
-Constraints: 
-1 ≤ m, n ≤ 10^5
+Note: The problem description includes three different approaches to solve the problem, but the final answer should focus on one specific approach. In this case, I have extracted the core problem statement and provided examples for a clearer understanding.
