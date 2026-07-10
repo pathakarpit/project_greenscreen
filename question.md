@@ -1,30 +1,26 @@
-# Maximum Size Rectangle of all 1s
+# Permute Two Arrays such that Sum of Every Pair is Greater or Equal to K
 
-**Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/](https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/)
+**Difficulty:** Easy  
+**Link:** [https://www.geeksforgeeks.org/permute-two-arrays-sum-every-pair-greater-equal-k/](https://www.geeksforgeeks.org/permute-two-arrays-sum-every-pair-greater-equal-k/)
 
 ---
 
 ## Problem Statement
 
-**
+**Title:** Is Possible Pair Sum
 
-**Title:** Maximum Area Rectangle of 1s in a Binary Matrix
+**Description:**
 
-**Description:** Given a 2D binary matrix mat[][] consisting only of 0s and 1s, find the area of the largest rectangle sub-matrix that contains only 1s.
+Given two arrays `a` and `b`, determine if every pair of elements from these arrays sums to at least `k`. The arrays are not necessarily the same length, but they will have the same number of elements as each other. If it is possible for all pairs to sum to at least `k`, return true; otherwise, return false.
 
 **Examples:**
-1. Input: mat[][] = [[0, 1, 1, 0], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 0, 0]]
-Output: 8
-Explanation: The largest rectangle with only 1's is from (1, 0) to (2, 3)
 
-2. Input: mat[][] = [[0, 1, 1], [1, 1, 1], [0, 1, 1]]
-Output: 6
-Explanation: The largest rectangle with only 1's is from (0, 1) to (2, 2)
+* Input: `a = [2, 1, 3]`, `b = [7, 8, 9]`, `k = 10` Output: True
+* Input: `a = [2, 4, 6]`, `b = [3, 5, 7]`, `k = 11` Output: False
+* Input: `a = [1, 2, 3]`, `b = [10, 20, 30]`, `k = 5` Output: True
 
-**Constraints:** 
-- mat[][] will always contain binary values (0s and 1s)
-- mat[][] will never be empty
-- Input matrix dimensions will not exceed 10^5 x 10^5
+**Constraints:**
 
-Note: The problem description includes three different approaches to solve the problem, but the final answer should focus on one specific approach. In this case, I have extracted the core problem statement and provided examples for a clearer understanding.
+* The length of arrays `a` and `b` will be equal.
+* All elements in arrays `a` and `b` will be non-negative integers.
+* The value of `k` will be greater than or equal to the maximum element in either array.
