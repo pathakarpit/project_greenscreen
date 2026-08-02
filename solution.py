@@ -1,21 +1,14 @@
-# Problem: find common elements three sorted arrays
+# Problem: Searching in an array where adjacent differ by at most k
 # Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/find-common-elements-three-sorted-arrays/
+# Link: https://www.geeksforgeeks.org/searching-array-adjacent-differ-k/
 
 class Solution:
-    def solve(self, arr1, arr2, arr3):
-        from collections import Counter
-        
-        # Count the occurrences of each element in all three arrays
-        count1 = Counter(arr1)
-        count2 = Counter(arr2)
-        count3 = Counter(arr3)
-        
-        # Find common elements by intersecting counts
-        common_count = count1 & count2 & count3
-        
-        # Convert the result back to a sorted list of keys (common elements)
-        return sorted(list(common_count.elements()))
+    def solve(self, arr, x, k):
+        for i in range(len(arr)):
+            if abs(arr[i] - arr[max(0, i-1)]) <= k and abs(arr[i] - arr[min(len(arr)-1, i+1)]) <= k:
+                if arr[i] == x:
+                    return f"Element {x} is present at index {i}"
+        return "Element not found"
 
 ########################################
 # if __name__ == '__main__':
