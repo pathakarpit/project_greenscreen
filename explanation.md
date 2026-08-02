@@ -1,16 +1,35 @@
-# Professor's Analysis: Piar with given difference
+# Professor's Analysis: majority element
 
+```
 ## Time Complexity Analysis
-The time complexity of this solution is O(N), where N is the number of elements in the input array. This is because we perform a constant-time dictionary lookup operation for each element in the array.
+* The loop `for num in arr:` runs N times, where N is the number of elements in the input array `arr`.
+* Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average using Python's built-in `dict` data structure.
+* Therefore, the total time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
-The space complexity of this solution is O(N), as we use a dictionary to store at most N elements from the input array.
+* We use a dictionary to store at most N elements.
+* The space complexity is therefore O(N), where N is the number of unique elements in the input array.
 
 ## Step-by-Step Reconstruction Logic
 
-* Initialize an empty set `seen` to store numbers we've seen so far.
-* Iterate through each number `num` in the input array `arr`.
-* For each `num`, check if its complement `(x - num)` is already present in the `seen` dictionary. If it is, return `True`, indicating that a pair with sum `x` exists.
-* If no pair is found, add the current number `num` to the `seen` dictionary.
-* Continue this process until all numbers in the input array have been processed.
-* If after processing all numbers, no pair with sum `x` has been found, return `False`.
+### Initialize Variables
+
+* `candidate` is initialized as `None`.
+* `count` is initialized as `0`.
+
+### Loop Through Array
+
+* We iterate through each element `num` in the input array `arr`.
+* If `count` is `0`, we set `candidate` to `num` and increment `count` to `1`.
+* If `candidate` is equal to `num`, we increment `count` by `1`.
+* If `candidate` is not equal to `num`, we decrement `count` by `1`.
+
+### Verify Majority Element
+
+* We iterate through the input array again and count the occurrences of the candidate element.
+* If the count of the candidate element is greater than half the length of the array, we return the candidate element.
+
+### Return Result
+
+* If no pair with sum equal to target is found after iterating through all elements, we return `-1`.
+```
