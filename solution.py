@@ -1,34 +1,21 @@
-# Problem: counting sort
+# Problem: find common elements three sorted arrays
 # Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/counting-sort/
+# Link: https://www.geeksforgeeks.org/find-common-elements-three-sorted-arrays/
 
 class Solution:
-    def solve(self, nums):
-        if not nums:
-            return []
+    def solve(self, arr1, arr2, arr3):
+        from collections import Counter
         
-        max_value = max(nums)
-        min_value = min(nums)
+        # Count the occurrences of each element in all three arrays
+        count1 = Counter(arr1)
+        count2 = Counter(arr2)
+        count3 = Counter(arr3)
         
-        # Create a count array to store the count of each element
-        count_array = [0] * (max_value - min_value + 1)
+        # Find common elements by intersecting counts
+        common_count = count1 & count2 & count3
         
-        # Populate the count array with counts from the input array
-        for num in nums:
-            count_array[num - min_value] += 1
-        
-        # Modify the count array to contain cumulative counts
-        for i in range(1, len(count_array)):
-            count_array[i] += count_array[i - 1]
-        
-        # Create a sorted output array using the count array and input array
-        sorted_nums = [0] * len(nums)
-        for num in reversed(nums):
-            index = count_array[num - min_value] - 1
-            sorted_nums[index] = num
-            count_array[num - min_value] -= 1
-        
-        return sorted_nums
+        # Convert the result back to a sorted list of keys (common elements)
+        return sorted(list(common_count.elements()))
 
 ########################################
 # if __name__ == '__main__':

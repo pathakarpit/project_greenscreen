@@ -1,30 +1,32 @@
-# counting sort
+# find common elements three sorted arrays
 
 **Difficulty:** Easy  
-**Link:** [https://www.geeksforgeeks.org/counting-sort/](https://www.geeksforgeeks.org/counting-sort/)
+**Link:** [https://www.geeksforgeeks.org/find-common-elements-three-sorted-arrays/](https://www.geeksforgeeks.org/find-common-elements-three-sorted-arrays/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Counting Sort Algorithm Implementation
+```
+Title: 
+Three-Pointer Technique Solution
 
-**Description:** Given an array of integers within a specific range, implement a counting sort algorithm to efficiently sort the elements.
+Description: Analyze the raw content to extract the following structured string:
 
-**Examples:**
+Problem Statement: Find the common elements in three arrays of integers.
 
-1.  Input: [4, 2, 2, 8, 3, 3, 1]
-    Output: [1, 2, 2, 3, 3, 4, 8]
+Examples:
+1. Input: arr1 = [1, 5, 10, 20, 30], arr2 = [6, 7, 8, 9, 10], arr3 = [2, 4, 8, 10, 12]
+Output: [10]
 
-2.  Input: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-    Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+2. Input: arr1 = [1, 2, 3, 4, 5], arr2 = [2, 3, 4, 5, 6], arr3 = [1, 2, 3, 4, 5]
+Output: [2, 3, 4, 5]
 
-3.  Input: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+3. Input: arr1 = [10, 20, 30, 40, 50], arr2 = [5, 15, 25, 35, 45], arr3 = [1, 2, 3, 4, 5]
+Output: []
 
-**Constraints:**
-
-*   The input array consists of integers within the range 0 to max_value.
-*   max_value is a constant that represents the maximum value in the input array.
-*   The size of the input array (n) is relatively small compared to the maximum value (max).
-*   Negative numbers and decimal values are not handled by this implementation.
+Constraints:
+- Three input arrays of integers are provided.
+- Each array has a minimum length of 1 and a maximum length of 10^5.
+- The solution should find the common elements in all three arrays.
+```
