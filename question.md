@@ -1,26 +1,28 @@
-# ceiling in a sorted array
+# Piar with given difference
 
 **Difficulty:** Easy  
-**Link:** [https://www.geeksforgeeks.org/ceiling-in-a-sorted-array/](https://www.geeksforgeeks.org/ceiling-in-a-sorted-array/)
+**Link:** [https://www.geeksforgeeks.org/find-a-pair-with-the-given-difference/](https://www.geeksforgeeks.org/find-a-pair-with-the-given-difference/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Ceiling in a sorted array
-Description: Given a sorted array and a value x, find index of the ceiling of x. The ceiling of x is the smallest element in an array greater than or equal to x. Note: In case of multiple occurrences of ceiling of x, return the index of the first occurrence.
-Examples:
-Input: arr[] = [1, 2, 8, 10, 10, 12, 19], x = 5
-Output: 2
+**Title:** Find Pair with Given Sum
 
-Input: arr[] = [1, 2, 8, 10, 10, 12, 19], x = 20
-Output: -1
 
-Input: arr[] = [1, 1, 2, 8, 10, 10, 12, 19], x = 0
-Output: 0
+**Description:**
+Given an array of integers `arr` and a target integer `x`, determine if there exists a pair of numbers in the array that sums up to `x`. Return True if such a pair is found, False otherwise.
 
-Constraints:
-- The input array is sorted in ascending order.
-- The value of x is a number that may or may not be present in the array.
-```
+
+**Examples:**
+
+* Input: `arr = [5, 20, 3, 2, 50, 80], x = 78` | Output: `True`
+* Input: `arr = [1, 2, 3, 4, 5], x = 10` | Output: `False`
+* Input: `arr = [10, 20, 30, 40, 50], x = 60` | Output: `True`
+
+
+**Constraints:** 
+
+* 1 <= N <= 10^5 (array length)
+* -10^9 <= arr[i] <= 10^9 (array elements)
+* -10^9 <= x <= 10^9 (target sum)
