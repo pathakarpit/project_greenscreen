@@ -1,35 +1,34 @@
-# Professor's Analysis: majority element
+# Professor's Analysis: count triplets with sum smaller that a given value
 
 ```
 ## Time Complexity Analysis
-* The loop `for num in arr:` runs N times, where N is the number of elements in the input array `arr`.
-* Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average using Python's built-in `dict` data structure.
-* Therefore, the total time complexity is N * O(1) = O(N).
+
+The time complexity of this solution is O(N).
 
 ## Space Complexity Analysis
-* We use a dictionary to store at most N elements.
-* The space complexity is therefore O(N), where N is the number of unique elements in the input array.
+
+The space complexity of this solution is O(N), as we use a dictionary to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
 
-### Initialize Variables
-
-* `candidate` is initialized as `None`.
-* `count` is initialized as `0`.
-
-### Loop Through Array
-
-* We iterate through each element `num` in the input array `arr`.
-* If `count` is `0`, we set `candidate` to `num` and increment `count` to `1`.
-* If `candidate` is equal to `num`, we increment `count` by `1`.
-* If `candidate` is not equal to `num`, we decrement `count` by `1`.
-
-### Verify Majority Element
-
-* We iterate through the input array again and count the occurrences of the candidate element.
-* If the count of the candidate element is greater than half the length of the array, we return the candidate element.
-
-### Return Result
-
-* If no pair with sum equal to target is found after iterating through all elements, we return `-1`.
+*   Initialize Variables:
+    *   arr: the input array
+    *   target: the target sum
+    *   count: the number of triplets that sum to the target (initialized to 0)
+    *   n: the length of the input array (initialized to len(arr))
+*   Loop Through Array:
+    *   The outer loop `for i in range(n - 2):` iterates over the array, considering each element as the first element of a potential triplet.
+    *   For each `i`, we initialize two pointers:
+        *   left = i + 1: points to the next element after `i`
+        *   right = n - 1: points to the last element in the array
+*   Find Triplets:
+    *   We use a nested while loop to find triplets that sum to the target.
+    *   The condition for the inner while loop is left < right.
+    *   Inside the loop, we calculate the current sum of the triplet: `current_sum = arr[i] + arr[left] + arr[right]`.
+    *   If `current_sum == target`, we increment the count and skip duplicates by moving both pointers.
+    *   If `current_sum < target`, we move the left pointer to increase the sum.
+    *   If `current_sum > target`, we move the right pointer to decrease the sum
+*   Return Count:
+    *   Finally, if no triplets are found after iterating over the entire array, return 0.
+    *   Otherwise, return the count of triplets that sum to the target.
 ```
