@@ -1,31 +1,29 @@
-# count triplets with sum smaller that a given value
+# Maximum Sum Subsequence with no adjacent elements
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/count-triplets-with-sum-smaller-that-a-given-value/](https://www.geeksforgeeks.org/count-triplets-with-sum-smaller-that-a-given-value/)
+**Link:** [https://www.geeksforgeeks.org/maximum-sum-such-that-no-two-elements-are-adjacent/](https://www.geeksforgeeks.org/maximum-sum-such-that-no-two-elements-are-adjacent/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Count Triplets in an Array that Sum up to a Given Number
+**Maximum Sum of Subsequence without Adjacent Elements**
 
-Description: Analyze the given array to find triplets that sum up to a target number. Return the count of such triplets.
+**Title:** Maximum Sum of Subsequence without Adjacent Elements
+**Description:**
+Given an array of integers, find the maximum sum of a subsequence such that no two elements in the subsequence are adjacent.
+**Examples:**
 
-Examples:
+* Input: `arr = [5, 1, 1, 5]`
+Output: `10` (Subsequence is `[5, 5]`)
+* Input: `arr = [1, 2, 3, 4, 5]`
+Output: `9` (Subsequence is `[1, 5]`)
+* Input: `arr = [-1, -2, -3, -4, -5]`
+Output: `-6` (Subsequence is `[-1, -5]`)
 
-1. Input: arr = [-2, 0, 1, 3], target = 2
-   Output: 2 (triplets are (-2, -2, 2) and (0, 1, 1))
+**Constraints:**
+- The input array will contain only integers.
+- The length of the input array will be between 1 and 10^5 (inclusive).
+- The integers in the input array can be positive or negative.
 
-2. Input: arr = [1, 2, 3, 4], target = 6
-   Output: 1 (triplet is (1, 2, 3))
-
-3. Input: arr = [-10, -10, 0, 1], target = 0
-   Output: 2 (triplets are (-10, 0, 10) and (0, 0, 0), but note that we have duplicates)
-
-Constraints:
-- The input array will not contain any duplicate elements.
-- The length of the input array will be at least 3.
-- All elements in the input array will be integers.
-
-```
+Note: I have removed any solution code from the original text to provide a clear problem statement.
