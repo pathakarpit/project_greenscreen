@@ -1,36 +1,40 @@
-# Problem: Merge Sorted Arrays using O(1) Space
+# Problem: Inversion of Array
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/merge-two-sorted-arrays-o1-extra-space/
+# Link: https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
 
 class Solution:
-    def solve(self, a, b):
-        # Initialize two pointers for each array
-        i, j = 0, 0
+    def merge_sort(self, arr):
+        if len(arr) <= 1:
+            return arr, 0
         
-        # Initialize two lists to store the merged result and one extra list to store remaining elements after merge
-        merged_list = []
-        remaining_a = []
-        remaining_b = []
+        mid = len(arr) // 2
+        left, inv_left = self.merge_sort(arr[:mid])
+        right, inv_right = self.merge_sort(arr[mid:])
         
-        # Use two pointers to traverse both arrays until one of them is exhausted
-        while i < len(a) and j < len(b):
-            if a[i] < b[j]:
-                merged_list.append(a[i])
+        merged, inv_split = self.merge_and_count(left, right)
+        return merged, inv_left + inv_right + inv_split
+    
+    def merge_and_count(self, left, right):
+        merged = []
+        i = j = inv_count = 0
+        
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                merged.append(left[i])
                 i += 1
             else:
-                merged_list.append(b[j])
+                merged.append(right[j])
                 j += 1
+                inv_count += len(left) - i
         
-        # If there are remaining elements in either array, add them to the respective list
-        while i < len(a):
-            remaining_a.append(a[i])
-            i += 1
-        while j < len(b):
-            remaining_b.append(b[j])
-            j += 1
+        merged.extend(left[i:])
+        merged.extend(right[j:])
         
-        # Return the merged list and the two remaining lists if any
-        return merged_list, remaining_a + remaining_b
+        return merged, inv_count
+    
+    def solve(self, arr):
+        _, count = self.merge_sort(arr)
+        return count
 
 ########################################
 # if __name__ == '__main__':

@@ -1,32 +1,29 @@
-# Merge Sorted Arrays using O(1) Space
+# Inversion of Array
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/merge-two-sorted-arrays-o1-extra-space/](https://www.geeksforgeeks.org/merge-two-sorted-arrays-o1-extra-space/)
+**Link:** [https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1](https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1)
 
 ---
 
 ## Problem Statement
 
-**Title:** Merge Two Arrays
+```sql
+Title: Merge Sort Based Inversion Counting Algorithm
 
+Description: Given an array of integers, implement a function to count the total number of inversions in the array using the merge sort based inversion counting algorithm.
 
-**Description:** Analyze the raw content provided by the Tech Researcher above.
+Examples:
 
+1. Input: [4, 3, 2, 5]
+   Output: 3 (Explanation: There are three inversions - (4, 3), (4, 2) and (3, 2))
 
-**Examples:**
+2. Input: [5, 4, 3, 2, 1]
+   Output: 10 (Explanation: There are ten inversions in the given array)
 
+3. Input: [1, 2, 3, 4, 5]
+   Output: 0 (Explanation: No inversions in the sorted array)
 
-1. **Example 1:**
-	* Input: `a = [1, 5, 9, 10, 15, 20]`, `b = [2, 3, 8, 13]`
-	* Output: `[1, 2, 3, 5, 8, 9]` and `[10, 13, 15, 20]`
-2. **Example 2:**
-	* Input: `a = [10, 20, 30, 40]`, `b = [5, 15, 25]`
-	* Output: `[5, 10, 15, 20]` and `[25, 30, 40]`
-3. **Example 3:**
-	* Input: `a = [1, 2, 3]`, `b = [4, 5, 6]`
-	* Output: `[1, 2, 3]` and `[4, 5, 6]`
-
-**Constraints:** 
-- The input arrays `a` and `b` are non-empty.
-- The elements in each array are distinct integers.
-- The length of the output arrays should not exceed the sum of the lengths of the input arrays.
+Constraints:
+- The input array will contain only distinct integers.
+- The length of the input array will be between 1 and 10^5 (inclusive).
+```
