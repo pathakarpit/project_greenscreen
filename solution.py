@@ -1,40 +1,19 @@
-# Problem: Inversion of Array
+# Problem: Find Duplicates in O(n) Time and O(1) Extra Space
 # Difficulty: Medium
-# Link: https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+# Link: https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
 
 class Solution:
-    def merge_sort(self, arr):
-        if len(arr) <= 1:
-            return arr, 0
+    def solve(self, nums, target):
+        pairs = []
+        seen = {}
         
-        mid = len(arr) // 2
-        left, inv_left = self.merge_sort(arr[:mid])
-        right, inv_right = self.merge_sort(arr[mid:])
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in seen:
+                pairs.append([seen[complement], i])
+            seen[nums[i]] = i
         
-        merged, inv_split = self.merge_and_count(left, right)
-        return merged, inv_left + inv_right + inv_split
-    
-    def merge_and_count(self, left, right):
-        merged = []
-        i = j = inv_count = 0
-        
-        while i < len(left) and j < len(right):
-            if left[i] <= right[j]:
-                merged.append(left[i])
-                i += 1
-            else:
-                merged.append(right[j])
-                j += 1
-                inv_count += len(left) - i
-        
-        merged.extend(left[i:])
-        merged.extend(right[j:])
-        
-        return merged, inv_count
-    
-    def solve(self, arr):
-        _, count = self.merge_sort(arr)
-        return count
+        return pairs
 
 ########################################
 # if __name__ == '__main__':
