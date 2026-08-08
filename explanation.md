@@ -1,51 +1,37 @@
-# Professor's Analysis: Find Duplicates in O(n) Time and O(1) Extra Space
+# Professor's Analysis: Radix Sort
 
 ## Time Complexity Analysis
-### Big O Notation
-The time complexity of this algorithm is O(N), where N represents the number of elements in the input list `nums`.
+The time complexity of this solution is O(N).
 
-### Loop Runs N Times
-* The loop runs for each element in the list, iterating through all elements exactly once.
-* This results in a linear time complexity, as we visit each element in the list once.
+The loop in this algorithm runs N times. In each iteration, we perform a dictionary lookup `if x in dict` which takes O(1) time on average, as dictionary lookups are constant time operations in Python. Therefore, the total time complexity can be calculated as follows:
 
-### Dictionary Lookup
-* Within the loop, there is an additional operation: dictionary lookup `if x in dict`.
-* On average, dictionary lookups take O(1) time because of how hash tables work (hashing and then direct access to stored values).
-* Therefore, this operation does not affect the overall time complexity.
-
-### Conclusion
-Given that the loop runs N times and each iteration includes a constant-time operation for the dictionary lookup, the total time complexity remains O(N).
+- The loop runs N times.
+- Each iteration involves a dictionary lookup, which takes O(1) time.
+- Therefore, the overall time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
-### Big O Notation
-The space complexity of this algorithm is also O(N), where N represents the maximum number of elements stored in the `seen` dictionary.
+The space complexity of this solution is O(N), where N represents the number of elements in the input array.
 
-### Explanation
-* We use a dictionary (`seen`) to keep track of the numbers we've seen so far and their indices.
-* In the worst-case scenario (e.g., when all elements are unique), this dictionary will store at most N elements, where N is the number of elements in the input list `nums`.
-* Therefore, our space usage is directly proportional to the size of the input.
+We use a dictionary/hash map to store at most N elements. In the worst-case scenario, if all numbers are unique, we will need to store up to N elements in the dictionary. Therefore, the space complexity is directly proportional to the number of elements in the input array, i.e., O(N).
 
 ## Step-by-Step Reconstruction Logic
-### Algorithm Steps
+Here's a step-by-step explanation of the logic:
 
-1. **Initialization**:
-   - Initialize an empty list named `pairs` to store the indices of pairs that sum up to the target.
-   - Create an empty dictionary named `seen` which will be used to keep track of numbers we've seen so far and their respective indices.
+### Variables Initialization
 
-2. **Loop Through the List**:
-   - Iterate over each number in the input list `nums`. This is done using a for loop that iterates over the range of indices (`len(nums)`).
+*   `dict`: An empty dictionary to store unique numbers from the input list.
+*   `target`: The target sum value (not explicitly mentioned but implied as part of the solution).
+*   `current_num`: A variable representing the current number being processed in the loop.
 
-3. **Calculate Complement**:
-   - For each number, calculate its complement relative to the target (`target - nums[i]`).
-   - The purpose here is to find out if there's already another number in our `seen` dictionary which would sum up with this current number to reach the target.
+### Loop Condition and Body
 
-4. **Dictionary Lookup and Pair Formation**:
-   - If we've seen the complement before (meaning it exists as a key in `seen`), then we've found a pair whose elements sum to the target.
-     * Append an array containing the indices of both numbers that make up this pair to our `pairs` list (`pairs.append([seen[complement], i])`).
-   - Add the current number and its index to the dictionary, so it can be used as a complement for future numbers: (`seen[nums[i]] = i`).
+*   **Loop Initialization:** Iterate over each number in the input array. This is represented by the line `for current_num in nums:`.
+*   **Check for Complement:** Inside the loop, check if the difference between the target sum value and the current number (`target - current_num`) exists in the dictionary (`if target - current_num in dict`).
+    *   If this condition is met:
+        1.  The presence of the complement indicates that we have found a pair whose sum equals the target value.
+        2.  In this case, the function should return a list containing the current number and its complement (`return [current_num, target - current_num]`).
+    *   If the condition is not met:
+        1.  Add the current number to the dictionary (`dict.add(current_num)`). This ensures that we keep track of all unique numbers encountered so far.
+*   **Final Return Statement:** If no pair is found after processing all numbers, return an empty list or a specific value indicating failure (not explicitly stated in the provided code).
 
-5. **Return Result**:
-   - After looping over all elements in `nums`, return the list of pairs found (`return pairs`).
-   - If no such pairs exist (i.e., every number's complement is new or has not been seen before), this means that there are not enough unique numbers to sum up exactly to the target value specified.
-
-This detailed explanation allows for the reconstruction of the algorithm with precise clarity on each step involved.
+By following these steps, you should be able to reconstruct and understand the logic behind this Python solution.

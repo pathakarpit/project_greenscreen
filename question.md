@@ -1,38 +1,28 @@
-# Find Duplicates in O(n) Time and O(1) Extra Space
+# Radix Sort
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/](https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/)
+**Link:** [https://www.geeksforgeeks.org/radix-sort/](https://www.geeksforgeeks.org/radix-sort/)
 
 ---
 
 ## Problem Statement
 
-**Title:** 
-Find the Pair of Integers with the Smallest Absolute Difference
+**Title:** Radix Sort Algorithm
 
-
-**Description:**
-Given an array nums of distinct integers, find all pairs of indices (i and j) such that nums[i] + nums[j] equals the target value sum. The pair should include a number from each end, i.e., index i must be less than or equal to index j.
-
-Return all possible pairs with their indices in the array, note that the same pair could appear multiple times but it will always have two different indices.
-
+**Description:** Analyze the raw content provided by the Tech Researcher above. Given a list of integers, implement a non-comparative integer sorting algorithm that sorts data with integer keys by grouping keys by the individual digits which share the same significant position and value. 
 
 **Examples:**
 
-1.
-Input: nums = [2, 7, 11, 15], target = 9
-Output: [[0,1],[1,0]]
+1. Input: `[170, 45, 75, 90, 802, 24, 2, 66]`
+Output: `[2, 24, 45, 66, 75, 90, 170, 802]`
 
-2.
-Input: nums = [10,20,3,40], target = 33
-Output: [[0,1],[1,0]]
+2. Input: `[1000, 2000, 3, 4, 5000]`
+Output: `[3, 4, 1000, 2000, 5000]`
 
-3.
-Input: nums = [1,2,3,4,5], target = 7
-Output: [[0,1]]
+3. Input: `[12345, 67890, 98765, 54321]`
+Output: `[54321, 67890, 98765, 12345]`
 
-
-**Constraints:**
-1 <= len(nums) <= 10^5
--10^9 <= nums[i] <= 10^9
--10^9 <= sum <= 10^9
+**Constraints:** 
+- The input list contains only integers.
+- The maximum number of digits in each integer is 10.
+- The sorting algorithm should be non-comparative and sort the data based on individual digits.
