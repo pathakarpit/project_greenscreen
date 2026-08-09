@@ -1,28 +1,34 @@
-# Radix Sort
+# Product of Array except itself
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/radix-sort/](https://www.geeksforgeeks.org/radix-sort/)
+**Link:** [https://www.geeksforgeeks.org/a-product-array-puzzle/](https://www.geeksforgeeks.org/a-product-array-puzzle/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Radix Sort Algorithm
+```
+Title: Find the product of all numbers in an array except for each number itself.
+Description:
+Given an array of integers, calculate the product of all elements except for each element at its respective index. The product should be calculated as follows:
 
-**Description:** Analyze the raw content provided by the Tech Researcher above. Given a list of integers, implement a non-comparative integer sorting algorithm that sorts data with integer keys by grouping keys by the individual digits which share the same significant position and value. 
+- For the first element (at index 0), consider only the second element (at index 1). So, the result for the first element will be `arr[1]`.
+- For the last element (at index N-1), consider all elements before it except itself. So, the result for the last element will be product of all elements from the start to `(N-2)`th index.
+- For each other element in between, consider both the elements preceding and succeeding it.
 
-**Examples:**
+Examples:
 
-1. Input: `[170, 45, 75, 90, 802, 24, 2, 66]`
-Output: `[2, 24, 45, 66, 75, 90, 170, 802]`
+1. Input: `[10, 3, 5, 6, 2]`
+   Output: `[(3*5*6*2), (10*5*6*2), (10*3*6*2), (10*3*5*2)]` which is equivalent to `[180, 600, 60, 150]`
 
-2. Input: `[1000, 2000, 3, 4, 5000]`
-Output: `[3, 4, 1000, 2000, 5000]`
+2. Input: `[1, 2, 3, 4]`
+   Output: `[(2*3*4), (1*3*4), (1*2*4), (1*2*3)]` which is equivalent to `[24, 12, 8, 6]`
 
-3. Input: `[12345, 67890, 98765, 54321]`
-Output: `[54321, 67890, 98765, 12345]`
+3. Input: `[5, 10, -1, 7]`
+   Output: `[(10*-1*7), (5*-1*7), (5*10*7), (5*10*-1)]` which is equivalent to `[-70, -35, 350, -50]`
 
-**Constraints:** 
-- The input list contains only integers.
-- The maximum number of digits in each integer is 10.
-- The sorting algorithm should be non-comparative and sort the data based on individual digits.
+Constraints:
+- The array length will be at least 2.
+- Array elements can be negative integers or zero.
+
+```
