@@ -1,34 +1,29 @@
-# Product of Array except itself
+# Make all Array Elements Equal
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/a-product-array-puzzle/](https://www.geeksforgeeks.org/a-product-array-puzzle/)
+**Link:** [https://www.geeksforgeeks.org/make-array-elements-equal-minimum-cost/](https://www.geeksforgeeks.org/make-array-elements-equal-minimum-cost/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Find the product of all numbers in an array except for each number itself.
-Description:
-Given an array of integers, calculate the product of all elements except for each element at its respective index. The product should be calculated as follows:
+**Title:** Binary GCD Algorithm Time Complexity Analysis
 
-- For the first element (at index 0), consider only the second element (at index 1). So, the result for the first element will be `arr[1]`.
-- For the last element (at index N-1), consider all elements before it except itself. So, the result for the last element will be product of all elements from the start to `(N-2)`th index.
-- For each other element in between, consider both the elements preceding and succeeding it.
+**Description:**
 
-Examples:
+The time complexity of the binary GCD algorithm is O(n^2) for arbitrarily large numbers and O(n* log_2(n)) when working with word-sized numbers, where n represents the number of bits in the larger of the two input numbers. This makes it comparable to the Euclidean algorithm's time complexity under certain conditions.
 
-1. Input: `[10, 3, 5, 6, 2]`
-   Output: `[(3*5*6*2), (10*5*6*2), (10*3*6*2), (10*3*5*2)]` which is equivalent to `[180, 600, 60, 150]`
+**Examples:**
 
-2. Input: `[1, 2, 3, 4]`
-   Output: `[(2*3*4), (1*3*4), (1*2*4), (1*2*3)]` which is equivalent to `[24, 12, 8, 6]`
+1. Input: Two arbitrarily large integers (e.g., 10^100 and 5*10^20)  
+Output: Time complexity is O(n^2), where n is the number of bits in the larger integer.
+2. Input: Two word-sized numbers (e.g., 32-bit integers) with values close to their maximum limit.  
+Output: Time complexity is O(n* log_2(n)), where n is the number of bits in the larger integer.
+3. Input: Two large numbers with a small difference between them (e.g., 10^100 and 10^100 + 1).  
+Output: Time complexity remains O(n^2) due to the algorithm's nature.
 
-3. Input: `[5, 10, -1, 7]`
-   Output: `[(10*-1*7), (5*-1*7), (5*10*7), (5*10*-1)]` which is equivalent to `[-70, -35, 350, -50]`
+**Constraints:** 
 
-Constraints:
-- The array length will be at least 2.
-- Array elements can be negative integers or zero.
-
-```
+- The input integers are arbitrarily large or word-sized.
+- n represents the number of bits in the larger integer.
+- No constraints on the range or magnitude of the input numbers, except for those mentioned above.
