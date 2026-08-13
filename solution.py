@@ -1,46 +1,24 @@
-# Problem: Find Four Elements that Sum to a Given Value
+# Problem: Median of Two Sorted Array with Different Size
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/find-four-elements-that-sum-to-a-given-value-set-2/
+# Link: https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
 
 class Solution:
-    def solve(self, vec, target):
-        result = []
-        n = len(vec)
+    def solve(self, m, n):
+        # Function to calculate Fibonacci number using memoization
+        def fibonacci(k):
+            if k <= 1:
+                return k
+            a, b = 0, 1
+            for _ in range(2, k + 1):
+                a, b = b, a + b
+            return b
         
-        # Sort the array to use two pointers technique later
-        vec.sort()
+        # Calculate the mth and nth Fibonacci numbers
+        fib_m = fibonacci(m)
+        fib_n = fibonacci(n)
         
-        for i in range(n - 3):
-            if i > 0 and vec[i] == vec[i - 1]:
-                continue
-            
-            for j in range(i + 1, n - 2):
-                if j > i + 1 and vec[j] == vec[j - 1]:
-                    continue
-                
-                left = j + 1
-                right = n - 1
-                
-                while left < right:
-                    current_sum = vec[i] + vec[j] + vec[left] + vec[right]
-                    
-                    if current_sum == target:
-                        result.append([vec[i], vec[j], vec[left], vec[right]])
-                        
-                        # Skip duplicates for left and right pointers
-                        while left < right and vec[left] == vec[left + 1]:
-                            left += 1
-                        while left < right and vec[right] == vec[right - 1]:
-                            right -= 1
-                        
-                        left += 1
-                        right -= 1
-                    elif current_sum < target:
-                        left += 1
-                    else:
-                        right -= 1
-        
-        return result
+        # Return the sum of the mth and nth Fibonacci numbers
+        return fib_m + fib_n
 
 ########################################
 # if __name__ == '__main__':
