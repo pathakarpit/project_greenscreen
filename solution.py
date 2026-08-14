@@ -1,24 +1,29 @@
-# Problem: Median of Two Sorted Array with Different Size
+# Problem: Median of Stream of Integers Running Integers
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
+# Link: https://www.geeksforgeeks.org/median-of-stream-of-integers-running-integers/
 
 class Solution:
-    def solve(self, m, n):
-        # Function to calculate Fibonacci number using memoization
-        def fibonacci(k):
-            if k <= 1:
-                return k
-            a, b = 0, 1
-            for _ in range(2, k + 1):
-                a, b = b, a + b
-            return b
+    def __init__(self):
+        self.max_heap = []  # for smaller half
+        self.min_heap = []  # for larger half
+    
+    def addNum(self, num: int) -> None:
+        if not self.max_heap or num <= -self.max_heap[0]:
+            heapq.heappush(self.max_heap, -num)
+        else:
+            heapq.heappush(self.min_heap, num)
         
-        # Calculate the mth and nth Fibonacci numbers
-        fib_m = fibonacci(m)
-        fib_n = fibonacci(n)
-        
-        # Return the sum of the mth and nth Fibonacci numbers
-        return fib_m + fib_n
+        # Balance the heaps
+        if len(self.max_heap) > len(self.min_heap) + 1:
+            heapq.heappush(self.min_heap, -heapq.heappop(self.max_heap))
+        elif len(self.min_heap) > len(self.max_heap):
+            heapq.heappush(self.max_heap, -heapq.heappop(self.min_heap))
+    
+    def findMedian(self) -> float:
+        if len(self.max_heap) == len(self.min_heap):
+            return (-self.max_heap[0] + self.min_heap[0]) / 2
+        else:
+            return -self.max_heap[0]
 
 ########################################
 # if __name__ == '__main__':

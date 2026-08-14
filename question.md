@@ -1,30 +1,30 @@
-# Median of Two Sorted Array with Different Size
+# Median of Stream of Integers Running Integers
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/](https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/)
+**Link:** [https://www.geeksforgeeks.org/median-of-stream-of-integers-running-integers/](https://www.geeksforgeeks.org/median-of-stream-of-integers-running-integers/)
 
 ---
 
 ## Problem Statement
 
-Title: 
-Fibonacci Number Sum
+**Title:** Maintaining Two Heaps to Find the Median of a Data Stream
+
+**Description:**
+
+Analyze the raw content provided by the Tech Researcher above.
 
 
-Description: 
-Given two positive integers $m$ and $n$, calculate the sum of the $m^{th}$ and $n^{th}$ Fibonacci numbers.
+This problem can be solved by maintaining two heaps, one max heap for the smaller half of the elements and another min heap for the larger half.
 
+**Examples:**
 
-Examples:
+1. Input: `addNum(1)` , Output: `0`
+2. Input: `addNum(2)` , Output: `0.5`
+3. Input: `addNum(3)` , Output: `1`
 
-|  m | n  | result |
-|----|----|--------|
-| 1  | 2  | 3      |
-| 5  | 7  | 144    |
-| 10 | 15 | 610   |
+**Constraints:** 
+- The input numbers are integers.
+- The two heaps will store the smaller half and larger half of the numbers, respectively.
+- If there are an odd number of elements in the data stream, the median is defined as the middle element. Otherwise, it's the average of the two middle elements.
 
-
-Constraints:
-$1 \leq m, n \leq 100$
-
-Note: I removed the solution code from the original text and extracted the problem statement, examples, and constraints as per the given format.
+Note: The code implementation provided does not need to be included as part of this problem statement.
