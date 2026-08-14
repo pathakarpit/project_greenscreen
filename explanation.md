@@ -1,40 +1,40 @@
-# Professor's Analysis: Median of Stream of Integers Running Integers
+# Professor's Analysis: Print Subarrays with 0 Sum
 
-```
 ## Time Complexity Analysis
+The Big O notation for this solution is O(N).
 
-*   The loop runs N times where N is the number of elements in the input list.
-*   Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average using hash table operations.
-*   Therefore, N * O(1) = O(N).
+*   The loop runs N times because it iterates over each element in the input list `nums`.
+*   The dictionary lookup `if x in dict` takes O(1) time on average. This is because dictionary lookups are constant-time operations, regardless of the size of the dictionary.
+*   Therefore, the total time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
+The Big O notation for this solution is O(N).
 
-*   The space complexity is O(N), where N is the number of elements in the input list.
+*   We use a dictionary/hash map to store at most N elements. This is because in the worst case, every element in the input list could be unique and added to the dictionary.
 
-## Step-by-Step Reconstruction Logic:
+## Step-by-Step Reconstruction Logic
 
-### 1. **Initialization**
+### Initialization
 
-*   An object `Solution` is created.
-*   Two heaps, `self.max_heap` and `self.min_heap`, are initialized as empty lists.
+*   A class `Solution` is defined with a method `solve`.
+*   The method takes a list of numbers `nums` as input.
+*   Three variables are initialized: `sums`, `curr_sum`, and `result`.
+    *   `sums` is an empty dictionary that will store the cumulative sums and their indices.
+    *   `curr_sum` is initialized to 0, representing the cumulative sum of the numbers processed so far.
+    *   `result` is an empty list that will store the starting and ending indices of subarrays with a zero sum.
 
-### 2. **Add Number (addNum)**
+### Loop
 
-*   Check if the input list (`self`) is empty or if the current number `num` is less than or equal to the negative of the root of `self.max_heap`.
-    *   If true, push `-num` onto `self.max_heap`.
-    *   Otherwise, push `num` onto `self.min_heap`.
+*   The loop iterates over each element in the input list `nums`.
+*   For each element, we add it to `curr_sum`.
+*   We then check two conditions:
+    *   If `curr_sum` is 0, it means that we have found a subarray with a zero sum. In this case, we append `(0, i)` to the `result` list, where `i` is the current index.
+    *   If `curr_sum` is already in the dictionary `sums`, it means that we have seen a cumulative sum equal to `curr_sum` before. In this case, we iterate over the indices stored in `sums[curr_sum]` and append `(start_index + 1, i)` to the `result` list for each index.
+*   We then update the dictionary `sums` by adding the current index `i` to the list of indices corresponding to `curr_sum`.
 
-### 3. **Balance Heaps**
+### Final Return Statement
 
-*   Check if the length of `self.max_heap` is greater than the length of `self.min_heap` plus one.
-    *   If true, pop and push the root element from `self.max_heap` to `self.min_heap`.
-*   Check if the length of `self.min_heap` is greater than the length of `self.max_heap`.
-    *   If true, pop and push the root element from `self.min_heap` to `self.max_heap`.
+*   If no pair is found in the result list after iterating over all elements, we print a message indicating that no subarrays with zero sum were found.
+*   Otherwise, we iterate over the result list and print the starting and ending indices of each subarray.
 
-### 4. **Find Median (findMedian)**
-
-*   Check if the lengths of `self.max_heap` and `self.min_heap` are equal.
-    *   If true, calculate the median as `( (-self.max_heap[0]) + self.min_heap[0]) / 2`.
-    *   Otherwise, return the negative root of `self.max_heap`.
-
-```
+By following these steps, you should be able to rewrite the code from the given explanation.

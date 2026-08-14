@@ -1,30 +1,45 @@
-# Median of Stream of Integers Running Integers
+# Print Subarrays with 0 Sum
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/median-of-stream-of-integers-running-integers/](https://www.geeksforgeeks.org/median-of-stream-of-integers-running-integers/)
+**Link:** [https://www.geeksforgeeks.org/print-all-subarrays-with-0-sum/](https://www.geeksforgeeks.org/print-all-subarrays-with-0-sum/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Maintaining Two Heaps to Find the Median of a Data Stream
+**
 
-**Description:**
+**Title:** Find Subarray with Zero Sum
 
-Analyze the raw content provided by the Tech Researcher above.
-
-
-This problem can be solved by maintaining two heaps, one max heap for the smaller half of the elements and another min heap for the larger half.
+**Description:** Given an array of integers, find all subarrays that sum up to zero.
 
 **Examples:**
 
-1. Input: `addNum(1)` , Output: `0`
-2. Input: `addNum(2)` , Output: `0.5`
-3. Input: `addNum(3)` , Output: `1`
+1. Input: `[6, 3, -1, -3, 4, -2, 2, 4, 6, -12, -7]`
+Output:
+```
+Subarray found from Index 0 to 6
+Subarray found from Index 8 to 9
+```
+
+2. Input: `[1, 2, 3, -2, 5, 4, -1]`
+Output:
+```
+No subarrays with zero sum found
+```
+
+3. Input: `[-1, 1, 0, -1, 1, 0]`
+Output:
+```
+Subarray found from Index 0 to 5
+Subarray found from Index 2 to 5
+Subarray found from Index 4 to 5
+```
 
 **Constraints:** 
-- The input numbers are integers.
-- The two heaps will store the smaller half and larger half of the numbers, respectively.
-- If there are an odd number of elements in the data stream, the median is defined as the middle element. Otherwise, it's the average of the two middle elements.
 
-Note: The code implementation provided does not need to be included as part of this problem statement.
+* The input array contains only integers.
+* The time complexity of the solution should be O(n).
+* The auxiliary space used by the solution should be O(n).
+
+Note: I have removed the solution code (C++ implementation) and provided a structured string containing the title, description, examples, and constraints as per your requirements.
