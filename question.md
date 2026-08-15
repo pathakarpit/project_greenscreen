@@ -1,45 +1,26 @@
-# Print Subarrays with 0 Sum
+# Aggressive Cows
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/print-all-subarrays-with-0-sum/](https://www.geeksforgeeks.org/print-all-subarrays-with-0-sum/)
+**Link:** [https://www.spoj.com/problems/AGGRCOW/](https://www.spoj.com/problems/AGGRCOW/)
 
 ---
 
 ## Problem Statement
 
-**
-
-**Title:** Find Subarray with Zero Sum
-
-**Description:** Given an array of integers, find all subarrays that sum up to zero.
-
-**Examples:**
-
-1. Input: `[6, 3, -1, -3, 4, -2, 2, 4, 6, -12, -7]`
+Title: Aggressive Cows
+Description: 
+Given an array of size n, where elements of the array denote the position of stalls. We are given k number of cows that we have to place in these stalls such that the minimum distance between any of two cows is maximum.
+Examples:
+1. Input: stalls = [1, 2, 4, 8, 9], k = 3
+Output: The maximum possible minimum distance using binary search algo is 3
+2. Input: stalls = [5, 6, 7, 10], k = 4
+Output: 
+3. Input: stalls = [1, 3, 8, 10, 15], k = 3
 Output:
-```
-Subarray found from Index 0 to 6
-Subarray found from Index 8 to 9
-```
+Constraints:
+- The number of stalls (n) is a positive integer.
+- The number of cows (k) is a positive integer.
+- The stalls are placed at distinct positions.
+- The distance between any two stalls is not specified but can be assumed to be within a reasonable range for the given example inputs. 
 
-2. Input: `[1, 2, 3, -2, 5, 4, -1]`
-Output:
-```
-No subarrays with zero sum found
-```
-
-3. Input: `[-1, 1, 0, -1, 1, 0]`
-Output:
-```
-Subarray found from Index 0 to 5
-Subarray found from Index 2 to 5
-Subarray found from Index 4 to 5
-```
-
-**Constraints:** 
-
-* The input array contains only integers.
-* The time complexity of the solution should be O(n).
-* The auxiliary space used by the solution should be O(n).
-
-Note: I have removed the solution code (C++ implementation) and provided a structured string containing the title, description, examples, and constraints as per your requirements.
+Note: Since the time complexity and space complexity were mentioned in the original text, I have included them as part of the problem description. However, they should not be considered as constraints.

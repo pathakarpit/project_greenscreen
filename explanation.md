@@ -1,40 +1,31 @@
-# Professor's Analysis: Print Subarrays with 0 Sum
+# Professor's Analysis: Aggressive Cows
 
+```
 ## Time Complexity Analysis
-The Big O notation for this solution is O(N).
 
-*   The loop runs N times because it iterates over each element in the input list `nums`.
-*   The dictionary lookup `if x in dict` takes O(1) time on average. This is because dictionary lookups are constant-time operations, regardless of the size of the dictionary.
-*   Therefore, the total time complexity is N * O(1) = O(N).
+* The Big O time complexity is O(N log N) due to the sorting operation.
+* The loop runs N times, where N is the number of stalls. However, inside the loop, we have a conditional statement `if x in dict` which takes O(1) time on average for dictionary lookups.
+* Therefore, the total time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
-The Big O notation for this solution is O(N).
 
-*   We use a dictionary/hash map to store at most N elements. This is because in the worst case, every element in the input list could be unique and added to the dictionary.
+* The Big O space complexity is O(N) because we use a dictionary/hash map to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
 
-### Initialization
+* Initialize an empty class `Solution` with a method `solve`.
+* Inside the `solve` method, sort the list of stalls in ascending order.
+* Define a helper function `can_place_cows(min_dist)` which takes a minimum distance as input and returns a boolean indicating whether cows can be placed at the current distance.
+	+ Initialize variables:
+		- `count`: to keep track of the number of cows that can be placed
+		- `last_placed_cow`: to store the position of the last cow placed
+	+ Iterate over the sorted stalls using a for loop. For each stall:
+		- Check if the current stall is at least `min_dist` away from the last placed cow. If so, increment the count and update the last placed cow position.
+		- If the count reaches `k`, return True
+* Initialize two pointers, `left` and `right`, to represent the search range for the minimum distance.
+* Perform a binary search using the `can_place_cows` function:
+	+ In each iteration, calculate the midpoint `mid` of the current search range.
+	+ Call the `can_place_cows` function with the calculated midpoint as input. If it returns True, update the `left` pointer to be one more than the midpoint. Otherwise, update the `right` pointer to be the midpoint.
+* After the binary search completes, return the value of `left - 1`, which represents the minimum distance required to place `k` cows.
 
-*   A class `Solution` is defined with a method `solve`.
-*   The method takes a list of numbers `nums` as input.
-*   Three variables are initialized: `sums`, `curr_sum`, and `result`.
-    *   `sums` is an empty dictionary that will store the cumulative sums and their indices.
-    *   `curr_sum` is initialized to 0, representing the cumulative sum of the numbers processed so far.
-    *   `result` is an empty list that will store the starting and ending indices of subarrays with a zero sum.
-
-### Loop
-
-*   The loop iterates over each element in the input list `nums`.
-*   For each element, we add it to `curr_sum`.
-*   We then check two conditions:
-    *   If `curr_sum` is 0, it means that we have found a subarray with a zero sum. In this case, we append `(0, i)` to the `result` list, where `i` is the current index.
-    *   If `curr_sum` is already in the dictionary `sums`, it means that we have seen a cumulative sum equal to `curr_sum` before. In this case, we iterate over the indices stored in `sums[curr_sum]` and append `(start_index + 1, i)` to the `result` list for each index.
-*   We then update the dictionary `sums` by adding the current index `i` to the list of indices corresponding to `curr_sum`.
-
-### Final Return Statement
-
-*   If no pair is found in the result list after iterating over all elements, we print a message indicating that no subarrays with zero sum were found.
-*   Otherwise, we iterate over the result list and print the starting and ending indices of each subarray.
-
-By following these steps, you should be able to rewrite the code from the given explanation.
+```
