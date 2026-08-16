@@ -1,31 +1,38 @@
-# Problem: Aggressive Cows
+# Problem: Allocate Minimum number of Pages
 # Difficulty: Hard
-# Link: https://www.spoj.com/problems/AGGRCOW/
+# Link: https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1
 
 class Solution:
-    def solve(self, stalls, k):
-        stalls.sort()
+    def solve(self, arr, k):
+        if len(arr) < k:
+            return -1
         
-        def can_place_cows(min_dist):
-            count = 1
-            last_placed_cow = stalls[0]
-            for i in range(1, len(stalls)):
-                if stalls[i] - last_placed_cow >= min_dist:
-                    count += 1
-                    last_placed_cow = stalls[i]
-                if count == k:
-                    return True
-            return False
+        def is_possible(mid):
+            students = 1
+            current_sum = 0
+            for pages in arr:
+                if pages > mid:
+                    return False
+                if current_sum + pages <= mid:
+                    current_sum += pages
+                else:
+                    students += 1
+                    if students > k:
+                        return False
+                    current_sum = pages
+            return True
         
-        left, right = 0, stalls[-1] - stalls[0]
-        while left < right:
+        left, right = max(arr), sum(arr)
+        result = -1
+        while left <= right:
             mid = (left + right) // 2
-            if can_place_cows(mid):
-                left = mid + 1
+            if is_possible(mid):
+                result = mid
+                right = mid - 1
             else:
-                right = mid
+                left = mid + 1
         
-        return left - 1
+        return result
 
 ########################################
 # if __name__ == '__main__':

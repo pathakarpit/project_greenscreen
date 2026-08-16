@@ -1,26 +1,37 @@
-# Aggressive Cows
+# Allocate Minimum number of Pages
 
 **Difficulty:** Hard  
-**Link:** [https://www.spoj.com/problems/AGGRCOW/](https://www.spoj.com/problems/AGGRCOW/)
+**Link:** [https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1](https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1)
 
 ---
 
 ## Problem Statement
 
-Title: Aggressive Cows
-Description: 
-Given an array of size n, where elements of the array denote the position of stalls. We are given k number of cows that we have to place in these stalls such that the minimum distance between any of two cows is maximum.
-Examples:
-1. Input: stalls = [1, 2, 4, 8, 9], k = 3
-Output: The maximum possible minimum distance using binary search algo is 3
-2. Input: stalls = [5, 6, 7, 10], k = 4
-Output: 
-3. Input: stalls = [1, 3, 8, 10, 15], k = 3
-Output:
-Constraints:
-- The number of stalls (n) is a positive integer.
-- The number of cows (k) is a positive integer.
-- The stalls are placed at distinct positions.
-- The distance between any two stalls is not specified but can be assumed to be within a reasonable range for the given example inputs. 
+```title
+Allocate Minimum Pages
+```
+```description
+Given an array arr[], where arr[i] represents the number of pages in the i-th book, and an integer k denoting the total number of students, allocate all books to the students such that:
 
-Note: Since the time complexity and space complexity were mentioned in the original text, I have included them as part of the problem description. However, they should not be considered as constraints.
+Each student gets at least one book.
+Books are allocated in a contiguous sequence.
+The maximum number of pages assigned to any student is minimized.
+
+If it is not possible to allocate all books among k students under these conditions, return -1.
+```
+```examples
+Input: arr[] = [12, 34, 67, 90], k = 2
+Output: 113
+
+Input: arr[] = [15, 17, 20], k = 5
+Output: -1
+
+Input: arr[] = [22, 23, 67], k = 1
+Output: 112
+```
+```constraints
+1 <= N <= 10^3 (number of books)
+0 < k <= 10^3 (number of students)
+```
+Note:
+Removed all solution code and extracted the core problem statement along with input/output examples and constraints. Also, made some reasonable assumptions about the constraints based on the given information.
