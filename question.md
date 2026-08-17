@@ -1,37 +1,24 @@
-# Allocate Minimum number of Pages
+# Minimum Swaps to Sort
 
 **Difficulty:** Hard  
-**Link:** [https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1](https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1)
+**Link:** [https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/](https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/)
 
 ---
 
 ## Problem Statement
 
-```title
-Allocate Minimum Pages
-```
-```description
-Given an array arr[], where arr[i] represents the number of pages in the i-th book, and an integer k denoting the total number of students, allocate all books to the students such that:
+**Minimum Swaps to Sort**
 
-Each student gets at least one book.
-Books are allocated in a contiguous sequence.
-The maximum number of pages assigned to any student is minimized.
+**Title:** Minimum Swaps to Sort
+**Description:**
+Given an array of N distinct elements, find the minimum number of swaps required to sort it in strictly increasing order.
+**Examples:**
+1. Input: arr[] = [4,3,2,1] → Output: 2
+2. Input: arr[] = [10,19,6,3,5] → Output: ? (unknown)
+3. Input: arr[] = [9,8,7,6,5,4,3,2,1] → Output: 0 (no swaps needed)
 
-If it is not possible to allocate all books among k students under these conditions, return -1.
-```
-```examples
-Input: arr[] = [12, 34, 67, 90], k = 2
-Output: 113
+**Constraints:** 
+- N >= 1
+- All elements in the array are distinct
 
-Input: arr[] = [15, 17, 20], k = 5
-Output: -1
-
-Input: arr[] = [22, 23, 67], k = 1
-Output: 112
-```
-```constraints
-1 <= N <= 10^3 (number of books)
-0 < k <= 10^3 (number of students)
-```
-Note:
-Removed all solution code and extracted the core problem statement along with input/output examples and constraints. Also, made some reasonable assumptions about the constraints based on the given information.
+Note: The given problem statement has multiple algorithmic solutions with varying time and space complexities. However, the constraints provided assume that we're dealing with small to medium-sized arrays where n is typically less than or equal to 10^5.

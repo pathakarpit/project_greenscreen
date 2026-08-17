@@ -1,38 +1,34 @@
-# Problem: Allocate Minimum number of Pages
+# Problem: Minimum Swaps to Sort
 # Difficulty: Hard
-# Link: https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1
+# Link: https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/
 
 class Solution:
-    def solve(self, arr, k):
-        if len(arr) < k:
-            return -1
+    def solve(self, arr):
+        n = len(arr)
+        if n <= 1:
+            return 0
         
-        def is_possible(mid):
-            students = 1
-            current_sum = 0
-            for pages in arr:
-                if pages > mid:
-                    return False
-                if current_sum + pages <= mid:
-                    current_sum += pages
-                else:
-                    students += 1
-                    if students > k:
-                        return False
-                    current_sum = pages
-            return True
+        indexed_arr = [(val, idx) for idx, val in enumerate(arr)]
+        indexed_arr.sort(key=lambda x: x[0])
         
-        left, right = max(arr), sum(arr)
-        result = -1
-        while left <= right:
-            mid = (left + right) // 2
-            if is_possible(mid):
-                result = mid
-                right = mid - 1
-            else:
-                left = mid + 1
+        visited = [False] * n
+        swaps = 0
         
-        return result
+        for i in range(n):
+            if visited[i] or indexed_arr[i][1] == i:
+                continue
+            
+            cycle_length = 0
+            x = i
+            while not visited[x]:
+                visited[x] = True
+                x = indexed_arr[x][1]
+                cycle_length += 1
+            
+            if cycle_length > 1:
+                swaps += (cycle_length - 1)
+        
+        return swaps
 
 ########################################
 # if __name__ == '__main__':
