@@ -1,34 +1,33 @@
-# Problem: Minimum Swaps to Sort
-# Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/
+# Problem: Backtracking Set 2 Rat in a Maze
+# Difficulty: Medium
+# Link: https://www.geeksforgeeks.org/backttracking-set-2-rat-in-a-maze/
 
 class Solution:
-    def solve(self, arr):
-        n = len(arr)
-        if n <= 1:
-            return 0
+    def solve(self, maze):
+        n = len(maze)
+        if n == 0 or maze[0][0] == 0:
+            return []
         
-        indexed_arr = [(val, idx) for idx, val in enumerate(arr)]
-        indexed_arr.sort(key=lambda x: x[0])
+        directions = [('D', (1, 0)), ('R', (0, 1)), ('U', (-1, 0)), ('L', (0, -1))]
+        visited = [[False] * n for _ in range(n)]
+        paths = []
         
-        visited = [False] * n
-        swaps = 0
-        
-        for i in range(n):
-            if visited[i] or indexed_arr[i][1] == i:
-                continue
+        def dfs(x, y, path):
+            if x == n - 1 and y == n - 1:
+                paths.append(path)
+                return
             
-            cycle_length = 0
-            x = i
-            while not visited[x]:
-                visited[x] = True
-                x = indexed_arr[x][1]
-                cycle_length += 1
-            
-            if cycle_length > 1:
-                swaps += (cycle_length - 1)
+            for move_name, (dx, dy) in directions:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < n and 0 <= ny < n and not visited[nx][ny] and maze[nx][ny] == 1:
+                    visited[nx][ny] = True
+                    dfs(nx, ny, path + move_name)
+                    visited[nx][ny] = False
         
-        return swaps
+        visited[0][0] = True
+        dfs(0, 0, '')
+        
+        return sorted(paths) if paths else []
 
 ########################################
 # if __name__ == '__main__':
