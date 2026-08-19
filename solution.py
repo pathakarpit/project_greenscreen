@@ -1,33 +1,24 @@
-# Problem: Backtracking Set 2 Rat in a Maze
+# Problem: Combinational Sum
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/backttracking-set-2-rat-in-a-maze/
+# Link: https://www.geeksforgeeks.org/combinational-sum/
 
 class Solution:
-    def solve(self, maze):
-        n = len(maze)
-        if n == 0 or maze[0][0] == 0:
-            return []
-        
-        directions = [('D', (1, 0)), ('R', (0, 1)), ('U', (-1, 0)), ('L', (0, -1))]
-        visited = [[False] * n for _ in range(n)]
-        paths = []
-        
-        def dfs(x, y, path):
-            if x == n - 1 and y == n - 1:
-                paths.append(path)
+    def solve(self, candidates, target):
+        def backtrack(start, path, remain):
+            if remain == 0:
+                result.append(path[:])
                 return
-            
-            for move_name, (dx, dy) in directions:
-                nx, ny = x + dx, y + dy
-                if 0 <= nx < n and 0 <= ny < n and not visited[nx][ny] and maze[nx][ny] == 1:
-                    visited[nx][ny] = True
-                    dfs(nx, ny, path + move_name)
-                    visited[nx][ny] = False
+            for i in range(start, len(candidates)):
+                if i > start and candidates[i] == candidates[i - 1]:
+                    continue
+                if candidates[i] > remain:
+                    break
+                backtrack(i + 1, path + [candidates[i]], remain - candidates[i])
         
-        visited[0][0] = True
-        dfs(0, 0, '')
-        
-        return sorted(paths) if paths else []
+        candidates.sort()
+        result = []
+        backtrack(0, [], target)
+        return result
 
 ########################################
 # if __name__ == '__main__':
