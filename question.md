@@ -1,44 +1,111 @@
-# Combinational Sum
+# Crossword-Puzzle
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/combinational-sum/](https://www.geeksforgeeks.org/combinational-sum/)
+**Link:** [https://www.hackerrank.com/challenges/crossword-puzzle/problem](https://www.hackerrank.com/challenges/crossword-puzzle/problem)
 
 ---
 
 ## Problem Statement
 
-**Combination Sum II**
+```markdown
+## Title: Crossword Puzzle Completion
+## Description:
+Given an empty crossword grid represented as a 2D array of strings and a list of words to fill into the grid, complete the puzzle by positioning each word appropriately.
 
-**Description:** Find all unique combinations of an array that sum up to a target value, without duplicating previous combinations.
+## Examples:
 
+### Example 1:
+Input:
 ```
-Examples:
-Example 1:
-Input: candidates = [10,1,2,7,6], target = 8
-Output: [
-  [1,1,6],
-  [1,2,5],
-  [1,7],
-  [2,6]
-]
-
-Example 2:
-Input: candidates = [2,3,6,7], target = 7
-Output: [
-  [3,4] (Not possible since 4 is not in the array)
-  [7]
-]
-
-Example 3:
-Input: candidates = [2,5,8,12], target = 10
-Output: [
-  [2,8],
-  [5]
-]
-
-Constraints:
-1 <= len(candidates) <= 30
-0 <= candidate < 500
--10000 <= target <= 10000
-candidates contains at least one valid combination for the given target.
++-+-++++++++
++-++++++++
++-++++++++
++-----++++
++-+++-++++
++-+++-++++
++++++-++++
+++------++
++++++-++++
++++++-++++
+LONDON;DELHI;ICELAND;ANKARA
 ```
+
+Output:
+```python
++L++++++++
++N++++++++
++DELHI++++
++O+++C++++
++N+++E++++
++++++L++++
+++ANKARA++
++++++N++++
++++++D++++
+```
+
+### Example 2:
+Input:
+```
++-+-++++++++
++-++++++++
++-------++
++-++++++++
++-++++++++
++------+++
++-+++-++++
++++++-++++
++++++-++++
+++++++++++
+AGRA;NORWAY;ENGLAND;GWALIOR
+```
+
+Output:
+```python
++E++++++++
++N++++++++
++GWALIOR++
++L++++++++
++A++++++++
++NORWAY+++
++D+++G++++
++++++R++++
++++++A++++
+++++++++++
+```
+
+### Example 3:
+Input:
+```
+++++++-+++
+++------++
+++++++-+++
+++++++-+++
++++------+
+++++++-+-+
+++++++-+-+
+++++++++-+
+++++++++-+
+++++++++-+
+ICELAND;MEXICO;PANAMA;ALMATY
+```
+
+Output:
+```python
+++++++I+++
+++MEXICO++
+++++++E+++
+++++++L+++
++++PANAMA+
+++++++N+L+
+++++++D+M+
+++++++++A+
+++++++++T+
+++++++++Y+
+```
+## Constraints:
+- The input grid is a 2D array of strings where each row has the same length.
+- The words to fill into the grid are semicolon-delimited and have the same length as the corresponding row in the grid.
+- Each word can only be placed horizontally or vertically, not diagonally.
+```markdown
+```
+I hope this is what you were looking for!
