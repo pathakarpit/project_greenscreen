@@ -1,65 +1,40 @@
-# Problem: Crossword-Puzzle
+# Problem: Longest Possible Route in a Matrix with Hurdles
 # Difficulty: Medium
-# Link: https://www.hackerrank.com/challenges/crossword-puzzle/problem
+# Link: https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/
 
 class Solution:
-    def solve(self, grid, words):
-        rows = len(grid)
-        cols = len(grid[0])
-        words_list = words.split(';')
+    def solve(self, mat, xs, ys, xd, yd):
+        if mat[xs][ys] == 0 or mat[xd][yd] == 0:
+            return -1
         
-        # Helper function to check if placing a word at (r, c) is valid
-        def can_place(word, r, c):
-            for i in range(len(word)):
-                if grid[r][c+i] != '-' and grid[r][c+i] != word[i]:
-                    return False
-            return True
+        n = len(mat)
+        m = len(mat[0])
+        visited = [[False] * m for _ in range(n)]
+        memo = [[-1] * m for _ in range(n)]
         
-        # Helper function to place a word at (r, c)
-        def place_word(word, r, c):
-            for i in range(len(word)):
-                if grid[r][c+i] == '-':
-                    grid[r][c+i] = word[i]
+        def dfs(x, y):
+            if x < 0 or x >= n or y < 0 or y >= m or mat[x][y] == 0:
+                return -float('inf')
+            if (x, y) == (xd, yd):
+                return 0
+            if visited[x][y]:
+                return memo[x][y]
+            
+            visited[x][y] = True
+            max_depth = -float('inf')
+            directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+            for dx, dy in directions:
+                new_x, new_y = x + dx, y + dy
+                depth = dfs(new_x, new_y)
+                if depth != -float('inf'):
+                    max_depth = max(max_depth, 1 + depth)
+            
+            visited[x][y] = False
+            memo[x][y] = max_depth
+            return max_depth
         
-        # Helper function to remove a word from (r, c)
-        def remove_word(word, r, c):
-            for i in range(len(word)):
-                if grid[r][c+i] == word:
-                    grid[r][c+i] = '-'
-        
-        # Try to place each word in the grid
-        for word in words_list:
-            placed = False
-            for r in range(rows):
-                for c in range(cols - len(word) + 1):
-                    if can_place(word, r, c):
-                        place_word(word, r, c)
-                        if self.solve(grid, words_list[1:]):
-                            return True
-                        remove_word(word, r, c)
-            for r in range(rows - len(word) + 1):
-                for c in range(cols):
-                    if can_place(word, r, c):
-                        place_word(word, r, c)
-                        if self.solve(grid, words_list[1:]):
-                            return True
-                        remove_word(word, r, c)
-            # If the word cannot be placed, it means we need to backtrack
-            return False
-        
-        # Check if all words are placed correctly
-        for word in words_list:
-            found = False
-            for r in range(rows):
-                for c in range(cols - len(word) + 1):
-                    if can_place(word, r, c) and grid[r][c] == word:
-                        found = True
-                        break
-                if found:
-                    break
-            if not found:
-                return False
-        return True
+        result = dfs(xs, ys)
+        return -1 if result == -float('inf') else result
 
 ########################################
 # if __name__ == '__main__':

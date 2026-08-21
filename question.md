@@ -1,111 +1,26 @@
-# Crossword-Puzzle
+# Longest Possible Route in a Matrix with Hurdles
 
 **Difficulty:** Medium  
-**Link:** [https://www.hackerrank.com/challenges/crossword-puzzle/problem](https://www.hackerrank.com/challenges/crossword-puzzle/problem)
+**Link:** [https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/](https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/)
 
 ---
 
 ## Problem Statement
 
-```markdown
-## Title: Crossword Puzzle Completion
-## Description:
-Given an empty crossword grid represented as a 2D array of strings and a list of words to fill into the grid, complete the puzzle by positioning each word appropriately.
+```
+Title: Longest Path in Matrix using Depth-First Search
+Description: Given a matrix `mat` and two cells `(xs, ys)` and `(xd, yd)`, find the length of the longest path from `(xs, ys)` to `(xd, yd)` using depth-first search with backtracking.
+Examples:
+1. Input: mat = [[1, 1, 1], [1, 0, 1], [1, 1, 1]], xs = 0, ys = 0, xd = 2, yd = 2
+Output: 3 (path: [(0, 0), (1, 0), (2, 2)])
 
-## Examples:
+2. Input: mat = [[1, 1], [1, 1]], xs = 0, ys = 0, xd = 1, yd = 1
+Output: 1 (path: [(0, 0), (1, 1)])
 
-### Example 1:
-Input:
+3. Input: mat = [[1, 1, 1], [1, 0, 1], [1, 1, 1]], xs = 2, ys = 2, xd = 0, yd = 0
+Output: -1 (no path from `(2, 2)` to `(0, 0)` due to blocked cell at `(0, 0)`)
+Constraints:
+- Matrix `mat` is a square matrix with dimensions up to `10^5`.
+- Cells `(xs, ys)` and `(xd, yd)` are within the bounds of the matrix.
+- The value of each cell in `mat` is either `1` (path can be traversed) or `0` (blocked).
 ```
-+-+-++++++++
-+-++++++++
-+-++++++++
-+-----++++
-+-+++-++++
-+-+++-++++
-+++++-++++
-++------++
-+++++-++++
-+++++-++++
-LONDON;DELHI;ICELAND;ANKARA
-```
-
-Output:
-```python
-+L++++++++
-+N++++++++
-+DELHI++++
-+O+++C++++
-+N+++E++++
-+++++L++++
-++ANKARA++
-+++++N++++
-+++++D++++
-```
-
-### Example 2:
-Input:
-```
-+-+-++++++++
-+-++++++++
-+-------++
-+-++++++++
-+-++++++++
-+------+++
-+-+++-++++
-+++++-++++
-+++++-++++
-++++++++++
-AGRA;NORWAY;ENGLAND;GWALIOR
-```
-
-Output:
-```python
-+E++++++++
-+N++++++++
-+GWALIOR++
-+L++++++++
-+A++++++++
-+NORWAY+++
-+D+++G++++
-+++++R++++
-+++++A++++
-++++++++++
-```
-
-### Example 3:
-Input:
-```
-++++++-+++
-++------++
-++++++-+++
-++++++-+++
-+++------+
-++++++-+-+
-++++++-+-+
-++++++++-+
-++++++++-+
-++++++++-+
-ICELAND;MEXICO;PANAMA;ALMATY
-```
-
-Output:
-```python
-++++++I+++
-++MEXICO++
-++++++E+++
-++++++L+++
-+++PANAMA+
-++++++N+L+
-++++++D+M+
-++++++++A+
-++++++++T+
-++++++++Y+
-```
-## Constraints:
-- The input grid is a 2D array of strings where each row has the same length.
-- The words to fill into the grid are semicolon-delimited and have the same length as the corresponding row in the grid.
-- Each word can only be placed horizontally or vertically, not diagonally.
-```markdown
-```
-I hope this is what you were looking for!
