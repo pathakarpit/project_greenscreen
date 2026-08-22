@@ -1,26 +1,40 @@
-# Longest Possible Route in a Matrix with Hurdles
+# Printing all solutions in N-Queen Problem
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/](https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/)
+**Link:** [https://www.geeksforgeeks.org/printing-solutions-n-queen-problem/](https://www.geeksforgeeks.org/printing-solutions-n-queen-problem/)
 
 ---
 
 ## Problem Statement
 
 ```
-Title: Longest Path in Matrix using Depth-First Search
-Description: Given a matrix `mat` and two cells `(xs, ys)` and `(xd, yd)`, find the length of the longest path from `(xs, ys)` to `(xd, yd)` using depth-first search with backtracking.
+Title: The N Queen Problem
+Description: 
+The N Queen problem is a classic problem in computer science and mathematics. The goal is to place N queens on an NxN chessboard such that no two queens attack each other. A queen can attack another queen if they are in the same row, column, or diagonal.
+
 Examples:
-1. Input: mat = [[1, 1, 1], [1, 0, 1], [1, 1, 1]], xs = 0, ys = 0, xd = 2, yd = 2
-Output: 3 (path: [(0, 0), (1, 0), (2, 2)])
+Input: n = 4
+Output:
+```
+[[2, 4, 1, 3], [3, 1, 4, 2]]
+```
 
-2. Input: mat = [[1, 1], [1, 1]], xs = 0, ys = 0, xd = 1, yd = 1
-Output: 1 (path: [(0, 0), (1, 1)])
+Explanation: We mainly print column numbers (from first to last row) of every possible configuration.
 
-3. Input: mat = [[1, 1, 1], [1, 0, 1], [1, 1, 1]], xs = 2, ys = 2, xd = 0, yd = 0
-Output: -1 (no path from `(2, 2)` to `(0, 0)` due to blocked cell at `(0, 0)`)
+Input: n = 3
+Output: []
+Explanation: There are no possible solutions for n = 3
+
+Input: n = 5
+Output:
+```
+[[4, 1, 3, 2, 0], [2, 3, 5, 1, 4]]
+```
+
+Explanation: We mainly print column numbers (from first to last row) of every possible configuration.
+
 Constraints:
-- Matrix `mat` is a square matrix with dimensions up to `10^5`.
-- Cells `(xs, ys)` and `(xd, yd)` are within the bounds of the matrix.
-- The value of each cell in `mat` is either `1` (path can be traversed) or `0` (blocked).
+The input is an integer N representing the size of the chessboard. The output is a list of lists, where each sublist represents a valid placement of queens on the board.
+1 <= N <= 10^5
+Note: This problem can be solved using backtracking or other algorithms.
 ```

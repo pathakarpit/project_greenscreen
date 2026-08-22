@@ -1,40 +1,32 @@
-# Problem: Longest Possible Route in a Matrix with Hurdles
+# Problem: Printing all solutions in N-Queen Problem
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/
+# Link: https://www.geeksforgeeks.org/printing-solutions-n-queen-problem/
 
 class Solution:
-    def solve(self, mat, xs, ys, xd, yd):
-        if mat[xs][ys] == 0 or mat[xd][yd] == 0:
-            return -1
+    def solve(self, n):
+        if n == 1:
+            return [[0]]
         
-        n = len(mat)
-        m = len(mat[0])
-        visited = [[False] * m for _ in range(n)]
-        memo = [[-1] * m for _ in range(n)]
+        def is_safe(board, row, col):
+            for i in range(row):
+                if board[i] == col or abs(board[i] - col) == abs(i - row):
+                    return False
+            return True
         
-        def dfs(x, y):
-            if x < 0 or x >= n or y < 0 or y >= m or mat[x][y] == 0:
-                return -float('inf')
-            if (x, y) == (xd, yd):
-                return 0
-            if visited[x][y]:
-                return memo[x][y]
-            
-            visited[x][y] = True
-            max_depth = -float('inf')
-            directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-            for dx, dy in directions:
-                new_x, new_y = x + dx, y + dy
-                depth = dfs(new_x, new_y)
-                if depth != -float('inf'):
-                    max_depth = max(max_depth, 1 + depth)
-            
-            visited[x][y] = False
-            memo[x][y] = max_depth
-            return max_depth
+        def backtrack(board, row, n, result):
+            if row == n:
+                result.append(board[:])
+                return
+            for col in range(n):
+                if is_safe(board, row, col):
+                    board[row] = col
+                    backtrack(board, row + 1, n, result)
+                    board[row] = -1
         
-        result = dfs(xs, ys)
-        return -1 if result == -float('inf') else result
+        board = [-1] * n
+        result = []
+        backtrack(board, 0, n, result)
+        return result
 
 ########################################
 # if __name__ == '__main__':
