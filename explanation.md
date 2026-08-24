@@ -1,3 +1,3 @@
-# Professor's Analysis: Solve the Sudoku
+# Professor's Analysis: Partition Equal Subset Sum
 
-This is a detailed explanation of the given solution for solving a Sudoku puzzle using backtracking. It provides step-by-step logic and explains the time and space complexity of the algorithm.
+Since you have reached here it should be clear for you now, I hope it is so!
