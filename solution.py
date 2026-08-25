@@ -1,45 +1,40 @@
-# Problem: M Coloring Problem
-# Difficulty: Medium
-# Link: https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
+# Problem: Knight Tour
+# Difficulty: Hard
+# Link: https://www.geeksforgeeks.org/backtracking-set-1-the-knights-tour-problem/
 
 class Solution:
-    def solve(self, graph):
-        from collections import defaultdict
-        
-        # Function to check if it's safe to color vertex v with color c
-        def is_safe(v, color, c):
-            for i in graph[v]:
-                if color[i] == c:
-                    return False
+    def __init__(self):
+        self.moves = [(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2)]
+        self.board_size = 8
+        self.solution = [[-1 for _ in range(self.board_size)] for _ in range(self.board_size)]
+    
+    def is_valid(self, x, y):
+        return 0 <= x < self.board_size and 0 <= y < self.board_size and self.solution[x][y] == -1
+    
+    def solve(self):
+        if not self.solve_util(0, 0, 0):
+            print("No solution exists")
+            return False
+        else:
+            self.print_solution()
+            return True
+    
+    def solve_util(self, x, y, move_count):
+        if move_count == self.board_size * self.board_size:
             return True
         
-        # Function to solve the coloring problem using backtracking
-        def graph_coloring_util(color, v):
-            if v == len(graph):
-                return True
-            
-            for c in range(1, m + 1):
-                if is_safe(v, color, c):
-                    color[v] = c
-                    if graph_coloring_util(color, v + 1):
-                        return True
-                    color[v] = 0
-        
-        # Main function to initialize and call the coloring utility
-        def solve(graph, m):
-            global n
-            n = len(graph)
-            color = [0] * n
-            if not graph_coloring_util(color, 0):
-                return False
-            return True
-        
-        # Find the minimum number of colors required
-        for i in range(1, m + 1):
-            if solve(graph, i):
-                return i
-        
-        return -1
+        for i in range(8):
+            next_x, next_y = x + self.moves[i][0], y + self.moves[i][1]
+            if self.is_valid(next_x, next_y):
+                self.solution[next_x][next_y] = move_count
+                if self.solve_util(next_x, next_y, move_count + 1):
+                    return True
+                self.solution[next_x][next_y] = -1
+        return False
+    
+    def print_solution(self):
+        for row in self.solution:
+            print(row)
 
 ########################################
 # if __name__ == '__main__':

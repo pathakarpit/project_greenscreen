@@ -1,55 +1,46 @@
-# M Coloring Problem
+# Knight Tour
 
-**Difficulty:** Medium  
-**Link:** [https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1](https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1)
+**Difficulty:** Hard  
+**Link:** [https://www.geeksforgeeks.org/backtracking-set-1-the-knights-tour-problem/](https://www.geeksforgeeks.org/backtracking-set-1-the-knights-tour-problem/)
 
 ---
 
 ## Problem Statement
 
-**The M Coloring Problem**
-=========================
+**Title:** Knight's Tour Problem
 
-### Description
-The M Coloring Problem is a classic graph coloring problem that involves finding the minimum number of colors required to color a given graph such that no two adjacent vertices have the same color. This problem can be approached using backtracking algorithms or branch-and-bound techniques.
 
-### Examples
-#### Example 1
-* Input: A simple graph with 4 vertices and 5 edges.
-	+ Graph structure:
-		- Vertex 1 connected to Vertex 2, 3, 4.
-		- Vertex 2 connected to Vertex 1, 3, 4.
-		- Vertex 3 connected to Vertex 1, 2, 4.
-		- Vertex 4 connected to Vertex 1, 2, 3.
-* Output: The minimum number of colors required to color the graph.
+**Description:** 
 
-#### Example 2
-* Input: A more complex graph with 6 vertices and 8 edges.
-	+ Graph structure:
-		- Vertex 1 connected to Vertex 2, 3, 4, 5, 6.
-		- Vertex 2 connected to Vertex 1, 3, 4, 5.
-		- Vertex 3 connected to Vertex 1, 2, 4, 6.
-		- Vertex 4 connected to Vertex 1, 2, 3, 5.
-		- Vertex 5 connected to Vertex 1, 2, 4.
-		- Vertex 6 connected to Vertex 1, 3.
-* Output: The minimum number of colors required to color the graph.
+Given an 8x8 chessboard, find a path for a knight to visit each square exactly once and return to the starting point. The knight moves according to certain rules: it can move two squares horizontally then one vertically or vice versa.
 
-#### Example 3
-* Input: A bipartite graph with 10 vertices and 15 edges.
-	+ Graph structure:
-		- Vertex 1 connected to Vertex 2, 4, 6, 8, 10.
-		- Vertex 2 connected to Vertex 1, 5, 7.
-		- Vertex 3 connected to Vertex 9.
-		- Vertex 4 connected to Vertex 1, 8.
-		- Vertex 5 connected to Vertex 2.
-		- Vertex 6 connected to Vertex 1, 10.
-		- Vertex 7 connected to Vertex 2.
-		- Vertex 8 connected to Vertex 1, 4.
-		- Vertex 9 connected to Vertex 3.
-		- Vertex 10 connected to Vertex 1, 6.
-* Output: The minimum number of colors required to color the graph.
+The problem is related to graph theory and can be solved using various algorithms and heuristics.
 
-### Constraints
-* Graph size: N vertices and M edges.
-* Number of colors: Use as few colors as possible (minimize the number of colors).
-* Coloring constraint: No two adjacent vertices have the same color.
+
+**Examples:** 
+
+1. 
+Start at square (0, 0)
+Visit each square exactly once
+Return to the starting point
+
+
+2. 
+Start at square (4, 4)
+Move to square (6, 5) 
+Then visit each remaining square in some order
+End up back on square (4, 4)
+
+
+3. 
+Start at square (1, 1)
+Visit squares in the following order: (3, 2), (5, 3), (7, 2), (5, 1), (3, 0), (1, 2), (0, 0)
+This is just one possible solution
+
+
+**Constraints:** 
+
+* The chessboard is an 8x8 grid.
+* The knight moves according to the standard rules: two squares horizontally then one vertically or vice versa.
+* Each square can only be visited once.
+* The path must end up back on the starting point.

@@ -1,50 +1,40 @@
-# Professor's Analysis: M Coloring Problem
+# Professor's Analysis: Knight Tour
 
 ## Time Complexity Analysis
-* Big O notation: O(N)
-* The loop runs N times, where N is the number of vertices in the graph.
-* Inside the loop, there is an if statement that checks if a color is safe to use for a vertex. This operation takes O(1) time on average because dictionary lookups are constant time operations.
-* Since the loop runs N times and the dictionary lookup takes O(1) time, the overall time complexity is N * O(1) = O(N).
+The time complexity of this algorithm is O(N), where N is the total number of squares on the chessboard (8x8 = 64). This is because we visit each square once.
+
+*   The loop in `solve_util` runs N times, which is O(N).
+*   Inside the loop, dictionary lookup (`if x in dict`) takes O(1) time on average.
+*   Therefore, N * O(1) = O(N).
 
 ## Space Complexity Analysis
-* Big O notation: O(N)
-* We use a dictionary to store at most N elements (colors for each vertex).
-* Therefore, the space complexity is proportional to the number of vertices in the graph.
+The space complexity of this algorithm is O(N), where N is the total number of squares on the chessboard. We use a 2D list (or matrix) to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
 
-### Initialize Variables and Functions
+### Initialization
+*   The `Solution` class has an initializer method (`__init__`) that:
+    *   Initializes an instance variable `moves`, which is a list of tuples representing the possible moves on the chessboard.
+    *   Initializes an instance variable `board_size`, which is set to 8 (the size of the chessboard).
+    *   Initializes an instance variable `solution`, which is a 2D list filled with -1 values, representing the solution matrix.
 
-* The code defines three functions: `is_safe`, `graph_coloring_util`, and `solve`.
-* The `is_safe` function takes a vertex `v` and its color as input and returns True if it's safe to use that color for the vertex, False otherwise.
-* The `graph_coloring_util` function uses backtracking to solve the graph coloring problem. It takes a list of colors assigned to each vertex and the current vertex index as input.
-* The `solve` function is the main entry point for the algorithm.
+### Solution Existence Check
+*   The `solve` method checks if a solution exists by calling the `solve_util` method with the starting position (0, 0) and move count 0.
+*   If a solution exists, it prints the solution matrix using the `print_solution` method and returns True.
 
-### Initialize Color List
+### Utility Method: Solve Util
+*   The `solve_util` method takes three parameters:
+    *   x: the current x-coordinate on the chessboard (integer)
+    *   y: the current y-coordinate on the chessboard (integer)
+    *   move_count: the current move count (integer)
+*   It checks if the move count is equal to the total number of squares on the board (`board_size * board_size`). If so, it returns True.
+*   Otherwise, it iterates over all possible moves:
+    *   For each move, it calculates the next x and y coordinates using the `moves` list.
+    *   It checks if the new position is valid (i.e., within the chessboard bounds) and has not been visited before (`solution[x][y] == -1`).
+    *   If the new position is valid, it marks it as visited by setting `solution[next_x][next_y] = move_count`.
+    *   It recursively calls `solve_util` with the updated position and incrementing move count.
+    *   If a solution is found, it returns True.
+    *   If no solution is found after trying all moves, it backtracks by resetting the visited mark (`solution[next_x][next_y] = -1`) and returns False.
 
-* We initialize a color list `color` with size equal to the number of vertices in the graph (N). Each element in the list is initialized to 0, indicating that no color has been assigned yet.
-
-### Check if Coloring is Possible
-
-* The `solve` function tries to assign colors to each vertex using backtracking.
-* It calls the `graph_coloring_util` function with an initial color assignment of [0] * N (an array of zeros).
-
-### Recursion and Backtracking
-
-* If `v == len(graph)`, it means we have assigned colors to all vertices, so we return True indicating that a valid coloring has been found.
-* Otherwise, we iterate over each possible color (c in range(1, m + 1)) for the current vertex v.
-* For each color c, we check if it's safe to use using the `is_safe` function. If it is, we assign this color to vertex v (`color[v] = c`) and recursively call `graph_coloring_util(color, v + 1)`.
-
-### Unassign Color and Backtrack
-
-* After the recursive call returns False (indicating that assigning color c did not lead to a valid coloring), we unassign the color for vertex v by setting `color[v] = 0`.
-* We continue trying other colors until all possible colors have been tried or a valid coloring is found.
-
-### Find Minimum Number of Colors Required
-
-* The outer loop in the `solve` function tries different values of m (number of colors) to find the minimum number of colors required to color the graph.
-* If for any value of m, we can find a valid coloring using backtracking, we return this value as the minimum number of colors required. Otherwise, we return -1.
-
-### Return Minimum Number of Colors
-
-* Finally, if no pair is found that requires fewer than i colors, it returns -1
+### Solution Printing
+*   The `print_solution` method simply prints each row of the `solution` matrix.
