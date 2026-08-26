@@ -1,46 +1,49 @@
-# Knight Tour
+# Soduko
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/backtracking-set-1-the-knights-tour-problem/](https://www.geeksforgeeks.org/backtracking-set-1-the-knights-tour-problem/)
+**Link:** [https://www.geeksforgeeks.org/backtracking-set-7-suduku/](https://www.geeksforgeeks.org/backtracking-set-7-suduku/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Knight's Tour Problem
+**Sudoku**
+================
 
+**Description:**
+Given a 9x9 Sudoku board as a 2D array of integers, fill in all the empty cells (0) with valid numbers from 1 to 9 such that no row, column, or 3x3 sub-grid contains more than one instance of each number.
 
-**Description:** 
+**Examples:**
 
-Given an 8x8 chessboard, find a path for a knight to visit each square exactly once and return to the starting point. The knight moves according to certain rules: it can move two squares horizontally then one vertically or vice versa.
+* Input:
+```
+grid = [[5, 3, 0, 0, 7, 0, 0, 0, 0],
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
 
-The problem is related to graph theory and can be solved using various algorithms and heuristics.
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
 
+        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+        [0, 0, 0, 4, 1, 9, 0, 0, 5],
+        [0, 0, 0, 0, 8, 0, 0, 7, 9]]
+```
+Output:
+```
+grid = [[5, 3, 4, 6, 7, 8, 9, 1, 2],
+        [6, 7, 2, 1, 9, 5, 3, 4, 8],
+        [1, 9, 8, 3, 4, 2, 5, 6, 7],
 
-**Examples:** 
+        [8, 5, 9, 7, 6, 1, 4, 2, 3],
+        [4, 2, 6, 8, 5, 3, 7, 9, 1],
+        [7, 1, 3, 9, 2, 4, 8, 5, 6],
 
-1. 
-Start at square (0, 0)
-Visit each square exactly once
-Return to the starting point
+        [9, 6, 1, 5, 3, 7, 2, 8, 4],
+        [2, 8, 7, 4, 1, 9, 6, 3, 5],
+        [3, 4, 5, 2, 8, 6, 1, 7, 9]]
+```
+**Constraints:**
 
-
-2. 
-Start at square (4, 4)
-Move to square (6, 5) 
-Then visit each remaining square in some order
-End up back on square (4, 4)
-
-
-3. 
-Start at square (1, 1)
-Visit squares in the following order: (3, 2), (5, 3), (7, 2), (5, 1), (3, 0), (1, 2), (0, 0)
-This is just one possible solution
-
-
-**Constraints:** 
-
-* The chessboard is an 8x8 grid.
-* The knight moves according to the standard rules: two squares horizontally then one vertically or vice versa.
-* Each square can only be visited once.
-* The path must end up back on the starting point.
+* The input grid is a 9x9 2D array of integers.
+* Each row, column, and 3x3 sub-grid can contain each number from 1 to 9 only once.

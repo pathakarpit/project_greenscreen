@@ -1,40 +1,34 @@
-# Problem: Knight Tour
+# Problem: Soduko
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/backtracking-set-1-the-knights-tour-problem/
+# Link: https://www.geeksforgeeks.org/backtracking-set-7-suduku/
 
 class Solution:
-    def __init__(self):
-        self.moves = [(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2)]
-        self.board_size = 8
-        self.solution = [[-1 for _ in range(self.board_size)] for _ in range(self.board_size)]
-    
-    def is_valid(self, x, y):
-        return 0 <= x < self.board_size and 0 <= y < self.board_size and self.solution[x][y] == -1
-    
-    def solve(self):
-        if not self.solve_util(0, 0, 0):
-            print("No solution exists")
-            return False
-        else:
-            self.print_solution()
-            return True
-    
-    def solve_util(self, x, y, move_count):
-        if move_count == self.board_size * self.board_size:
+    def solve(self, board):
+        def is_valid(row, col, num):
+            for i in range(9):
+                if board[row][i] == num or board[i][col] == num:
+                    return False
+            start_row, start_col = 3 * (row // 3), 3 * (col // 3)
+            for i in range(start_row, start_row + 3):
+                for j in range(start_col, start_col + 3):
+                    if board[i][j] == num:
+                        return False
             return True
         
-        for i in range(8):
-            next_x, next_y = x + self.moves[i][0], y + self.moves[i][1]
-            if self.is_valid(next_x, next_y):
-                self.solution[next_x][next_y] = move_count
-                if self.solve_util(next_x, next_y, move_count + 1):
-                    return True
-                self.solution[next_x][next_y] = -1
-        return False
-    
-    def print_solution(self):
-        for row in self.solution:
-            print(row)
+        def solve_sudoku():
+            for row in range(9):
+                for col in range(9):
+                    if board[row][col] == 0:
+                        for num in range(1, 10):
+                            if is_valid(row, col, num):
+                                board[row][col] = num
+                                if solve_sudoku():
+                                    return True
+                                board[row][col] = 0
+                        return False
+            return True
+        
+        solve_sudoku()
 
 ########################################
 # if __name__ == '__main__':
