@@ -1,31 +1,36 @@
-# Word Break Problem using Backtracking
+# Print all Palindromic Partitions of a String
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/word-break-problem-using-backtracking/](https://www.geeksforgeeks.org/word-break-problem-using-backtracking/)
+**Link:** [https://www.geeksforgeeks.org/print-palindromic-partitions-string/](https://www.geeksforgeeks.org/print-palindromic-partitions-string/)
 
 ---
 
 ## Problem Statement
 
-Title: Word Break Problem
-
-
-Description:
-Given a non-empty string s and a dictionary wordDict containing a list of words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
-
+Title: Palindrome Partitioning
+Description: The function `palinParts` generates all possible partitions of the input string such that each substring in the partition is a palindrome. It uses recursion with backtracking to explore all possible combinations.
 Examples:
-
-1. Input: "applepenapple", ["apple","pen"]
-Output: True
-
-2. Input: "catsanddog", ["cat","cats","sand","and","dog"]
-Output: False
-
-3. Input: "leetcode", ["leet","code"]
-Output: True
-
-
+1. Input: "geeks"
+Output:
+[
+  ["g", "e", "e", "k", "s"],
+  ["g", "ee", "k", "s"]
+]
+2. Input: "abba"
+Output:
+[
+  ["a", "b", "b", "a"],
+  ["a", "bb", "a"],
+  ["abba"]
+]
+3. Input: "aaa"
+Output:
+[
+  ["a", "a", "a"],
+  ["aa", "a"],
+  ["aaa"]
+]
 Constraints:
-- 1 <= s.length <= 30
-- 1 <= wordDict.length <= 2000
-- 1 <= word length <= 10
+- The input string is a non-empty string of lowercase English letters.
+- The length of the input string is between 1 and 10^5 (inclusive).
+- Each substring in the partition must be at least one character long.
