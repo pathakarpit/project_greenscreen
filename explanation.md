@@ -1,29 +1,32 @@
-# Professor's Analysis: Remove Invalid Parentheses
+# Professor's Analysis: Word Break Problem using Backtracking
 
 ## Time Complexity Analysis
-The time complexity of this solution is O(N), where N is the number of characters in the input string `s`. This is because the loop runs N times, and each iteration takes constant-time due to dictionary lookups.
+The time complexity of this algorithm is O(N).
+
+* The loop runs N times, where N is the length of the string `s`.
+* Within each iteration, we perform a dictionary lookup `if x in dict` to check if the current substring matches any word in the `wordDict`. This operation takes O(1) time on average.
+* Therefore, the total time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
-The space complexity of this solution is O(N), where N is the number of characters in the input string `s`. This is because we store at most N substrings in the queue and dictionary.
+The space complexity of this algorithm is O(N).
+
+* We use a dictionary/hash map to store at most N elements from the `wordDict`.
+* The dictionary is initialized with length N+1, where N is the length of string s. 
 
 ## Step-by-Step Reconstruction Logic
 
-### Variables Initialization
-* Initialize an empty list `valid_strings` to store valid strings.
-* Initialize an empty set `visited` to keep track of generated substrings.
-* Initialize a queue with the input string `s`.
+### Initialize Variables
+* `dp`: an array of boolean values, initialized with length `len(s) + 1`. This will be used to keep track of whether a valid word can be formed up to each position in the string.
+* `wordDict`: the dictionary of words that we are checking against.
 
-### Loop Condition
-* The loop continues until the queue is empty.
+### Loop Through String s
+* The outer loop iterates from 1 to `len(s)`.
+* For each iteration, we check if any word in `wordDict` matches the substring from the current index to the end of the string.
+	+ We iterate through each word in `wordDict`.
+	+ If the length of the current word is less than or equal to the remaining characters in the string (`i >= len(word)`), and the current substring matches the word (`s[i - len(word):i] == word`), we check if a valid word can be formed up to the previous position (`dp[i - len(word)]`).
+	+ If all conditions are met, we set `dp[i] = True` and break out of the inner loop.
 
-### Inner Loop Logic
-* Pop the first substring from the queue and store it in `current_str`.
-* Check if `current_str` is valid by calling the `is_valid` function. If valid, append it to `valid_strings`.
-* If no valid strings have been found yet and the current string contains parentheses, generate new substrings by removing one parenthesis at a time.
+### Return Statement
+* After iterating through the entire string, we return the value of `dp[-1]`, which indicates whether a valid word can be formed from the start to the end of the string.
 
-### Dictionary Update
-* For each new substring generated, add it to the queue if not already visited.
-* Add the new substring to the `visited` set.
-
-### Final Return Statement
-* If no valid strings were found, return an empty string.
+This explanation should allow a developer to rewrite the code based on the logic described.

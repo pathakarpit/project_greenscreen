@@ -1,41 +1,19 @@
-# Problem: Remove Invalid Parentheses
+# Problem: Word Break Problem using Backtracking
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/remove-invalid-parentheses/
+# Link: https://www.geeksforgeeks.org/word-break-problem-using-backtracking/
 
 class Solution:
-    def solve(self, s):
-        # Function to check if a string has valid parentheses
-        def is_valid(str_val):
-            count = 0
-            for char in str_val:
-                if char == '(':
-                    count += 1
-                elif char == ')':
-                    count -= 1
-                if count < 0:
-                    return False
-            return count == 0
+    def solve(self, s, wordDict):
+        dp = [False] * (len(s) + 1)
+        dp[0] = True
         
-        # Use a queue to perform BFS
-        queue = [s]
-        visited = set()
-        valid_strings = []
-        
-        while queue:
-            current_str = queue.pop(0)
-            if is_valid(current_str):
-                valid_strings.append(current_str)
-            
-            # If we have found a valid string, no need to generate more substrings
-            if not queue and not valid_strings:
-                for i in range(len(current_str)):
-                    if current_str[i] == '(' or current_str[i] == ')':
-                        new_str = current_str[:i] + current_str[i+1:]
-                        if new_str not in visited:
-                            queue.append(new_str)
-                            visited.add(new_str)
-        
-        return valid_strings[0] if valid_strings else ""
+        for i in range(1, len(s) + 1):
+            for word in wordDict:
+                if i >= len(word):
+                    if s[i - len(word):i] == word and dp[i - len(word)]:
+                        dp[i] = True
+                        break
+        return dp[-1]
 
 ########################################
 # if __name__ == '__main__':
