@@ -1,35 +1,36 @@
-# Problem: Find Shortest Safe Route in a Path with Landmines
+# Problem: Partition of Set into K Subsets with Equal Sum
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/find-shortest-safe-route-in-a-path-with-landmines/
+# Link: https://www.geeksforgeeks.org/partition-set-k-subsets-equal-sum/
 
 class Solution:
-    def solve(self, grid):
-        n = len(grid)
-        if n == 0: return "No safe route found"
+    def solve(self, arr, k):
+        n = len(arr)
+        if k == 1: return True
+        total_sum = sum(arr)
+        if total_sum % k != 0: return False
+        target = total_sum // k
         
-        # Directions for moving in the grid (right and down only)
-        directions = [(0, 1), (1, 0)]
+        # Sort the array in descending order to try larger numbers first
+        arr.sort(reverse=True)
         
-        # Function to check if a move is valid
-        def is_valid(x, y):
-            return 0 <= x < n and 0 <= y < n and grid[x][y] == 1
-        
-        # BFS initialization
-        queue = [(0, 0, "")]
-        visited = set((0, 0))
-        
-        while queue:
-            x, y, path = queue.pop(0)
-            if (x, y) == (n-1, n-1):
-                return path + str(y) # Return the shortest path found
+        def can_partition(start, subset_sums, used):
+            if start == n:
+                for sum in subset_sums:
+                    if sum != target: return False
+                return True
             
-            for dx, dy in directions:
-                new_x, new_y = x + dx, y + dy
-                if is_valid(new_x, new_y) and (new_x, new_y) not in visited:
-                    queue.append((new_x, new_y, path + str(y)))
-                    visited.add((new_x, new_y))
+            for i in range(len(subset_sums)):
+                if subset_sums[i] + arr[start] <= target:
+                    subset_sums[i] += arr[start]
+                    used[start] = True
+                    if can_partition(start + 1, subset_sums, used): return True
+                    subset_sums[i] -= arr[start]
+                    used[start] = False
+            return False
         
-        return "No safe route found"
+        subset_sums = [0] * k
+        used = [False] * n
+        return can_partition(0, subset_sums, used)
 
 ########################################
 # if __name__ == '__main__':
