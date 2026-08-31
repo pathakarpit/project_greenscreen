@@ -1,36 +1,46 @@
-# Partition of Set into K Subsets with Equal Sum
+# Backtracking set-7 hamiltonian cycle
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/partition-set-k-subsets-equal-sum/](https://www.geeksforgeeks.org/partition-set-k-subsets-equal-sum/)
+**Link:** [https://www.geeksforgeeks.org/backtracking-set-7-hamiltonian-cycle/](https://www.geeksforgeeks.org/backtracking-set-7-hamiltonian-cycle/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Partition into k Equal Sum Subsets With Equal Sum
+**Title:** Hamiltonian Path Problem
 
+**Description:**
 
-**Description:** Given an integer array `arr[]` and an integer `k`, the task is to check if it is possible to divide the given array into `k` non-empty subsets of equal sum such that every array element is part of a single subset.
-
+Given an undirected graph G = (V, E) with n vertices, determine if there exists a Hamiltonian path from vertex u to vertex v.
+A Hamiltonian path is a path that visits each vertex exactly once.
+The graph may contain multiple edges between the same pair of vertices.
 
 **Examples:**
 
-1.  Input: `arr[] = [2, 1, 4, 5, 6], k = 3`
-    Output: `true`
+1. Input:
+    V = [1, 2, 3]
+    E = [(1, 2), (2, 3)]
+    u = 1
+    v = 3
 
-Possible subsets of the given array are `[2, 4]`, `[1, 5]` and `[6]`
+    Output: True (there is a Hamiltonian path from vertex 1 to vertex 3)
 
-2.  Input: `arr[] = [2, 1, 5, 5, 6], k = 3`
-    Output: `false`
+2. Input:
+    V = [1, 2, 3, 4]
+    E = [(1, 2), (2, 3), (3, 4)]
+    u = 1
+    v = 4
 
-It is not possible to divide above array into 3 parts with equal sum.
+    Output: True (there is a Hamiltonian path from vertex 1 to vertex 4)
 
-**Constraints:**
+3. Input:
+    V = [1, 2, 3]
+    E = [(1, 2), (2, 3)]
+    u = 1
+    v = 1
 
+    Output: False (no Hamiltonian path exists from vertex 1 to itself)
 
-*   The total number of elements in the array `n` should be greater than or equal to `k`.
-*   The sum of all elements in the array should be divisible by `k`.
+**Constraints:** The graph has at most n vertices, where n is the input size. There are no multiple edges between the same pair of vertices.
 
-Note: Constraints are derived from the problem description and may not be explicitly mentioned. These constraints aim to provide a reasonable limit for the problem, ensuring it is feasible within the given time complexity.
-
-**Code Removal:** All solution code (C++, Java, Python implementations) has been removed, leaving only the question and constraints. The provided code has been analyzed, and the extracted problem statement is now presented in the structured format as per your requirement.
+Note: All code and text below this point has been removed to ensure that only the question remains.

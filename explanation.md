@@ -1,51 +1,42 @@
-# Professor's Analysis: Partition of Set into K Subsets with Equal Sum
+# Professor's Analysis: Backtracking set-7 hamiltonian cycle
 
 ## Time Complexity Analysis
 
-The time complexity of this solution is O(N), where N is the length of the input array.
+The time complexity of this code is O(N), where N is the number of vertices in the graph.
 
 ## Space Complexity Analysis
 
-The space complexity of this solution is O(N).
+The space complexity of this code is O(N), as we use a dictionary to store at most N elements (the vertices and their neighbors).
 
 ## Step-by-Step Reconstruction Logic
-### Initialize Variables
-*   `n`: The length of the input array.
-*   `total_sum`: The sum of all elements in the array.
-*   `target`: The target sum, which is the total sum divided by k (the number of partitions).
-*   `subset_sums`: An array to store the sum of each partition. It has a size of k.
-*   `used`: An array to store whether each element in the array is used or not. It has a size of n.
 
-### Loop Condition
-The loop starts from index 0 and runs until we reach the end of the array (index n).
+1. Initialize Variables:
+   * Create an instance of the `Solution` class, passing in the number of vertices (`V`) and edges (`E`).
+   * Initialize an empty dictionary (`self.graph`) to store the graph structure.
 
-### Math Used to Find Complement
-We use the math `target - current_num` to find the complement for each partition.
+2. Build Graph Structure:
+   * Iterate over each edge in the list of edges (`E`):
+     + Add the edge to the dictionary, connecting vertex `edge[0]` to vertex `edge[1]`.
+     + Also add the reverse edge (from `edge[1]` to `edge[0]`) to ensure a bidirectional graph.
 
-### If/Else Logic
-*   If the complement is found, we add it to the current subset sum and mark the current element as used. We then recursively call `can_partition` with the next index.
-*   If the complement is not found, we simply move on to the next possible subset sum without changing the used status of the current element.
+3. Define DFS Function:
+   * Create a function (`dfs`) that takes three parameters: `u` (the current vertex), `v` (the target vertex), and `visited` (a dictionary keeping track of visited vertices).
+   * If `u` is equal to `v`, return `True`.
 
-### Return Statement
-If no pair is found after iterating through all elements in the array, we return False.
+4. Perform DFS Recursion:
+   * Iterate over each neighbor of the current vertex (`u`) in the graph:
+     + If the neighbor has not been visited, mark it as visited and recursively call `dfs` on that neighbor.
+     + If the recursive call returns `True`, immediately return `True`.
+   * If no path is found to the target vertex (`v`), return `False`.
 
+5. Define Solve Function:
+   * Create a function (`solve`) that takes two parameters: `u` (the start vertex) and `v` (the target vertex).
+   * Initialize an empty dictionary (`visited`) to keep track of visited vertices.
+   * Mark the start vertex (`u`) as visited.
 
-Here are the steps to reconstruct the logic:
+6. Perform DFS Search:
+   * Call the `dfs` function on the start vertex (`u`) with the target vertex (`v`) and the `visited` dictionary.
 
-1.  Initialize variables:
-    *   `n`: The length of the input array.
-    *   `total_sum`: The sum of all elements in the array.
-    *   `target`: The target sum, which is the total sum divided by k (the number of partitions).
-    *   `subset_sums`: An array to store the sum of each partition. It has a size of k.
-    *   `used`: An array to store whether each element in the array is used or not. It has a size of n.
-
-2.  Sort the input array in descending order:
-
-3.  Define a helper function `can_partition` that takes three parameters: the current index, the subset sums, and the used status array.
-
-4.  Inside the loop:
-    *   If we reach the end of the array (index n), check if all subset sums are equal to the target sum. If they are, return True.
-    *   For each possible subset sum, check if adding the current element does not exceed the target sum.
-    *   If it does not exceed the target sum, add the current element to the subset sum and mark it as used. Recursively call `can_partition` with the next index.
-
-5.  Return False if no pair is found after iterating through all elements in the array.
+7. Return Result:
+   * If a path is found to the target vertex (`v`), return `True`.
+   * Otherwise, if no pair is found, return `False`.
