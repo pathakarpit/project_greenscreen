@@ -1,46 +1,30 @@
-# Backtracking set-7 hamiltonian cycle
+# tug-of-war
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/backtracking-set-7-hamiltonian-cycle/](https://www.geeksforgeeks.org/backtracking-set-7-hamiltonian-cycle/)
+**Link:** [https://www.geeksforgeeks.org/tug-of-war/](https://www.geeksforgeeks.org/tug-of-war/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Hamiltonian Path Problem
+**Title:** 
+Partition an Array into Two Equal-Sum Subsets
+
 
 **Description:**
+Given an integer array arr[], divide it into two subsets such that the absolute difference between their sums is zero (i.e., both subsets have the same sum). If the size of the array is even, each subset must contain exactly n/2 elements. If the size of the array is odd, then one subset must contain n/2 elements and the other must contain (n+1)/2 elements. Note: It is always guaranteed that the array can be divided into two such subsets.
 
-Given an undirected graph G = (V, E) with n vertices, determine if there exists a Hamiltonian path from vertex u to vertex v.
-A Hamiltonian path is a path that visits each vertex exactly once.
-The graph may contain multiple edges between the same pair of vertices.
 
 **Examples:**
+Input: arr[] = [1, 2, 3, 4]
+Output: [[1, 4], [2, 3]]
+Explanation: The absolute difference between the sum of both subsets is 0
 
-1. Input:
-    V = [1, 2, 3]
-    E = [(1, 2), (2, 3)]
-    u = 1
-    v = 3
+Input: arr[] = [5, 10, 15]
+Output: [[5, 10], [15]]
+Explanation: The absolute difference between the sum of both subsets is 0
 
-    Output: True (there is a Hamiltonian path from vertex 1 to vertex 3)
 
-2. Input:
-    V = [1, 2, 3, 4]
-    E = [(1, 2), (2, 3), (3, 4)]
-    u = 1
-    v = 4
-
-    Output: True (there is a Hamiltonian path from vertex 1 to vertex 4)
-
-3. Input:
-    V = [1, 2, 3]
-    E = [(1, 2), (2, 3)]
-    u = 1
-    v = 1
-
-    Output: False (no Hamiltonian path exists from vertex 1 to itself)
-
-**Constraints:** The graph has at most n vertices, where n is the input size. There are no multiple edges between the same pair of vertices.
-
-Note: All code and text below this point has been removed to ensure that only the question remains.
+**Constraints:** 
+1 <= N <= 10^3
+-10^4 <= A[i] <= 10^4
