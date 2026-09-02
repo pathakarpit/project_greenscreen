@@ -1,35 +1,23 @@
-# Problem: tug-of-war
+# Problem: Maximum Possible Number by doing at most K swaps
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/tug-of-war/
+# Link: https://www.geeksforgeeks.org/find-maximum-number-possible-by-doing-at-most-k-swaps/
 
 class Solution:
-    def solve(self, arr):
-        total_sum = sum(arr)
-        target_sum = total_sum // 2
+    def solve(self, nums, k):
+        # Create a dictionary to store the index of each number in the array
+        index_map = {}
         
-        # Create a list to store the subset sums we can achieve with elements up to i
-        dp = [False] * (target_sum + 1)
-        dp[0] = True  # Base case: sum of 0 is achievable with an empty set
+        # Iterate through the array and populate the index map
+        for i, num in enumerate(nums):
+            index_map[num] = i
         
-        for num in arr:
-            for j in range(target_sum, num - 1, -1):
-                if not dp[j]:
-                    dp[j] = dp[j - num]
+        # Iterate through the array again to rearrange based on the condition k
+        rearranged = []
+        for num in nums:
+            if (k - num) in index_map and len(rearranged) < len(nums):
+                rearranged.append(num)
         
-        # The last index of dp that is True will be the maximum sum we can achieve with elements up to i
-        current_sum = target_sum
-        while not dp[current_sum]:
-            current_sum -= 1
-        
-        subset1 = []
-        subset2 = []
-        for num in arr:
-            if num <= current_sum and dp[num]:
-                subset1.append(num)
-            else:
-                subset2.append(num)
-        
-        return [subset1, subset2]
+        return rearranged
 
 ########################################
 # if __name__ == '__main__':
