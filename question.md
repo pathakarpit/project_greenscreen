@@ -1,32 +1,51 @@
-# Maximum Possible Number by doing at most K swaps
+# Backtracking set-8 solving cryptarithmetic puzzles
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/find-maximum-number-possible-by-doing-at-most-k-swaps/](https://www.geeksforgeeks.org/find-maximum-number-possible-by-doing-at-most-k-swaps/)
+**Link:** [https://www.geeksforgeeks.org/backtracking-set-8-solving-cryptarithmetic-puzzles/](https://www.geeksforgeeks.org/backtracking-set-8-solving-cryptarithmetic-puzzles/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Rearrange Array with Preserved Order
+**
 
+**Title:** Crypt Arithmetic Puzzle Solver
 **Description:**
-
-Analyze the raw content provided by the Tech Researcher above.
-
+Given three strings `a`, `b`, and `sum` representing crypt-arithmetic puzzles, solve the puzzle by assigning each letter a unique digit from 0 to 9 such that the arithmetic works out correctly.
 **Examples:**
+1. Input:
+```
+a = "send"
+b = "more"
+sum = "money"
+```
+Output:
+```
+7531
+0825
+08356
+```
+2. Input:
+```
+a = "s"
+b = "p"
+sum = "f"
+```
+Output:
+```
+2
+1
+3
+```
+3. Input:
+```
+a = "abc"
+b = "def"
+sum = "ghi"
+```
+Output: `-1` (no solution exists)
+**Constraints:**
 
-1. Input: `nums = [1, 2, 3, 4], k = 5`
-   Output: `[1, 2, 3, 4]`
-
-2. Input: `nums = [5, 0, 8, 3], k = 1`
-   Output: `[0, 5, 3, 8]`
-
-3. Input: `nums = [4, 3, 2, 1], k = 3`
-   Output: `[1, 2, 3, 4]`
-
-**Constraints:** 
-1 <= nums.length <= 10^5
-0 <= nums[i] <= 2 * 10^5
-0 <= k <= 5 * 10^4
-
-Note: I have removed any solution code from the text and created a clear problem statement, input/output examples, and constraints.
+* All input strings contain only lowercase English letters.
+* The sum string is the result of adding the first two strings together using standard arithmetic rules.
+* Each letter in the input strings must be assigned a unique digit from 0 to 9.
