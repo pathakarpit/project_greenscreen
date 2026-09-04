@@ -1,51 +1,27 @@
-# Backtracking set-8 solving cryptarithmetic puzzles
+# Find paths from corner cell to middle cell in maze
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/backtracking-set-8-solving-cryptarithmetic-puzzles/](https://www.geeksforgeeks.org/backtracking-set-8-solving-cryptarithmetic-puzzles/)
+**Link:** [https://www.geeksforgeeks.org/find-paths-from-corner-cell-to-middle-cell-in-maze/](https://www.geeksforgeeks.org/find-paths-from-corner-cell-to-middle-cell-in-maze/)
 
 ---
 
 ## Problem Statement
 
-**
+```
+Title: Find Paths from Corner Cell to Middle Cell in Maze
+Description:
+Given an n x n maze represented as a 2D array, where 0 represents an open cell and 1 represents an obstacle, find all paths from the corner cell (top-left) to the middle cell (n/2, n/2).
+Input/Output Examples:
 
-**Title:** Crypt Arithmetic Puzzle Solver
-**Description:**
-Given three strings `a`, `b`, and `sum` representing crypt-arithmetic puzzles, solve the puzzle by assigning each letter a unique digit from 0 to 9 such that the arithmetic works out correctly.
-**Examples:**
-1. Input:
-```
-a = "send"
-b = "more"
-sum = "money"
-```
-Output:
-```
-7531
-0825
-08356
-```
-2. Input:
-```
-a = "s"
-b = "p"
-sum = "f"
-```
-Output:
-```
-2
-1
-3
-```
-3. Input:
-```
-a = "abc"
-b = "def"
-sum = "ghi"
-```
-Output: `-1` (no solution exists)
-**Constraints:**
+Example 1:
+Input: n = 3, maze = [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
+Output: ["DLRU", "DRUL"]
 
-* All input strings contain only lowercase English letters.
-* The sum string is the result of adding the first two strings together using standard arithmetic rules.
-* Each letter in the input strings must be assigned a unique digit from 0 to 9.
+Example 2:
+Input: n = 4, maze = [[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 0, 0, 0]]
+Output: ["DLRU", "DRUL"]
+
+Constraints:
+- n >= 2 (at least a 2x2 maze)
+- All cells in the maze are either 0 or 1
+```
