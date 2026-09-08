@@ -1,31 +1,22 @@
-# Problem: Arithmetic Expressions
-# Difficulty: Hard
-# Link: https://www.hackerrank.com/challenges/arithmetic-expressions/problem
+# Problem: Reverse Linked List
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/reverse-linked-list/
 
 class Solution:
-    def solve(self, nums):
-        from itertools import product
-        
-        # Define the operations
-        ops = ['*', '+', '-']
-        
-        # Generate all possible combinations of operators between numbers
-        for op_combo in product(ops, repeat=len(nums) - 1):
-            expression = ''
-            for i in range(len(nums)):
-                if i > 0:
-                    expression += op_combo[i-1]
-                expression += str(nums[i])
-            
-            # Evaluate the generated expression and check divisibility
-            try:
-                result = eval(expression)
-                if result % (len(nums) - 1) == 0:
-                    return expression
-            except Exception as e:
-                continue
-        
-        return None
+    class ListNode:
+        def __init__(self, value=0, next=None):
+            self.value = value
+            self.next = next
+
+    def solve(self, head):
+        prev = None
+        current = head
+        while current is not None:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        return prev
 
 ########################################
 # if __name__ == '__main__':

@@ -1,40 +1,29 @@
-# Arithmetic Expressions
+# Reverse Linked List
 
-**Difficulty:** Hard  
-**Link:** [https://www.hackerrank.com/challenges/arithmetic-expressions/problem](https://www.hackerrank.com/challenges/arithmetic-expressions/problem)
+**Difficulty:** Easy  
+**Link:** [https://leetcode.com/problems/reverse-linked-list/](https://leetcode.com/problems/reverse-linked-list/)
 
 ---
 
 ## Problem Statement
 
-**Title**
-Arithmetic Expressions | HackerRank
+```
+Title: Reversing a Singly Linked List
+Description:
+Analyze the raw content provided by the Tech Researcher above.
 
-**Description**
-We use cookies to ensure you have the best browsing experience on our website. Please read our cookie policy for more information about how we use cookies.OkProblemSubmissionsLeaderboardDiscussionsEditorial5-year-old Shinchan had just started learning mathematics. Meanwhile, one of his studious classmates, Kazama, had already written a basic calculator which supports only three operations on integers: multiplication , addition , and subtraction .  Since he had just learned about these operations, he didn't know about operator precedence, and so, in his calculator, all operators had the same precedence and were left-associative.
-As always, Shinchan started to irritate him with his silly questions. He gave Kazama a list of  integers and asked him to insert one of the above operators between each pair of consecutive integers such that the result obtained after feeding the resulting expression in Kazama's calculator is divisible by . At his core, Shinchan is actually a good guy, so he only gave lists of integers for which an answer exists.
-Can you help Kazama create the required expression? If multiple solutions exist, print any one of them. 
+Examples:
+1. Input: A singly linked list with nodes [1 -> 2 -> 3 -> 4]
+   Output: The reversed linked list [4 -> 3 -> 2 -> 1]
 
-**Examples**
+2. Input: An empty linked list
+   Output: An empty linked list
 
-*   Input:
-    3
-    22 79 21
+3. Input: A linked list with a single node [5]
+   Output: The same linked list [5]
 
-    Output:
-
-    022*79-21
-
-*   Input:
-    5
-    55 3 45 33 25
-
-    Output:
-
-    155+3-45*33-25
-
-**Constraints**
-The length of the output expression should not exceed .
-You are not allowed to permute the list.
-All operators have the same precedence and are left-associative, e.g.,  is interpreted as
-Unary plus and minus are not supported, e.g., statements like , , or  are invalid.
+Constraints:
+* The input is a singly linked list.
+* The nodes of the linked list contain integer values.
+* The length of the linked list can vary from 0 to 10^6 nodes.
+```
