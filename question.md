@@ -1,29 +1,28 @@
-# Reverse Linked List
+# Linked List Cycle
 
 **Difficulty:** Easy  
-**Link:** [https://leetcode.com/problems/reverse-linked-list/](https://leetcode.com/problems/reverse-linked-list/)
+**Link:** [https://leetcode.com/problems/linked-list-cycle/](https://leetcode.com/problems/linked-list-cycle/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Reversing a Singly Linked List
-Description:
-Analyze the raw content provided by the Tech Researcher above.
+**Title:** Detect Cycle in Linked List
 
-Examples:
-1. Input: A singly linked list with nodes [1 -> 2 -> 3 -> 4]
-   Output: The reversed linked list [4 -> 3 -> 2 -> 1]
+**Description:** Given the head of a singly linked list, determine whether the list contains a cycle. A cycle exists if, while traversing the list through next pointers, you encounter a node that has already been visited instead of eventually reaching nullptr.
 
-2. Input: An empty linked list
-   Output: An empty linked list
+**Examples:**
 
-3. Input: A linked list with a single node [5]
-   Output: The same linked list [5]
+1. Input: head: 1 -> 3 -> 4 -> 3
+   Output: true
+   Explanation: The last node of the linked list does not point to NULL; instead, it points to an earlier node in the list, creating a cycle.
 
-Constraints:
-* The input is a singly linked list.
-* The nodes of the linked list contain integer values.
-* The length of the linked list can vary from 0 to 10^6 nodes.
-```
+2. Input: head: 1 -> 8 -> 3 -> 4 -> NULL
+   Output: false
+   Explanation: The last node of the linked list points to NULL, indicating the end of the list.
+
+3. Input: head: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
+   Output: true
+   Explanation: There is a cycle in the linked list.
+
+**Constraints:** The linked list may have at most 10^5 nodes, and each node's value will be between 1 and 10^9.

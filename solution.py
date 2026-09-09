@@ -1,22 +1,22 @@
-# Problem: Reverse Linked List
+# Problem: Linked List Cycle
 # Difficulty: Easy
-# Link: https://leetcode.com/problems/reverse-linked-list/
+# Link: https://leetcode.com/problems/linked-list-cycle/
 
 class Solution:
-    class ListNode:
-        def __init__(self, value=0, next=None):
-            self.value = value
-            self.next = next
-
     def solve(self, head):
-        prev = None
-        current = head
-        while current is not None:
-            next_node = current.next
-            current.next = prev
-            prev = current
-            current = next_node
-        return prev
+        if not head or not head.next:
+            return False
+        
+        slow = head
+        fast = head.next
+        
+        while slow != fast:
+            if not fast or not fast.next:
+                return False
+            slow = slow.next
+            fast = fast.next.next
+        
+        return True
 
 ########################################
 # if __name__ == '__main__':
