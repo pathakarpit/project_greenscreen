@@ -1,29 +1,35 @@
-# Professor's Analysis: Merge Two Sorted Lists
+# Professor's Analysis: Delete without Head node
+
+The final answer is: 
 
 ## Time Complexity Analysis
+### Big O Notation:
+O(N)
 
-* The time complexity of this algorithm is O(N), where N is the number of nodes in the linked list.
-* This is because the loop runs N times, with each iteration performing constant-time operations (dictionary lookup `if x in dict` takes O(1) time on average).
-* Therefore, N * O(1) = O(N).
+## Explanation:
+* The loop runs `N` times because we are traversing through a linked list of length `N`.
+* Inside the loop, we have a dictionary lookup `if node.next is not None:` which takes O(1) time on average.
+* Since the loop runs `N` times and the dictionary lookup takes O(1) time, the overall time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
+### Big O Notation:
+O(1)
 
-* The space complexity is O(N), as we use a dictionary/hash map to store at most N elements.
+## Explanation:
+* We are not using any additional space that scales with the input size. The space used by the loop variables and dictionary lookup does not depend on `N`.
+* Therefore, the space complexity is constant, denoted as O(1).
 
 ## Step-by-Step Reconstruction Logic
-### Initialize Variables
-* We initialize two pointers: `slow` and `fast`, both pointing to the head of the linked list.
-* No additional variables are initialized.
+### Initialize Variables:
+* `node` is an instance of a linked list node.
 
-### Loop Condition
-* The loop continues as long as `fast` and its next node exist (`fast and fast.next`).
+### Loop Condition:
+* The loop runs as long as `node` and its next node are not None.
 
-### Loop Body
-* Inside the loop, we move the `slow` pointer one step at a time (`slow = slow.next`).
-* We also move the `fast` pointer two steps at a time (`fast = fast.next.next`).
+### Inside the Loop:
+* Copy the data from the next node to the current node: `node.val = node.next.val`
+* Bypass the next node by changing the pointer of the current node to skip the next node: `node.next = node.next.next`
 
-### Detecting the Middle Node
-* When the loop ends, the `slow` pointer will be pointing to the middle node of the linked list.
-
-### Returning the Middle Node Value
-* The function returns the value of the middle node (`return slow.val`).
+### Logic After the Loop:
+* If no pair is found, return None.
+* If a pair is found, modify the linked list accordingly.
