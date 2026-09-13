@@ -1,3 +1,3 @@
-# Professor's Analysis: Remove duplicates from an unsorted linked list
+# Professor's Analysis: Sort a linked list of 0s-1s-or-2s
 
-The solution has a time complexity of O(N) and space complexity of O(N), where N is the number of nodes in the linked list. It correctly identifies and removes duplicate pairs from the linked list by iterating through each node once and performing dictionary lookups to check for duplicates.
+This Python code snippet is designed to solve a specific problem where we need to sort the values in a linked list. The solution works by first counting the number of 0s, 1s, and 2s in the linked list using three variables (`count[0]`, `count[1]`, and `count[2]`). Then it iterates over the linked list again and assigns the smallest available value to each node. The solution has a time complexity of O(N) because we need to iterate over all nodes twice, where N is the number of nodes in the linked list. The space complexity is also O(N) because we use a list to store at most N elements.

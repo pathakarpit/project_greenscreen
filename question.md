@@ -1,24 +1,26 @@
-# Remove duplicates from an unsorted linked list
+# Sort a linked list of 0s-1s-or-2s
 
 **Difficulty:** Easy  
-**Link:** [https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/](https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/)
+**Link:** [https://www.geeksforgeeks.org/sort-a-linked-list-of-0s-1s-or-2s/](https://www.geeksforgeeks.org/sort-a-linked-list-of-0s-1s-or-2s/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Remove Duplicates from Linked List
+Title: Sort a linked list of 0s, 1s, and 2s
+Description: Given a linked list containing nodes with values 0, 1, or 2, sort the list in non-decreasing order.
+Examples:
 
-**Description:**
-Given the head of a singly linked list where each node's value is an integer, remove duplicate values such that no two nodes have the same data. The function should modify the existing linked list in-place and return the modified head.
+Input: 1 -> 1 -> 2 -> 0 -> 2 -> 0 -> 1 -> NULL
 
-**Examples:**
+Output: 0 -> 0 -> 1 -> 1 -> 1 -> 2 -> 2 -> NULL
 
-* Input: `5 -> 2 -> 2 -> 4`, Output: `5 -> 2 -> 4`
-* Input: `1 -> 2 -> 3 -> 3 -> 4`, Output: `1 -> 2 -> 3 -> 4`
-* Input: `5 -> 5 -> 5 -> 5`, Output: `5`
+Input: 1 -> 1 -> 2 -> 1 -> 0 -> NULL
 
-**Constraints:** 
-* The linked list is singly-linked.
-* Each node's value is an integer between 1 and 10^9 (inclusive).
-* The number of nodes in the list is at least 1 and no more than 10^6.
+Output: 0 -> 1 -> 1 -> 1 -> 2 -> NULL
+
+Input: 2 -> 2 -> 0 -> 0 -> 1 -> NULL
+
+Output: 0 -> 0 -> 1 -> 2 -> 2 -> NULL
+
+Constraints: Assume the linked list contains at least one node, and all nodes have values between 0 and 2 inclusive.
