@@ -1,37 +1,27 @@
-# Problem: Sort a linked list of 0s-1s-or-2s
+# Problem: Multiply two numbers represented linked lists
 # Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/sort-a-linked-list-of-0s-1s-or-2s/
+# Link: https://www.geeksforgeeks.org/multiply-two-numbers-represented-linked-lists/
 
 class Solution:
-    def solve(self, head):
-        count = [0, 0, 0]  # To store count of 0s, 1s, and 2s
-        current = head
+    def solve(self, l1, l2):
+        MOD = 10**9 + 7
         
-        # Count the number of 0s, 1s, and 2s in the linked list
-        while current:
-            if current.val == 0:
-                count[0] += 1
-            elif current.val == 1:
-                count[1] += 1
-            elif current.val == 2:
-                count[2] += 1
-            current = current.next
+        # Helper function to convert linked list to integer
+        def ll_to_int(ll):
+            num = 0
+            while ll:
+                num = (num * 10 + ll.val) % MOD
+                ll = ll.next
+            return num
         
-        # Reconstruct the linked list with sorted values
-        current = head
-        while current:
-            if count[0] > 0:
-                current.val = 0
-                count[0] -= 1
-            elif count[1] > 0:
-                current.val = 1
-                count[1] -= 1
-            elif count[2] > 0:
-                current.val = 2
-                count[2] -= 1
-            current = current.next
+        # Convert both linked lists to integers
+        int1 = ll_to_int(l1)
+        int2 = ll_to_int(l2)
         
-        return head
+        # Multiply the two numbers and take modulo
+        result = (int1 * int2) % MOD
+        
+        return result
 
 ########################################
 # if __name__ == '__main__':
