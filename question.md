@@ -1,43 +1,39 @@
-# Multiply two numbers represented linked lists
+# Remove nth node from end of list
 
-**Difficulty:** Easy  
-**Link:** [https://www.geeksforgeeks.org/multiply-two-numbers-represented-linked-lists/](https://www.geeksforgeeks.org/multiply-two-numbers-represented-linked-lists/)
+**Difficulty:** Medium  
+**Link:** [https://leetcode.com/problems/remove-nth-node-from-end-of-list/](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
 
 ---
 
 ## Problem Statement
 
-**
+**Title:** Remove Nth Node from End of Linked List
 
-**Title:** Multiplying Numbers Represented by Linked Lists using Modular Arithmetic
+**Description:** Given a linked list, remove the nth node from end of list and return its head.
 
-**Description:** 
-The problem requires us to multiply two numbers represented as linked lists. To avoid overflow due to large numbers, we use modular arithmetic with modulo 10^9 + 7. We traverse both linked lists simultaneously and construct the product of the two numbers while taking into account their respective place values.
+Note: The given list, whose nodes contain groups of integers separated by '->', not the actual list. For example:
+1->2->3->4->5 
+After removing the third node (with value 3), the linked list becomes :
+1->2->4->5
 
 **Examples:**
+Example 1:
 
-1. Input:
-   - First Linked List: 9 -> 4 -> 6
-   - Second Linked List: 8 -> 4
-   Output: 
-   - Product modulo MOD = (964596 * 84) % (10^9 + 7)
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
 
-2. Input:
-   - First Linked List: 1 -> 2
-   - Second Linked List: 3 -> 4
-   Output: 
-   - Product modulo MOD = (12 * 34) % (10^9 + 7)
+Example 2:
 
-3. Input:
-   - First Linked List: 0 -> 1
-   - Second Linked List: 5 -> 6
-   Output: 
-   - Product modulo MOD = (01 * 56) % (10^9 + 7)
+Input: head = [1,2], n = 2 
+Output: []
 
+Example 3:
+
+Input: head = [1], n = 1 
+Output: []
 
 **Constraints:** 
-
-* The linked lists contain digits between 0 and 9.
-* The input linked lists do not have a leading zero unless the number itself is zero.
-
-Note: This problem assumes that the input linked lists are non-empty.
+The number of nodes in the list is sz.
+1 <= sz <= 30 (odd)
+0 <= Node.val <= 100
+1 <= n <= sz

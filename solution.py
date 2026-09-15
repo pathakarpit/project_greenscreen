@@ -1,27 +1,27 @@
-# Problem: Multiply two numbers represented linked lists
-# Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/multiply-two-numbers-represented-linked-lists/
+# Problem: Remove nth node from end of list
+# Difficulty: Medium
+# Link: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 
 class Solution:
-    def solve(self, l1, l2):
-        MOD = 10**9 + 7
+    def solve(self, head, n):
+        dummy = ListNode(0)
+        dummy.next = head
+        first = dummy
+        second = dummy
         
-        # Helper function to convert linked list to integer
-        def ll_to_int(ll):
-            num = 0
-            while ll:
-                num = (num * 10 + ll.val) % MOD
-                ll = ll.next
-            return num
+        # Move the first pointer n steps ahead
+        for _ in range(n + 1):
+            first = first.next
         
-        # Convert both linked lists to integers
-        int1 = ll_to_int(l1)
-        int2 = ll_to_int(l2)
+        # Move both pointers until the first pointer reaches the end
+        while first is not None:
+            first = first.next
+            second = second.next
         
-        # Multiply the two numbers and take modulo
-        result = (int1 * int2) % MOD
+        # Remove the nth node from the end
+        second.next = second.next.next
         
-        return result
+        return dummy.next
 
 ########################################
 # if __name__ == '__main__':
