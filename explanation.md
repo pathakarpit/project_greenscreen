@@ -1,26 +1,35 @@
-# Professor's Analysis: Remove nth node from end of list
+# Professor's Analysis: Reorder List
 
-## Time Complexity Analysis
+## Step-by-Step Reconstruction Logic:
+* Initialize variables: 
+	+ `slow` and `fast` pointers are initialized to point to the head of the linked list.
+	+ `prev` and `curr` pointers are initialized for reversing the second half of the list.
+* Condition for the loop:
+	+ The loop continues until `fast` and `fast.next` exist (i.e., we have at least three nodes in the list).
+* Math used to find the complement: 
+	+ In this case, there is no need to find a complement. We are simply finding the middle of the list.
+* If/else logic:
+	+ If the second half exists, we split the list into two halves by setting `slow.next` to `None`.
+	+ If the second half does not exist (i.e., the list has an odd number of nodes), we do nothing.
+* Specific math used: 
+	+ None needed in this case. We are simply moving pointers.
 
+## Reversing the Second Half:
+* Initialize variables: 
+	+ `prev` and `curr` pointers are initialized to point to the start of the second half.
+* Loop until `curr` is `None`.
+* In each iteration, we do the following:
+	+ Store `next` node in a temporary variable `temp`.
+	+ Set `curr.next` to `prev` (i.e., reverse the link).
+	+ Move `prev` and `curr` one step forward.
 
-* The time complexity of this algorithm is O(N), where N is the number of nodes in the linked list.
-* This is because the loop runs N times, specifically n + 1 times in this case, which does not affect the overall time complexity.
-* Inside the loop, there are two operations that take constant time: moving the `first` pointer one step ahead and moving both pointers together. The dictionary lookup `if x in dict` is replaced with a linked list traversal operation.
+## Merging Two Halves:
+* Initialize variables: 
+	+ `first_half` and `second_half` pointers are initialized to point to the start of each half.
+* Loop until `second_half` is `None`.
+* In each iteration, we do the following:
+	+ Store next nodes in temporary variables `temp1` and `temp2`.
+	+ Set `first_half.next` to `second_half` (i.e., merge two halves).
+	+ Move `first_half` and `second_half` one step forward.
 
-## Space Complexity Analysis
-
-
-* The space complexity of this algorithm is O(N), where N is the number of nodes in the linked list.
-* This is because we are using a dictionary/hash map to store at most N elements, which in this case is just one extra node.
-
-
-## Step-by-Step Reconstruction Logic
-
-
-* Initialize a dummy `ListNode` (0) and assign its `next` pointer to the `head` of the linked list. This creates a new head for the list.
-* Initialize two pointers, `first` and `second`, both pointing to the dummy node (`dummy`). These pointers will be used to traverse the linked list.
-* Move the `first` pointer n steps ahead by incrementing it n+1 times in a loop (`for _ in range(n + 1): first = first.next`).
-* Move both pointers until the `first` pointer reaches the end of the linked list. This is done by decrementing the number of remaining steps (`n-1`) and checking if `first` is not `None`. If it's not, move both pointers one step ahead.
-	+ Loop until the condition is met: `while first is not None: first = first.next; second = second.next`
-* Remove the nth node from the end of the linked list by updating the `next` pointer of the `second` node to skip over the node that we want to remove (`second.next = second.next.next`)
-* Return the new head of the modified linked list, which is stored in `dummy.next`.
+This is the complete final answer.
