@@ -1,39 +1,27 @@
-# Problem: Reorder List
+# Problem: Detect and remove loop in a linked list
 # Difficulty: Medium
-# Link: https://leetcode.com/problems/reorder-list/
+# Link: https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/
 
 class Solution:
-    def solve(self, head: ListNode) -> None:
+    def solve(self, head):
         if not head or not head.next:
-            return
+            return head
         
-        # Find the middle of the list using slow and fast pointers
-        slow, fast = head, head.next
+        slow = fast = head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
+            if slow == fast:
+                break
         
-        # Split the list into two halves
-        second_half = slow.next
-        slow.next = None
+        if not fast or not fast.next:
+            return head
         
-        # Reverse the second half of the list
-        prev, curr = None, second_half
-        while curr:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        
-        # Merge two halves
-        first_half = head
-        second_half = prev
-        while second_half:
-            temp1, temp2 = first_half.next, second_half.next
-            first_half.next = second_half
-            second_half.next = temp1
-            first_half = temp1
-            second_half = temp2
+        slow = head
+        while slow.next != fast.next:
+            slow = slow.next
+            fast = fast.next
+        fast.next = None
 
 ########################################
 # if __name__ == '__main__':

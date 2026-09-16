@@ -1,39 +1,34 @@
-# Reorder List
+# Detect and remove loop in a linked list
 
 **Difficulty:** Medium  
-**Link:** [https://leetcode.com/problems/reorder-list/](https://leetcode.com/problems/reorder-list/)
+**Link:** [https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/](https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Reorder List
-===============
+**Title:** Remove Loop from Linked List
 
-**Description:**
-
-Given a singly linked list `L0 → L1 → … → Ln - 1 → Ln`, reorder the list to be in the form `L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → …`.
-
-**Problem Requirements:**
-
-* The nodes' values should not be modified.
-* The reordering should be done in place.
+**Description:** Given a linked list with a possible loop, remove the loop efficiently without using extra space.
 
 **Examples:**
 
-1. **Example 1**
-	* Input: `L0 → L1 → L2`
-	* Output: `L0 → L2 → L1`
-2. **Example 2**
-	* Input: `L0 → L1 → L2 → L3`
-	* Output: `L0 → L3 → L1 → L2`
-3. **Example 3**
-	* Input: `L0 → L1 → L2 → L3 → L4`
-	* Output: `L0 → L4 → L1 → L3 → L2`
+1. **Example 1:**
+	* Input: A linked list with a loop (e.g., [1 -> 2 -> 3 -> 4 -> 5 -> 6])
+	* Output: The linked list with the loop removed (e.g., [1 -> 2 -> 3 -> 4 -> 5])
+2. **Example 2:**
+	* Input: A linked list without a loop (e.g., [1 -> 2 -> 3 -> 4 -> 5])
+	* Output: The original linked list
+3. **Example 3:**
+	* Input: An empty linked list (e.g., [])
+	* Output: An empty linked list
 
 **Constraints:**
 
-* The linked list has at least two nodes.
-* The nodes' values are non-negative.
+* 1 <= N <= 10^6 (where N is the number of nodes in the linked list)
+* Each node has a value between 1 and 10^9
+* The loop, if present, can be detected using Floyd's Cycle Detection Algorithm
 
-Note: I removed the solution code and only extracted the problem statement, examples, and constraints.
+Note: The above examples and constraints are to illustrate the problem. You should create your own examples and adjust the constraints according to your needs.
+
+I hope this is what you were looking for!
