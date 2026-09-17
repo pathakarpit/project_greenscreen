@@ -1,27 +1,35 @@
-# Problem: Detect and remove loop in a linked list
+# Problem: Write a Function to get the Intersection Point of two Linked Lists
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/
+# Link: https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/
 
 class Solution:
-    def solve(self, head):
-        if not head or not head.next:
-            return head
+    def solve(self, headA, headB):
+        # Define a helper function to find the length of the linked list
+        def get_length(head):
+            length = 0
+            while head:
+                head = head.next
+                length += 1
+            return length
         
-        slow = fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-            if slow == fast:
-                break
+        lenA = get_length(headA)
+        lenB = get_length(headB)
         
-        if not fast or not fast.next:
-            return head
+        # Move the longer list's pointer to match the starting point of the shorter list
+        for _ in range(abs(lenA - lenB)):
+            if lenA > lenB:
+                headA = headA.next
+            else:
+                headB = headB.next
         
-        slow = head
-        while slow.next != fast.next:
-            slow = slow.next
-            fast = fast.next
-        fast.next = None
+        # Now both pointers are at the same distance from the end of their lists
+        while headA and headB:
+            if headA == headB:
+                return headA  # or headB, since they point to the same node
+            headA = headA.next
+            headB = headB.next
+        
+        return None  # No intersection found
 
 ########################################
 # if __name__ == '__main__':

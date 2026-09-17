@@ -1,34 +1,39 @@
-# Detect and remove loop in a linked list
+# Write a Function to get the Intersection Point of two Linked Lists
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/](https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/)
+**Link:** [https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/](https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Remove Loop from Linked List
+**Title:** Intersection Point of Two Linked Lists
 
-**Description:** Given a linked list with a possible loop, remove the loop efficiently without using extra space.
+**Description:**
+
+The intersection point of two linked lists is the node that appears in both lists. Write an algorithm to find this node without using extra space other than a constant amount.
 
 **Examples:**
 
 1. **Example 1:**
-	* Input: A linked list with a loop (e.g., [1 -> 2 -> 3 -> 4 -> 5 -> 6])
-	* Output: The linked list with the loop removed (e.g., [1 -> 2 -> 3 -> 4 -> 5])
+   Input: 
+   List A: `10 -> 15 -> 30`
+   List B: `3 -> 6 -> 9 -> 15 -> 30`
+   Output: `15` (node with value 15 is the intersection point)
+
 2. **Example 2:**
-	* Input: A linked list without a loop (e.g., [1 -> 2 -> 3 -> 4 -> 5])
-	* Output: The original linked list
+   Input:
+   List A: `1 -> 2 -> 3`
+   List B: `4 -> 5 -> 6`
+   Output: `None` (no intersection point found)
+
 3. **Example 3:**
-	* Input: An empty linked list (e.g., [])
-	* Output: An empty linked list
+   Input:
+   List A: `10 -> 15 -> 30`
+   List B: `10 -> 20 -> 30`
+   Output: `10` (node with value 10 is the intersection point)
 
-**Constraints:**
+**Constraints:** 
+1 <= N <= 10^5, where N is the number of nodes in each linked list. 
 
-* 1 <= N <= 10^6 (where N is the number of nodes in the linked list)
-* Each node has a value between 1 and 10^9
-* The loop, if present, can be detected using Floyd's Cycle Detection Algorithm
-
-Note: The above examples and constraints are to illustrate the problem. You should create your own examples and adjust the constraints according to your needs.
-
-I hope this is what you were looking for!
+Note that this problem assumes that if there are multiple intersection points, any one of them can be returned as the result.
