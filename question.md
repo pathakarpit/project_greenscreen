@@ -1,39 +1,55 @@
-# Write a Function to get the Intersection Point of two Linked Lists
+# Flatten a linked list with next and child pointers
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/](https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/)
+**Link:** [https://www.geeksforgeeks.org/flatten-a-linked-list-with-next-and-child-pointers/](https://www.geeksforgeeks.org/flatten-a-linked-list-with-next-and-child-pointers/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Intersection Point of Two Linked Lists
+**Title:** Flatten Multilevel Linked List using Level Order Traversal
 
 **Description:**
 
-The intersection point of two linked lists is the node that appears in both lists. Write an algorithm to find this node without using extra space other than a constant amount.
+Given a linked list where in addition to the next pointer, each node has a child pointer, which may or may not point to a separate list. These child lists may have one or more children of their own to produce a multilevel linked list. Given the head of the first level of the list. The task is to flatten the list so that all the nodes appear in a single-level linked list.
 
 **Examples:**
 
-1. **Example 1:**
-   Input: 
-   List A: `10 -> 15 -> 30`
-   List B: `3 -> 6 -> 9 -> 15 -> 30`
-   Output: `15` (node with value 15 is the intersection point)
+Input:
+```
+1 -> 2 -> 3
+|    |
+4 -> 5   6
+|
+7
+```
 
-2. **Example 2:**
-   Input:
-   List A: `1 -> 2 -> 3`
-   List B: `4 -> 5 -> 6`
-   Output: `None` (no intersection point found)
+Output:
+```
+1->4->6->2->5->7->3->8
+```
 
-3. **Example 3:**
-   Input:
-   List A: `10 -> 15 -> 30`
-   List B: `10 -> 20 -> 30`
-   Output: `10` (node with value 10 is the intersection point)
+Explanation:
 
-**Constraints:** 
-1 <= N <= 10^5, where N is the number of nodes in each linked list. 
+The multilevel linked list is flattened as it has no child pointers.
 
-Note that this problem assumes that if there are multiple intersection points, any one of them can be returned as the result.
+**Constraints:**
+
+* The linked list may have at most `10^5` nodes.
+* Each node in the linked list has a unique integer value between 1 and `10^9`.
+* The linked list may contain multiple levels of child lists.
+
+**Approach:**
+
+To flatten a multilevel linked list, start from the top level and process each node sequentially. For each node, if it has a child node, append this child node to the end of the current list. Continue this process for every node, updating the end of the list accordingly, until all nodes are processed and the list is flattened.
+
+Step-by-step implementation:
+
+1. Initialize `curr` and `tail` pointer points to head node initially.
+2. Start traversing from  the first level and set the tail to the last node.
+3. Start traversing from `curr` horizontally until `curr` is not `NULL`:
+	* If `curr->child` is not equal to `NULL`, then append the child list to the end of the resultant list by using `tail->next = curr->child`. Traverse the child list horizontally , and set tail to the last node of the child list. Set `curr->child = NULL` to remove the link.
+	* Move the `curr` pointer to the next node in the list.
+4. Return the head node.
+
+Note: The solution code has been removed from the raw text, leaving only the problem statement and explanation.

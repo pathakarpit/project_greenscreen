@@ -1,35 +1,33 @@
-# Problem: Write a Function to get the Intersection Point of two Linked Lists
+# Problem: Flatten a linked list with next and child pointers
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/
+# Link: https://www.geeksforgeeks.org/flatten-a-linked-list-with-next-and-child-pointers/
 
 class Solution:
-    def solve(self, headA, headB):
-        # Define a helper function to find the length of the linked list
-        def get_length(head):
-            length = 0
-            while head:
-                head = head.next
-                length += 1
-            return length
+    def solve(self, head):
+        if not head:
+            return None
         
-        lenA = get_length(headA)
-        lenB = get_length(headB)
+        curr = head
+        tail = head
         
-        # Move the longer list's pointer to match the starting point of the shorter list
-        for _ in range(abs(lenA - lenB)):
-            if lenA > lenB:
-                headA = headA.next
+        while curr:
+            if curr.child:
+                # Append the child list to the end of the current list
+                temp_tail = curr.child
+                while temp_tail.next:
+                    temp_tail = temp_tail.next
+                temp_tail.next = curr.next
+                if curr.next:
+                    curr.next.prev = temp_tail
+                # Move the child list to be part of the main list
+                curr.next = curr.child
+                curr.child.prev = curr
+                curr.child = None
             else:
-                headB = headB.next
+                tail = curr
+            curr = curr.next
         
-        # Now both pointers are at the same distance from the end of their lists
-        while headA and headB:
-            if headA == headB:
-                return headA  # or headB, since they point to the same node
-            headA = headA.next
-            headB = headB.next
-        
-        return None  # No intersection found
+        return head
 
 ########################################
 # if __name__ == '__main__':
