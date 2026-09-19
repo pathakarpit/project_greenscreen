@@ -1,23 +1,10 @@
-# Problem: Linked list in zig-zag fashion
+# Problem: Reverse a doubly linked list
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/linked-list-in-zig-zag-fashion/
+# Link: https://practice.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1
 
 class Solution:
-    def solve(self, head):
-        if not head or not head.next:
-            return head
-        
-        current = head
-        while current and current.next:
-            # If the next node should be greater (for increasing order)
-            if current.val < current.next.val:
-                # Swap values
-                current.val, current.next.val = current.next.val, current.val
-            
-            # Move to the next pair of nodes
-            current = current.next.next
-        
-        return head
+    def solve(self):
+        pass
 
 ########################################
 # if __name__ == '__main__':

@@ -1,33 +1,36 @@
-# Linked list in zig-zag fashion
+# Reverse a doubly linked list
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/linked-list-in-zig-zag-fashion/](https://www.geeksforgeeks.org/linked-list-in-zig-zag-fashion/)
+**Link:** [https://practice.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1](https://practice.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1)
 
 ---
 
 ## Problem Statement
 
+** 
+
 ```
-Title: Zig-Zag Linked List Rearrangement
-Description: Given the head of a linked list, rearrange the nodes to form a zig-zag pattern: a ≤ b ≥ c ≤ d ≥ e ≤ f ... It means the first pair (a, b) is increasing, second pair (b, c) is decreasing, third pair (c, d) is increasing and so on in the modified linked list. Only swapping of adjacent nodes is allowed.
-Examples:
-1. Input: 
-   1 -> 2 -> 3 -> 4 -> 5
-   Output: 
-   1 -> 3 -> 2 -> 4 -> 5
-
-2. Input: 
-   A -> B -> C -> D -> E
-   Output: 
-   A -> C -> B -> E -> D
-
-3. Input: 
-   X -> Y -> Z -> W -> V
-   Output: 
-   X -> Z -> Y -> V -> W
-
-Constraints:
-* The linked list can have any number of nodes.
-* The nodes are uniquely identifiable by their values (integers).
-* No adjacent nodes should be the same.
+{
+  "Title": "Reverse a Doubly Linked List",
+  "Description": "Given the head of a Doubly Linked List, reverse the list in-place so that the first node becomes the last, the second node becomes the second last, and so on. Return the new head of the reversed list.",
+  "Examples": [
+    {
+      "Input": "3 <-> 2 <-> 1 -> NULL",
+      "Output": "1 -> 2 -> 3 -> NULL"
+    },
+    {
+      "Input": "5 -> NULL",
+      "Output": "5 -> NULL"
+    },
+    {
+      "Input": "4 <-> 3 <-> 2 <-> 1 -> NULL",
+      "Output": "1 -> 2 -> 3 <-> 4 -> NULL"
+    }
+  ],
+  "Constraints": [
+    "The input list is a Doubly Linked List.",
+    "Each node has an integer data value.",
+    "The list may have any number of nodes."
+  ]
+}
 ```
