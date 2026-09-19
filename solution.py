@@ -1,31 +1,21 @@
-# Problem: Flatten a linked list with next and child pointers
+# Problem: Linked list in zig-zag fashion
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/flatten-a-linked-list-with-next-and-child-pointers/
+# Link: https://www.geeksforgeeks.org/linked-list-in-zig-zag-fashion/
 
 class Solution:
     def solve(self, head):
-        if not head:
-            return None
+        if not head or not head.next:
+            return head
         
-        curr = head
-        tail = head
-        
-        while curr:
-            if curr.child:
-                # Append the child list to the end of the current list
-                temp_tail = curr.child
-                while temp_tail.next:
-                    temp_tail = temp_tail.next
-                temp_tail.next = curr.next
-                if curr.next:
-                    curr.next.prev = temp_tail
-                # Move the child list to be part of the main list
-                curr.next = curr.child
-                curr.child.prev = curr
-                curr.child = None
-            else:
-                tail = curr
-            curr = curr.next
+        current = head
+        while current and current.next:
+            # If the next node should be greater (for increasing order)
+            if current.val < current.next.val:
+                # Swap values
+                current.val, current.next.val = current.next.val, current.val
+            
+            # Move to the next pair of nodes
+            current = current.next.next
         
         return head
 
