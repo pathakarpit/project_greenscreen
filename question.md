@@ -1,36 +1,31 @@
-# Reverse a doubly linked list
+# Delete nodes which have a greater value on right side
 
 **Difficulty:** Medium  
-**Link:** [https://practice.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1](https://practice.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1)
+**Link:** [https://www.geeksforgeeks.org/delete-nodes-which-have-a-greater-value-on-right-side/](https://www.geeksforgeeks.org/delete-nodes-which-have-a-greater-value-on-right-side/)
 
 ---
 
 ## Problem Statement
 
-** 
-
 ```
-{
-  "Title": "Reverse a Doubly Linked List",
-  "Description": "Given the head of a Doubly Linked List, reverse the list in-place so that the first node becomes the last, the second node becomes the second last, and so on. Return the new head of the reversed list.",
-  "Examples": [
-    {
-      "Input": "3 <-> 2 <-> 1 -> NULL",
-      "Output": "1 -> 2 -> 3 -> NULL"
-    },
-    {
-      "Input": "5 -> NULL",
-      "Output": "5 -> NULL"
-    },
-    {
-      "Input": "4 <-> 3 <-> 2 <-> 1 -> NULL",
-      "Output": "1 -> 2 -> 3 <-> 4 -> NULL"
-    }
-  ],
-  "Constraints": [
-    "The input list is a Doubly Linked List.",
-    "Each node has an integer data value.",
-    "The list may have any number of nodes."
-  ]
-}
+Title: Delete Nodes from Right Side of Linked List
+Description:
+Given a linked list where each node contains an integer value, remove all nodes that have a greater value than their next node. If a node's value is less than its next node's value, it should remain in the list.
+
+Examples:
+Example 1:
+Input: 12 -> 15 -> 10 -> 11 -> 5 -> 6 -> 2 -> 3
+Output: 2 -> 3
+
+Example 2:
+Input: 4 -> 3 -> 2 -> 1
+Output: Empty linked list (all nodes were removed)
+
+Example 3:
+Input: 10 -> 20 -> 30 -> 40
+Output: 10
+
+Constraints:
+- The input linked list will contain at most 1000 nodes.
+- All node values are within the range of 0 to 1000000.
 ```

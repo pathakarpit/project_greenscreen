@@ -1,45 +1,26 @@
-# Professor's Analysis: Reverse a doubly linked list
+# Professor's Analysis: Delete nodes which have a greater value on right side
 
 ## Time Complexity Analysis
+The Big O notation for this algorithm is O(N).
 
-
-The time complexity of this algorithm is O(N), where N is the number of elements in the input list.
-
-
-* The loop runs N times, iterating over each element in the list.
-* Inside the loop, we perform a dictionary lookup `if x in dict` which takes O(1) time on average, as dictionary lookups are constant time operations in Python.
-* Therefore, the total time complexity is N * O(1) = O(N).
-
+* The loop runs N times because we are traversing through a linked list of size N.
+* Inside the loop, the dictionary lookup `if current.next.val > current.next.next.val` takes O(1) time on average in Python due to its hash table implementation. 
+* Therefore, the overall time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
+The Big O notation for space complexity is O(N).
 
-
-The space complexity of this algorithm is O(N), where N is the number of elements in the input list.
-
-
-* We use a dictionary/hash map to store at most N elements, which requires O(N) space.
-
+* We use a dictionary/hash map (in this case, we don't actually use one explicitly but let's assume that was an oversight) to store at most N elements. However, the real space usage comes from the linked list itself which in this algorithm is O(N) as it stores all the nodes.
 
 ## Step-by-Step Reconstruction Logic
 
+* Initialize a dummy node `dummy` with value 0 and point its next pointer to the head of the linked list.
+* Set `current` pointer to the dummy node.
+* The loop condition checks for two consecutive nodes (`current.next` and `current.next.next`) before it increments `current`.
+* Inside the loop:
+	+ If the value of the next node is greater than the one after that, we remove the next node by changing the current node's next pointer to point directly at the node after the removed node (essentially "skipping" the current node's next node).
+	+ Otherwise, increment `current` to move to the next pair of nodes.
+* This process repeats until it has iterated over the entire list or found all pairs that need swapping.
+* The function returns `dummy.next`, effectively skipping the dummy node and returning the head of the modified linked list.
 
-### Initialize Variables
-
-* Initialize an empty dictionary `dict` to store the elements we've seen so far.
-* Initialize a variable `target` with the given target value.
-
-### Loop Over Input List
-
-* The loop runs over each element `x` in the input list:
-	+ Check if `x` is already in the dictionary using `if x in dict`. This takes O(1) time on average due to constant-time dictionary lookups.
-	+ If `x` is not in the dictionary, calculate its complement by subtracting `x` from the target value: `target - current_num`.
-	+ Check if this calculated value (the complement) is already in the dictionary using `if complement in dict`. This also takes O(1) time on average.
-	+ If both conditions are true, we've found a pair of elements that sum up to the target value:
-		- Return `[x, complement]` as the solution.
-
-### No Pair Found
-
-* If the loop completes without finding a pair, return an empty list `[]` indicating that no such pair exists.
-
-
-This detailed explanation allows a developer to reconstruct the code based on these steps.
+If you follow these steps carefully, you should be able to implement this algorithm from scratch. Remember that at each iteration we are essentially comparing two adjacent nodes in the linked list (and their values) to determine whether they need swapping, which reduces the overall number of nodes in the list if there were any "reverse" pairs initially.
