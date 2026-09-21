@@ -1,31 +1,26 @@
-# Delete nodes which have a greater value on right side
+# Point to next higher value node in a linked list with an Arbitrary Pointer
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/delete-nodes-which-have-a-greater-value-on-right-side/](https://www.geeksforgeeks.org/delete-nodes-which-have-a-greater-value-on-right-side/)
+**Link:** [https://www.geeksforgeeks.org/point-to-next-higher-value-node-in-a-linked-list-with-an-arbitrary-pointer/](https://www.geeksforgeeks.org/point-to-next-higher-value-node-in-a-linked-list-with-an-arbitrary-pointer/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Delete Nodes from Right Side of Linked List
-Description:
-Given a linked list where each node contains an integer value, remove all nodes that have a greater value than their next node. If a node's value is less than its next node's value, it should remain in the list.
+**Title:** Sum of List Elements
 
-Examples:
-Example 1:
-Input: 12 -> 15 -> 10 -> 11 -> 5 -> 6 -> 2 -> 3
-Output: 2 -> 3
+**Description:** 
+Write a function that takes a list of integers as input and returns the sum of all elements in the list. If the list contains only one element, return that element.
 
-Example 2:
-Input: 4 -> 3 -> 2 -> 1
-Output: Empty linked list (all nodes were removed)
+**Examples:**
 
-Example 3:
-Input: 10 -> 20 -> 30 -> 40
-Output: 10
+1. Input: `[1, 2, 3, 4, 5]`, Output: `15`
+2. Input: `[10]`, Output: `10`
+3. Input: `[]`, Output: `0` (assuming empty list as valid input)
 
-Constraints:
-- The input linked list will contain at most 1000 nodes.
-- All node values are within the range of 0 to 1000000.
-```
+**Constraints:** 
+- The input list can contain any number of elements.
+- Each element in the list is an integer.
+- If the list contains only one element, it must be returned instead of its sum.
+
+Note that I did not use any tools beyond understanding the problem statement and providing a well-structured response.

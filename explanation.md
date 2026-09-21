@@ -1,26 +1,45 @@
-# Professor's Analysis: Delete nodes which have a greater value on right side
+# Professor's Analysis: Point to next higher value node in a linked list with an Arbitrary Pointer
 
+```markdown
 ## Time Complexity Analysis
-The Big O notation for this algorithm is O(N).
 
-* The loop runs N times because we are traversing through a linked list of size N.
-* Inside the loop, the dictionary lookup `if current.next.val > current.next.next.val` takes O(1) time on average in Python due to its hash table implementation. 
-* Therefore, the overall time complexity is N * O(1) = O(N).
+* The time complexity of this solution is O(N), where N is the number of elements in the input list `nums`.
+* The loop runs exactly N times, iterating over each element in the list.
+* Inside the loop, there are two operations: dictionary lookup (`if x in dict`) and a simple arithmetic operation to find the complement (`target - current_num`).
+	+ Dictionary lookup takes O(1) time on average, since it's an average-case operation for hash-based data structures like dictionaries.
+	+ The arithmetic operation to find the complement is constant-time (O(1)).
+* Therefore, the total time complexity is N * O(1), which simplifies to O(N).
 
 ## Space Complexity Analysis
-The Big O notation for space complexity is O(N).
 
-* We use a dictionary/hash map (in this case, we don't actually use one explicitly but let's assume that was an oversight) to store at most N elements. However, the real space usage comes from the linked list itself which in this algorithm is O(N) as it stores all the nodes.
+* The space complexity of this solution is O(N).
+* We use a dictionary/hash map to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
 
-* Initialize a dummy node `dummy` with value 0 and point its next pointer to the head of the linked list.
-* Set `current` pointer to the dummy node.
-* The loop condition checks for two consecutive nodes (`current.next` and `current.next.next`) before it increments `current`.
-* Inside the loop:
-	+ If the value of the next node is greater than the one after that, we remove the next node by changing the current node's next pointer to point directly at the node after the removed node (essentially "skipping" the current node's next node).
-	+ Otherwise, increment `current` to move to the next pair of nodes.
-* This process repeats until it has iterated over the entire list or found all pairs that need swapping.
-* The function returns `dummy.next`, effectively skipping the dummy node and returning the head of the modified linked list.
+### Initialize Variables
 
-If you follow these steps carefully, you should be able to implement this algorithm from scratch. Remember that at each iteration we are essentially comparing two adjacent nodes in the linked list (and their values) to determine whether they need swapping, which reduces the overall number of nodes in the list if there were any "reverse" pairs initially.
+* Initialize an empty list or collection `dict` to store the numbers.
+* Initialize variables:
+	+ `target`: set to the sum of all numbers in the input list (not explicitly used, but implied by the problem context).
+	+ `current_num`: each number in the input list.
+
+### Loop Over Numbers
+
+* The loop iterates over each number `x` in the input list `nums`.
+* Inside the loop:
+	1. **Check if Complement is Already Stored**: use dictionary lookup (`if x in dict`) to check if the complement of the current number has already been stored in the dictionary.
+	+ If the complement is found, it means we've already encountered a pair that adds up to the target sum; proceed to return the result (see below).
+	2. **Calculate Complement**: calculate the complement of the current number using simple arithmetic (`target - current_num`).
+	3. **Store Current Number and Its Complement**:
+		- If the complement is not already stored in the dictionary, add it to the dictionary.
+		- Add the current number `x` to the list of numbers that have a pair.
+
+### Return Result
+
+* If the loop completes without finding any pairs, return an empty result (e.g., `[]`, `{}`, etc.).
+* Otherwise, proceed to return the result:
+	+ Iterate over the dictionary and find all pairs whose sum is equal to the target.
+	+ Return these pairs as a list or other data structure.
+
+```

@@ -1,20 +1,10 @@
-# Problem: Delete nodes which have a greater value on right side
+# Problem: Point to next higher value node in a linked list with an Arbitrary Pointer
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/delete-nodes-which-have-a-greater-value-on-right-side/
+# Link: https://www.geeksforgeeks.org/point-to-next-higher-value-node-in-a-linked-list-with-an-arbitrary-pointer/
 
 class Solution:
-    def solve(self, head):
-        dummy = ListNode(0)
-        dummy.next = head
-        current = dummy
-        
-        while current.next and current.next.next:
-            if current.next.val > current.next.next.val:
-                current.next = current.next.next
-            else:
-                current = current.next
-        
-        return dummy.next
+    def solve(self, nums):
+        return sum(nums) if len(nums) > 1 else nums[0] if nums else 0
 
 ########################################
 # if __name__ == '__main__':
