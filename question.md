@@ -1,26 +1,27 @@
-# Point to next higher value node in a linked list with an Arbitrary Pointer
+# Rearrange a given linked list in place
 
 **Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/point-to-next-higher-value-node-in-a-linked-list-with-an-arbitrary-pointer/](https://www.geeksforgeeks.org/point-to-next-higher-value-node-in-a-linked-list-with-an-arbitrary-pointer/)
+**Link:** [https://www.geeksforgeeks.org/rearrange-a-given-linked-list-in-place/](https://www.geeksforgeeks.org/rearrange-a-given-linked-list-in-place/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Sum of List Elements
+**Title:** Reorder List
 
-**Description:** 
-Write a function that takes a list of integers as input and returns the sum of all elements in the list. If the list contains only one element, return that element.
+**Description:** Given a singly linked list, reorder it such that the nodes are reordered to maintain a sorted order without using extra space. The original list should not be modified.
 
 **Examples:**
 
-1. Input: `[1, 2, 3, 4, 5]`, Output: `15`
-2. Input: `[10]`, Output: `10`
-3. Input: `[]`, Output: `0` (assuming empty list as valid input)
+1. Input: `1 -> 2 -> 3 -> 4`
+Output: `1 -> 4 -> 2 -> 3`
 
-**Constraints:** 
-- The input list can contain any number of elements.
-- Each element in the list is an integer.
-- If the list contains only one element, it must be returned instead of its sum.
+2. Input: `5 -> 10 -> 15 -> 20`
+Output: `5 -> 20 -> 10 -> 15`
 
-Note that I did not use any tools beyond understanding the problem statement and providing a well-structured response.
+3. Input: `100 -> 50 -> 200 -> 150`
+Output: `100 -> 150 -> 50 -> 200`
+
+**Constraints:** The input list will have at least two nodes, and each node's value will be unique. The length of the list can vary.
+
+Note: I've used Python syntax to represent the linked list, but the problem statement is language-agnostic.

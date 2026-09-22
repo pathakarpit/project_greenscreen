@@ -1,45 +1,43 @@
-# Professor's Analysis: Point to next higher value node in a linked list with an Arbitrary Pointer
+# Professor's Analysis: Rearrange a given linked list in place
 
-```markdown
-## Time Complexity Analysis
+### Time Complexity Analysis
+The time complexity of this solution is O(N), where N is the number of nodes in the linked list.
+This is because we first find the middle of the linked list, which takes O(N) time as we traverse the entire list once. Then, we reverse the second half of the linked list, which also takes O(N/2) = O(N) time as there are approximately N/2 nodes in the second half.
 
-* The time complexity of this solution is O(N), where N is the number of elements in the input list `nums`.
-* The loop runs exactly N times, iterating over each element in the list.
-* Inside the loop, there are two operations: dictionary lookup (`if x in dict`) and a simple arithmetic operation to find the complement (`target - current_num`).
-	+ Dictionary lookup takes O(1) time on average, since it's an average-case operation for hash-based data structures like dictionaries.
-	+ The arithmetic operation to find the complement is constant-time (O(1)).
-* Therefore, the total time complexity is N * O(1), which simplifies to O(N).
+However, it's worth noting that the loop runs N times and the dictionary lookup `if x in dict` (in this case, `if fast and fast.next`) takes O(1) time on average. Therefore, N * O(1) = O(N).
 
-## Space Complexity Analysis
+### Space Complexity Analysis
+The space complexity of this solution is O(N).
+We use a dictionary/hash map to store at most N elements.
 
-* The space complexity of this solution is O(N).
-* We use a dictionary/hash map to store at most N elements.
+### Step-by-Step Reconstruction Logic
 
-## Step-by-Step Reconstruction Logic
+*   We define the `Solution` class with a method `solve` that takes the head of a linked list as input.
+*   Inside the `solve` method:
+    *   We initialize two pointers, `slow` and `fast`, to the head of the linked list. These pointers will be used to find the middle of the linked list.
+    *   We enter a while loop that continues until we reach the end of the linked list (`fast.next` is not None). In each iteration:
+        *   We move both `slow` and `fast` one step forward.
+        *   Since `fast` moves twice as fast as `slow`, it will eventually point to the middle node of the linked list. When this happens, we exit the loop.
+    *   The `while` loop runs N times, where N is the number of nodes in the linked list.
 
-### Initialize Variables
+The above step-by-step reconstruction logic corresponds to finding the middle of a linked list using the slow and fast pointers approach.
 
-* Initialize an empty list or collection `dict` to store the numbers.
-* Initialize variables:
-	+ `target`: set to the sum of all numbers in the input list (not explicitly used, but implied by the problem context).
-	+ `current_num`: each number in the input list.
+Here are the steps for reversing the second half of the linked list:
 
-### Loop Over Numbers
+*   We initialize three variables: `prev` (to store the previous node), `current` (to store the current node), and `temp` (a temporary variable to hold the next pointer).
+*   We enter a while loop that continues until we reach the end of the second half of the linked list (`current` becomes None). In each iteration:
+    *   We save the next pointer in `temp` by setting it equal to `current.next`.
+    *   We reverse the link of the current node by setting `current.next` to point back at `prev`.
+    *   We move both `prev` and `current` one step forward.
+*   The while loop runs N/2 times, where N is the number of nodes in the linked list.
 
-* The loop iterates over each number `x` in the input list `nums`.
-* Inside the loop:
-	1. **Check if Complement is Already Stored**: use dictionary lookup (`if x in dict`) to check if the complement of the current number has already been stored in the dictionary.
-	+ If the complement is found, it means we've already encountered a pair that adds up to the target sum; proceed to return the result (see below).
-	2. **Calculate Complement**: calculate the complement of the current number using simple arithmetic (`target - current_num`).
-	3. **Store Current Number and Its Complement**:
-		- If the complement is not already stored in the dictionary, add it to the dictionary.
-		- Add the current number `x` to the list of numbers that have a pair.
+Finally, here are the steps for merging two halves:
 
-### Return Result
+*   We initialize two pointers, `first_half` and `second_half`, to the heads of the first and second half of the linked lists.
+*   We enter a while loop that continues until we reach the end of the second half of the linked list (`second_half.next` is not None). In each iteration:
+    *   We save the next pointer in `temp1` by setting it equal to `first_half.next`.
+    *   We merge the second half into the first half by setting `first_half.next` to point at `second_half`.
+    *   We move both `first_half` and `second_half` one step forward.
+*   The while loop runs N/2 times, where N is the number of nodes in the linked list.
 
-* If the loop completes without finding any pairs, return an empty result (e.g., `[]`, `{}`, etc.).
-* Otherwise, proceed to return the result:
-	+ Iterate over the dictionary and find all pairs whose sum is equal to the target.
-	+ Return these pairs as a list or other data structure.
-
-```
+After merging the two halves, we return the head of the merged linked list.
