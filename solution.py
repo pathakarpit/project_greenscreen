@@ -1,66 +1,31 @@
-# Problem: Sort Biotonic Doubly Linked Lists
-# Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/sort-biotonic-doubly-linked-list/
+# Problem: Merge K Sorted Lists
+# Difficulty: Hard
+# Link: https://leetcode.com/problems/merge-k-sorted-lists/
 
 class Solution:
-    class Node:
-        def __init__(self, value):
-            self.value = value
-            self.next = None
-            self.prev = None
-    
-    def solve(head):
-        if not head or not head.next:
-            return head
-        
-        # Find the pivot point where the list changes from increasing to decreasing
-        current = head
-        while current.next and current.value <= current.next.value:
-            current = current.next
-        if current.next is None:  # Already sorted
-            return head
-        
-        # Split the list into two parts, reverse the second part
-        pivot = current
-        tail_second_part = pivot.next
-        while tail_second_part.next:
-            tail_second_part = tail_second_part.next
-        
-        # Reverse the second half
-        prev = None
-        current = pivot.next
-        while current:
-            next_node = current.next
-            current.next = prev
-            current.prev = next_node
-            prev = current
-            current = next_node
-        
-        tail_second_part.next = None
-        head_second_part = prev
-        
-        # Merge the two sorted halves
-        dummy = Node(0)
+    def solve(self, lists):
+        # Define a min-heap and an initial dummy head for the merged list
+        heap = []
+        dummy = ListNode()
         current = dummy
-        while head and head_second_part:
-            if head.value < head_second_part.value:
-                current.next = head
-                head.prev = current
-                head = head.next
-            else:
-                current.next = head_second_part
-                head_second_part.prev = current
-                head_second_part = head_second_part.next
+        
+        # Push the first element of each list into the heap
+        for i in range(len(lists)):
+            if lists[i]:
+                heapq.heappush(heap, (lists[i].val, i, lists[i]))
+        
+        # While there are elements in the heap
+        while heap:
+            # Pop the smallest element from the heap
+            val, idx, node = heapq.heappop(heap)
+            # Add this node to the merged list
+            current.next = ListNode(val)
             current = current.next
+            # If there is a next node in the list, push it into the heap
+            if node.next:
+                heapq.heappush(heap, (node.next.val, idx, node.next))
         
-        if head:
-            current.next = head
-            head.prev = current
-        else:
-            current.next = head_second_part
-            if head_second_part:
-                head_second_part.prev = current
-        
+        # Return the merged list starting from dummy.next
         return dummy.next
 
 ########################################

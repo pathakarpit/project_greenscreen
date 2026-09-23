@@ -1,39 +1,39 @@
-# Sort Biotonic Doubly Linked Lists
+# Merge K Sorted Lists
 
-**Difficulty:** Medium  
-**Link:** [https://www.geeksforgeeks.org/sort-biotonic-doubly-linked-list/](https://www.geeksforgeeks.org/sort-biotonic-doubly-linked-list/)
+**Difficulty:** Hard  
+**Link:** [https://leetcode.com/problems/merge-k-sorted-lists/](https://leetcode.com/problems/merge-k-sorted-lists/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Sort Bitonic Doubly Linked List
-Description: 
-Given the head of a bitonic doubly linked list (first increasing then decreasing), write a function to sort it in ascending order. The function should take the head of the doubly linked list as input and return the sorted list.
+**Title:** Merging K Sorted Linked Lists
+**Description:**
+Given k sorted linked lists, merge them into one sorted linked list.
+**Examples:**
 
-Examples:
+* Input: 
+  List1: 1 -> 3 -> 5 -> 7
+  List2: 2 -> 4 -> 6 -> 8
+  List3: 0 -> 9 -> 10 -> 11
+  
+  Output: 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11
 
-1.
-Input:
-Head = 5 -> 3 -> 7 -> 2 -> 4
-Output: 
-Sorted Head = 2 -> 3 -> 4 -> 5 -> 7
+* Input:
+  List1: 1 -> 3
+  List2: 2 -> 4
+  List3: 5 -> 7
+  
+  Output: 1 -> 2 -> 3 -> 4 -> 5 -> 7
 
-2.
-Input:
-Head = 10 -> 9 -> 8 -> 7
-Output:
-Sorted Head = 7 -> 8 -> 9 -> 10
+* Input:
+  List1: 1 -> 3 -> 5
+  List2: None
+  List3: 0 -> 9
+  
+  Output: 0 -> 1 -> 3 -> 5 -> 9
 
-3.
-Input:
-Head = 1 -> 2 -> 3 -> 4 -> 5
-Output: 
-Sorted Head = 1 -> 2 -> 3 -> 4 -> 5
-
-Constraints: 
-- The doubly linked list is a bitonic list (first increasing, then decreasing).
-- Node values are unique integers.
-- N <= 10^6
-```
+**Constraints:** 
+- Each linked list is sorted in ascending order.
+- The number of linked lists (k) will be a positive integer less than or equal to 10^3.
+- Each node in the linked list contains an integer value.
