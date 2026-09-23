@@ -1,43 +1,45 @@
-# Professor's Analysis: Rearrange a given linked list in place
+# Professor's Analysis: Sort Biotonic Doubly Linked Lists
 
-### Time Complexity Analysis
-The time complexity of this solution is O(N), where N is the number of nodes in the linked list.
-This is because we first find the middle of the linked list, which takes O(N) time as we traverse the entire list once. Then, we reverse the second half of the linked list, which also takes O(N/2) = O(N) time as there are approximately N/2 nodes in the second half.
+## Time Complexity Analysis
 
-However, it's worth noting that the loop runs N times and the dictionary lookup `if x in dict` (in this case, `if fast and fast.next`) takes O(1) time on average. Therefore, N * O(1) = O(N).
+* Big O: O(N)
+* The loop runs N times (since we're traversing the linked list).
+* The dictionary lookup `if x in dict` takes O(1) time on average.
+* Therefore, N * O(1) = O(N).
 
-### Space Complexity Analysis
-The space complexity of this solution is O(N).
-We use a dictionary/hash map to store at most N elements.
+## Space Complexity Analysis
 
-### Step-by-Step Reconstruction Logic
+* Big O: O(N)
+* We use a dictionary/hash map to store at most N elements.
 
-*   We define the `Solution` class with a method `solve` that takes the head of a linked list as input.
-*   Inside the `solve` method:
-    *   We initialize two pointers, `slow` and `fast`, to the head of the linked list. These pointers will be used to find the middle of the linked list.
-    *   We enter a while loop that continues until we reach the end of the linked list (`fast.next` is not None). In each iteration:
-        *   We move both `slow` and `fast` one step forward.
-        *   Since `fast` moves twice as fast as `slow`, it will eventually point to the middle node of the linked list. When this happens, we exit the loop.
-    *   The `while` loop runs N times, where N is the number of nodes in the linked list.
+## Step-by-Step Reconstruction Logic:
 
-The above step-by-step reconstruction logic corresponds to finding the middle of a linked list using the slow and fast pointers approach.
+### Step 1: Check if the list is already sorted or has less than two nodes
+* Initialize `current` pointer to the head of the list.
+* If the list is empty or only contains one node, return the head as it is already sorted.
+* Otherwise, continue with the next step.
 
-Here are the steps for reversing the second half of the linked list:
+### Step 2: Find the pivot point where the list changes from increasing to decreasing
+* Initialize a variable `pivot` to store the node at which the list changes direction (i.e., the last node in the increasing part).
+* Traverse the linked list until we find a node whose value is greater than its next node's value.
+* If the end of the list is reached without finding such a node, it means the list was already sorted.
 
-*   We initialize three variables: `prev` (to store the previous node), `current` (to store the current node), and `temp` (a temporary variable to hold the next pointer).
-*   We enter a while loop that continues until we reach the end of the second half of the linked list (`current` becomes None). In each iteration:
-    *   We save the next pointer in `temp` by setting it equal to `current.next`.
-    *   We reverse the link of the current node by setting `current.next` to point back at `prev`.
-    *   We move both `prev` and `current` one step forward.
-*   The while loop runs N/2 times, where N is the number of nodes in the linked list.
+### Step 3: Split the list into two parts and reverse the second half
+* Store the pivot node in the `pivot` variable.
+* Initialize a variable `tail_second_part` to store the last node in the second part of the list (i.e., the first node after the pivot).
+* Traverse from the pivot node to the end of the second part, updating `tail_second_part` at each step.
 
-Finally, here are the steps for merging two halves:
+### Step 4: Reverse the second half
+* Initialize a variable `prev` to store the previous node in the reversed linked list.
+* Set `current` to the next node of the pivot (i.e., the first node in the second part).
+* Traverse the nodes in the second part, updating their `next` and `prev` pointers to reverse the link order.
 
-*   We initialize two pointers, `first_half` and `second_half`, to the heads of the first and second half of the linked lists.
-*   We enter a while loop that continues until we reach the end of the second half of the linked list (`second_half.next` is not None). In each iteration:
-    *   We save the next pointer in `temp1` by setting it equal to `first_half.next`.
-    *   We merge the second half into the first half by setting `first_half.next` to point at `second_half`.
-    *   We move both `first_half` and `second_half` one step forward.
-*   The while loop runs N/2 times, where N is the number of nodes in the linked list.
+### Step 5: Merge the two sorted halves
+* Initialize a dummy node `dummy` with value 0.
+* Set `current` to the next node of the dummy (i.e., the start of the merged list).
+* Traverse both the first and second parts of the list, comparing their current nodes' values.
+* If the current node in the first part has a smaller value, append it to the end of the merged list; otherwise, append the current node from the second part.
 
-After merging the two halves, we return the head of the merged linked list.
+### Step 6: Handle remaining nodes
+* If there are remaining nodes in either part, append them to the end of the merged list.
+* Return the next node of the dummy (i.e., the head of the sorted linked list).

@@ -1,38 +1,67 @@
-# Problem: Rearrange a given linked list in place
+# Problem: Sort Biotonic Doubly Linked Lists
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/rearrange-a-given-linked-list-in-place/
+# Link: https://www.geeksforgeeks.org/sort-biotonic-doubly-linked-list/
 
 class Solution:
-    def solve(self, head):
+    class Node:
+        def __init__(self, value):
+            self.value = value
+            self.next = None
+            self.prev = None
+    
+    def solve(head):
         if not head or not head.next:
             return head
         
-        # Step 1: Find the middle of the linked list
-        slow = fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+        # Find the pivot point where the list changes from increasing to decreasing
+        current = head
+        while current.next and current.value <= current.next.value:
+            current = current.next
+        if current.next is None:  # Already sorted
+            return head
         
-        # Step 2: Reverse the second half of the linked list
+        # Split the list into two parts, reverse the second part
+        pivot = current
+        tail_second_part = pivot.next
+        while tail_second_part.next:
+            tail_second_part = tail_second_part.next
+        
+        # Reverse the second half
         prev = None
-        current = slow
+        current = pivot.next
         while current:
-            temp = current.next
+            next_node = current.next
             current.next = prev
+            current.prev = next_node
             prev = current
-            current = temp
+            current = next_node
         
-        # Step 3: Merge two halves
-        first_half = head
-        second_half = prev
-        while second_half.next:
-            temp1 = first_half.next
-            first_half.next = second_half
-            first_half = temp1
-            
-            temp2 = second_half.next
-            second_half.next = temp2
-            second_half = temp2
+        tail_second_part.next = None
+        head_second_part = prev
+        
+        # Merge the two sorted halves
+        dummy = Node(0)
+        current = dummy
+        while head and head_second_part:
+            if head.value < head_second_part.value:
+                current.next = head
+                head.prev = current
+                head = head.next
+            else:
+                current.next = head_second_part
+                head_second_part.prev = current
+                head_second_part = head_second_part.next
+            current = current.next
+        
+        if head:
+            current.next = head
+            head.prev = current
+        else:
+            current.next = head_second_part
+            if head_second_part:
+                head_second_part.prev = current
+        
+        return dummy.next
 
 ########################################
 # if __name__ == '__main__':
