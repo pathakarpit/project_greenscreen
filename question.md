@@ -1,39 +1,35 @@
-# Merge K Sorted Lists
+# Merge sort for linked list
 
 **Difficulty:** Hard  
-**Link:** [https://leetcode.com/problems/merge-k-sorted-lists/](https://leetcode.com/problems/merge-k-sorted-lists/)
+**Link:** [https://www.geeksforgeeks.org/merge-sort-for-linked-list/](https://www.geeksforgeeks.org/merge-sort-for-linked-list/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Merging K Sorted Linked Lists
-**Description:**
-Given k sorted linked lists, merge them into one sorted linked list.
-**Examples:**
+**Title:** Merge Sort for Linked Lists
 
-* Input: 
-  List1: 1 -> 3 -> 5 -> 7
-  List2: 2 -> 4 -> 6 -> 8
-  List3: 0 -> 9 -> 10 -> 11
-  
-  Output: 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11
+**Description:** Given a singly linked list, we need to sort the linked list in non-decreasing order using merge sort.
 
-* Input:
-  List1: 1 -> 3
-  List2: 2 -> 4
-  List3: 5 -> 7
-  
-  Output: 1 -> 2 -> 3 -> 4 -> 5 -> 7
+```
+Examples:
+Input: 2 -> 5 -> 8 -> 9
+Output: 2 -> 5 -> 8 -> 9
+Explanation: After sorting the given linked list, resultant will be 2 -> 5 -> 8 -> 9.
 
-* Input:
-  List1: 1 -> 3 -> 5
-  List2: None
-  List3: 0 -> 9
-  
-  Output: 0 -> 1 -> 3 -> 5 -> 9
+Input: 10 -> 20 -> 30 -> 40 -> 50 -> 60
+Output: 10 -> 20 -> 30 -> 40 -> 50 -> 60 -> NULL
+Explanation: After sorting the given linked list, the resultant matrix will be 10 -> 20 -> 30 -> 40 -> 50 -> 60 -> NULL.
+
+Input: 1 -> 3 -> 5 -> 7 -> 9
+Output: 1 -> 3 -> 5 -> 7 -> 9
+Explanation: After sorting the given linked list, resultant will be 1 -> 3 -> 5 -> 7 -> 9.
+```
 
 **Constraints:** 
-- Each linked list is sorted in ascending order.
-- The number of linked lists (k) will be a positive integer less than or equal to 10^3.
-- Each node in the linked list contains an integer value.
+
+* The linked list is singly linked, meaning each node has a reference to the next node but not the previous one.
+* The linked list can have at most 10^5 nodes (for large inputs).
+* The input linked list does not contain any cycles.
+
+Note: I removed all solution code and created clear examples and constraints as per your requirements.

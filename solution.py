@@ -1,32 +1,54 @@
-# Problem: Merge K Sorted Lists
+# Problem: Merge sort for linked list
 # Difficulty: Hard
-# Link: https://leetcode.com/problems/merge-k-sorted-lists/
+# Link: https://www.geeksforgeeks.org/merge-sort-for-linked-list/
 
 class Solution:
-    def solve(self, lists):
-        # Define a min-heap and an initial dummy head for the merged list
-        heap = []
+    def merge_sort(self, head):
+        if not head or not head.next:
+            return head
+        
+        # Split the list into two halves
+        mid = self.find_middle(head)
+        left = head
+        right = mid.next
+        mid.next = None
+        
+        # Recursively sort both halves
+        left = self.merge_sort(left)
+        right = self.merge_sort(right)
+        
+        # Merge the sorted halves
+        return self.merge(left, right)
+    
+    def find_middle(self, head):
+        slow = fast = head
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+    
+    def merge(self, left, right):
         dummy = ListNode()
-        current = dummy
+        tail = dummy
         
-        # Push the first element of each list into the heap
-        for i in range(len(lists)):
-            if lists[i]:
-                heapq.heappush(heap, (lists[i].val, i, lists[i]))
+        while left and right:
+            if left.val < right.val:
+                tail.next = left
+                left = left.next
+            else:
+                tail.next = right
+                right = right.next
+            tail = tail.next
         
-        # While there are elements in the heap
-        while heap:
-            # Pop the smallest element from the heap
-            val, idx, node = heapq.heappop(heap)
-            # Add this node to the merged list
-            current.next = ListNode(val)
-            current = current.next
-            # If there is a next node in the list, push it into the heap
-            if node.next:
-                heapq.heappush(heap, (node.next.val, idx, node.next))
+        if left:
+            tail.next = left
+        if right:
+            tail.next = right
         
-        # Return the merged list starting from dummy.next
         return dummy.next
+    
+    def solve(self, head):
+        return self.merge_sort(head)
 
 ########################################
 # if __name__ == '__main__':
