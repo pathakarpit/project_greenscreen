@@ -1,54 +1,47 @@
-# Problem: Merge sort for linked list
+# Problem: Quicksort on singly-linked list
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/merge-sort-for-linked-list/
+# Link: https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/
 
 class Solution:
-    def merge_sort(self, head):
+    def solve(self, head):
         if not head or not head.next:
             return head
         
-        # Split the list into two halves
-        mid = self.find_middle(head)
-        left = head
-        right = mid.next
-        mid.next = None
+        # Helper function to partition and sort the linked list using Quick Sort
+        def quick_sort(start, end):
+            if start == end or start.next == end:
+                return
+            
+            pivot = start
+            current = start.next
+            left = start
+            right = end
+            
+            while current != end:
+                if current.val < pivot.val:
+                    left = left.next
+                    left.val, current.val = current.val, left.val
+                current = current.next
+            
+            left.val, pivot.val = pivot.val, left.val
+            quick_sort(start, left)
+            quick_sort(left.next, end)
         
-        # Recursively sort both halves
-        left = self.merge_sort(left)
-        right = self.merge_sort(right)
+        # Convert the linked list to a list for sorting and back again
+        node_list = []
+        current = head
+        while current:
+            node_list.append(current)
+            current = current.next
         
-        # Merge the sorted halves
-        return self.merge(left, right)
-    
-    def find_middle(self, head):
-        slow = fast = head
-        while fast.next and fast.next.next:
-            slow = slow.next
-            fast = fast.next.next
-        return slow
-    
-    def merge(self, left, right):
-        dummy = ListNode()
-        tail = dummy
+        quick_sort(node_list[0], None)
         
-        while left and right:
-            if left.val < right.val:
-                tail.next = left
-                left = left.next
-            else:
-                tail.next = right
-                right = right.next
-            tail = tail.next
+        # Rebuild the linked list from the sorted list
+        for i in range(len(node_list) - 1):
+            node_list[i].next = node_list[i + 1]
+        node_list[-1].next = None
         
-        if left:
-            tail.next = left
-        if right:
-            tail.next = right
-        
-        return dummy.next
-    
-    def solve(self, head):
-        return self.merge_sort(head)
+        return head
 
 ########################################
 # if __name__ == '__main__':
