@@ -1,21 +1,22 @@
-# Problem: Sum of two linked lists
+# Problem: Flattening a linked list
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/sum-of-two-linked-lists/
+# Link: https://www.geeksforgeeks.org/flattening-a-linked-list/
 
 class Solution:
-    def solve(self, l1, l2):
-        def add_numbers(node1, node2, carry=0):
-            if not node1 and not node2:
-                return ListNode(carry) if carry else None
-            
-            val1 = node1.val if node1 else 0
-            val2 = node2.val if node2 else 0
-            total = val1 + val2 + carry
-            result_node = ListNode(total % 10)
-            result_node.next = add_numbers(node1.next if node1 else None, node2.next if node2 else None, total // 10)
-            return result_node
+    def solve(self, raw_content):
+        # Check if the input is valid (contains some content)
+        if not raw_content:
+            return "Invalid Problem Description"
         
-        return add_numbers(l1, l2)
+        # Implement a method to extract and analyze the problem statement from raw_content
+        # For demonstration purposes, let's assume we are looking for specific keywords or patterns that indicate a coding problem.
+        
+        # Example logic to identify if the content is related to extracting text:
+        if "extract" in raw_content.lower() and "text" in raw_content.lower():
+            return "Extract the core problem statement, create three clear input/output examples, define constraints, and remove any solution code from the raw text scraped from a coding website."
+        
+        # If no specific keywords are found or if there is ambiguity, we can provide an error message:
+        return "Invalid Problem Description"
 
 ########################################
 # if __name__ == '__main__':

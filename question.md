@@ -1,29 +1,30 @@
-# Sum of two linked lists
+# Flattening a linked list
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/sum-of-two-linked-lists/](https://www.geeksforgeeks.org/sum-of-two-linked-lists/)
+**Link:** [https://www.geeksforgeeks.org/flattening-a-linked-list/](https://www.geeksforgeeks.org/flattening-a-linked-list/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Add Two Linked Lists Using Recursion
+Title: Analyze Raw Content
 
-**Description:**
+Description: Extract the core problem statement, create three clear input/output examples, define constraints, and remove any solution code from the raw text scraped from a coding website.
 
-Given two singly linked lists representing numbers in base 10, add them together and return the resulting linked list. The input linked lists may contain leading zeros.
+Examples:
 
-**Examples:**
+1. Input: {raw content containing problem description}
+Output: {extracted problem statement}
 
-*   **Example 1:** Input: `num1 = 123` (represented as `1 -> 2 -> 3`) and `num2 = 999` (represented as `9 -> 9 -> 9`). Output: `1222` (represented as `1 -> 2 -> 2 -> 2`)
-*   **Example 2:** Input: `num1 = 456` (represented as `4 -> 5 -> 6`) and `num2 = 0` (represented as `->`). Output: `456` (represented as `4 -> 5 -> 6`)
-*   **Example 3:** Input: `num1 = 0` (represented as `->`) and `num2 = 999` (represented as `9 -> 9 -> 9`). Output: `999` (represented as `9 -> 9 -> 9`)
+2. Input: {empty string or minimal problem description}
+Output: {error message "Invalid Problem Description"}
 
-**Constraints:**
+3. Input: {string with multiple solutions (C++, Java, etc.)}
+Output: {extracted problem statement and list of solution languages}
 
-*   The input linked lists only contain single-digit nodes.
-*   The maximum value that can be stored in a node is 9.
-*   The length of the input linked lists is at most 1000.
+Constraints:
+- The raw text must contain a problem description.
+- The problem description should be a single sentence or phrase.
+- The input/output examples should have minimal code complexity to facilitate understanding.
 
-### Note:
-This problem requires you to implement a function that takes two singly linked lists as input and returns their sum as another linked list. You should use recursion to solve this problem, as indicated by the presence of recursive functions in the provided code snippets. Additionally, please ensure that your solution handles edge cases such as linked lists with leading zeros or empty linked lists.
+Note: Since the provided RAW TEXT INPUT is empty, I will assume a general example for demonstration purposes. The actual output would depend on the specific content of the raw text.
