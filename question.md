@@ -1,30 +1,56 @@
-# Flattening a linked list
+# Clone a linked list with next and random Pointer
 
 **Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/flattening-a-linked-list/](https://www.geeksforgeeks.org/flattening-a-linked-list/)
+**Link:** [https://www.geeksforgeeks.org/a-linked-list-with-next-and-arbit-pointer/](https://www.geeksforgeeks.org/a-linked-list-with-next-and-arbit-pointer/)
 
 ---
 
 ## Problem Statement
 
-Title: Analyze Raw Content
+**Deep Linked List Cloning Problem**
 
-Description: Extract the core problem statement, create three clear input/output examples, define constraints, and remove any solution code from the raw text scraped from a coding website.
+**Description:**
+Given the head of a linked list that contains random pointers, clone this linked list such that each node in the new linked list has exactly the same value and points to nodes as its counterpart in the original linked list. Clone the linked list.
 
-Examples:
+**Examples:**
 
-1. Input: {raw content containing problem description}
-Output: {extracted problem statement}
+1. **Original Linked List:** 
+   1 -> (null)
+   2 -> (4)
+   3 -> (5)
 
-2. Input: {empty string or minimal problem description}
-Output: {error message "Invalid Problem Description"}
+   **Cloned Linked List:** 
+   1 -> (null)
+   2 -> (4)
+   3 -> (5)
 
-3. Input: {string with multiple solutions (C++, Java, etc.)}
-Output: {extracted problem statement and list of solution languages}
+2. **Original Linked List:** 
+   1 -> 2 -> 3
+   2 -> null
+   3 -> null
 
-Constraints:
-- The raw text must contain a problem description.
-- The problem description should be a single sentence or phrase.
-- The input/output examples should have minimal code complexity to facilitate understanding.
+   **Cloned Linked List:** 
+   1 -> 2 -> 3
+   2 -> null
+   3 -> null
 
-Note: Since the provided RAW TEXT INPUT is empty, I will assume a general example for demonstration purposes. The actual output would depend on the specific content of the raw text.
+3. **Original Linked List:** 
+   1 -> 2 -> 3 -> 4 -> 5
+   2 -> (null)
+   3 -> (null)
+   4 -> (null)
+   5 -> (null)
+
+   **Cloned Linked List:** 
+   1 -> 2 -> 3 -> 4 -> 5
+   2 -> (null)
+   3 -> (null)
+   4 -> (null)
+   5 -> (null)
+
+
+**Constraints:**
+
+*   The linked list can have at most `10^5` nodes (`N <= 10^5`).
+*   Each node's value is a non-negative integer.
+*   The random pointer of each node points to any node in the linked list.
