@@ -1,47 +1,39 @@
-# Problem: Clone a linked list with next and random Pointer
+# Problem: Subtract two numbers represented as linked lists
 # Difficulty: Hard
-# Link: https://www.geeksforgeeks.org/a-linked-list-with-next-and-arbit-pointer/
+# Link: https://www.geeksforgeeks.org/subtract-two-numbers-represented-as-linked-lists/
 
 class Solution:
-    def solve(self):
-        class ListNode:
-            def __init__(self, val=0, next=None, random=None):
-                self.val = val
-                self.next = next
-                self.random = random
+    def solve(self, l1, l2):
+        # Helper function to convert linked list to integer
+        def to_integer(head):
+            num = 0
+            while head:
+                num = num * 10 + head.val
+                head = head.next
+            return num
         
-        def clone_list(head):
-            if not head:
-                return None
-            
-            node_map = {}
-            
-            current = head
-            while current:
-                node_map[current] = ListNode(current.val)
-                current = current.next
-            
-            current = head
-            while current:
-                if current.next:
-                    node_map[current].next = node_map[current.next]
-                if current.random:
-                    node_map[current].random = node_map[current.random]
-                current = current.next
-            
-            return node_map[head]
+        # Convert both lists to integers
+        int1 = to_integer(l1)
+        int2 = to_integer(l2)
         
-        head = ListNode(1)
-        head.next = ListNode(2)
-        head.next.random = head
-        head.next.next = ListNode(3)
+        # Subtract the smaller number from the larger one
+        if int1 >= int2:
+            result_num = int1 - int2
+            l1, l2 = l2, l1  # Ensure l1 is always the longer list for simplicity in conversion back to linked list
+        else:
+            result_num = int2 - int1
         
-        cloned_head = clone_list(head)
+        # Convert the result back to a linked list
+        if l1 == None:
+            return ListNode(int(str(result_num)[0]), ListNode(int(str(result_num)[1:])))
         
-        current = cloned_head
-        while current:
-            print(f"Cloned Node {current.val} -> Random: {current.random.val if current.random else 'null'}")
+        dummy_head = ListNode(0)
+        current = dummy_head
+        for digit in str(result_num):
+            current.next = ListNode(int(digit))
             current = current.next
+        
+        return dummy_head.next
 
 ########################################
 # if __name__ == '__main__':
