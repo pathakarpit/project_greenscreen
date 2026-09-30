@@ -1,33 +1,69 @@
-# Subtract two numbers represented as linked lists
+# Implement two stacks in an Array
 
-**Difficulty:** Hard  
-**Link:** [https://www.geeksforgeeks.org/subtract-two-numbers-represented-as-linked-lists/](https://www.geeksforgeeks.org/subtract-two-numbers-represented-as-linked-lists/)
+**Difficulty:** Easy  
+**Link:** [https://www.geeksforgeeks.org/implement-two-stacks-in-an-array/](https://www.geeksforgeeks.org/implement-two-stacks-in-an-array/)
 
 ---
 
 ## Problem Statement
 
-```
-Title: Subtracting Larger Number from Smaller Number Represented as Linked Lists
-Description: 
-You are given two linked lists representing two large positive numbers. The linked lists represent these two numbers, subtract the smaller number from the larger one and return the head of the linked list representing the result.
-Examples:
-1. Input: l1 = 1 -> 0 -> 0 -> NULL, l2 = 1 -> NULL
-   Output: 9->9->NULL
-   Explanation: Number represented as lists are 100 and 1, so 100 - 1 is 99
+**Title:** Implementing Two-Stack Data Structure
 
-2. Input: l1 = 7->8 -> 6 -> NULL, l2 = 7 -> 8 -> 9 NULL
-   Output: 3->NULL
-   Explanation: Number represented as lists are 786 and 789, so 789 - 786 is 3, as the smaller value is subtracted from the larger one.
+**Description:** Design and implement a two-stack data structure that utilizes an array of size `n` to store elements. The stack at index `0` to `mid - 1` is denoted as `stack1`, while the stack at index `mid` to `n - 1` is denoted as `stack2`. Implement the following operations: `push1(x)`, `push2(x)`, `pop1()`, and `pop2()`.
 
-3. Input: l1 = 10000000000 -> 0 -> 0 -> NULL, l2 = 100 -> NULL
-   Output: 9999999999->NULL
-   Explanation: Number represented as lists are 10000000000 and 100, so 10000000000 - 100 is 9999999999
+**Examples:**
 
-Constraints:
-- The linked lists represent two large positive numbers.
-- The linked lists may have varying lengths.
-- The smaller number should be subtracted from the larger one.
+1. Initial Setup:
 
-Note: Solution code has been removed from the text. This structured string contains the required information for a standardized exam question format.
-```
+   * `arr`: `[0, 0, ..., 0]`
+   * `top1`: `-1`
+   * `top2`: `-1`
+
+   Input: `n = 10` (size of the array)
+
+   Output: None
+
+2. Pushing Elements to Stack1 and Stack2:
+
+   Input: `push1(5)`, `push2(3)`, `push1(8)`, `push2(6)`
+
+   Output: 
+
+   * `arr`: `[0, 5, 0, 0, 3, 0, 0, 0, 0, 0]` (after pushing 5 to stack1)
+   * `top1`: `0`
+   * `top2`: `-1`
+
+   * `arr`: `[0, 5, 0, 0, 3, 8, 0, 0, 0, 0]` (after pushing 8 to stack1)
+
+   * `arr`: `[0, 5, 0, 0, 3, 8, 0, 6, 0, 0]` (after pushing 6 to stack2)
+
+3. Popping Elements from Stack1 and Stack2:
+
+   Input: `pop1()`, `pop2()`
+
+   Output: 
+
+   * `arr`: `[0, 5, 0, 0, 3, 8, 0, 6, 0, 0]` (initial state)
+
+   * `ele = 5` (popped from stack1)
+   * `top1`: `-1`
+   * `top2`: `-1`
+
+4. Popping Elements from Empty Stacks:
+
+   Input: `pop1()`, `pop2()`
+
+   Output: 
+
+   * `ele = -1` (popped from empty stack1)
+   * `arr`: `[0, 0, ..., 0]`
+   * `top1`: `-1`
+   * `top2`: `-1`
+
+**Constraints:** 
+
+* The size of the array (`n`) should be a positive integer.
+* The value of `mid` is calculated as `n / 2`.
+* The top indices (`top1` and `top2`) are initially set to `-1`, indicating that both stacks are empty.
+
+Note: This problem assumes that the implementation uses an array of size `n` to store elements, with `stack1` at index `0` to `mid - 1` and `stack2` at index `mid` to `n - 1`.
