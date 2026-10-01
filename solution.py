@@ -1,40 +1,30 @@
-# Problem: Implement two stacks in an Array
+# Problem: Evaluation of Postfix Expression
 # Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/implement-two-stacks-in-an-array/
+# Link: https://www.geeksforgeeks.org/stack-set-4-evaluation-postfix-expression/
 
 class Solution:
-    def __init__(self, n):
-        self.arr = [0] * n
-        self.top1 = -1
-        self.top2 = n // 2
-
-    def push1(self, x):
-        if self.top1 < (len(self.arr) // 2) - 1:
-            self.top1 += 1
-            self.arr[self.top1] = x
-
-    def push2(self, x):
-        if self.top2 < len(self.arr) - 1:
-            self.top2 += 1
-            self.arr[self.top2] = x
-
-    def pop1(self):
-        if self.top1 >= 0:
-            ele = self.arr[self.top1]
-            self.arr[self.top1] = 0
-            self.top1 -= 1
-            return ele
-        else:
-            return -1
-
-    def pop2(self):
-        if self.top2 >= len(self.arr) // 2:
-            ele = self.arr[self.top2]
-            self.arr[self.top2] = 0
-            self.top2 -= 1
-            return ele
-        else:
-            return -1
+    def solve(self, tokens):
+        stack = []
+        
+        for token in tokens:
+            if token not in "+-*/^":
+                stack.append(int(token))
+            else:
+                right_operand = stack.pop()
+                left_operand = stack.pop()
+                
+                if token == '+':
+                    stack.append(left_operand + right_operand)
+                elif token == '-':
+                    stack.append(left_operand - right_operand)
+                elif token == '*':
+                    stack.append(left_operand * right_operand)
+                elif token == '/':
+                    stack.append(int(left_operand / right_operand))
+                elif token == '^':
+                    stack.append(left_operand ** right_operand)
+        
+        return stack[0]
 
 ########################################
 # if __name__ == '__main__':
