@@ -1,30 +1,49 @@
-# Evaluation of Postfix Expression
+# Implement Stack using Queues
 
 **Difficulty:** Easy  
-**Link:** [https://www.geeksforgeeks.org/stack-set-4-evaluation-postfix-expression/](https://www.geeksforgeeks.org/stack-set-4-evaluation-postfix-expression/)
+**Link:** [https://leetcode.com/problems/implement-stack-using-queues/](https://leetcode.com/problems/implement-stack-using-queues/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Evaluating Postfix Expressions using a Stack Data Structure
+**Problem Statement:**
 
+Implement a Stack using two Queues.
+ 
+**Description:** 
 
-**Description:** Given a postfix expression as an array of strings, evaluate the expression by applying the operators and operands according to the order of operations. The input array will contain a mix of operators (+, -, *, /, ^) and operands (numbers).
-
+Design an algorithm that uses two queues (`q1` and `q2`) to simulate a stack data structure. The stack should support the following operations:
+- `push(x)`: adds an element `x` to the top of the stack
+- `pop()`: removes the top element from the stack, or throws an error if the stack is empty
+- `top()`: returns the top element of the stack without removing it
+- `empty()`: checks if the stack is empty
+- `size()`: returns the number of elements in the stack
 
 **Examples:**
 
-1. Input: `{"2", "3", "+", "9", "-"}`, Output: `-2`
-2. Input: `{"4", "5", "*", "2"}`, Output: `20`
-3. Input: `{"10", "2", "/", "3"}`, Output: `3`
+1. **Push**: 
+   - Input: `push(1)`
+   - Output: Queue `q1` contains `{}`, Queue `q2` contains `{1}`
+   
+2. **Pop**: 
+   - Input: `pop()`
+   - Output: The top element (1) is removed from the stack
 
+3. **Top**:
+   - Input: `top()`
+   - Output: The current top element is 1 
+
+4. **Size**:
+   - Input: `size()`
+   - Output: The number of elements in the stack is 0 
+
+5. **Empty**:
+   - Input: `empty()`
+   - Output: The stack is empty
 
 **Constraints:** 
-1. The input array will only contain valid postfix expressions.
-2. The operands in the input array will be integers within the range [-1000, 1000].
-3. The number of operators in the input array will not exceed the number of operands by more than one.
-4. The input array will have at least two elements.
-5. The maximum length of an operand or operator string is 10 characters.
+- 1 <= x <= 10^9 (for push operation)
+- The maximum number of operations performed on the stack should not exceed 10^5.
 
-**Note:** Any code implementing a solution using a stack data structure has been removed, and only the problem statement remains.
+Note: Remove any solution code (C++, Python implementations) found in the text. We only want the *Question*.

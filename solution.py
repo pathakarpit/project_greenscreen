@@ -1,30 +1,37 @@
-# Problem: Evaluation of Postfix Expression
+# Problem: Implement Stack using Queues
 # Difficulty: Easy
-# Link: https://www.geeksforgeeks.org/stack-set-4-evaluation-postfix-expression/
+# Link: https://leetcode.com/problems/implement-stack-using-queues/
 
 class Solution:
-    def solve(self, tokens):
-        stack = []
-        
-        for token in tokens:
-            if token not in "+-*/^":
-                stack.append(int(token))
-            else:
-                right_operand = stack.pop()
-                left_operand = stack.pop()
-                
-                if token == '+':
-                    stack.append(left_operand + right_operand)
-                elif token == '-':
-                    stack.append(left_operand - right_operand)
-                elif token == '*':
-                    stack.append(left_operand * right_operand)
-                elif token == '/':
-                    stack.append(int(left_operand / right_operand))
-                elif token == '^':
-                    stack.append(left_operand ** right_operand)
-        
-        return stack[0]
+    def __init__(self):
+        self.q1 = []
+        self.q2 = []
+    
+    def push(self, x):
+        if not self.q1:
+            self.q1.append(x)
+        else:
+            while self.q1:
+                self.q2.append(self.q1.pop(0))
+            self.q1.append(x)
+            while self.q2:
+                self.q1.append(self.q2.pop(0))
+    
+    def pop(self):
+        if not self.q1:
+            raise IndexError("pop from empty stack")
+        return self.q1.pop(0)
+    
+    def top(self):
+        if not self.q1:
+            raise IndexError("top of empty stack")
+        return self.q1[0]
+    
+    def empty(self):
+        return len(self.q1) == 0
+    
+    def size(self):
+        return len(self.q1)
 
 ########################################
 # if __name__ == '__main__':
