@@ -1,28 +1,28 @@
-# Professor's Analysis: Implement Stack using Queues
+# Professor's Analysis: Queue Reversal
 
+```
 ## Time Complexity Analysis
-The time complexity of this solution is O(N), where N is the number of elements in the queue.
+The time complexity of this code is O(N), where N is the length of the input list. This is because the loop runs N times, and within the loop, the dictionary lookup takes O(1) time on average.
 
 ## Space Complexity Analysis
-The space complexity is O(N), where N is the maximum number of elements stored in the dictionary.
+The space complexity is O(N), as we use a dictionary to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
 
-### Initialize Variables:
-*   The solution initializes two empty lists: `self.q1` and `self.q2`, in its constructor (`__init__` method).
+### Step 1: Initialize Variables
+We initialize an empty list `result`.
 
-### Loop Condition:
-*   The main loop iterates until there are no more elements left in `self.q1`.
+### Step 2: Loop Through Input List
+* The loop iterates through each element x in the input list.
+* We check if x exists in a dictionary (which we'll create later) using the line if x in dict. If x is not in the dictionary, this operation takes O(1) time.
 
-### Math to Find Complement:
-*   Inside the loop, we calculate the complement by subtracting the current number from a target value: `target - current_num`.
+### Step 3: Perform Complement Math
+Within the loop, we calculate the complement of each number by subtracting it from the target (`target - current_num`). This math operation has a constant time complexity, O(1).
 
-### If/Else Logic:
-*   If the complement is found in the dictionary, it means we have already encountered this pair earlier and can be discarded:
-    *   The current element is added to `self.q2` (tail).
-    *   The element corresponding to the complement is removed from `self.q1` (head) and added to `self.q2`.
-*   If the complement is not found, it means we have a new pair that needs to be stored in the dictionary:
-    *   The current element is added to `self.q1`.
+### Step 4: Update Dictionary and Result List
+* If x is not in the dictionary (and therefore its complement is found), we add both numbers to the result list.
+* We update the dictionary by adding all numbers as keys.
 
-### Return Statement:
-*   After processing all elements, if no pair is found, the solution returns -1.
+### Step 5: Return Result if No Pair Found
+If no pair is found after iterating through the entire input list, we return an empty list (`[]`).
+```

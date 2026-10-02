@@ -1,49 +1,29 @@
-# Implement Stack using Queues
+# Queue Reversal
 
 **Difficulty:** Easy  
-**Link:** [https://leetcode.com/problems/implement-stack-using-queues/](https://leetcode.com/problems/implement-stack-using-queues/)
+**Link:** [https://practice.geeksforgeeks.org/problems/queue-reversal/1](https://practice.geeksforgeeks.org/problems/queue-reversal/1)
 
 ---
 
 ## Problem Statement
 
-**Problem Statement:**
+**Queue Reversal**
 
-Implement a Stack using two Queues.
- 
-**Description:** 
-
-Design an algorithm that uses two queues (`q1` and `q2`) to simulate a stack data structure. The stack should support the following operations:
-- `push(x)`: adds an element `x` to the top of the stack
-- `pop()`: removes the top element from the stack, or throws an error if the stack is empty
-- `top()`: returns the top element of the stack without removing it
-- `empty()`: checks if the stack is empty
-- `size()`: returns the number of elements in the stack
+**Description:**
+Reversing a Queue
+Given a queue q[], reverse the queue so that the front element becomes the rear and the rear element becomes the front, while preserving the order of the remaining elements accordingly.
 
 **Examples:**
 
-1. **Push**: 
-   - Input: `push(1)`
-   - Output: Queue `q1` contains `{}`, Queue `q2` contains `{1}`
-   
-2. **Pop**: 
-   - Input: `pop()`
-   - Output: The top element (1) is removed from the stack
+1. Input: q[] = [5, 10, 15, 20, 25]
+   Output: [25, 20, 15, 10, 5]
 
-3. **Top**:
-   - Input: `top()`
-   - Output: The current top element is 1 
+2. Input: q[] = [1, 2, 3, 4, 5]
+   Output: [5, 4, 3, 2, 1]
 
-4. **Size**:
-   - Input: `size()`
-   - Output: The number of elements in the stack is 0 
+3. Input: q[] = [a, b, c]
+   Output: [c, b, a]
 
-5. **Empty**:
-   - Input: `empty()`
-   - Output: The stack is empty
 
 **Constraints:** 
-- 1 <= x <= 10^9 (for push operation)
-- The maximum number of operations performed on the stack should not exceed 10^5.
-
-Note: Remove any solution code (C++, Python implementations) found in the text. We only want the *Question*.
+1 <= N <= 10^6 (assuming queue size is within this range)
