@@ -1,37 +1,33 @@
-# Implement Stack Queue using Deque
+# Reverse first k elements of queue
 
 **Difficulty:** Easy  
-**Link:** [https://www.geeksforgeeks.org/implement-stack-queue-using-deque/](https://www.geeksforgeeks.org/implement-stack-queue-using-deque/)
+**Link:** [https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1](https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1)
 
 ---
 
 ## Problem Statement
 
-**Title:** Implement Stack and Queue using Deque
+**Title:** Reverse First K Elements in Queue
 
-**Description:** 
-Implement a stack and queue data structure using a deque in Java, where elements are added and removed from the top of the stack and rear of the queue respectively.
+**Description:** Given an integer k and a queue q of integers, reverse the order of the first k elements of the queue, leaving the other elements in the same relative order.
 
 **Examples:**
 
-1. **Stack Example**
-   - Input: Create a stack with elements [3, 2, 1]
-   - Output: Stack: [3, 2, 1]
-   - Operation: Pop an element from the stack
-   - Output: Stack after pop: [2, 1]
+1. **Example 1:**
+   - Input: `k = 3`, `queue = [1, 2, 3, 4, 5]`
+   - Output: `[3, 2, 1, 4, 5]`
 
-2. **Queue Example**
-   - Input: Create a queue with elements [1, 2, 3]
-   - Output: Queue: [1, 2, 3]
-   - Operation: Dequeue an element from the queue
-   - Output: Queue after dequeue: [2, 3]
+2. **Example 2:**
+   - Input: `k = 5`, `queue = [1, 2, 3, 4, 5]`
+   - Output: `[5, 4, 3, 2, 1]`
 
-3. **Mixed Example**
-   - Input: Create a stack with elements [4, 5, 6] and a queue with elements [7, 8, 9]
-   - Output: Stack: [6, 5, 4], Queue: [7, 8, 9]
-   - Operation: Push an element onto the stack and enqueue an element onto the queue
-   - Output: Stack after push: [6, 5, 4, 10], Queue after enqueue: [7, 8, 9, 11]
+3. **Example 3:**
+   - Input: `k = 1`, `queue = [1, 2, 3, 4, 5]`
+   - Output: `[1, 2, 3, 4, 5]` (no change)
 
 **Constraints:** 
-*   The input size for both the stack and queue can be up to 10^5 elements.
-*   The deque implementation should support push (add to top) and pop operations for the stack, as well as add (enqueue) and remove (dequeue) operations for the queue.
+- The given queue will contain integers.
+- The integer k is within the range of the number of elements in the queue.
+- The queue may be empty. 
+
+Note that these constraints are inferred based on the provided code and examples. In a real-world scenario, you would need to understand the specific requirements of your problem and ensure that your solution adheres to those constraints.
