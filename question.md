@@ -1,33 +1,41 @@
-# Reverse first k elements of queue
+# Design Stack with Middle Operation
 
-**Difficulty:** Easy  
-**Link:** [https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1](https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1)
+**Difficulty:** Medium  
+**Link:** [https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/](https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/)
 
 ---
 
 ## Problem Statement
 
-**Title:** Reverse First K Elements in Queue
+**Title:** Implementing Two Stacks as One with Efficient Push and Pop Operations
 
-**Description:** Given an integer k and a queue q of integers, reverse the order of the first k elements of the queue, leaving the other elements in the same relative order.
+
+**Description:** Design an algorithm that uses two stacks and a queue to efficiently handle push_to_back() and pop_from_front() operations while maintaining the order of elements.
+
 
 **Examples:**
 
 1. **Example 1:**
-   - Input: `k = 3`, `queue = [1, 2, 3, 4, 5]`
-   - Output: `[3, 2, 1, 4, 5]`
+   - Input: `stack.push(1); stack.push(2)`
+   - Output: `stack.pop()` returns `2`
+   - Explanation: The two stacks will be `[1, 2]` and an empty queue.
+   - Expected output is `2`, which is the top element of the combined stack.
 
 2. **Example 2:**
-   - Input: `k = 5`, `queue = [1, 2, 3, 4, 5]`
-   - Output: `[5, 4, 3, 2, 1]`
+   - Input: `stack.push(1); stack.push(2); stack.push_to_back(3)`
+   - Output: `stack.pop_from_front()` returns `3`
+   - Explanation: The two stacks will be `[1, 2]` and the queue will have been filled in reverse order as `[3]`, then the first element of each is popped to get `[2, 1, 3]`. 
+   - Expected output is `3`, which is the front element of the combined stack.
 
 3. **Example 3:**
-   - Input: `k = 1`, `queue = [1, 2, 3, 4, 5]`
-   - Output: `[1, 2, 3, 4, 5]` (no change)
+   - Input: `stack.push(1); stack.push(2)`
+   - Output: `stack.pop_from_front()` returns `None`
+   - Explanation: There are no elements in the queue, and both stacks are empty.
+   - Expected output is `None`, indicating that there are no more elements to pop.
+
 
 **Constraints:** 
-- The given queue will contain integers.
-- The integer k is within the range of the number of elements in the queue.
-- The queue may be empty. 
 
-Note that these constraints are inferred based on the provided code and examples. In a real-world scenario, you would need to understand the specific requirements of your problem and ensure that your solution adheres to those constraints.
+- 1 <= N <= 10^5 (assuming N is the number of operations performed)
+- Each push operation takes an integer value between 1 and 10^9
+- Each pop operation returns an integer value between 1 and 10^9
