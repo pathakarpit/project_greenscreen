@@ -1,34 +1,36 @@
-# Problem: Design Stack with Middle Operation
+# Problem: Segregate even and odd Elements in a Linked List
 # Difficulty: Medium
-# Link: https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/
+# Link: https://www.geeksforgeeks.org/segregate-even-and-odd-elements-in-a-linked-list/
 
 class Solution:
-    def __init__(self):
-        self.stack1 = []
-        self.stack2 = []
-        self.queue = []
+    class ListNode:
+        def __init__(self, val=0, next=None):
+            self.val = val
+            self.next = next
 
-    def push(self, value):
-        self.stack1.append(value)
+    def solve(self, head: ListNode) -> ListNode:
+        if not head:
+            return head
 
-    def pop(self):
-        if not self.stack1 and not self.stack2:
-            return None
-        if not self.stack2:
-            while self.stack1:
-                self.stack2.append(self.stack1.pop())
-        return self.stack2.pop()
+        even_head = ListNode(0)
+        odd_head = ListNode(0)
+        even_tail = even_head
+        odd_tail = odd_head
 
-    def push_to_back(self, value):
-        self.queue.append(value)
+        current = head
+        while current:
+            if current.val % 2 == 0:
+                even_tail.next = current
+                even_tail = even_tail.next
+            else:
+                odd_tail.next = current
+                odd_tail = odd_tail.next
+            current = current.next
 
-    def pop_from_front(self):
-        if not self.stack1 and not self.stack2 and not self.queue:
-            return None
-        if not self.queue:
-            while self.stack1:
-                self.queue.append(self.stack1.pop())
-        return self.queue.pop(0)
+        even_tail.next = odd_head.next
+        odd_tail.next = None
+
+        return even_head.next
 
 ########################################
 # if __name__ == '__main__':

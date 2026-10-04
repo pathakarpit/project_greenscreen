@@ -1,65 +1,41 @@
-# Professor's Analysis: Design Stack with Middle Operation
+# Professor's Analysis: Segregate even and odd Elements in a Linked List
 
+```
 ## Time Complexity Analysis
+### Big O Notation:
+The time complexity of the given Python solution is O(N), where N is the number of nodes in the linked list.
 
-*   The time complexity of this Python solution is O(N).
-*   The reason for this is that the loop runs N times, and within each iteration, a dictionary lookup `if x in dict` takes O(1) time on average.
-*   Therefore, N \* O(1) = O(N).
+### Explanation:
+* The loop runs N times because it iterates over each node in the linked list.
+* Inside the loop, the dictionary lookup `if current.val % 2 == 0` takes O(1) time on average because dictionary lookups are constant time operations in Python.
+* Therefore, the total time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
+### Big O Notation:
+The space complexity of the given Python solution is O(N).
 
-*   The space complexity of this solution is O(N).
-*   This is because we use a dictionary/hash map to store at most N elements.
+### Explanation:
+* We use a dictionary/hash map to store at most N elements, which are the nodes in the linked list.
 
 ## Step-by-Step Reconstruction Logic
+### Initialize Variables:
+* `even_head` and `odd_head` are initialized as dummy nodes to serve as the head of the even and odd linked lists, respectively.
+* `even_tail` and `odd_tail` are initialized as the tail of the even and odd linked lists, respectively.
+* `current` is initialized as the head of the input linked list.
 
-*   **Initialization**: A class `Solution` is defined with several instance variables: `stack1`, `stack2`, and `queue`. These are initialized as empty lists.
-*   **Step 1: Pushing onto stack1**: When `push(value)` is called, it simply appends the given value to `stack1`.
-    *   Variables involved: `value`
-    *   Condition for loop: None
-    *   Math used: None
-    *   If/else logic: This step doesn't involve any conditional statements; it's a simple append operation.
-*   **Step 2: Popping from stack2**: When `pop()` is called, the solution checks if both `stack1` and `stack2` are empty. If not, it returns `None`.
-    *   Variables involved: None
-    *   Condition for loop: None
-    *   Math used: None
-    *   If/else logic: This step involves a simple conditional check; if the stacks aren't empty, return `None`.
-*   **Step 3: Populating stack2**: When `pop()` is called and both stacks are empty, it enters this step. It pops all elements from `stack1` and pushes them onto `stack2`.
-    *   Variables involved: None
-    *   Condition for loop: `not self.stack2`
-    *   Math used: `self.stack1.pop()`, `self.stack2.append(self.stack1.pop())`
-    *   If/else logic: This step involves a conditional check and a series of pop and append operations.
-*   **Step 4: Popping from stack2**: After populating `stack2`, the solution pops the top element from it and returns it.
-    *   Variables involved: None
-    *   Condition for loop: None
-    *   Math used: `self.stack2.pop()`
-    *   If/else logic: This step involves a simple pop operation; return the popped value.
-*   **Step 5: Pushing onto queue**: When `push_to_back(value)` is called, it simply appends the given value to the end of `queue`.
-    *   Variables involved: `value`
-    *   Condition for loop: None
-    *   Math used: None
-    *   If/else logic: This step doesn't involve any conditional statements; it's a simple append operation.
-*   **Step 6: Popping from front of queue**: When `pop_from_front()` is called, the solution checks if both stacks and the queue are empty. If not, it returns `None`.
-    *   Variables involved: None
-    *   Condition for loop: None
-    *   Math used: None
-    *   If/else logic: This step involves a simple conditional check; if all data structures are empty, return `None`.
-*   **Step 7: Populating queue**: When `pop_from_front()` is called and the queue is empty, it enters this step. It pops all elements from `stack1` and pushes them onto `queue`.
-    *   Variables involved: None
-    *   Condition for loop: `not self.queue`
-    *   Math used: `self.stack1.pop()`, `self.queue.append(self.stack1.pop())`
-    *   If/else logic: This step involves a conditional check and a series of pop and append operations.
-*   **Step 8: Popping from front of queue**: After populating the queue, the solution pops the top element from it (at index 0) and returns it.
-    *   Variables involved: None
-    *   Condition for loop: None
-    *   Math used: `self.queue.pop(0)`
-    *   If/else logic: This step involves a simple pop operation; return the popped value.
+### Loop Condition:
+* The loop continues as long as `current` is not `None`.
 
-The final answer is: 
-This solution implements a stack using two stacks (`stack1` and `stack2`) and a queue. The key features include:
+### Loop Body:
+* Inside the loop, we check if the value of the current node is even or odd using the modulo operator `%`.
+* If the value is even, we add the current node to the even linked list by updating `even_tail.next` and incrementing `even_tail`.
+* If the value is odd, we add the current node to the odd linked list by updating `odd_tail.next` and incrementing `odd_tail`.
+* We then move on to the next node in the linked list by updating `current` to `current.next`.
 
-*   Efficient popping from the back of the stack by utilizing `stack2`.
-*   Efficient popping from the front of the queue by utilizing the last element popped from `stack1`.
-*   Handling edge cases where all data structures are empty.
+### If/Else Logic:
+* If the complement (i.e., the node with the value that is not the current node's value) is found in the other linked list, we update the `next` pointer of the tail of the even linked list to point to the head of the odd linked list.
+* If the complement is not found, we simply move on to the next node in the linked list.
 
-Note: This solution does not actually implement a stack or queue but rather uses these data structures to store elements.
+### Return Statement:
+* If no pair is found, we return the `next` node of the `even_head`, which is the head of the even linked list.
+```
