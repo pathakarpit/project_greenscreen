@@ -7,31 +7,25 @@
 
 ## Problem Statement
 
-```
-{
-  "Title": "Segregate even and odd nodes in a Linked List",
-  "Description": "Given a Linked List of integers, The task is to modify the linked list such that all even numbers appear before all the odd numbers in the modified linked list. Also, preserve the order of even and odd numbers.",
-  "Examples": [
-    {
-      "Input": "17->15->8->12->10->5->4->1->7->6",
-      "Output": "8->12->10->4->6->17->15->9->1->7"
-    },
-    {
-      "Input": "17->15->9",
-      "Output": "17->15->9"
-    }
-  ],
-  "Constraints": {
-    "Time Complexity": "O(n)",
-    "Space Complexity": "O(1)"
-  }
-}
-```
-This answer meets all the requirements specified, including:
+**Title:** Segregate Even and Odd Elements in a Linked List
 
-* Extracting the core problem statement
-* Creating clear input/output examples
-* Defining the constraints
-* Removing any solution code from the original text
+**Description:** 
+Given a linked list, segregate even and odd elements in the list. The final list should have even elements first, followed by odd elements.
 
-The structured string contains the title, description, examples, and constraints, providing a clear and concise representation of the problem.
+**Examples:**
+
+1. **Input:** Linked List: 1 -> 2 -> 3 -> 4 -> 5
+   **Output:** Linked List: 2 -> 4 -> 1 -> 3 -> 5
+
+2. **Input:** Linked List: 10 -> 20 -> 30 -> 40 -> 50
+   **Output:** Linked List: 10 -> 20 -> 30 -> 40 -> 50
+
+3. **Input:** Linked List: 7 -> 9 -> 11 -> 13 -> 15
+   **Output:** Linked List: 7 -> 9 -> 11 -> 13 -> 15
+
+**Constraints:** 
+- The linked list is non-empty.
+- The number of nodes in the linked list is less than or equal to 10^5.
+- Each node in the linked list contains an integer value.
+- The time complexity of the algorithm should be O(N), where N is the number of nodes in the linked list.
+- The space complexity of the algorithm should be O(1), excluding the space required for the result list.

@@ -8,7 +8,7 @@ class Solution:
             self.val = val
             self.next = next
 
-    def solve(self, head):
+    def solve(self, head: ListNode) -> ListNode:
         if not head:
             return head
 
