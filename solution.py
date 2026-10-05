@@ -8,7 +8,7 @@ class Solution:
             self.val = val
             self.next = next
 
-    def solve(self, head: ListNode) -> ListNode:
+    def solve(self, head):
         if not head:
             return head
 
@@ -16,8 +16,8 @@ class Solution:
         odd_head = ListNode(0)
         even_tail = even_head
         odd_tail = odd_head
-
         current = head
+
         while current:
             if current.val % 2 == 0:
                 even_tail.next = current

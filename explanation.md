@@ -2,40 +2,48 @@
 
 ```
 ## Time Complexity Analysis
-### Big O Notation:
-The time complexity of the given Python solution is O(N), where N is the number of nodes in the linked list.
 
-### Explanation:
-* The loop runs N times because it iterates over each node in the linked list.
-* Inside the loop, the dictionary lookup `if current.val % 2 == 0` takes O(1) time on average because dictionary lookups are constant time operations in Python.
-* Therefore, the total time complexity is N * O(1) = O(N).
+### Big O Notation
+O(N)
+
+### Explanation
+
+The loop `while current` runs `N` times, where `N` is the number of nodes in the linked list. Inside the loop, we have a dictionary lookup `if current.val % 2 == 0`, which takes O(1) time on average.
+
+Since the loop runs `N` times and the dictionary lookup takes O(1) time, the total time complexity is `N * O(1) = O(N)`.
 
 ## Space Complexity Analysis
-### Big O Notation:
-The space complexity of the given Python solution is O(N).
 
-### Explanation:
-* We use a dictionary/hash map to store at most N elements, which are the nodes in the linked list.
+### Big O Notation
+O(N)
+
+### Explanation
+
+We use a dictionary/hash map to store at most `N` elements, where `N` is the number of nodes in the linked list. This is because we are storing the head of the even and odd linked lists, which can have up to `N` elements.
 
 ## Step-by-Step Reconstruction Logic
-### Initialize Variables:
-* `even_head` and `odd_head` are initialized as dummy nodes to serve as the head of the even and odd linked lists, respectively.
-* `even_tail` and `odd_tail` are initialized as the tail of the even and odd linked lists, respectively.
-* `current` is initialized as the head of the input linked list.
 
-### Loop Condition:
-* The loop continues as long as `current` is not `None`.
+### Step 1: Initialize the Class
+We have a class `Solution` with a method `solve` that takes the head of the linked list as input.
 
-### Loop Body:
-* Inside the loop, we check if the value of the current node is even or odd using the modulo operator `%`.
-* If the value is even, we add the current node to the even linked list by updating `even_tail.next` and incrementing `even_tail`.
-* If the value is odd, we add the current node to the odd linked list by updating `odd_tail.next` and incrementing `odd_tail`.
-* We then move on to the next node in the linked list by updating `current` to `current.next`.
+### Step 2: Check for Empty List
+We check if the input list is empty by checking if `head` is `None`. If it is, we return the empty list.
 
-### If/Else Logic:
-* If the complement (i.e., the node with the value that is not the current node's value) is found in the other linked list, we update the `next` pointer of the tail of the even linked list to point to the head of the odd linked list.
-* If the complement is not found, we simply move on to the next node in the linked list.
+### Step 3: Initialize Even and Odd Linked Lists
+We initialize two new linked lists, `even_head` and `odd_head`, with dummy nodes. We also initialize two pointers, `even_tail` and `odd_tail`, to keep track of the end of the even and odd linked lists.
 
-### Return Statement:
-* If no pair is found, we return the `next` node of the `even_head`, which is the head of the even linked list.
+### Step 4: Loop Through the Linked List
+We loop through the input linked list using the `while` loop. Inside the loop, we check if the current node's value is even by using the modulo operator (`current.val % 2 == 0`). If it is, we append it to the even linked list. If not, we append it to the odd linked list.
+
+### Step 5: Append to Even and Odd Linked Lists
+We use the `even_tail` and `odd_tail` pointers to append the current node to the even and odd linked lists.
+
+### Step 6: Connect the Even and Odd Linked Lists
+After the loop, we connect the even and odd linked lists by setting `even_tail.next` to `odd_head.next`.
+
+### Step 7: Return the Merged Linked List
+Finally, we return the merged linked list, starting from `even_head.next`.
+
+### Final Return Statement
+If no pair is found, the function returns the original linked list.
 ```
