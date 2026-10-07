@@ -3,38 +3,30 @@
 # Link: https://www.geeksforgeeks.org/segregate-even-and-odd-elements-in-a-linked-list/
 
 class Solution:
-    class ListNode:
-        def __init__(self, val=0, next=None):
-            self.val = val
-            self.next = next
-
     def solve(self, head):
-        if not head or not head.next:
-            return head
-
-        even_head = None
-        even_tail = None
-        odd_head = head
-        odd_tail = head
-
-        while odd_tail and odd_tail.next:
-            if even_head is None:
-                even_head = odd_tail.next
-                even_tail = even_head
+        if not head:
+            return [], []
+        
+        even_head = even = ListNode(0)
+        odd_head = odd = ListNode(0)
+        
+        current = head
+        while current:
+            if current.val % 2 == 0:
+                even.next = current
+                even = even.next
             else:
-                even_tail.next = odd_tail.next
-                even_tail = even_tail.next
-
-            odd_tail.next = odd_tail.next.next
-            if odd_tail.next:
-                odd_tail = odd_tail.next
-
-        if even_tail:
-            even_tail.next = None
-
-        odd_tail.next = even_head
-
-        return head
+                odd.next = current
+                odd = odd.next
+            current = current.next
+        
+        even.next = None
+        odd.next = None
+        
+        even_list = even_head.next
+        odd_list = odd_head.next
+        
+        return even_list, odd_list
 
 ########################################
 # if __name__ == '__main__':
