@@ -7,30 +7,19 @@
 
 ## Problem Statement
 
-**
+**Title:** Separate Even and Odd Nodes in a Linked List
 
-**Title:** Segregate even and odd nodes in a Linked List
-
-**Description:** Given a Linked List of integers, modify the linked list such that all even numbers appear before all the odd numbers in the modified linked list. Also, preserve the order of even and odd numbers.
+**Description:** Given the head of a linked list, separate the nodes into two lists: one containing all the even nodes and another containing all the odd nodes. The function should return the head of the list containing the even nodes.
 
 **Examples:**
 
-1. Input: `8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9`
-Output: `8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9`
-Explanation: `8, 2, 4, 6` are the even numbers, so they appear first. `17, 15, 9` are the odd numbers, so they appear later.
+1. **Input:** head = Node(17), Node(15), Node(8), Node(9), Node(2), Node(4), Node(6)
+   **Output:** [8, 2, 4, 17, 15, 9, 6]
 
-2. Input: `17 -> 15 -> 9`
-Output: `17 -> 15 -> 9`
-Explanation: There is no even number, so no modification is needed.
+2. **Input:** head = Node(10), Node(20), Node(5), Node(7), Node(15)
+   **Output:** [10, 20, 5, 7, 15]
 
-3. Input: `8 -> 12 -> 10 -> 1 -> 7 -> 4 -> 6`
-Output: `8 -> 12 -> 10 -> 4 -> 6 -> 1 -> 7`
-Explanation: `8, 12, 10, 4, 6` are the even numbers, so they appear first. `1, 7` are the odd numbers, so they appear later.
+3. **Input:** head = Node(1), Node(3), Node(5), Node(7)
+   **Output:** [1, 3, 5, 7]
 
-**Constraints:**
-
-* The input linked list may contain integers.
-* The output linked list should have all even numbers before all odd numbers.
-* The order of even and odd numbers should be preserved.
-
-Note: The constraints are based on the problem description and the examples provided.
+**Constraints:** The input linked list will contain only positive integers. The length of the linked list will be at most 10^5.

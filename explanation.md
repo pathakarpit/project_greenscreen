@@ -1,32 +1,39 @@
 # Professor's Analysis: Segregate even and odd Elements in a Linked List
 
+```
 ## Time Complexity Analysis
+### Big O Notation
+The time complexity of the given solution is O(N), where N is the number of nodes in the linked list.
 
-* The Big O notation for time complexity is O(N), where N is the number of nodes in the linked list.
-* The loop runs N times because it iterates over each node in the linked list once.
-* The dictionary lookup `if x in dict` is not present in this code, but if we were to use a dictionary to store the values, the lookup would take O(1) time on average.
-* Therefore, N * O(1) = O(N).
+### Step-by-Step Explanation
+* The loop runs N times, as it iterates over each node in the linked list.
+* Inside the loop, we perform a dictionary lookup `if current.value % 2 == 0`, which takes O(1) time on average.
+* Therefore, the total time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
+### Big O Notation
+The space complexity of the given solution is O(N), where N is the number of nodes in the linked list.
 
-* The Big O notation for space complexity is O(N), where N is the number of nodes in the linked list.
-* We use a dictionary/hash map to store at most N elements, which is the maximum number of nodes in the linked list.
+### Step-by-Step Explanation
+* We use a dictionary/hash map (in this case, `even` and `odd` pointers) to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
+### Initial Setup
+* Initialize the `Solution` class with the `solve` method.
+* Initialize two dummy nodes `odd_head` and `even_head` to simplify the code and avoid edge cases.
+* Initialize two pointers `odd` and `even` to `odd_head` and `even_head` respectively.
 
-* Initialize three variables:
-	+ `even_dummy`: a dummy node to store the even-numbered nodes
-	+ `odd_dummy`: a dummy node to store the odd-numbered nodes
-	+ `even_tail`: a pointer to the last even-numbered node
-	+ `odd_tail`: a pointer to the last odd-numbered node
-	+ `current`: a pointer to the current node
-* Initialize the `even_tail` and `odd_tail` pointers to the `even_dummy` and `odd_dummy` nodes, respectively.
-* Start a loop that runs N times, where N is the number of nodes in the linked list.
+### Loop Iteration
+* Start a while loop that runs N times, where N is the number of nodes in the linked list.
 * Inside the loop:
 	+ Check if the current node's value is even by using the modulo operator (`current.value % 2 == 0`).
-	+ If the value is even, set the `even_tail.next` pointer to the current node and move the `even_tail` pointer to the next node.
-	+ If the value is odd, set the `odd_tail.next` pointer to the current node and move the `odd_tail` pointer to the next node.
-	+ Move the `current` pointer to the next node.
-* After the loop ends, set the `even_tail.next` pointer to the `odd_dummy.next` pointer to merge the even-numbered nodes with the odd-numbered nodes.
-* Set the `odd_tail.next` pointer to `None` to terminate the odd-numbered nodes.
-* Return the `even_dummy.next` pointer, which points to the merged list of even-numbered and odd-numbered nodes.
+	+ If the value is even, append it to the `even` linked list.
+	+ If the value is odd, append it to the `odd` linked list.
+* Update the `current` pointer to point to the next node in the linked list.
+
+### Separation of Odd and Even Linked Lists
+* After the loop, separate the odd and even linked lists by setting `even.next` to `odd_head.next` and `odd.next` to `None`.
+
+### Return Statement
+* Return the `even_head.next` node, which is the head of the modified linked list.
+```
