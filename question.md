@@ -7,28 +7,24 @@
 
 ## Problem Statement
 
-Title: Separate Even and Odd Nodes in a Linked List
+**Title:** Segregate even and odd nodes in a Linked List
 
-Description:
-Given the head of a singly linked list where each node contains an integer, write a function to separate the nodes containing even numbers from the nodes containing odd numbers, preserving the original order of the nodes.
+**Description:** Given a Linked List of integers, The task is to modify the linked list such that all even numbers appear before all the odd numbers in the modified linked list. Also, preserve the order of even and odd numbers.
 
-Examples:
+**Examples:**
 
-1. Input: 17->15->8->9->2->4->6
-   Output: 8->2->4->6->17->15->9
+1. Input: 17->15->8->12->10->5->4->1->7->6
+   Output: 8->12->10->4->6->17->15->9->7
+   Explanation: 8,2,4,6 are the even numbers so they appear first and 17,15,9 are odd numbers that appear later.
 
-2. Input: 10->20->30->40->50
-   Output: 10->20->30->40->50
+2. Input: 9->5->2->4->6
+   Output: 2->4->6->9->5
+   Explanation: There is no even number. So no need for modification.
 
-3. Input: 1->3->5->7->9
-   Output: 1->3->5->7->9
+3. Input: 8->10->12->15->17->20
+   Output: 8->10->12->20->15->17
+   Explanation: 8,10,12,20 are the even numbers so they appear first and 15,17 are odd numbers that appear later.
 
-Constraints:
+**Constraints:** 1 <= N <= 10^5 (where N is the number of nodes in the linked list)
 
-*   The input linked list is a singly linked list.
-*   Each node in the linked list contains an integer.
-*   The function should separate the nodes containing even numbers from the nodes containing odd numbers, preserving the original order of the nodes.
-*   The time complexity of the function should be O(n), where n is the number of nodes in the linked list.
-*   The space complexity of the function should be O(1), as it should only use a constant amount of extra memory.
-
-Note: The input linked list can be represented as a sequence of integers, with each integer separated by an arrow (->) indicating the next node in the list. The output linked list is also represented in the same format.
+Note: The constraints are assumed based on the context of a standard linked list problem. If specific constraints are not provided, it is assumed that the linked list can have up to 10^5 nodes.

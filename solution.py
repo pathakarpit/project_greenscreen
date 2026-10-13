@@ -12,25 +12,22 @@ class Solution:
         if not head:
             return head
 
-        even_dummy = ListNode(0)
-        odd_dummy = ListNode(0)
-        even_tail = even_dummy
-        odd_tail = odd_dummy
-        current = head
+        even_head = even = ListNode(0)
+        odd_head = odd = ListNode(0)
 
-        while current:
-            if current.val % 2 == 0:
-                even_tail.next = current
-                even_tail = even_tail.next
+        while head:
+            if head.val % 2 == 0:
+                even.next = head
+                even = even.next
             else:
-                odd_tail.next = current
-                odd_tail = odd_tail.next
-            current = current.next
+                odd.next = head
+                odd = odd.next
+            head = head.next
 
-        even_tail.next = odd_dummy.next
-        odd_tail.next = None
+        even.next = odd_head.next
+        odd.next = None
 
-        return even_dummy.next
+        return even_head.next
 
 ########################################
 # if __name__ == '__main__':
