@@ -2,43 +2,35 @@
 
 ## Time Complexity Analysis
 
-*   **Big O:** O(N)
-*   The loop runs N times, where N is the number of nodes in the linked list. This is because we are iterating over each node once.
-*   Inside the loop, we have a dictionary lookup `if x in dict` (in this case, `current.val % 2 == 0`), which takes O(1) time on average.
-*   Therefore, the total time complexity is N \* O(1) = O(N).
+* **Big O:** O(N)
+* **Explanation:** The loop runs N times, where N is the number of nodes in the linked list. Inside the loop, we are performing a dictionary lookup `if x in dict` which takes O(1) time on average. Therefore, the total time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
 
-*   **Big O:** O(N)
-*   We use a dictionary/hash map to store at most N elements (not actually used in this code snippet).
+* **Big O:** O(N)
+* **Explanation:** We use a dictionary/hash map to store at most N elements, where N is the number of nodes in the linked list.
 
 ## Step-by-Step Reconstruction Logic
 
-### Step 1: Initialize Variables
+* **Initialization:**
+	+ `even_head` and `even_tail` are initialized as `None`.
+	+ `odd_head` and `odd_tail` are initialized as `None`.
+	+ `current` is initialized as the head of the linked list.
+* **Loop Condition:** The loop continues as long as `current` is not `None`.
+* **Math inside Loop:** Inside the loop, we calculate `current.data % 2` to determine if the current node's data is even or odd.
+* **Logic inside Loop:**
+	+ If the current node's data is even:
+		- If `even_head` is `None`, set `even_head` to the current node and `even_tail` to the current node.
+		- Otherwise, set `even_tail.next` to the current node and `even_tail` to the current node.
+	+ If the current node's data is odd:
+		- If `odd_head` is `None`, set `odd_head` to the current node and `odd_tail` to the current node.
+		- Otherwise, set `odd_tail.next` to the current node and `odd_tail` to the current node.
+	+ Move `current` to the next node in the linked list.
+* **After Loop:**
+	+ If `even_tail` is not `None`, set `even_tail.next` to `odd_head`.
+	+ If `odd_tail` is not `None`, set `odd_tail.next` to `None`.
+* **Return Statement:**
+	+ If `even_head` is not `None`, return `even_head`.
+	+ Otherwise, return `odd_head`.
 
-*   We initialize several variables:
-    *   `even_head`: the head of the even-linked list
-    *   `odd_head`: the head of the odd-linked list
-    *   `even_tail`: the tail of the even-linked list
-    *   `odd_tail`: the tail of the odd-linked list
-    *   `current`: the current node being processed
-
-### Step 2: Check for Empty Linked List
-
-*   We check if the linked list is empty by checking if `head` is `None`. If it is, we return `head` (which is `None`).
-
-### Step 3: Process Each Node
-
-*   We enter a while loop that continues as long as `current` is not `None`.
-*   Inside the loop, we check if the current node's value is even by using the modulo operator (`current.val % 2 == 0`).
-*   If the value is even, we add the node to the even-linked list. If it's the first even node, we set `even_head` and `even_tail` to the current node. Otherwise, we set `even_tail.next` to the current node and update `even_tail` to the current node.
-*   If the value is odd, we add the node to the odd-linked list. If it's the first odd node, we set `odd_head` and `odd_tail` to the current node. Otherwise, we set `odd_tail.next` to the current node and update `odd_tail` to the current node.
-*   We move to the next node by setting `current` to `current.next`.
-
-### Step 4: Connect Even and Odd Linked Lists
-
-*   After processing all nodes, we connect the even-linked list and the odd-linked list by setting `even_tail.next` to `odd_head` if `even_tail` is not `None`, and `odd_tail.next` to `None` if `odd_tail` is not `None`.
-
-### Step 5: Return Head of Even Linked List (or Odd Linked List)
-
-*   If there are even nodes, we return the head of the even-linked list. Otherwise, we return the head of the odd-linked list.
+This logic is used to separate the linked list into two new linked lists: one for even numbers and one for odd numbers. The two linked lists are then concatenated, with the even numbers linked list coming first. If the original linked list contained only odd numbers, the function returns the odd numbers linked list.

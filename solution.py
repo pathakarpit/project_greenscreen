@@ -4,18 +4,17 @@
 
 class Solution:
     def solve(self, head):
-        if not head:
+        if not head or not head.next:
             return head
         
         even_head = None
-        odd_head = None
         even_tail = None
+        odd_head = None
         odd_tail = None
-        
         current = head
         
         while current:
-            if current.val % 2 == 0:
+            if current.data % 2 == 0:
                 if not even_head:
                     even_head = current
                     even_tail = even_head
