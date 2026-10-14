@@ -7,25 +7,23 @@
 
 ## Problem Statement
 
-**Title:** Move Even Values to New List
+**Title:** Move Even Numbers to the Front in Linked List
 
-**Description:** The function `divide` will move all even value nodes from the original list to the result list, and the result list will be returned.
+**Description:** You are given a linked list with integers. You need to reorder the linked list such that all even numbers come first, and the order of the even numbers and odd numbers is maintained.
 
 **Examples:**
 
-* Input: `[2, 1, 4, 3, 5, 6, 7]`
-Output: `[2, 4, 6]`
+1. Input: `1 -> 3 -> 2 -> 4 -> 5` 
+Output: `2 -> 4 -> 1 -> 3 -> 5`
 
-* Input: `[1, 3, 5, 7]`
-Output: `[]`
+2. Input: `6 -> 4 -> 7 -> 9 -> 3` 
+Output: `4 -> 6 -> 7 -> 9 -> 3`
 
-* Input: `[2, 4, 6, 8, 10]`
-Output: `[2, 4, 6, 8, 10]`
+3. Input: `10 -> 5 -> 20 -> 15` 
+Output: `10 -> 20 -> 5 -> 15`
 
-**Constraints:**
-
-* The input list will only contain integers.
-* The input list will not be empty.
-* The length of the input list will not exceed 10^5.
-
-**Note:** This problem assumes that the input list is a linked list or an array, and that the `divide` function is designed to modify the original list. If the input list is a linked list, the `divide` function will move the even value nodes from the original list to the result list, and then return the result list. If the input list is an array, the `divide` function will create a new array containing the even value nodes and return it.
+**Constraints:** 
+- The linked list will not be empty. 
+- The linked list will only contain integers. 
+- All even numbers are represented by an integer value in the range [2, 10^5]. 
+- All odd numbers are represented by an integer value in the range [1, 10^5].

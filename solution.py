@@ -3,9 +3,34 @@
 # Link: https://www.geeksforgeeks.org/segregate-even-and-odd-elements-in-a-linked-list/
 
 class Solution:
-    def solve(self, nums):
-        even_nums = [num for num in nums if num % 2 == 0]
-        return even_nums
+    class ListNode:
+        def __init__(self, val=0, next=None):
+            self.val = val
+            self.next = next
+
+    def solve(self, head):
+        if not head:
+            return head
+
+        even_head = ListNode(0)
+        even_tail = even_head
+        odd_head = ListNode(0)
+        odd_tail = odd_head
+        current = head
+
+        while current:
+            if current.val % 2 == 0:
+                even_tail.next = current
+                even_tail = even_tail.next
+            else:
+                odd_tail.next = current
+                odd_tail = odd_tail.next
+            current = current.next
+
+        even_tail.next = odd_head.next
+        odd_tail.next = None
+
+        return even_head.next
 
 ########################################
 # if __name__ == '__main__':
