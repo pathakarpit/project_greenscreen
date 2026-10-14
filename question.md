@@ -7,23 +7,25 @@
 
 ## Problem Statement
 
-Title: Segregate even and odd nodes in a Linked List
+**Title:** Move Even Values to New List
 
-Description:
-Given the head of a singly linked list, segregate all even nodes to the end of the list while maintaining their original order.
+**Description:** The function `divide` will move all even value nodes from the original list to the result list, and the result list will be returned.
 
-Examples:
+**Examples:**
 
-1. Input: 17->15->8->9->2->4->6
-   Output: 17->15->9->3->5->7->11->13->19
+* Input: `[2, 1, 4, 3, 5, 6, 7]`
+Output: `[2, 4, 6]`
 
-2. Input: 2->4->6->8
-   Output: 2->4->6->8
+* Input: `[1, 3, 5, 7]`
+Output: `[]`
 
-3. Input: 1->3->5
-   Output: 1->3->5
+* Input: `[2, 4, 6, 8, 10]`
+Output: `[2, 4, 6, 8, 10]`
 
-Constraints:
-- The linked list contains at least one node.
-- Each node's data is an integer.
-- The number of nodes in the linked list is less than or equal to 10^5.
+**Constraints:**
+
+* The input list will only contain integers.
+* The input list will not be empty.
+* The length of the input list will not exceed 10^5.
+
+**Note:** This problem assumes that the input list is a linked list or an array, and that the `divide` function is designed to modify the original list. If the input list is a linked list, the `divide` function will move the even value nodes from the original list to the result list, and then return the result list. If the input list is an array, the `divide` function will create a new array containing the even value nodes and return it.
