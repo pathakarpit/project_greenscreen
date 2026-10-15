@@ -7,23 +7,24 @@
 
 ## Problem Statement
 
-**Title:** Move Even Numbers to the Front in Linked List
+```
+Title: Divide Linked List into Even and Odd Nodes
 
-**Description:** You are given a linked list with integers. You need to reorder the linked list such that all even numbers come first, and the order of the even numbers and odd numbers is maintained.
+Description: Given a linked list, divide it into two separate lists, one containing even nodes and the other containing odd nodes.
 
-**Examples:**
+Examples:
+1. Input: 1 -> 2 -> 3 -> 4 -> 5
+   Output: even: 2 -> 4, odd: 1 -> 3 -> 5
 
-1. Input: `1 -> 3 -> 2 -> 4 -> 5` 
-Output: `2 -> 4 -> 1 -> 3 -> 5`
+2. Input: 10 -> 20 -> 30 -> 40
+   Output: even: 10 -> 20 -> 30 -> 40, odd: NULL
 
-2. Input: `6 -> 4 -> 7 -> 9 -> 3` 
-Output: `4 -> 6 -> 7 -> 9 -> 3`
+3. Input: 1 -> 3 -> 5 -> 7
+   Output: even: NULL, odd: 1 -> 3 -> 5 -> 7
 
-3. Input: `10 -> 5 -> 20 -> 15` 
-Output: `10 -> 20 -> 5 -> 15`
-
-**Constraints:** 
-- The linked list will not be empty. 
-- The linked list will only contain integers. 
-- All even numbers are represented by an integer value in the range [2, 10^5]. 
-- All odd numbers are represented by an integer value in the range [1, 10^5].
+Constraints:
+1. The input linked list may be empty.
+2. The linked list contains nodes with integer data.
+3. Each node in the linked list has a unique integer value.
+4. The linked list is singly linked.
+```

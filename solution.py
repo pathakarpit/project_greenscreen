@@ -8,29 +8,39 @@ class Solution:
             self.val = val
             self.next = next
 
-    def solve(self, head):
+    def solve(self, head: ListNode):
         if not head:
-            return head
+            return None, None
 
-        even_head = ListNode(0)
-        even_tail = even_head
-        odd_head = ListNode(0)
-        odd_tail = odd_head
+        even_head = None
+        even_tail = None
+        odd_head = None
+        odd_tail = None
+
         current = head
-
         while current:
             if current.val % 2 == 0:
-                even_tail.next = current
-                even_tail = even_tail.next
+                if not even_head:
+                    even_head = current
+                    even_tail = even_head
+                else:
+                    even_tail.next = current
+                    even_tail = current
             else:
-                odd_tail.next = current
-                odd_tail = odd_tail.next
+                if not odd_head:
+                    odd_head = current
+                    odd_tail = odd_head
+                else:
+                    odd_tail.next = current
+                    odd_tail = current
             current = current.next
 
-        even_tail.next = odd_head.next
-        odd_tail.next = None
+        if even_tail:
+            even_tail.next = None
+        if odd_tail:
+            odd_tail.next = None
 
-        return even_head.next
+        return even_head, odd_head
 
 ########################################
 # if __name__ == '__main__':
