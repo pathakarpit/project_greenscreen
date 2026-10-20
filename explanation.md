@@ -2,28 +2,30 @@
 
 ## Time Complexity Analysis
 
-* The Big O time complexity of this algorithm is O(N).
-* The loop runs N times, where N is the length of the input list `nums`. This is because the loop condition `while current_num < target` will continue to iterate until `current_num` reaches the target value.
-* Within the loop, the dictionary lookup `if x in dict` takes O(1) time on average. This is because dictionary lookups in Python are implemented as hash table lookups, which have an average time complexity of O(1).
-* Therefore, the overall time complexity is N * O(1) = O(N).
+*   The Big O of this solution is O(N).
+*   The loop runs N times, where N is the number of nodes in the linked list.
+*   Inside the loop, we use a dictionary lookup `if current.val % 2 == 0` which takes O(1) time on average.
+*   Therefore, the total time complexity is N \* O(1) = O(N).
 
 ## Space Complexity Analysis
 
-* The Big O space complexity of this algorithm is O(N).
-* We use a dictionary/hash map to store at most N elements, where N is the length of the input list `nums`. This is because we are storing all the elements from the input list in the dictionary.
+*   The Big O of this solution is O(N).
+*   We use a dictionary/hash map to store at most N elements, but in this case, we are using a constant amount of extra space to store the `even_head`, `odd_head`, `even_tail`, and `odd_tail` pointers.
 
 ## Step-by-Step Reconstruction Logic
 
-* Initialize an empty dictionary `dict` to store the elements from the input list `nums`.
-* Initialize two variables: `target` to store the target sum, and `current_num` to store the current number being processed.
-* Initialize a variable `result` to store the index of the complement (if found).
-* Loop through the input list `nums`:
-	+ Initialize `current_num` to the current element being processed.
-	+ Check if the complement (`target - current_num`) is already present in the dictionary:
-		- If it is, update the `result` variable with the index of the complement.
-		- If it is not, add the current element to the dictionary with its index as the key.
-	+ Increment `current_num` by 1 and repeat the loop until `current_num` reaches the target value.
-* If a pair is found (i.e., the complement is present in the dictionary), return the indices of the pair.
-* If no pair is found, return an empty list.
-
-Note: The specific math (`target - current_num`) used to find the complement is a simple subtraction operation. The `if/else` logic checks if the complement is present in the dictionary, and if it is, it updates the `result` variable. If it is not, it adds the current element to the dictionary. The final return statement returns the indices of the pair (if found) or an empty list (if no pair is found).
+*   Initialize the following variables:
+    *   `even_head`: a `ListNode` with value 0, which will be the head of the even-numbered nodes
+    *   `odd_head`: a `ListNode` with value 0, which will be the head of the odd-numbered nodes
+    *   `even_tail`: the `even_head` node, which will keep track of the last even-numbered node
+    *   `odd_tail`: the `odd_head` node, which will keep track of the last odd-numbered node
+    *   `current`: the current node being processed, initialized to the head of the linked list
+*   Loop through the linked list until we reach the end (i.e., `current` is `None`):
+    *   Inside the loop:
+        1.  Check if the current node's value is even by using the modulo operator (`current.val % 2 == 0`).
+        2.  If the current node's value is even, add it to the end of the even-numbered nodes list by setting `even_tail.next` to the current node and updating `even_tail` to the current node.
+        3.  If the current node's value is odd, add it to the end of the odd-numbered nodes list by setting `odd_tail.next` to the current node and updating `odd_tail` to the current node.
+        4.  Move to the next node in the linked list by setting `current` to `current.next`.
+*   After the loop, set the `next` pointer of the last even-numbered node to `None` to indicate the end of the even-numbered nodes list.
+*   Set the `next` pointer of the last odd-numbered node to the `next` pointer of the first even-numbered node (`even_head.next`) to link the odd-numbered nodes list to the even-numbered nodes list.
+*   Return the `next` pointer of the `odd_head` node, which is the head of the modified linked list.
