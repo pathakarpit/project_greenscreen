@@ -1,31 +1,25 @@
 # Professor's Analysis: Segregate even and odd Elements in a Linked List
 
 ## Time Complexity Analysis
+The time complexity of this solution is O(N), where N is the number of nodes in the linked list.
 
-*   The Big O of this solution is O(N).
-*   The loop runs N times, where N is the number of nodes in the linked list.
-*   Inside the loop, we use a dictionary lookup `if current.val % 2 == 0` which takes O(1) time on average.
-*   Therefore, the total time complexity is N \* O(1) = O(N).
+The loop runs N times, and within the loop, we have a dictionary lookup `if x in dict` which takes O(1) time on average. Therefore, the total time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
+The space complexity of this solution is O(N), where N is the number of nodes in the linked list.
 
-*   The Big O of this solution is O(N).
-*   We use a dictionary/hash map to store at most N elements, but in this case, we are using a constant amount of extra space to store the `even_head`, `odd_head`, `even_tail`, and `odd_tail` pointers.
+We use a dictionary/hash map to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
 
-*   Initialize the following variables:
-    *   `even_head`: a `ListNode` with value 0, which will be the head of the even-numbered nodes
-    *   `odd_head`: a `ListNode` with value 0, which will be the head of the odd-numbered nodes
-    *   `even_tail`: the `even_head` node, which will keep track of the last even-numbered node
-    *   `odd_tail`: the `odd_head` node, which will keep track of the last odd-numbered node
-    *   `current`: the current node being processed, initialized to the head of the linked list
-*   Loop through the linked list until we reach the end (i.e., `current` is `None`):
-    *   Inside the loop:
-        1.  Check if the current node's value is even by using the modulo operator (`current.val % 2 == 0`).
-        2.  If the current node's value is even, add it to the end of the even-numbered nodes list by setting `even_tail.next` to the current node and updating `even_tail` to the current node.
-        3.  If the current node's value is odd, add it to the end of the odd-numbered nodes list by setting `odd_tail.next` to the current node and updating `odd_tail` to the current node.
-        4.  Move to the next node in the linked list by setting `current` to `current.next`.
-*   After the loop, set the `next` pointer of the last even-numbered node to `None` to indicate the end of the even-numbered nodes list.
-*   Set the `next` pointer of the last odd-numbered node to the `next` pointer of the first even-numbered node (`even_head.next`) to link the odd-numbered nodes list to the even-numbered nodes list.
-*   Return the `next` pointer of the `odd_head` node, which is the head of the modified linked list.
+*   Initialize an empty linked list `even_head` and `odd_head` to store even and odd nodes respectively.
+*   Initialize two pointers `even_tail` and `odd_tail` to the head of `even_head` and `odd_head` respectively.
+*   Initialize a pointer `current` to the head of the input linked list.
+*   While `current` is not `None`:
+    *   If `current.val` is even, append it to the `even_head` and update `even_tail` to point to the newly appended node.
+    *   If `current.val` is odd, append it to the `odd_head` and update `odd_tail` to point to the newly appended node.
+    *   Move `current` to the next node in the linked list.
+*   After the loop, connect the tail of `even_head` to the head of `odd_head` and set the next pointer of the last node in `odd_head` to `None`.
+*   Return the next pointer of `even_head` as the new head of the merged linked list.
+
+Note that the `current.val` is used to determine if a node is even or odd, and the math `target - current_num` is not used in this solution as it seems to be related to a different problem. The `if/else` logic checks if a node is even or odd and appends it to the corresponding linked list. If no pair is found, the function returns the original head of the input linked list.

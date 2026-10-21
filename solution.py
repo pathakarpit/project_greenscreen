@@ -3,6 +3,11 @@
 # Link: https://www.geeksforgeeks.org/segregate-even-and-odd-elements-in-a-linked-list/
 
 class Solution:
+    class ListNode:
+        def __init__(self, val=0, next=None):
+            self.val = val
+            self.next = next
+
     def solve(self, head: ListNode) -> ListNode:
         if not head:
             return head
@@ -22,10 +27,10 @@ class Solution:
                 odd_tail = odd_tail.next
             current = current.next
 
-        even_tail.next = None
-        odd_tail.next = even_head.next
+        even_tail.next = odd_head.next
+        odd_tail.next = None
 
-        return odd_head.next
+        return even_head.next
 
 ########################################
 # if __name__ == '__main__':
