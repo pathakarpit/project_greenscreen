@@ -7,23 +7,28 @@
 
 ## Problem Statement
 
-**Title:** Segregate Even and Odd Nodes in a Linked List
+**Title:** Segregate even and odd nodes in a Linked List
 
-**Description:** Given the head of a linked list, segregate the even nodes from the odd nodes and rearrange the list so that all even numbers appear before all the odd numbers.
+**Description:** Given a singly linked list, rearrange the list in place so that all nodes containing even values appear before nodes containing odd values. Return the head of the modified linked list. Note: The relative order of the even nodes and the odd nodes should remain unchanged.
 
 **Examples:**
 
-1. Input: `1 -> 2 -> 3 -> 4`
-   Output: `2 -> 4 -> 1 -> 3`
+Input: 8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9
+Output: 8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9
 
-2. Input: `1 -> 3 -> 5 -> 7`
-   Output: `1 -> 3 -> 5 -> 7`
+Explanation: Since 8, 2, 4, and 6 are even, they appear first in the list, followed by the odd numbers 17, 15, and 9.
 
-3. Input: `2 -> 4 -> 6 -> 8`
-   Output: `2 -> 4 -> 6 -> 8`
+Input: 1 -> 3 -> 5 -> 7
+Output: 1 -> 3 -> 5 -> 7
 
-**Constraints:** 
-- The linked list is non-empty.
-- The nodes contain integers.
-- The integers range from -2^31 to 2^31 - 1.
-- The linked list does not contain cycles.
+Explanation: There is no even number, so no modification is needed.
+
+**Constraints:**
+
+* The linked list contains only integers.
+* The list may be empty.
+
+**Constraints (Invented):**
+
+* The number of nodes in the list is between 1 and 10^5 (inclusive).
+* The integers in the list are within the range -10^5 to 10^5 (inclusive).
