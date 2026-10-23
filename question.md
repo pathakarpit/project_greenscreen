@@ -7,28 +7,22 @@
 
 ## Problem Statement
 
-**Title:** Segregate even and odd nodes in a Linked List
-
-**Description:** Given a singly linked list, rearrange the list in place so that all nodes containing even values appear before nodes containing odd values. Return the head of the modified linked list. Note: The relative order of the even nodes and the odd nodes should remain unchanged.
+**Title:** Find the Median of Three Numbers
+**Description:** 
+Given three integers, A, B, and C, find the median of these three numbers. The median is the middle value when the numbers are sorted in ascending order.
 
 **Examples:**
 
-Input: 8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9
-Output: 8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9
+1. Input: A = 3, B = 1, C = 2
+Output: 2
 
-Explanation: Since 8, 2, 4, and 6 are even, they appear first in the list, followed by the odd numbers 17, 15, and 9.
+2. Input: A = 5, B = 3, C = 9
+Output: 5
 
-Input: 1 -> 3 -> 5 -> 7
-Output: 1 -> 3 -> 5 -> 7
-
-Explanation: There is no even number, so no modification is needed.
+3. Input: A = 1, B = 2, C = 3
+Output: 2
 
 **Constraints:**
 
-* The linked list contains only integers.
-* The list may be empty.
-
-**Constraints (Invented):**
-
-* The number of nodes in the list is between 1 and 10^5 (inclusive).
-* The integers in the list are within the range -10^5 to 10^5 (inclusive).
+* A, B, and C are integers
+* The input values are between 1 and 10^5 (1 <= A, B, C <= 10^5)
