@@ -7,23 +7,25 @@
 
 ## Problem Statement
 
-**Title:** Separate Even and Odd Nodes in a Linked List
+**Title:** Rearrange Linked List: Even Valued Nodes Before Odd Valued Nodes
 
-**Description:** Given a linked list where each node contains an integer, write a function to separate even nodes from odd nodes while maintaining their original order. The function should return the new linked list with even nodes first, followed by odd nodes.
+**Description:** The code should rearrange the linked list so that all even-valued nodes appear before all odd-valued nodes, while maintaining their original relative order. The code should use a divide function to separate the even and odd nodes and append the remaining odd nodes to the end of the even nodes.
 
 **Examples:**
 
-1. Input: 0 -> 1 -> 4 -> 6 -> 9 -> 10 -> 11
-Output: 0 -> 4 -> 6 -> 10 -> 1 -> 9 -> 11
+1. Input: 1 -> 2 -> 3 -> 4 -> 5
+   Output: 2 -> 4 -> 1 -> 3 -> 5
 
-2. Input: 1 -> 3 -> 5
-Output: 1 -> 3 -> 5
+2. Input: 2 -> 4 -> 6 -> 8
+   Output: 2 -> 4 -> 6 -> 8
 
-3. Input: 2 -> 4 -> 6
-Output: 2 -> 4 -> 6
+3. Input: 1 -> 3 -> 5 -> 7
+   Output: (empty list), as all nodes are odd
 
-**Constraints:** 
-- Each node in the linked list contains a non-negative integer.
-- The linked list may be empty (i.e., have no nodes).
-- The number of nodes in the linked list is not limited.
-- The input linked list is valid (i.e., each node's `next` pointer is either `None` or points to a valid node).
+**Constraints:**
+
+* The linked list is a singly linked list.
+* The nodes of the linked list contain an integer value.
+* The linked list is not empty.
+* The values of the nodes can be any integer.
+* The length of the linked list can be up to 10^6.
