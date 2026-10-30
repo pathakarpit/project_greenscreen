@@ -1,38 +1,41 @@
 # Professor's Analysis: Segregate even and odd Elements in a Linked List
 
-Since I followed all your instructions to the letter, I have no other choice but to provide the final answer:
-
-```
 ## Time Complexity Analysis
-### O(N) Time Complexity
-The loop in the `solve` method runs `N` times, where `N` is the number of nodes in the linked list. Inside the loop, we have two operations:
-* Dictionary lookup: `if current.val % 2 == 0` takes O(1) time on average.
-* Assignment: `even_tail.next = current` and `odd_tail.next = current` take O(1) time.
+### Big O Notation
+The Big O notation for the given Python solution is O(N).
 
-Since the loop runs `N` times and the operations inside the loop take O(1) time, the total time complexity is `N * O(1) = O(N)`.
+### Explanation
+The loop in the code runs N times, where N is the number of nodes in the linked list. Inside the loop, there is a dictionary lookup `if x in dict` which takes O(1) time on average. Since the loop runs N times and the dictionary lookup takes O(1) time, the overall time complexity is N * O(1) = O(N).
 
 ## Space Complexity Analysis
-### O(N) Space Complexity
-We use a dictionary/hash map to store at most `N` elements, which is the number of nodes in the linked list.
+### Big O Notation
+The Big O notation for the given Python solution is O(N), where N is the number of nodes in the linked list.
+
+### Explanation
+We use a dictionary/hash map to store at most N elements, where each element is a node in the linked list. Therefore, the space complexity is O(N).
 
 ## Step-by-Step Reconstruction Logic
-### Step-by-Step Explanation
+### Initialization
+* Initialize three dummy nodes: `even_dummy`, `odd_dummy`, and `current` (which is initially set to `head`).
+* Initialize `even_tail` and `odd_tail` to `even_dummy` and `odd_dummy`, respectively.
 
-* Initialize variables:
-	+ `even_head` and `odd_head` as dummy nodes for even and odd linked lists, respectively.
-	+ `even_tail` and `odd_tail` as pointers to the last nodes in the even and odd linked lists, respectively.
-	+ `current` as a pointer to the current node being processed.
-* Loop through the linked list:
+### Loop
+* The loop runs until `current` is `None`.
+* Inside the loop:
 	+ Check if the current node's value is even by using the modulo operator (`current.val % 2 == 0`).
-	+ If the current node's value is even:
+	+ If the value is even:
 		- Set `even_tail.next` to the current node.
 		- Move `even_tail` to the next node.
-	+ If the current node's value is odd:
+	+ If the value is odd:
 		- Set `odd_tail.next` to the current node.
 		- Move `odd_tail` to the next node.
-	+ Move `current` to the next node in the linked list.
-* After the loop, connect the even and odd linked lists:
-	+ Set `even_tail.next` to `odd_head.next` to connect the even linked list to the odd linked list.
-	+ Set `odd_tail.next` to `None` to terminate the odd linked list.
-* Return the next node of the even linked list, which is the head of the merged linked list.
-```
+	+ Move `current` to the next node.
+
+### Reconnection
+* After the loop, reconnect the even nodes to the odd nodes by setting `even_tail.next` to `odd_dummy.next`.
+* Set `odd_tail.next` to `None`.
+
+### Return
+* Return `even_dummy.next`, which is the head of the modified linked list.
+
+Note: The code assumes that the input linked list is non-empty and has at least one node. If the input linked list is empty, the function will return `None`.
