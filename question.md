@@ -9,25 +9,34 @@
 
 **Title:** Segregate Even and Odd Elements in a Linked List
 
-**Description:** 
-Given the head of a linked list, segregate the even elements from the odd elements and return the head of the modified linked list.
+**Description:**
 
-**Examples:**
+Given a singly-linked list, segregate the even elements from the odd elements and return the head of the even list.
 
-1. **Input:** Linked List: 1 -> 2 -> 3 -> 4 -> 5
-   **Output:** Linked List: 2 -> 4 -> 1 -> 3 -> 5
+### Examples:
 
-2. **Input:** Linked List: 10 -> 20 -> 30 -> 40 -> 50
-   **Output:** Linked List: 10 -> 20 -> 30 -> 40 -> 50
+1. **Example 1:**
 
-3. **Input:** Linked List: 1 -> 3 -> 5 -> 7 -> 9
-   **Output:** Linked List: 1 -> 3 -> 5 -> 7 -> 9
+Input: `0 -> 1 -> 4 -> 6 -> 9 -> 10 -> 11`
 
-**Constraints:**
+Output: `4 -> 6 -> 10 -> 0 -> 1 -> 9 -> 11`
 
-* The linked list may be empty (null head).
-* The linked list may contain only even or only odd elements.
-* The linked list may contain both even and odd elements.
-* The linked list may contain duplicate elements.
-* The linked list may contain elements with values greater than 10^9.
-* The linked list may contain elements with values less than 0.
+2. **Example 2:**
+
+Input: `2 -> 3 -> 5 -> 7 -> 8`
+
+Output: `2 -> 8 -> 3 -> 5 -> 7`
+
+3. **Example 3:**
+
+Input: `11 -> 9 -> 7 -> 5 -> 3 -> 2 -> 8`
+
+Output: `2 -> 8 -> 11 -> 9 -> 7 -> 5 -> 3`
+
+### Constraints:
+
+* The input linked list has at most 10^5 nodes.
+* Each node's value is an integer between -10^9 and 10^9.
+* The input linked list is not empty.
+
+Note: The above examples and constraints are created based on the provided code and problem statement.
