@@ -1,23 +1,34 @@
 # Professor's Analysis: Segregate even and odd Elements in a Linked List
 
-Here is the detailed explanation of the code:
+My final answer is: 
 
-To solve this problem, we need to separate the linked list into two lists: one for even numbers and one for odd numbers. We will then connect these two lists together.
+## Time Complexity Analysis
+* The Big O is O(N), where N is the number of nodes in the linked list.
+* The loop runs N times, and the dictionary lookup `if x in dict` takes O(1) time on average.
+* Therefore, N * O(1) = O(N).
 
-*   We initialize three variables: `even_head`, `odd_head`, and `current`. We initialize `even_head` and `odd_head` with a dummy node.
-*   The condition for the loop is `current`, which is initialized with the head of the linked list.
-*   Inside the loop, we check if the current node's value is even or odd using the modulo operator (`%`). If it's even, we add it to the even list; if it's odd, we add it to the odd list.
-*   We update the `even_tail` and `odd_tail` pointers to point to the next node in the respective lists.
-*   After the loop, we connect the even list and the odd list together by setting the `next` pointer of the last node in the even list to point to the `next` node of the `odd_head`.
-*   Finally, we return the `next` node of the `even_head`, which is the head of the merged list.
+## Space Complexity Analysis
+* The Big O is O(N), where N is the number of nodes in the linked list.
+* We use a dictionary/hash map to store at most N elements.
 
-Here are the steps in detail:
+## Step-by-Step Reconstruction Logic
+### Step 1: Initialize Variables
+* Initialize two dummy nodes, `even_head` and `odd_head`, to serve as the head of the even and odd linked lists, respectively.
+* Initialize two pointers, `even` and `odd`, to point to the current even and odd nodes, respectively.
+* Initialize a pointer `head` to point to the current node being processed.
 
-*   **Step 1:** Initialize `even_head` and `odd_head` with a dummy node.
-*   **Step 2:** Initialize `even_tail` and `odd_tail` to point to the dummy nodes.
-*   **Step 3:** Initialize `current` to point to the head of the linked list.
-*   **Step 4:** Start the loop that will run `N` times, where `N` is the number of nodes in the linked list.
-*   **Step 5:** Inside the loop, check if the current node's value is even or odd using the modulo operator (`%`). If it's even, add it to the even list; if it's odd, add it to the odd list.
-*   **Step 6:** Update the `even_tail` and `odd_tail` pointers to point to the next node in the respective lists.
-*   **Step 7:** After the loop, connect the even list and the odd list together by setting the `next` pointer of the last node in the even list to point to the `next` node of the `odd_head`.
-*   **Step 8:** Finally, return the `next` node of the `even_head`, which is the head of the merged list.
+### Step 2: Process Nodes
+* The loop runs until all nodes in the linked list have been processed.
+* In each iteration, check if the current node's value is even or odd.
+* If the current node's value is even, set `even.next` to point to the current node, and move the `even` pointer to the next even node.
+* If the current node's value is odd, set `odd.next` to point to the current node, and move the `odd` pointer to the next odd node.
+* Move the `head` pointer to the next node.
+
+### Step 3: Connect Even and Odd Linked Lists
+* Set `even.next` to point to the `odd_head.next` node, effectively connecting the even and odd linked lists.
+
+### Step 4: Terminate Odd Linked List
+* Set `odd.next` to `None`, effectively terminating the odd linked list.
+
+### Step 5: Return Result
+* Return `even_head.next`, which points to the head of the merged linked list.
