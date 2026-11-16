@@ -2,23 +2,28 @@
 
 ## Time Complexity Analysis
 
-* The Big O notation for time complexity is O(N), where N is the number of nodes in the linked list.
-* The loop runs N times, and the dictionary lookup `if x in dict` takes O(1) time on average, since dictionary lookups are constant time operations.
+* The time complexity is O(N), where N is the number of nodes in the linked list.
+* The loop runs N times, and the dictionary lookup `if x in dict` is not present in this code, but we can consider the dictionary lookup as O(1) time on average in a Python dictionary.
 * Therefore, N * O(1) = O(N).
 
 ## Space Complexity Analysis
 
-* The Big O notation for space complexity is O(N).
-* We use a dictionary/hash map to store at most N elements.
+* The space complexity is O(N), as we use a dictionary/hash map to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
 
-* We initialize two dummy nodes, `even_head` and `odd_head`, to serve as the head nodes for the even and odd linked lists, respectively. We also initialize two pointers, `even_tail` and `odd_tail`, to keep track of the last node in the even and odd linked lists, respectively.
-* We initialize the `current` pointer to the head of the linked list.
-* The loop condition is `while current:`, which runs until we reach the end of the linked list.
-* Inside the loop, we check if the value of the current node is even by using the modulo operator (`current.value % 2 == 0`). If it is even, we link the current node to the end of the even linked list by updating `even_tail.next` and `even_tail`.
-* If the value of the current node is odd, we link the current node to the end of the odd linked list by updating `odd_tail.next` and `odd_tail`.
-* After the loop, we link the last node of the even linked list to the first node of the odd linked list, and set the next pointer of the last node of the odd linked list to None.
-* Finally, we return the next node of the even head node, which is the head of the merged linked list.
+* Initialize the variables:
+	+ `even_head` and `even` to store the head of the even-numbered nodes and the current even-numbered node, respectively.
+	+ `odd_head` and `odd` to store the head of the odd-numbered nodes and the current odd-numbered node, respectively.
+	+ `current` to traverse the linked list.
+* The loop condition is: `while current`.
+* Inside the loop:
+	+ Check if the current node's value is even by using the modulo operator (`current.val % 2 == 0`).
+	+ If the value is even, update the `even` node to point to the current node and move to the next node in the linked list.
+	+ If the value is odd, update the `odd` node to point to the current node and move to the next node in the linked list.
+* After the loop:
+	+ Set the `next` pointer of the `even` node to point to the `odd_head` node (which is the head of the odd-numbered nodes).
+	+ Set the `next` pointer of the `odd` node to `None` to terminate the odd-numbered node list.
+* Return the `even_head` node (which is the head of the merged list).
 
-Note: The `if/else` logic is straightforward: if the complement is found, we link it to the corresponding list; if it is not found, we move on to the next node in the linked list. The final return statement returns the head of the merged linked list, which is the even head node.
+Note that this code assumes that the input linked list is non-empty and that the values in the linked list are integers.

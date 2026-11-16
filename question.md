@@ -7,36 +7,26 @@
 
 ## Problem Statement
 
-**Title:** Segregate Even and Odd Elements in a Linked List
+**Title:** Separate Even and Odd Nodes in a Linked List
 
-**Description:**
+**Description:** Given a linked list, separate the even and odd nodes while maintaining their relative order. Move all even nodes to the front of the list, followed by the odd nodes.
 
-Given a singly-linked list, segregate the even elements from the odd elements and return the head of the even list.
-
-### Examples:
+**Examples:**
 
 1. **Example 1:**
-
-Input: `0 -> 1 -> 4 -> 6 -> 9 -> 10 -> 11`
-
-Output: `4 -> 6 -> 10 -> 0 -> 1 -> 9 -> 11`
-
+   - Input: Linked List: 0 -> 1 -> 4 -> 6 -> 9 -> 10 -> 11
+   - Output: Modified Linked List: 0 -> 4 -> 6 -> 10 -> 1 -> 9 -> 11
 2. **Example 2:**
-
-Input: `2 -> 3 -> 5 -> 7 -> 8`
-
-Output: `2 -> 8 -> 3 -> 5 -> 7`
-
+   - Input: Linked List: 10 -> 20 -> 30 -> 40 -> 50
+   - Output: Modified Linked List: 10 -> 20 -> 30 -> 40 -> 50
 3. **Example 3:**
+   - Input: Linked List: 1 -> 3 -> 5 -> 7 -> 9
+   - Output: Modified Linked List: 1 -> 3 -> 5 -> 7 -> 9
 
-Input: `11 -> 9 -> 7 -> 5 -> 3 -> 2 -> 8`
+**Constraints:**
 
-Output: `2 -> 8 -> 11 -> 9 -> 7 -> 5 -> 3`
+- The linked list may be empty (i.e., it may contain zero nodes).
+- The linked list may contain nodes with any integer value (not limited to non-negative or positive values).
+- The linked list may contain repeated values.
 
-### Constraints:
-
-* The input linked list has at most 10^5 nodes.
-* Each node's value is an integer between -10^9 and 10^9.
-* The input linked list is not empty.
-
-Note: The above examples and constraints are created based on the provided code and problem statement.
+Note: The linked list is assumed to be non-circular, and the problem does not require handling circular linked lists.
