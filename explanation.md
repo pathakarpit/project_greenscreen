@@ -1,42 +1,37 @@
 # Professor's Analysis: Segregate even and odd Elements in a Linked List
 
+```
 ## Time Complexity Analysis
-### Big O Notation
-The time complexity of this algorithm is O(N), where N is the number of nodes in the linked list.
-
-### Explanation
-The loop in this algorithm runs N times, where N is the number of nodes in the linked list. Inside the loop, we perform a dictionary lookup `if even in seen` which takes O(1) time on average. Therefore, N * O(1) = O(N).
+The loop runs N times, where N is the number of nodes in the linked list.
+The dictionary lookup if x in dict takes O(1) time on average.
+Therefore, N * O(1) = O(N).
 
 ## Space Complexity Analysis
-### Big O Notation
-The space complexity of this algorithm is O(N), where N is the number of nodes in the linked list.
-
-### Explanation
+The space complexity is O(N), where N is the number of nodes in the linked list.
 We use a dictionary/hash map to store at most N elements.
 
 ## Step-by-Step Reconstruction Logic
-### Initialization
-* Initialize two pointers: `even_head` and `odd`.
-* Initialize `even` to `head.next` and `odd` to `head`.
-* Initialize an empty dictionary `seen` to keep track of visited nodes.
+### Step 1: Initialize variables
+* Create two dummy nodes even_head and odd_head with next pointers set to None.
+* Initialize two pointers even and odd to point to even_head and odd_head, respectively.
+* Initialize a current pointer to point to the head of the linked list.
 
-### Loop Condition
-* The loop continues as long as `even` and `even.next` are not `None`.
+### Step 2: Loop through the linked list
+* The loop will run N times, where N is the number of nodes in the linked list.
+* Inside the loop:
+	+ Check if the current node's value is even (current.val % 2 == 0).
+	+ If the value is even:
+		- Set even.next to point to the current node.
+		- Move even pointer to point to the next node.
+	+ If the value is odd:
+		- Set odd.next to point to the current node.
+		- Move odd pointer to point to the next node.
+	+ Move current pointer to point to the next node.
 
-### Step-by-Step Loop Logic
-* Inside the loop, we perform the following operations:
-	+ `odd.next = even.next`: Update the next pointer of the `odd` node to point to the next node in the `even` chain.
-	+ `odd = odd.next`: Move the `odd` pointer to the next node.
-	+ `even.next = odd.next`: Update the next pointer of the `even` node to point to the next node in the `odd` chain.
-	+ `even = even.next`: Move the `even` pointer to the next node.
-* If `even` becomes `None`, the loop ends.
+### Step 3: Connect the even and odd lists
+* After the loop, set even.next to point to odd_head.next (which is the head of the odd list).
+* Set odd.next to None to prevent infinite loops.
 
-### If/Else Logic
-* If the `even` node has been visited before (i.e., `even in seen`), we break the loop.
-* If the `even` node has not been visited before, we add it to the `seen` dictionary and continue with the next iteration of the loop.
-
-### Final Return Statement
-* After the loop ends, we update the next pointer of the `odd` node to point to the `even_head` node.
-* Finally, we return the `head` node, which now points to the modified linked list.
-
-By following these steps, a developer can rewrite the code just by reading these steps.
+### Step 4: Return the new head
+* Return even_head.next, which is the new head of the merged list.
+```
