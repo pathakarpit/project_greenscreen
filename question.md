@@ -7,33 +7,27 @@
 
 ## Problem Statement
 
-**Title:** Move Even Nodes to Front of Linked List
+**Title:** Segregate even and odd nodes in a Linked List
 
-**Description:** 
-
-Given a singly-linked list where each node contains an integer, move all even nodes to the front of the list while maintaining their original order relative to each other. The odd nodes should remain in their original order, but appear after all even nodes in the modified list.
+**Description:** Given a singly linked list, rearrange the list in place so that all nodes containing even values appear before nodes containing odd values. Return the head of the modified linked list. Note: The relative order of the even nodes and the odd nodes should remain unchanged.
 
 **Examples:**
 
-1. **Example 1:**
+1. **Input:** 8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9
+**Output:** 8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9
+**Explanation:** Since 8, 2, 4, and 6 are even, they appear first in the list, followed by the odd numbers 17, 15, and 9.
 
-Original Linked List: `0 -> 1 -> 2 -> 3 -> 4`
-Modified Linked List: `0 -> 2 -> 4 -> 1 -> 3`
+2. **Input:** 1 -> 3 -> 5 -> 7
+**Output:** 1 -> 3 -> 5 -> 7
+**Explanation:** There are no even numbers in the list.
 
-2. **Example 2:**
+3. **Input:** 2 -> 4 -> 6 -> 8 -> 10
+**Output:** 2 -> 4 -> 6 -> 8 -> 10
+**Explanation:** All numbers in the list are even, so they appear in the same order.
 
-Original Linked List: `1 -> 3 -> 5 -> 7 -> 9`
-Modified Linked List: `1 -> 3 -> 5 -> 7 -> 9`
+**Constraints:** 
+- The linked list is a singly linked list.
+- The nodes in the linked list contain integer values.
+- The relative order of the even nodes and the odd nodes should remain unchanged.
 
-3. **Example 3:**
-
-Original Linked List: `0 -> 2 -> 4 -> 6 -> 8`
-Modified Linked List: `0 -> 2 -> 4 -> 6 -> 8`
-
-**Constraints:**
-
-* Each node in the linked list contains a non-negative integer.
-* The linked list may be empty (i.e., the head is `NULL`).
-* The number of nodes in the linked list is limited only by the available memory.
-
-Note: The `moveEvenToFront` function assumes that the input linked list is a singly-linked list where each node contains an integer. It also assumes that the linked list is not empty and that each node has a valid `data` field.
+Note: The solution involves traversing the linked list once and maintaining two separate lists for even and odd nodes. The even list is appended to the odd list at the end to obtain the modified linked list.

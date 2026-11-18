@@ -4,46 +4,33 @@
 
 class Solution:
     class ListNode:
-        def __init__(self, data=0, next=None):
-            self.data = data
+        def __init__(self, val=0, next=None):
+            self.val = val
             self.next = next
 
-    def solve(self, head):
+    def solve(self, head: ListNode) -> ListNode:
         if not head:
-            return head
+            return None
 
-        even_head = None
-        even_tail = None
-        odd_head = head
-        odd_tail = head
+        even_head = ListNode(0)
+        odd_head = ListNode(0)
+        even_tail = even_head
+        odd_tail = odd_head
+        current = head
 
-        current = head.next
         while current:
-            if current.data % 2 == 0:
-                if not even_head:
-                    even_head = current
-                    even_tail = even_head
-                else:
-                    even_tail.next = current
-                    even_tail = current
+            if current.val % 2 == 0:
+                even_tail.next = current
+                even_tail = even_tail.next
             else:
                 odd_tail.next = current
-                odd_tail = current
+                odd_tail = odd_tail.next
             current = current.next
 
-        if even_head:
-            even_tail.next = None
-            head = even_head
-            if odd_head:
-                current = even_head
-                while current.next:
-                    current = current.next
-                current.next = odd_head
-        else:
-            if odd_head:
-                head = odd_head
+        even_tail.next = odd_head.next
+        odd_tail.next = None
 
-        return head
+        return even_head.next
 
 ########################################
 # if __name__ == '__main__':

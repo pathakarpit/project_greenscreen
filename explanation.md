@@ -1,45 +1,26 @@
 # Professor's Analysis: Segregate even and odd Elements in a Linked List
 
-```markdown
-Thought: I now can give a great answer
-
+```
 ## Time Complexity Analysis
-
-* The Big O time complexity of the provided Python solution is O(N).
-* The loop runs N times, where N is the number of nodes in the linked list.
-* Inside the loop, the dictionary lookup `if x in dict` takes O(1) time on average.
+* The Big O notation for this solution is O(N), where N is the number of nodes in the linked list.
+* The loop runs N times, as we are traversing the entire list.
+* The dictionary lookup `if current.val % 2 == 0` takes O(1) time on average, as dictionary lookups are constant time operations in Python.
 * Therefore, N * O(1) = O(N).
 
 ## Space Complexity Analysis
-
-* The Big O space complexity of the provided Python solution is O(N).
-* We use a dictionary/hash map to store at most N elements.
+* The Big O notation for this solution is O(N), where N is the number of nodes in the linked list.
+* We use a dictionary/hash map to store at most N elements, which is the number of nodes in the linked list.
 
 ## Step-by-Step Reconstruction Logic
-
-### Initialize Variables
-
-* We define two class attributes: `ListNode` and `solve` method.
-* Inside the `solve` method, we initialize four pointers:
-	+ `even_head`: to keep track of the head of even-numbered nodes.
-	+ `even_tail`: to keep track of the tail of even-numbered nodes.
-	+ `odd_head`: to keep track of the head of odd-numbered nodes.
-	+ `odd_tail`: to keep track of the tail of odd-numbered nodes.
-
-### Loop Through the Linked List
-
-* We start from the second node (`head.next`) and traverse the linked list.
-* For each node, we check if its value is even or odd.
-* If the value is even, we add it to the end of the even-numbered linked list.
-* If the value is odd, we add it to the end of the odd-numbered linked list.
-
-### Reconstruct the Linked List
-
-* After the loop, we check if the even-numbered linked list is not empty.
-* If it is not empty, we set the `head` to the head of the even-numbered linked list.
-* If the odd-numbered linked list is not empty, we append it to the end of the even-numbered linked list.
-
-### Return the Reconstructed Linked List
-
-* Finally, we return the reconstructed linked list.
+* We initialize two dummy nodes `even_head` and `odd_head` to serve as the heads of the even and odd lists, respectively.
+* We initialize two pointers `even_tail` and `odd_tail` to keep track of the last node in the even and odd lists, respectively.
+* We initialize a pointer `current` to point to the head of the linked list.
+* The loop condition is `while current`, which will continue until we reach the end of the linked list.
+* Inside the loop, we check if the current node's value is even by using the modulo operator (`current.val % 2 == 0`).
+* If the current node's value is even, we add it to the even list by updating the `even_tail` pointer.
+* If the current node's value is odd, we add it to the odd list by updating the `odd_tail` pointer.
+* After the loop, we update the `even_tail` and `odd_tail` pointers to point to the last nodes in the even and odd lists, respectively.
+* We update the `even_tail` pointer to point to the `odd_head.next` node, effectively connecting the even list to the odd list.
+* We set the `odd_tail` pointer to `None`, effectively terminating the odd list.
+* Finally, we return the `even_head.next` node, which is the head of the resulting linked list.
 ```
