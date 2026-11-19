@@ -7,27 +7,26 @@
 
 ## Problem Statement
 
-**Title:** Segregate even and odd nodes in a Linked List
+**Title:** Separate Linked List into Even and Odd Numbers
 
-**Description:** Given a singly linked list, rearrange the list in place so that all nodes containing even values appear before nodes containing odd values. Return the head of the modified linked list. Note: The relative order of the even nodes and the odd nodes should remain unchanged.
+**Description:**
+
+Given a linked list containing both even and odd numbers, separate the linked list into two separate lists: one for even numbers and one for odd numbers. Then, append the odd list to the even list.
 
 **Examples:**
 
-1. **Input:** 8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9
-**Output:** 8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9
-**Explanation:** Since 8, 2, 4, and 6 are even, they appear first in the list, followed by the odd numbers 17, 15, and 9.
+1. **Input:** Linked list: 0 -> 1 -> 4 -> 6 -> 9 -> 10 -> 11
+   **Output:** Even list: 0 -> 4 -> 6 -> 10, Odd list: 1 -> 9 -> 11
 
-2. **Input:** 1 -> 3 -> 5 -> 7
-**Output:** 1 -> 3 -> 5 -> 7
-**Explanation:** There are no even numbers in the list.
+2. **Input:** Linked list: 2 -> 3 -> 5 -> 7
+   **Output:** Even list: 2, Odd list: 3 -> 5 -> 7
 
-3. **Input:** 2 -> 4 -> 6 -> 8 -> 10
-**Output:** 2 -> 4 -> 6 -> 8 -> 10
-**Explanation:** All numbers in the list are even, so they appear in the same order.
+3. **Input:** Linked list: 10 -> 20 -> 30 -> 40 -> 50
+   **Output:** Even list: 10 -> 20 -> 30 -> 40 -> 50, Odd list: (empty)
 
-**Constraints:** 
-- The linked list is a singly linked list.
-- The nodes in the linked list contain integer values.
-- The relative order of the even nodes and the odd nodes should remain unchanged.
+**Constraints:**
 
-Note: The solution involves traversing the linked list once and maintaining two separate lists for even and odd nodes. The even list is appended to the odd list at the end to obtain the modified linked list.
+* The linked list may contain both even and odd numbers.
+* The linked list may be empty.
+* The numbers in the linked list may range from 0 to 10^9.
+* The linked list may contain only even numbers or only odd numbers.

@@ -10,10 +10,10 @@ class Solution:
 
     def solve(self, head: ListNode) -> ListNode:
         if not head:
-            return None
+            return head
 
-        even_head = ListNode(0)
-        odd_head = ListNode(0)
+        even_head = ListNode()
+        odd_head = ListNode()
         even_tail = even_head
         odd_tail = odd_head
         current = head
