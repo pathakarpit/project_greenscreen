@@ -7,24 +7,25 @@
 
 ## Problem Statement
 
-```
-Title: Separate Even and Odd Nodes in a Linked List
+**
 
-Description:
-Given the head of a singly-linked list, separate the even nodes from the odd nodes and return the modified linked list.
+**Title:** Splitting a Circular Linked List
 
-Examples:
+**Description:** Given a circular linked list, split it into two halves and return the two halves as separate linked lists. The `splitList` function takes the head of the circular linked list as input and returns two linked lists, `head1` and `head2`, representing the first and second halves, respectively.
 
-1. Input: Head of a linked list with nodes 0, 1, 4, 6, 9, 10, 11
-   Output: Modified linked list with even nodes 0, 4, 6, 10 and odd nodes 1, 9, 11
+**Examples:**
 
-2. Input: Head of a linked list with nodes 1, 3, 5, 7, 9
-   Output: Modified linked list with no even nodes and odd nodes 1, 3, 5, 7, 9
+1. **Input:** `head` of a circular linked list `10->4->9->10`
+	* **Expected Output:** `head1` of `10->4` and `head2` of `9->10`
+2. **Input:** `head` of a circular linked list `1->2->3->1`
+	* **Expected Output:** `head1` of `1->2` and `head2` of `3->1`
+3. **Input:** `head` of an empty circular linked list `1->1`
+	* **Expected Output:** `head1` of `None` and `head2` of `None`
 
-3. Input: Head of a linked list with nodes 0, 2, 4, 6, 8
-   Output: Modified linked list with even nodes 0, 2, 4, 6, 8 and no odd nodes
+**Constraints:**
 
-Constraints:
-1 <= N <= 10^5 (number of nodes in the linked list)
-0 <= node data <= 10^9 (data in each node)
-```
+* The circular linked list is represented as a sequence of nodes, where each node has a `data` attribute and a `next` attribute.
+* The `next` attribute of the last node points back to the first node, forming a circular linked list.
+* The input linked list is assumed to be non-empty and circular.
+* The `splitList` function should return two linked lists, `head1` and `head2`, representing the first and second halves of the input linked list, respectively.
+* The `print_list` function is used to print the elements of a linked list, but it is not part of the solution and can be ignored.

@@ -2,35 +2,51 @@
 # Difficulty: Medium
 # Link: https://www.geeksforgeeks.org/segregate-even-and-odd-elements-in-a-linked-list/
 
-class Solution:
-    class ListNode:
-        def __init__(self, val=0, next=None):
-            self.val = val
-            self.next = next
+# WARNING: Valid Class Definition Not Found
+# Raw Output:
+class ListNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-    def solve(self, head: ListNode) -> ListNode:
-        if not head:
-            return head
+def splitList(head):
+    if head is None:
+        return None, None
 
-        even_head = ListNode(0)
-        odd_head = ListNode(0)
-        even_tail = even_head
-        odd_tail = odd_head
-        current = head
+    slow = head
+    fast = head
 
-        while current:
-            if current.val % 2 == 0:
-                even_tail.next = current
-                even_tail = even_tail.next
-            else:
-                odd_tail.next = current
-                odd_tail = odd_tail.next
-            current = current.next
+    # Find the midpoint of the circular linked list
+    while fast.next != head and fast.next.next != head:
+        slow = slow.next
+        fast = fast.next.next
 
-        even_tail.next = odd_head.next
-        odd_tail.next = None
+    # If the list has an even number of nodes, slow will be just before the midpoint
+    # If the list has an odd number of nodes, slow will be the midpoint
+    mid = slow.next
 
-        return even_head.next
+    # Split the list into two halves
+    slow.next = head
+
+    # Find the head of the second half
+    head2 = mid
+    while mid.next != head:
+        mid = mid.next
+
+    mid.next = head2
+
+    # Return the heads of the two halves
+    return head, head2
+
+# Example usage:
+# Define the circular linked list
+# head = ListNode(10)
+# head.next = ListNode(4)
+# head.next.next = ListNode(9)
+# head.next.next.next = head
+
+# Split the circular linked list
+# head1, head2 = splitList(head)
 
 ########################################
 # if __name__ == '__main__':
