@@ -12,8 +12,8 @@ class Solution:
         if not head:
             return head
 
-        even_head = ListNode()
-        odd_head = ListNode()
+        even_head = ListNode(0)
+        odd_head = ListNode(0)
         even_tail = even_head
         odd_tail = odd_head
         current = head
