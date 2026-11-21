@@ -7,25 +7,42 @@
 
 ## Problem Statement
 
-**
+Title: Rearrange Linked List by Even and Odd Nodes
 
-**Title:** Splitting a Circular Linked List
+Description: Given the head of a singly linked list , rearrange the list in place so that all nodes containing even values appear before nodes containing odd values. Return the head of the modified linked list .
 
-**Description:** Given a circular linked list, split it into two halves and return the two halves as separate linked lists. The `splitList` function takes the head of the circular linked list as input and returns two linked lists, `head1` and `head2`, representing the first and second halves, respectively.
+Examples:
+ 
+Input:  Output: 8 -> 2 -> 4 -> 6 -> 17 -> 15 -> 9
+Explanation: Since 8, 2, 4, and 6 are even, they appear first in the list, followed by the odd numbers 17, 15, and 9.
 
-**Examples:**
+Input:  Output: 1 -> 3 -> 5 -> 7
+Explanation: There is no even number, so no modification is needed.
 
-1. **Input:** `head` of a circular linked list `10->4->9->10`
-	* **Expected Output:** `head1` of `10->4` and `head2` of `9->10`
-2. **Input:** `head` of a circular linked list `1->2->3->1`
-	* **Expected Output:** `head1` of `1->2` and `head2` of `3->1`
-3. **Input:** `head` of an empty circular linked list `1->1`
-	* **Expected Output:** `head1` of `None` and `head2` of `None`
+Input:  Output: 2 -> 4 -> 6 -> 8 -> 10
+Explanation: Only even numbers are present in the list.
 
-**Constraints:**
+Constraints:
+ 
+- The relative order of the even nodes and the odd nodes should remain unchanged.
+- Note: The linked list does not have a tail.
 
-* The circular linked list is represented as a sequence of nodes, where each node has a `data` attribute and a `next` attribute.
-* The `next` attribute of the last node points back to the first node, forming a circular linked list.
-* The input linked list is assumed to be non-empty and circular.
-* The `splitList` function should return two linked lists, `head1` and `head2`, representing the first and second halves of the input linked list, respectively.
-* The `print_list` function is used to print the elements of a linked list, but it is not part of the solution and can be ignored.
+Problem Constraints:
+
+1 <= N <= 10^5
+
+Algorithm:
+ 
+1. Create two separate linked lists, one for even nodes and one for odd nodes.
+2. Traverse the original linked list and add each even-valued node to the even list and each odd-valued node to the odd list, preserving their original order.
+3. After traversal, the even list becomes 0 -> 4 -> 6 -> 10 and the odd list becomes 1 -> 9 -> 11.
+4. If there are no even nodes, return the original list.
+5. Append the remaining odd nodes after the even nodes and return the result list (starting with even nodes).
+
+Time Complexity:
+ 
+O(n) where n is the number of nodes in the linked list.
+
+Space Complexity:
+ 
+O(1) as we are not using any extra space.
