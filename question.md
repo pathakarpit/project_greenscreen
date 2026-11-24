@@ -7,25 +7,28 @@
 
 ## Problem Statement
 
-**Title:** Separate Even and Odd Nodes in a Linked List
+**Title:** Segregate even and odd nodes in a Linked List
 
-**Description:** Given the head of a linked list, separate the nodes into two lists: one containing even nodes and the other containing odd nodes.
+**Description:** Given a singly linked list, rearrange the list in place so that all nodes containing even values appear before nodes containing odd values. Return the head of the modified linked list. Note: The relative order of the even nodes and the odd nodes should remain unchanged.
 
 **Examples:**
 
-1. **Example 1:**
-	* Input: `0 -> 1 -> 4 -> 6 -> 9 -> 10 -> 11`
-	* Output: `Even Nodes: 0 -> 4 -> 6 -> 10`
-	* `Odd Nodes: 1 -> 9 -> 11`
-2. **Example 2:**
-	* Input: `2 -> 3 -> 5 -> 7 -> 8`
-	* Output: `Even Nodes: 2 -> 8`
-	* `Odd Nodes: 3 -> 5 -> 7`
+1. Input:  1 -> 2 -> 3 -> 4
+Output:  2 -> 4 -> 1 -> 3
 
-**Constraints:**
+2. Input:  1 -> 3 -> 5 -> 7
+Output:  1 -> 3 -> 5 -> 7
 
-* The linked list only contains integer values.
-* The linked list may be empty.
-* The linked list may contain a single node.
+3. Input:  2 -> 4 -> 6 -> 8
+Output:  2 -> 4 -> 6 -> 8
 
-**Note:** The code provided is a solution in C++, Java, and C, but the focus is on the problem statement and examples.
+4. Input:  1 -> 2 -> 3 -> 4 -> 5 -> 6
+Output:  2 -> 4 -> 6 -> 1 -> 3 -> 5
+
+**Constraints:** 
+
+* The linked list is a singly linked list.
+* The nodes in the linked list contain integer values.
+* The relative order of even and odd nodes should remain unchanged.
+
+Note: The constraints are inferred from the problem statement and the context in which the problem is presented.
