@@ -7,28 +7,26 @@
 
 ## Problem Statement
 
-**Title:** Segregate even and odd nodes in a Linked List
+```
+Title: Separate Even and Odd Nodes in a Linked List
 
-**Description:** Given a singly linked list, rearrange the list in place so that all nodes containing even values appear before nodes containing odd values. Return the head of the modified linked list. Note: The relative order of the even nodes and the odd nodes should remain unchanged.
+Description: Write a function to separate even and odd nodes in a linked list while maintaining the relative order. The function should take the head of the linked list as input and return the head of the modified linked list.
 
-**Examples:**
+Examples:
 
-1. Input:  1 -> 2 -> 3 -> 4
-Output:  2 -> 4 -> 1 -> 3
+1. Input: 0 -> 1 -> 4 -> 6 -> 9 -> 10 -> 11
+   Output: 0 -> 4 -> 6 -> 10 -> 1 -> 9 -> 11
 
-2. Input:  1 -> 3 -> 5 -> 7
-Output:  1 -> 3 -> 5 -> 7
+2. Input: 1 -> 3 -> 5 -> 7 -> 9
+   Output: 1 -> 3 -> 5 -> 7 -> 9
 
-3. Input:  2 -> 4 -> 6 -> 8
-Output:  2 -> 4 -> 6 -> 8
+3. Input: 2 -> 4 -> 6 -> 8
+   Output: 2 -> 4 -> 6 -> 8
 
-4. Input:  1 -> 2 -> 3 -> 4 -> 5 -> 6
-Output:  2 -> 4 -> 6 -> 1 -> 3 -> 5
+Constraints:
+- The linked list is represented as a sequence of nodes, where each node contains an integer value.
+- The function should not modify the original linked list.
+- The function should use a time complexity of O(n), where n is the number of nodes in the linked list.
+- The function should use a space complexity of O(1), excluding the space used by the linked list itself.
 
-**Constraints:** 
-
-* The linked list is a singly linked list.
-* The nodes in the linked list contain integer values.
-* The relative order of even and odd nodes should remain unchanged.
-
-Note: The constraints are inferred from the problem statement and the context in which the problem is presented.
+```
