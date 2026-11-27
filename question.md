@@ -7,25 +7,26 @@
 
 ## Problem Statement
 
-```
-**Title:** Separate Even and Odd Nodes from a Linked List
+**
+Title: Rearrange Linked List
+**
 
-**Description:** Given a linked list, separate the even nodes from the odd nodes and append the remaining odd nodes to the result list.
+Description: 
+Given the head of a singly linked list, rearrange the list in place so that all nodes containing even values appear before nodes containing odd values. Return the head of the modified linked list.
 
-**Examples:**
+**
+Examples:
+Input: 0 -> 4 -> 6 -> 10
+Output: 0 -> 4 -> 6 -> 10
 
-1. Input: 0 -> 1 -> 4 -> 6 -> 9 -> 10 -> 11
-   Output: 4 -> 6 -> 10 -> 0 -> 1 -> 9 -> 11
+Input: 1 -> 9 -> 11
+Output: 1 -> 9 -> 11
 
-2. Input: 2 -> 3 -> 5 -> 7
-   Output: 2 -> 3 -> 5 -> 7
+ 
+Constraints: 
+1. The linked list is a singly linked list.
+2. The value of each node is an integer.
+3. The relative order of the even nodes and the odd nodes should remain unchanged.
 
-3. Input: 10 -> 20 -> 30 -> 40
-   Output: 10 -> 20 -> 30 -> 40
-
-**Constraints:**
-- Each node in the linked list contains an integer value.
-- The linked list is non-empty.
-- The input linked list contains nodes with values in the range 0 to 10^9.
-- The output linked list should be in the same order as the input linked list, but with even nodes first, followed by the remaining odd nodes.
-```
+ 
+**Note:** The problem statement does not explicitly mention the constraints, so we have added them based on the context. The problem is asking to rearrange the linked list in place, which means the original list should not be modified unless it is necessary to store the result. The problem also asks to return the head of the modified linked list, which means the result should be a linked list.

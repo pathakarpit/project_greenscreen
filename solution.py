@@ -9,8 +9,8 @@ class Solution:
             self.next = next
 
     def solve(self, head: ListNode) -> ListNode:
-        if not head:
-            return None
+        if not head or not head.next:
+            return head
 
         even_head = ListNode(0)
         odd_head = ListNode(0)

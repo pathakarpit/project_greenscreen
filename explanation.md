@@ -1,43 +1,44 @@
 # Professor's Analysis: Segregate even and odd Elements in a Linked List
 
-```markdown
+```
 ## Time Complexity Analysis
-### Big O Notation:
-The time complexity of the given algorithm is O(N), where N is the number of nodes in the linked list.
+The time complexity of this algorithm is O(N), where N is the number of nodes in the linked list.
 
-### Explicit Explanation:
-* The loop `while current:` runs N times, where N is the number of nodes in the linked list.
-* Inside the loop, we have an if-else condition to check whether the current node's value is even or odd. This condition takes O(1) time on average, as dictionary lookups are typically constant time operations.
-* Therefore, the overall time complexity is N * O(1) = O(N).
+* The while loop runs N times because it iterates over each node in the list.
+* Inside the loop, the dictionary lookup `if current.val % 2 == 0` takes O(1) time on average, as dictionary lookups are constant time operations.
+* Therefore, N * O(1) = O(N).
 
 ## Space Complexity Analysis
-### Big O Notation:
-The space complexity of the given algorithm is O(N), where N is the number of nodes in the linked list.
+The space complexity of this algorithm is O(N), where N is the number of nodes in the linked list.
 
-### Explicit Explanation:
-* We use a dictionary/hash map to store at most N elements (the even and odd nodes).
+* We use a dictionary/hash map to store at most N elements, which is the number of nodes we are iterating over.
 
 ## Step-by-Step Reconstruction Logic
-### Step 1: Initialize Variables
-* Initialize an empty list `even_head` and `odd_head` to store the head of the even and odd nodes, respectively.
-* Initialize `even_tail` and `odd_tail` to store the tail of the even and odd nodes, respectively.
-* Initialize `current` to the head of the linked list.
+### Initialize Variables
+* `even_head` and `odd_head` are initialized as dummy nodes to serve as the head of the even and odd linked lists, respectively.
+* `even_tail` and `odd_tail` are initialized as the tail of the even and odd linked lists, respectively.
+* `current` is initialized as the head of the original linked list.
 
-### Step 2: Loop Through the Linked List
-* Loop through the linked list until `current` is `None`.
-* Inside the loop:
-	+ Check whether the current node's value is even or odd.
-	+ If the current node's value is even:
-		- Add the current node to the even list by setting `even_tail.next` to the current node and updating `even_tail` to the current node.
-	+ If the current node's value is odd:
-		- Add the current node to the odd list by setting `odd_tail.next` to the current node and updating `odd_tail` to the current node.
+### Loop Condition
+* The while loop continues as long as `current` is not `None`, which means there are still nodes to process in the linked list.
 
-### Step 3: Connect the Even and Odd Lists
-* Set `even_tail.next` to `odd_head.next` to connect the even and odd lists.
+### Math to Find Complement
+* Inside the loop, we use the modulo operator (`current.val % 2 == 0`) to check if the current node's value is even or odd.
 
-### Step 4: Set the Next Pointer of the Odd Tail to None
-* Set `odd_tail.next` to `None` to prevent the odd list from being traversed.
+### If/Else Logic
+* If the current node's value is even, we append it to the even linked list:
+	+ `even_tail.next = current`
+	+ `even_tail = even_tail.next` to move the tail pointer to the next node
+* If the current node's value is odd, we append it to the odd linked list:
+	+ `odd_tail.next = current`
+	+ `odd_tail = odd_tail.next` to move the tail pointer to the next node
+* We then move to the next node in the linked list: `current = current.next`
 
-### Step 5: Return the Next Pointer of the Even Head
-* Return `even_head.next` to get the head of the merged list.
+### Handling Edge Cases
+* If the linked list has less than two nodes, we simply return the head of the original linked list.
+
+### Returning the Result
+* After processing all nodes, we append the odd linked list to the even linked list by setting `even_tail.next = odd_head.next`.
+* We then set `odd_tail.next = None` to ensure the odd linked list is properly terminated.
+* Finally, we return the `even_head.next` node, which is the head of the resulting linked list with even and odd nodes separated.
 ```
