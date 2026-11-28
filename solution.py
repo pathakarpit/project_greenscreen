@@ -8,8 +8,8 @@ class Solution:
             self.val = val
             self.next = next
 
-    def solve(self, head: ListNode) -> ListNode:
-        if not head or not head.next:
+    def solve(self, head):
+        if not head:
             return head
 
         even_head = ListNode(0)

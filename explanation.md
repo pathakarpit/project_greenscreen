@@ -1,44 +1,45 @@
 # Professor's Analysis: Segregate even and odd Elements in a Linked List
 
-```
 ## Time Complexity Analysis
-The time complexity of this algorithm is O(N), where N is the number of nodes in the linked list.
 
-* The while loop runs N times because it iterates over each node in the list.
-* Inside the loop, the dictionary lookup `if current.val % 2 == 0` takes O(1) time on average, as dictionary lookups are constant time operations.
-* Therefore, N * O(1) = O(N).
+### Big O
+The Big O time complexity of the provided Python solution is O(N).
+
+### Explanation
+The loop runs N times, where N is the number of nodes in the linked list. Inside the loop, we have a dictionary lookup `if x in dict` which takes O(1) time on average. Therefore, N * O(1) = O(N).
 
 ## Space Complexity Analysis
-The space complexity of this algorithm is O(N), where N is the number of nodes in the linked list.
 
-* We use a dictionary/hash map to store at most N elements, which is the number of nodes we are iterating over.
+### Big O
+The Big O space complexity of the provided Python solution is O(N).
+
+### Explanation
+We use a dictionary/hash map to store at most N elements, which is the number of nodes in the linked list.
 
 ## Step-by-Step Reconstruction Logic
+
 ### Initialize Variables
-* `even_head` and `odd_head` are initialized as dummy nodes to serve as the head of the even and odd linked lists, respectively.
-* `even_tail` and `odd_tail` are initialized as the tail of the even and odd linked lists, respectively.
-* `current` is initialized as the head of the original linked list.
+* `even_head` and `odd_head` are initialized as dummy nodes with `val = 0`.
+* `even_tail` and `odd_tail` are initialized as pointers to the tail of the even and odd linked lists, respectively.
+* `current` is initialized as a pointer to the head of the linked list.
 
 ### Loop Condition
-* The while loop continues as long as `current` is not `None`, which means there are still nodes to process in the linked list.
+The loop continues until `current` becomes `None`.
+
+### Loop Body
+* Inside the loop, we check if the current node's value is even by using the modulo operator (`current.val % 2 == 0`).
+* If the value is even, we append it to the even linked list by updating the `next` pointer of the `even_tail` node.
+* If the value is odd, we append it to the odd linked list by updating the `next` pointer of the `odd_tail` node.
+* We then move the `current` pointer to the next node in the linked list.
 
 ### Math to Find Complement
-* Inside the loop, we use the modulo operator (`current.val % 2 == 0`) to check if the current node's value is even or odd.
+To find the complement of a number, we subtract the current number from the target number (`target - current_num`).
 
 ### If/Else Logic
-* If the current node's value is even, we append it to the even linked list:
-	+ `even_tail.next = current`
-	+ `even_tail = even_tail.next` to move the tail pointer to the next node
-* If the current node's value is odd, we append it to the odd linked list:
-	+ `odd_tail.next = current`
-	+ `odd_tail = odd_tail.next` to move the tail pointer to the next node
-* We then move to the next node in the linked list: `current = current.next`
+* If the complement is found in the other linked list, we update the `next` pointer of the `even_tail` or `odd_tail` node to point to the odd or even linked list, respectively.
+* If the complement is not found, we continue the loop.
 
-### Handling Edge Cases
-* If the linked list has less than two nodes, we simply return the head of the original linked list.
+### Return Statement
+If no pair is found, the function returns the head of the even linked list, which is the final merged linked list.
 
-### Returning the Result
-* After processing all nodes, we append the odd linked list to the even linked list by setting `even_tail.next = odd_head.next`.
-* We then set `odd_tail.next = None` to ensure the odd linked list is properly terminated.
-* Finally, we return the `even_head.next` node, which is the head of the resulting linked list with even and odd nodes separated.
-```
+By following these steps, a developer can rewrite the code just by reading this explanation.
